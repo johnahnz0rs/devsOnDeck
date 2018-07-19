@@ -1,0 +1,42 @@
+* {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.container {
+    width: 970px;
+    margin: 20px auto;
+}
+
+.header {
+    background-color: saddlebrown;
+}
+.logo {
+    color: white;
+    display: inline-block;
+    vertical-align: center;
+}
+
+.header ul {
+    list-style-type: none;
+    display: inline-block;
+    float: right;
+}
+.header li {
+    float: right;
+    margin: auto 10px;
+}
+.header li a {
+    color: white;
+}
+
+
+.dev-signup {
+    margin: 20px;
+    border: 1px solid black;
+    background-color: gray;
+}
+.dev-signup h1 {
+    text-align: center;
+}
+
+
