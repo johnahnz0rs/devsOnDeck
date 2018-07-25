@@ -23,3 +23,7 @@
 .login {
     padding: 20px;
 }
+
+.validation {
+    color: red;
+}

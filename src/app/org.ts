@@ -5,7 +5,7 @@ export class Org {
     orgname: string;
     fname: string;
     lname: string;
-    street: string;
+    address: string;
     city: string;
     state: string;
     zip: number;

@@ -7,67 +7,91 @@
     <!-- a row of two forms: signup and login -->
     <div class="row">
 
-        <!-- first col-sm-7: signup -->
+        <!-- first col-sm-7: signup form -->
+        <!-- lol -->
         <div class="signup col-sm-7">
             <h3 class="section-header">Register</h3>
 
-            <form name="signup" action="" method="POST">
+            <!--<form name="signup" action="" method="POST">-->
+            <form #newDevForm="ngForm">
 
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-6">
-                            <label for="fname">First Name:</label>
-                            <input class="form-control" id="fname" type="text">
+                            <label for="fname">First Name:
+                                <span *ngIf="!fname.valid" class="validation"> *Required</span>
+                            </label>
+                            <input class="form-control" id="fname" name="fname" type="text" required [(ngModel)]="newDev.fname" #fname="ngModel">
+
                         </div>
                         <div class="col-sm-6">
-                            <label for="lname">Last Name:</label>
-                            <input class="form-control" id="lname" type="text">
+                            <label for="lname">Last Name:
+                                <span *ngIf="!lname.valid" class="validation"> *Required</span>
+                            </label>
+                            <input class="form-control" id="lname" name="lname" type="text" required [(ngModel)]="newDev.lname" #lname="ngModel">
                         </div>
                     </div>
                 </div>
 
-
                 <div class="form-group">
-                    <label for="email">Contact Email:</label>
-                    <input class="form-control" type="text" id="email">
+                    <label for="email">Email:
+                        <span *ngIf="!email.valid" class="validation"> *Required</span>
+                    </label>
+                    <input class="form-control" type="text" id="email" name="email" required [(ngModel)]="newDev.email" #email="ngModel">
                 </div>
 
                 <div class="form-group">
-                    <label for="address">Org Address:</label>
-                    <input class="form-control" type="text" id="address">
+                    <label for="address">Address:
+                        <span *ngIf="!address.valid" class="validation"> *Required</span>
+                    </label>
+                    <input class="form-control" type="text" id="address" name="address" required [(ngModel)]="newDev.address" #address="ngModel">
                 </div>
 
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-sm-9">
-                            <label for="city">Org City:</label>
-                            <input class="form-control" type="text" id="city">
+                        <div class="col-sm-5">
+                            <label for="city">City:
+                                <span *ngIf="!city.valid" class="validation"> *Required</span>
+                            </label>
+                            <input class="form-control" type="text" id="city" name="city" required [(ngModel)]="newDev.city" #city="ngModel">
                         </div>
                         <div class="col-sm-3">
-                            <label for="State">State</label>
-                            <select class="form-control" id="state">
+                            <label for="State">State
+                                <span *ngIf="!state.valid" class="validation"> *Required</span>
+                            </label>
+                            <select class="form-control" id="state" name="state" required [(ngModel)]="newDev.state" #state="ngModel">
                                 <option *ngFor="let state of states">
                                     {{ state }}
                                 </option>
                             </select>
                         </div>
+                        <div class="col-sm-4">
+                            <label for="zip">Zip:
+                                <span *ngIf="!zip.valid" class="validation"> *Required</span>
+                            </label>
+                            <input class="form-control" type="number" id="zip" name="zip" required [(ngModel)]="newDev.zip" #zip="ngModel">
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-6">
-                            <label for="password">Password:</label>
-                            <input class="form-control" type="password" id="password">
+                            <label for="pw">Password:
+                                <span *ngIf="!pw.valid" class="validation"> *Required (min. 8 char.)</span>
+                            </label>
+                            <input class="form-control" type="password" id="pw" name="pw" required minlength="8" [(ngModel)]="newDev.pw" #pw="ngModel">
                         </div>
                         <div class="col-sm-6">
-                            <label for="cpw">Confirm Password:</label>
-                            <input class="form-control" type="password" id="cpw">
+                            <label for="cpw">Confirm Password:
+                                <span *ngIf="pw!==cpw" class="validation"> *Passwords must match</span>
+                            </label>
+                            <input class="form-control" type="password" id="cpw" name="cpw" required [(ngModel)]="newDev.cpw" #cpw="ngModel">
                         </div>
                     </div>
                 </div>
 
-                <button class="btn-lg btn-success float-right">Register</button>
+                <button (click)="registerDev()" class="btn-lg btn-success float-right">Register</button>
             </form>
 
             <p><a href="/org">Want to Sign Up an Organization Instead?</a></p>
@@ -75,7 +99,8 @@
 
 
 
-        <!-- second col-sm-5: login -->
+        <!-- second col-sm-5: login form -->
+        <!-- lol -->
         <div class="login col-sm-5">
             <h3 class="section-header">Login</h3>
 

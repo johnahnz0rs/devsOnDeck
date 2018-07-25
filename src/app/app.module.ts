@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AppService } from './services/app.service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DevSuliComponent } from './devs/dev-suli/dev-suli.component';
@@ -19,7 +21,7 @@ import { OrgSuliComponent } from './orgs/org-suli/org-suli.component';
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, HttpClientModule
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

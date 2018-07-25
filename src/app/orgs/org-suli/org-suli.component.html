@@ -11,45 +11,46 @@
         <div class="signup col-sm-7">
             <h3 class="section-header">Register</h3>
 
-            <div class="form-group">
-                <label for="orgname">Org Name:</label>
-                <input class="form-control" type="text" id="orgname">
-            </div>
+            <!--<form name="signup" action="" method="POST">-->
+            <form #newOrgForm="ngForm">
 
-            <form name="signup" action="" method="POST">
+                <div class="form-group">
+                    <label for="orgname">Org Name:</label>
+                    <input class="form-control" type="text" id="orgname" required>
+                </div>
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="fname">First Name:</label>
-                            <input class="form-control" id="fname" type="text">
+                            <input class="form-control" id="fname" type="text" required>
                         </div>
                         <div class="col-sm-6">
                             <label for="lname">Last Name:</label>
-                            <input class="form-control" id="lname" type="text">
+                            <input class="form-control" id="lname" type="text" required>
                         </div>
                     </div>
                 </div>
 
-
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input class="form-control" type="text" id="email">
+                    <label for="email">Contact Email:</label>
+                    <input class="form-control" type="text" id="email" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="address">Address:</label>
-                    <input class="form-control" type="text" id="address">
+                    <label for="address">Org Address:</label>
+                    <input class="form-control" type="text" id="address" required>
                 </div>
 
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-9">
-                            <label for="city">City:</label>
-                            <input class="form-control" type="text" id="city">
+                            <label for="city">Org City:</label>
+                            <input class="form-control" type="text" id="city" required>
                         </div>
                         <div class="col-sm-3">
                             <label for="State">State</label>
-                            <select class="form-control" id="state">
+                            <select class="form-control" id="state" required>
                                 <option *ngFor="let state of states">
                                     {{ state }}
                                 </option>
@@ -62,11 +63,11 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="password">Password:</label>
-                            <input class="form-control" type="password" id="password">
+                            <input class="form-control" type="password" id="password" required minlength="8">
                         </div>
                         <div class="col-sm-6">
                             <label for="cpw">Confirm Password:</label>
-                            <input class="form-control" type="password" id="cpw">
+                            <input class="form-control" type="password" id="cpw" required>
                         </div>
                     </div>
                 </div>
