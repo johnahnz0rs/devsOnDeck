@@ -1,5 +1,221 @@
 # DevsOnDeck
 
+johnahnz0rs' to-do list:
+Aka “Fake RemoteOK”(?)
+Aka “Fake WebDev Job Site”(?)
+
+
+SERVER
+[]Server mongo models
+	[]Dev - fname, lname, street, city, state, zip, email, pw, bio, skills (Array<language, framework>), languages, frameworks, resume, type=dev
+	[]Org - orgname, fname, lname, street, city, state, zip, email, bio, jobs (Array<Job>), type=org
+	[]Job - orgId, name, descr, skills (Array<Skill>), type=job 
+
+[]Server routes:
+	[]Post CreateOne : create 1 dev, org, or job
+	[]Get ReadAllDevs: return all devs
+	[]Get ReadAllOrgs: return all orgs
+	[]Get ReadAllJobs: return all jobs
+	[]Get ReadOneById: return 1 dev, org, or job
+	[]Put UpdateOneById: update 1 dev, org, or job
+	[]Delete DeleteOneById: delete 1 dev, org, or job
+
+
+
+CLIENT
+[]Get icons for:
+	[]Languages:
+		[]Html
+		[]Css
+		[]JavaScript
+		[]Php
+		[]Java
+		[]Python
+		[]SQL
+		[]C#
+		[x]
+	[]Frameworks/Libraries
+		[]Bootstrap
+		[]Materialize
+		[]JQuery
+		[]MongoDB 
+		[]Express
+		[]AngularJS
+		[]Node.js
+		[]VueJS
+		[]ReactJS
+		[]Ember
+		[]Backbone JS
+		[]MeteorJS
+		[x]
+		[]Flask
+		[]Django
+		[]Pyramid
+		[]Bottle
+		[]CherryPy
+		[x]
+		[]MySQL
+		[]XML
+		[]Postgres
+
+
+[]Client Components:
+	[x]Dev suli
+	[]Dev edit
+	[]Dev dashboard
+	[]Dev show org
+	[]Dev show job
+	[x]
+	[x]Org suli
+	[]Org edit
+	[]Org dashboard
+	[]Org show dev
+	[]Org show job
+
+
+
+[]Client classes:
+	[x]Dev - fname, lname, street, city, state, zip, email, pw, bio, skills (Array<language, framework>), languages, frameworks, resume, 
+	[x]Org - orgname, fname, lname, street, city, state, zip, email, bio, jobs (Array<Job>)
+	[x]Job - orgId, name, descr, skills (Array<Skill>)
+
+
+
+[]Client routes:
+	[]Get “/“ : splash page, choose dev or org
+	[x]
+	[]Get /dev/suli
+	[]Get /dev/dashboard
+	[]Get /dev/:id/
+	[]Get /dev/:id/edit
+	[]Get /dev/:jobid
+	[]Get /dev/:orgid
+	[x]
+	[]Get /org/suli
+	[]Get /org/dashboard
+	[]Get /org/:id/
+	[]Get /org/:id/edit
+	[]Get /org/:jobid
+	[]Get /org/:devid
+
+
+[]Client templates
+	[x]Index.html (splash page)
+		[x]Header
+			[x]Link to splash/index 
+			[x]Link to logout
+		[]CSS it up
+	[x]
+	[x]Dev suli.html
+		[]Header 
+			[]Link to splash 
+			[]Link logout
+		[x]Form signup
+		[x]Form login
+		[]CSS it up
+	[x]
+	[]Dev dashboard.html
+		[]Header
+			[]Link to dashboard
+			[]Link logout
+		[]Show bio -leftcol
+		[]Btn edit bio -toggles display/hide of form edit bio
+		[]Form edit bio
+		[]Details -rightcol
+		[]Btn see all jobs (default) -toggles display of jobs/devs
+		[x]
+		[]Button see all orgs -toggles display of jobs/dev
+	[x]
+	[]Dev job.html -comp dev show job
+		[]Read job attrib 
+		[]Link to view 1 org
+		[]Form to msg 1 org
+	[x]
+	[]Dev org.html -comp dev show org
+		[]Read org attrib
+		[]Links to view 1 job
+	[x]
+	[x]Org suli.html
+		[]Header
+		[x]Form - signup
+		[x]Form - login
+		[]CSS it up
+	[x]
+	[]Org edit.html
+	[x]
+	[]Org dashboard.html
+		[]Header
+			[]Link home/dashboard
+			[]Link logout
+		[]Show bio
+	[x]
+	[]Org job.html
+		[]Header
+			[]Link home/dashboard
+			[]Link logout
+		[]Read 1 job
+		[]Read all devs
+	[x]
+	[]Org dev.html 
+		[]Header
+			[]Link home/dashboard 
+			[]Link logout 
+		[]Read 1 dev
+		[]Form to msg 1 dev
+
+
+
+
+[]Client functions
+	[]Login dev 
+	[]Login org
+	[x]
+	[]CreateNewDev
+	[]NewDevP2
+	[]NewDevP3
+	[]CreateNewOrg
+	[]CreateNewJob
+	[x]
+	[]Dev Match Job
+	[]calculates match be 1 job and 1 dev
+	[]Dev Read All Jobs 
+	[]Receives all jobs, 
+	[]For each job: dev match job()
+	[]Sorts all jobs by match
+	[]Returns all jobs sorted by match for template 
+	[]Dev Read One Job
+	[]Receives 1 job
+	[]Dev match job()
+	[]Returns 1 job for template
+	[]Dev Read All Jobs By One Org
+	[]Receives all jobs by org
+	[]For each job: Dev match job()
+	[]Sort all jobs by match
+	[]Return all jobs sorted by match
+	[]Dev Read All Orgs
+	[]Receives all orgs
+	[]Returns All orgs for template
+	[]Dev Read One Org
+	[]Receives one org
+	[]For each job: dev match job()
+	[]Sort all jobs by match
+	[]Return all jobs sorted by match
+	[x]
+	[]Org Job Match Dev - calculates match be 1 job and 1 dev
+	[]Org Read Devs
+	[]Org Read Dev
+	[]Org Read Jobs
+	[]Org Read Job
+
+
+
+
+
+
+
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
 
 ## Development server
