@@ -1,0 +1,25 @@
+.container-fluid {
+    padding: 10px;
+}
+
+.welcome {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.row {
+}
+
+
+.section-header {
+    text-align: center;
+    padding: 20px;
+}
+
+.signup {
+    padding: 20px;
+    border-right: 1px solid black;
+}
+.login {
+    padding: 20px;
+}

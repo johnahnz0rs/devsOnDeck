@@ -2,41 +2,51 @@
     font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
-.container {
-    width: 970px;
+.container-fluid {
     margin: 20px auto;
 }
 
 .header {
     background-color: saddlebrown;
+    height: 35px;
 }
+.header-link {
+    color: white;
+}
+
 .logo {
-    color: white;
     display: inline-block;
-    vertical-align: center;
+    float: left;
+    margin: 10px;
 }
 
-.header ul {
-    list-style-type: none;
+.logout {
     display: inline-block;
     float: right;
-}
-.header li {
-    float: right;
-    margin: auto 10px;
-}
-.header li a {
-    color: white;
+    margin: 10px;
 }
 
+/*.header ul {*/
+    /*list-style-type: none;*/
+    /*display: inline-block;*/
+    /*float: right;*/
+/*}*/
+/*.header li {*/
+    /*float: right;*/
+    /*margin: auto 10px;*/
+/*}*/
+/*.header li a {*/
+    /*color: white;*/
+/*}*/
 
-.dev-signup {
-    margin: 20px;
-    border: 1px solid black;
-    background-color: gray;
-}
-.dev-signup h1 {
-    text-align: center;
-}
+
+/*.dev-signup {*/
+    /*margin: 20px;*/
+    /*border: 1px solid black;*/
+    /*background-color: gray;*/
+/*}*/
+/*.dev-signup h1 {*/
+    /*text-align: center;*/
+/*}*/
 
 
