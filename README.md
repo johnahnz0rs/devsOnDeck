@@ -1,8 +1,19 @@
 # DevsOnDeck
-
-johnahnz0rs' to-do list:
 Aka “Fake RemoteOK”(?)
 Aka “Fake WebDev Job Site”(?)
+
+
+johnahnz0rs' to-do list:
+
+CURRENTLY WORKING ON:
+[x]7/26/18 - why wont confirm password validation error go away?
+[x] got icons for all languages, frameworks, and libraries
+[x]7/25/18 - get the client side devsuli form to be able to console.log form data. Also: add hidden divs to finish filling out the languages/frameworks sections of Dev object.
+[]Next: do the same for client side orgsuli form (sans languages/frameworks).
+
+
+
+
 
 
 SERVER
@@ -23,40 +34,41 @@ SERVER
 
 
 CLIENT
-[]Get icons for:
-	[]Languages:
-		[]Html
-		[]Css
-		[]JavaScript
-		[]Php
-		[]Java
-		[]Python
-		[]SQL
-		[]C#
+
+[x]Get icons for:
+	[x]Languages:
+		[x]Html5
+		[x]Css
+		[x]JavaScript
+		[x]Php
+		[x]Java
+		[x]Python
+		[x]SQL
+		[x]C#
 		[x]
-	[]Frameworks/Libraries
-		[]Bootstrap
-		[]Materialize
-		[]JQuery
-		[]MongoDB 
-		[]Express
-		[]AngularJS
-		[]Node.js
-		[]VueJS
-		[]ReactJS
-		[]Ember
-		[]Backbone JS
-		[]MeteorJS
+	[x]Frameworks/Libraries
+		[x]Bootstrap
+		[x]Materialize
+		[x]JQuery
+		[x]MongoDB 
+		[x]Express
+		[x]AngularJS
+		[x]Node.js
+		[x]VueJS
+		[x]ReactJS
+		[x]Ember
+		[x]Backbone JS
+		[x]MeteorJS
 		[x]
-		[]Flask
-		[]Django
-		[]Pyramid
-		[]Bottle
-		[]CherryPy
+		[x]Flask
+		[x]Django
+		[x]Pyramid
+		[x]Bottle
+		[x]CherryPy
 		[x]
-		[]MySQL
-		[]XML
-		[]Postgres
+		[x]MySQL
+		[x]XML
+		[x]Postgres
 
 
 []Client Components:
@@ -74,8 +86,8 @@ CLIENT
 
 
 
-[]Client classes:
-	[x]Dev - fname, lname, street, city, state, zip, email, pw, bio, skills (Array<language, framework>), languages, frameworks, resume, 
+[x]Client classes:
+	[x]Dev - fname, lname, street, city, state, zip, email, pw, cpw, bio, skills (Array<language, framework>), languages, frameworks, resume, 
 	[x]Org - orgname, fname, lname, street, city, state, zip, email, bio, jobs (Array<Job>)
 	[x]Job - orgId, name, descr, skills (Array<Skill>)
 

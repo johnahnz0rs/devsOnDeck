@@ -2,6 +2,7 @@
     <div class="welcome">
         <h1>Welcome, l33t hax0r!</h1>
         <p>Let's find you a new project</p>
+        <!--<img src="assets/img/sql.png">-->
     </div>
 
     <!-- a row of two forms: signup and login -->
@@ -11,114 +12,143 @@
         <!-- lol -->
         <div class="signup col-sm-7">
             <h3 class="section-header">Register</h3>
-
-            <!--<form name="signup" action="" method="POST">-->
             <form #newDevForm="ngForm">
+                <input type="hidden" id="accountType" name="accountType" value="dev" [(ngModel)]="newDev.accountType">
 
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label for="fname">First Name:
-                                <span *ngIf="!fname.valid" class="validation"> *Required</span>
-                            </label>
-                            <input class="form-control" id="fname" name="fname" type="text" required [(ngModel)]="newDev.fname" #fname="ngModel">
+                <div id="signup-1" [hidden]="!showP1">
+                    {{ newDevForm.value | json }}
 
+                    <!--<form name="signup" action="" method="POST">-->
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="fname">First Name:
+                                    <span *ngIf="!fname.valid" class="validation"> *Required</span>
+                                </label>
+                                <input class="form-control" id="fname" name="fname" type="text" required [(ngModel)]="newDev.fname" #fname="ngModel">
+
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lname">Last Name:
+                                    <span *ngIf="!lname.valid" class="validation"> *Required</span>
+                                </label>
+                                <input class="form-control" id="lname" name="lname" type="text" required [(ngModel)]="newDev.lname" #lname="ngModel">
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <label for="lname">Last Name:
-                                <span *ngIf="!lname.valid" class="validation"> *Required</span>
-                            </label>
-                            <input class="form-control" id="lname" name="lname" type="text" required [(ngModel)]="newDev.lname" #lname="ngModel">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:
+                            <span *ngIf="!email.valid" class="validation"> *Required</span>
+                        </label>
+                        <input class="form-control" type="text" id="email" name="email" required [(ngModel)]="newDev.email" #email="ngModel">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address:
+                            <span *ngIf="!address.valid" class="validation"> *Required</span>
+                        </label>
+                        <input class="form-control" type="text" id="address" name="address" required [(ngModel)]="newDev.address" #address="ngModel">
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <label for="city">City:
+                                    <span *ngIf="!city.valid" class="validation"> *Required</span>
+                                </label>
+                                <input class="form-control" type="text" id="city" name="city" required [(ngModel)]="newDev.city" #city="ngModel">
+                            </div>
+                            <div class="col-sm-3">
+                                <label for="State">State
+                                    <span *ngIf="!state.valid" class="validation"> *Required</span>
+                                </label>
+                                <select class="form-control" id="state" name="state" required [(ngModel)]="newDev.state" #state="ngModel">
+                                    <option *ngFor="let state of states">
+                                        {{ state }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="zip">Zip:
+                                    <span *ngIf="!zip.valid" class="validation"> *Required</span>
+                                </label>
+                                <input class="form-control" type="number" id="zip" name="zip" required [(ngModel)]="newDev.zip" #zip="ngModel">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="pw">Password:
+                                    <span *ngIf="!pw.valid" class="validation"> *Required (min. 8 char.)</span>
+                                </label>
+                                <input class="form-control" type="password" id="pw" name="pw" required minlength="8" [(ngModel)]="newDev.pw" #pw="ngModel">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="cpw">Confirm Password:
+                                    <span *ngIf="!newDev.pw || newDev.pw != newDev.cpw" class="validation"> *Passwords must match</span>
+                                </label>
+                                <input class="form-control" type="password" id="cpw" name="cpw" required [(ngModel)]="newDev.cpw" #cpw="ngModel">
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="org-instead"><a href="/org">Want to Sign Up an Organization Instead?</a></p>
+                </div>
+
+
+
+
+
+
+                <div id="signup-2" [hidden]="!showP2">
+                    {{ newDevForm.value | json }}
+                    <div class="form-group">
+                        <p>lol this is p 2</p>
+                        <input id="bio" name="bio" [(ngModel)]="newDev.bio" #bio="ngModel" type="text">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <img src="assets/img/html5.png">
+                        </div>
+                        <div class="col-sm-1">
+                            <img src="assets/img/css3.png">
+                        </div>
+                        <div class="col-sm-1">
+                            <img src="assets/img/javascript.png">
+                        </div>
+                        <div class="col-sm-1">
+                            <img src="assets/img/python.png">
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email:
-                        <span *ngIf="!email.valid" class="validation"> *Required</span>
-                    </label>
-                    <input class="form-control" type="text" id="email" name="email" required [(ngModel)]="newDev.email" #email="ngModel">
-                </div>
 
-                <div class="form-group">
-                    <label for="address">Address:
-                        <span *ngIf="!address.valid" class="validation"> *Required</span>
-                    </label>
-                    <input class="form-control" type="text" id="address" name="address" required [(ngModel)]="newDev.address" #address="ngModel">
-                </div>
 
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <label for="city">City:
-                                <span *ngIf="!city.valid" class="validation"> *Required</span>
-                            </label>
-                            <input class="form-control" type="text" id="city" name="city" required [(ngModel)]="newDev.city" #city="ngModel">
-                        </div>
-                        <div class="col-sm-3">
-                            <label for="State">State
-                                <span *ngIf="!state.valid" class="validation"> *Required</span>
-                            </label>
-                            <select class="form-control" id="state" name="state" required [(ngModel)]="newDev.state" #state="ngModel">
-                                <option *ngFor="let state of states">
-                                    {{ state }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-sm-4">
-                            <label for="zip">Zip:
-                                <span *ngIf="!zip.valid" class="validation"> *Required</span>
-                            </label>
-                            <input class="form-control" type="number" id="zip" name="zip" required [(ngModel)]="newDev.zip" #zip="ngModel">
-                        </div>
+
+
+
+                <div id="signup-3" [hidden]="!showP3">
+                    {{ newDevForm.value | json }}
+                    <div class="form-group">
+                        <p>lol this is p 3</p>
+                        <input id="testPage3" name="resume" [(ngModel)]="newDev.resume" type="text">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label for="pw">Password:
-                                <span *ngIf="!pw.valid" class="validation"> *Required (min. 8 char.)</span>
-                            </label>
-                            <input class="form-control" type="password" id="pw" name="pw" required minlength="8" [(ngModel)]="newDev.pw" #pw="ngModel">
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="cpw">Confirm Password:
-                                <span *ngIf="pw!==cpw" class="validation"> *Passwords must match</span>
-                            </label>
-                            <input class="form-control" type="password" id="cpw" name="cpw" required [(ngModel)]="newDev.cpw" #cpw="ngModel">
-                        </div>
-                    </div>
-                </div>
 
+                <button (click)="showMeP1()">show p1</button>
+                <button (click)="showMeP2()">show p2</button>
+                <button (click)="showMeP3()">show p3</button>
                 <button (click)="registerDev()" class="btn-lg btn-success float-right">Register</button>
             </form>
 
-            <p><a href="/org">Want to Sign Up an Organization Instead?</a></p>
         </div>
 
 
-
-        <!-- second col-sm-5: login form -->
-        <!-- lol -->
-        <div class="login col-sm-5">
-            <h3 class="section-header">Login</h3>
-
-            <form name="login" action="" method="POST">
-
-                <div class="form-group">
-                    <label for="login-email">Email: </label>
-                    <input class="form-control" type="text" id="login-email">
-                </div>
-
-                <div class="form-group">
-                    <label for="login-password">Password: </label>
-                    <input class="form-control" type="password" id="login-password">
-                </div>
-
-                <button class="btn-lg btn-primary float-right">Log In</button>
-            </form>
-        </div>
 
     </div>
 

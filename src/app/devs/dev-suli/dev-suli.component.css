@@ -10,15 +10,19 @@
 .row {
 }
 
-
 .section-header {
     text-align: center;
     padding: 20px;
 }
 
+.org-instead {
+    margin-top: 80px;
+}
+
 .signup {
     padding: 20px;
-    border-right: 1px solid black;
+    float: none;
+    margin: 0 auto;
 }
 .login {
     padding: 20px;
@@ -26,4 +30,8 @@
 
 .validation {
     color: red;
+}
+
+img {
+    width: 100%
 }

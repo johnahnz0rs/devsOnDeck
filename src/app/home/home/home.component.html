@@ -1,14 +1,50 @@
 <div class="container-fluid">
-    <h1>DevsOnDeck</h1>
-    <p>Find Jobs and Developers for your next project!</p>
+    <h1 class="header">DevsOnDeck</h1>
+    <p class="header">Find Jobs and Developers for your next project!</p>
+
+    <div class="row">
+        <div class="col-sm-3 signup-dev">
+            <button class="btn btn-lg btn-success" routerLink="/dev">Sign Up<br>as a Developer</button>
+        </div>
+
+        <div class="col-sm-3 signup-org">
+            <button class="btn btn-lg btn-primary" routerLink="/org">Sign Up<br>as an Organization</button>
+        </div>
+
+        <div class="col-sm-6 login">
+            <h3 class="login-header">Login</h3>
+
+            <form name="login" action="" method="POST">
+
+                <div class="form-group">
+                    <label for="login-email">Email: </label>
+                    <input class="form-control" type="text" id="login-email">
+                </div>
+
+                <div class="form-group">
+                    <label for="login-password">Password: </label>
+                    <input class="form-control" type="password" id="login-password">
+                </div>
+
+                <button class="btn-lg btn-primary float-right">Log In</button>
+            </form>
+        </div>
+
+
+    </div>
+
+
+
+
+
 
     <table>
         <tr>
             <td>
-                <button routerLink="/dev">I am a Developer</button>
+
             </td>
             <td>
-                <button routerLink="/org">We are an Organization</button>
+
             </td>
         </tr>
     </table>

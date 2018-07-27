@@ -14,4 +14,5 @@ export class Dev {
     languages: Array<string>;
     frameworks: Array<string>;
     resume: any;
+    accountType: string;
 }
