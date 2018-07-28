@@ -8,8 +8,8 @@ import {OrgSuliComponent} from './orgs/org-suli/org-suli.component';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', component: HomeComponent},
-    { path: 'dev', pathMatch: 'full', component: DevSuliComponent},
-    { path: 'org', pathMatch: 'full', component: OrgSuliComponent}
+    { path: 'signup/dev', pathMatch: 'full', component: DevSuliComponent},
+    { path: 'signup/org', pathMatch: 'full', component: OrgSuliComponent}
 ];
 
 @NgModule({

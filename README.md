@@ -6,6 +6,12 @@ Aka “Fake WebDev Job Site”(?)
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
+[x]7/27/18 - quick push through pages 2 and 3 of the dev signup form
+[x] fix the progress bar -- i just removed the progress bar
+[x] fix the register header
+[x] make my selected languages display horizontally, not in a column.
+[x] finish the org signup form
+[x] start the back end server.js and mongoose/mongo
 [x]7/26/18 - why wont confirm password validation error go away?
 [x] got icons for all languages, frameworks, and libraries
 [x]7/25/18 - get the client side devsuli form to be able to console.log form data. Also: add hidden divs to finish filling out the languages/frameworks sections of Dev object.
@@ -17,10 +23,10 @@ CURRENTLY WORKING ON:
 
 
 SERVER
-[]Server mongo models
-	[]Dev - fname, lname, street, city, state, zip, email, pw, bio, skills (Array<language, framework>), languages, frameworks, resume, type=dev
-	[]Org - orgname, fname, lname, street, city, state, zip, email, bio, jobs (Array<Job>), type=org
-	[]Job - orgId, name, descr, skills (Array<Skill>), type=job 
+[x]Server mongo models
+	[x]Dev - fname, lname, street, city, state, zip, email, pw, bio, skills (Array<language, framework>), languages, frameworks, resume, type=dev
+	[x]Org - orgname, fname, lname, street, city, state, zip, email, bio, jobs (Array<Job>), type=org
+	[x]Job - orgId, name, descr, skills (Array<Skill>), type=job 
 
 []Server routes:
 	[]Post CreateOne : create 1 dev, org, or job
@@ -37,8 +43,8 @@ CLIENT
 
 [x]Get icons for:
 	[x]Languages:
-		[x]Html5
-		[x]Css
+		[x]HTML5
+		[x]CSS3
 		[x]JavaScript
 		[x]Php
 		[x]Java
@@ -96,14 +102,14 @@ CLIENT
 []Client routes:
 	[]Get “/“ : splash page, choose dev or org
 	[x]
-	[]Get /dev/suli
+	[x]Get /signup/dev
 	[]Get /dev/dashboard
 	[]Get /dev/:id/
 	[]Get /dev/:id/edit
 	[]Get /dev/:jobid
 	[]Get /dev/:orgid
 	[x]
-	[]Get /org/suli
+	[x]Get /signup/dev
 	[]Get /org/dashboard
 	[]Get /org/:id/
 	[]Get /org/:id/edit
@@ -116,15 +122,15 @@ CLIENT
 		[x]Header
 			[x]Link to splash/index 
 			[x]Link to logout
-		[]CSS it up
+		[x]CSS it up
 	[x]
 	[x]Dev suli.html
-		[]Header 
-			[]Link to splash 
-			[]Link logout
+		[x]Header 
+			[x]Link to splash 
+			[x]Link logout
 		[x]Form signup
 		[x]Form login
-		[]CSS it up
+		[x]CSS it up
 	[x]
 	[]Dev dashboard.html
 		[]Header
@@ -148,10 +154,10 @@ CLIENT
 		[]Links to view 1 job
 	[x]
 	[x]Org suli.html
-		[]Header
+		[x]Header
 		[x]Form - signup
 		[x]Form - login
-		[]CSS it up
+		[x]CSS it up
 	[x]
 	[]Org edit.html
 	[x]

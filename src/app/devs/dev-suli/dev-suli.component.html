@@ -1,8 +1,7 @@
 <div class="container-fluid">
     <div class="welcome">
-        <h1>Welcome, l33t hax0r!</h1>
-        <p>Let's find you a new project</p>
-        <!--<img src="assets/img/sql.png">-->
+        <h1>Welcome, Dev</h1>
+        <p class="intro">Let's find you a new project</p>
     </div>
 
     <!-- a row of two forms: signup and login -->
@@ -11,25 +10,31 @@
         <!-- first col-sm-7: signup form -->
         <!-- lol -->
         <div class="signup col-sm-7">
-            <h3 class="section-header">Register</h3>
+
+            <!-- show this header on all 3 "pages" of the signup form -->
+            <div class="section-header align-midddle">Register</div>
+            <div class="org-instead align-middle"><a href="/signup/org">(Register as Organization?)</a></div>
             <form #newDevForm="ngForm">
-                <input type="hidden" id="accountType" name="accountType" value="dev" [(ngModel)]="newDev.accountType">
 
+
+                <!-- #signup-1 == "page" 1 of #newDevForm -->
                 <div id="signup-1" [hidden]="!showP1">
-                    {{ newDevForm.value | json }}
+                    <!--<p>{{ newDevForm.value | json }}</p>-->
 
-                    <!--<form name="signup" action="" method="POST">-->
+                    <!-- row 1: fname && lname -->
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label for="fname">First Name:
+                                <label for="fname">
+                                    <span class="bold-text">First Name:</span>
                                     <span *ngIf="!fname.valid" class="validation"> *Required</span>
                                 </label>
                                 <input class="form-control" id="fname" name="fname" type="text" required [(ngModel)]="newDev.fname" #fname="ngModel">
 
                             </div>
                             <div class="col-sm-6">
-                                <label for="lname">Last Name:
+                                <label for="lname">
+                                    <span class="bold-text">Last Name:</span>
                                     <span *ngIf="!lname.valid" class="validation"> *Required</span>
                                 </label>
                                 <input class="form-control" id="lname" name="lname" type="text" required [(ngModel)]="newDev.lname" #lname="ngModel">
@@ -37,30 +42,37 @@
                         </div>
                     </div>
 
+                    <!-- row 2: email -->
                     <div class="form-group">
-                        <label for="email">Email:
+                        <label for="email">
+                            <span class="bold-text">Email:</span>
                             <span *ngIf="!email.valid" class="validation"> *Required</span>
                         </label>
                         <input class="form-control" type="text" id="email" name="email" required [(ngModel)]="newDev.email" #email="ngModel">
                     </div>
 
+                    <!-- row 3: address -->
                     <div class="form-group">
-                        <label for="address">Address:
+                        <label for="address">
+                            <span class="bold-text">Address:</span>
                             <span *ngIf="!address.valid" class="validation"> *Required</span>
                         </label>
                         <input class="form-control" type="text" id="address" name="address" required [(ngModel)]="newDev.address" #address="ngModel">
                     </div>
 
+                    <!-- row 4: city && state && zip -->
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-5">
-                                <label for="city">City:
+                                <label for="city">
+                                    <span class="bold-text">City:</span>
                                     <span *ngIf="!city.valid" class="validation"> *Required</span>
                                 </label>
                                 <input class="form-control" type="text" id="city" name="city" required [(ngModel)]="newDev.city" #city="ngModel">
                             </div>
                             <div class="col-sm-3">
-                                <label for="State">State
+                                <label for="State">
+                                    <span class="bold-text">State</span>
                                     <span *ngIf="!state.valid" class="validation"> *Required</span>
                                 </label>
                                 <select class="form-control" id="state" name="state" required [(ngModel)]="newDev.state" #state="ngModel">
@@ -70,7 +82,8 @@
                                 </select>
                             </div>
                             <div class="col-sm-4">
-                                <label for="zip">Zip:
+                                <label for="zip">
+                                    <span class="bold-text">Zip:</span>
                                     <span *ngIf="!zip.valid" class="validation"> *Required</span>
                                 </label>
                                 <input class="form-control" type="number" id="zip" name="zip" required [(ngModel)]="newDev.zip" #zip="ngModel">
@@ -78,72 +91,139 @@
                         </div>
                     </div>
 
+                    <!-- row 5: pw && cpw -->
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-6">
-                                <label for="pw">Password:
+                                <label for="pw">
+                                    <span class="bold-text">Password:</span>
                                     <span *ngIf="!pw.valid" class="validation"> *Required (min. 8 char.)</span>
                                 </label>
                                 <input class="form-control" type="password" id="pw" name="pw" required minlength="8" [(ngModel)]="newDev.pw" #pw="ngModel">
                             </div>
                             <div class="col-sm-6">
-                                <label for="cpw">Confirm Password:
+                                <label for="cpw">
+                                    <span class="bold-text">Confirm Password:</span>
                                     <span *ngIf="!newDev.pw || newDev.pw != newDev.cpw" class="validation"> *Passwords must match</span>
                                 </label>
                                 <input class="form-control" type="password" id="cpw" name="cpw" required [(ngModel)]="newDev.cpw" #cpw="ngModel">
                             </div>
-                        </div>
-                    </div>
+                        </div> <!-- end row -->
+                    </div> <!-- end form-group -->
 
-                    <p class="org-instead"><a href="/org">Want to Sign Up an Organization Instead?</a></p>
-                </div>
-
+                </div> <!-- end #signup-1 -->
 
 
 
-
-
+                <!-- #signup-2 == "page" 2 of #newDevForm -->
                 <div id="signup-2" [hidden]="!showP2">
-                    {{ newDevForm.value | json }}
-                    <div class="form-group">
-                        <p>lol this is p 2</p>
-                        <input id="bio" name="bio" [(ngModel)]="newDev.bio" #bio="ngModel" type="text">
-                    </div>
+                    <!--<p>{{ newDevForm.value | json }}</p>-->
 
-                    <div class="row">
-                        <div class="col-sm-1">
-                            <img src="assets/img/html5.png">
+
+                    <!-- row 1: Top 5 Languages -->
+                    <div class="form-group row">
+                        <!-- header -->
+                        <div class="col-sm-7">
+                            <h2 class="pick-top-5">Pick Your Top 5 Languages</h2>
                         </div>
-                        <div class="col-sm-1">
-                            <img src="assets/img/css3.png">
+
+                        <!-- my selected languages -->
+                        <div class="col-sm-5">
+                            <div class="my-5-languages row">
+                                <figure *ngFor="let language of newDev.languages" class="col-sm-2">
+                                    <img class="figure-img each-of-my-languages" src="assets/img/{{language}}.png">
+                                </figure>
+                            </div>
                         </div>
-                        <div class="col-sm-1">
-                            <img src="assets/img/javascript.png">
+
+                    </div> <!-- end row 1 -->
+
+
+
+                    <!-- row 2: Array of avail lang icons and short bio -->
+                    <div class="form-group row">
+
+                        <!-- select 5 languages from here -->
+                        <div class="col-sm-7 icon-array">
+                            <!-- load each image with caption -->
+                            <figure *ngFor="let language of languages" class="figure col-sm-3" (click)="addLanguage(language)">
+                                <img class="figure-img" src="assets/img/{{language}}.png">
+                                <figcaption *ngIf="language != 'Csharp'" class="figure-caption">{{language}}</figcaption>
+                                <figcaption *ngIf="language == 'Csharp'" class="figure-caption">C#</figcaption>
+                            </figure>
+                        </div> <!-- end div.icon-array -->
+
+                        <!-- add your bio-->
+                        <div class="col-sm-5 add-bio">
+                            <label for="bio" id="bio-label">
+                                <span class="bold-text bio">Short Bio</span>
+                            </label><br>
+                            <textarea id="bio" name="bio" [(ngModel)]="newDev.bio" #bio="ngModel" placeholder="Add more about yourself here..."></textarea>
                         </div>
-                        <div class="col-sm-1">
-                            <img src="assets/img/python.png">
-                        </div>
-                    </div>
-                </div>
+
+                    </div> <!-- end row 2 -->
+
+                </div> <!-- end #signup-2 -->
 
 
 
 
 
-
+                <!-- #signup-3 "page" 3 of #newDevForm -->
                 <div id="signup-3" [hidden]="!showP3">
-                    {{ newDevForm.value | json }}
-                    <div class="form-group">
-                        <p>lol this is p 3</p>
-                        <input id="testPage3" name="resume" [(ngModel)]="newDev.resume" type="text">
-                    </div>
+                    <!--{{ newDevForm.value | json }}-->
+
+                    <!-- row 1: Top 5 Frameworks -->
+                    <div class="form-group row">
+                        <!-- header -->
+                        <div class="col-sm-7">
+                            <h2 class="pick-top-5">Pick Your Top 5 Frameworks/Libraries</h2>
+                        </div>
+
+                        <!-- my selected languages -->
+                        <div class="col-sm-5">
+                            <div class="my-5-languages row">
+                                <figure *ngFor="let framework of newDev.frameworks" class="col-sm-2">
+                                    <img class="figure-img each-of-my-languages" src="assets/img/{{framework}}.png">
+                                </figure>
+                            </div>
+                        </div>
+
+                    </div> <!-- end row 1 -->
+
+
+                    <!-- row 2: Array of avail frameworks/libs icons and short bio -->
+                    <div class="form-group row">
+
+                        <!-- select 5 frameworks/libraries from here -->
+                        <div class="col-sm-7 icon-array">
+                            <!-- load each image with caption -->
+                            <figure *ngFor="let framework of frameworks" class="figure col-sm-3" (click)="addFramework(framework)">
+                                <img class="figure-img" src="assets/img/{{framework}}.png">
+                                <figcaption class="figure-caption">{{framework}}</figcaption>
+                            </figure>
+                        </div> <!-- end div.icon-array -->
+
+                        <!-- show bio from previous screen -->
+                        <div class="col-sm-5 add-bio">
+                            <p class="thanks">Thanks for entering all your details. It will help us match you with jobs.</p>
+                            <p class="thanks">Click "Register" below to create your account!</p>
+                        </div>
+
+                    </div> <!-- end row 2 -->
+
                 </div>
 
 
-                <button (click)="showMeP1()">show p1</button>
-                <button (click)="showMeP2()">show p2</button>
-                <button (click)="showMeP3()">show p3</button>
-                <button (click)="registerDev()" class="btn-lg btn-success float-right">Register</button>
+                <button *ngIf="!showP1" class="btn btn-lg btn-primary" (click)="previous()">Previous</button>
+                <button *ngIf="showP1" class="btn btn-lg btn-outline-primary disabled" disabled="disabled">Previous</button>
+
+                <button *ngIf="!showP3" class="btn btn-lg btn-primary next-button" (click)="next()">Next</button>
+                <button *ngIf="showP3" class="btn btn-lg btn-outline-primary next-button disabled" disabled="disabled">Next</button>
+
+
+                <button *ngIf="showP3" class="btn btn-lg btn-success float-right" (click)="registerDev()">Register</button>
+                <button *ngIf="!showP3" class="btn btn-lg btn-outline-success float-right disabled" disabled="disabled">Register</button>
             </form>
 
         </div>

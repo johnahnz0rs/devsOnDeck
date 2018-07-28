@@ -7,16 +7,21 @@
     margin-bottom: 40px;
 }
 
-.row {
+.intro {
+    font-size: large;
 }
 
 .section-header {
+    margin: 0 auto;
     text-align: center;
-    padding: 20px;
+    font-size: xx-large;
 }
 
 .org-instead {
-    margin-top: 80px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: medium;
 }
 
 .signup {
@@ -24,14 +29,79 @@
     float: none;
     margin: 0 auto;
 }
-.login {
-    padding: 20px;
+
+.bold-text {
+    font-weight: bold;
 }
 
 .validation {
     color: red;
 }
 
+
+
+
+
+
+.pick-top-5 {
+    text-align: center;
+}
+
+
+.icon-array {
+    border: 1px solid black;
+    background-color: gray;
+    height: 300px;
+    overflow-y: scroll;
+}
+
 img {
-    width: 100%
+    /*height: 80px;*/
+    margin-top: 15px;
+    height: 50px;
+    width: 50px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.figure-img:hover {
+    cursor: pointer;
+}
+
+.figure-caption {
+    color: white;
+}
+
+
+.my-5-languages {
+    height: 60px;
+    vertical-align: center;
+}
+.each-of-my-languages {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 auto;
+}
+
+
+
+#bio-label {
+    font-size: xx-large;
+}
+#bio {
+    width: 100%;
+    height: 80%;
+}
+
+.thanks {
+    text-align: center;
+    color: green;
+    font-size: x-large;
+    margin-top: 10px;
+}
+
+
+.next-button {
+    margin-left: 10px;
 }

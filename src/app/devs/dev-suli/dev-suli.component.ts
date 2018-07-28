@@ -19,11 +19,16 @@ export class DevSuliComponent implements OnInit {
 
     states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
 
+    languages = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML'];
+
+    frameworks = ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
+
   constructor(private router: Router, private appService: AppService) { }
 
   ngOnInit() {
-      console.log(this.newDev);
       this.newDev.accountType = 'dev';
+      this.newDev.languages = [];
+      this.newDev.frameworks = [];
       this.showP1 = true;
       this.showP2 = false;
       this.showP3 = false;
@@ -31,6 +36,30 @@ export class DevSuliComponent implements OnInit {
 
   registerDev() {
       console.log(this.newDev);
+  }
+
+  previous() {
+      if (this.showP1) {
+          // pass
+      } else if (this.showP2) {
+          this.showP2 = false;
+          this.showP1 = true;
+      } else if (this.showP3) {
+          this.showP3 = false;
+          this.showP2 = true;
+      }
+  }
+
+  next() {
+      if (this.showP1) {
+          this.showP1 = false;
+          this.showP2 = true;
+      } else if (this.showP2) {
+          this.showP2 = false;
+          this.showP3 = true;
+      } else if (this.showP3) {
+          // pass
+      }
   }
 
   showMeP1() {
@@ -48,6 +77,31 @@ export class DevSuliComponent implements OnInit {
       this.showP3 = true;
       this.showP1 = false;
       this.showP2 = false;
+  }
+
+  addLanguage(language) {
+      console.log(language, ' is being clicked');
+      // if newDev.languages has language
+      if (this.newDev.languages.includes(language)) {
+          this.newDev.languages.splice(this.newDev.languages.indexOf(language), 1);
+      } else if (!this.newDev.languages.includes(language) && this.newDev.languages.length < 5) {
+          this.newDev.languages.push(language);
+          console.log(this.newDev.languages);
+      } else {
+          console.log('you already chose 5 languages');
+          // error handling? message on template?
+      }
+  }
+
+  addFramework(framework) {
+      if (this.newDev.frameworks.includes(framework)) {
+          this.newDev.frameworks.splice(this.newDev.frameworks.indexOf(framework), 1);
+      } else if (!this.newDev.frameworks.includes(framework) && this.newDev.frameworks.length < 5) {
+          this.newDev.frameworks.push(framework);
+      } else {
+          console.log('you already chose 5 frameworks/libraries');
+          // error handling? message on template?
+      }
   }
 
 }

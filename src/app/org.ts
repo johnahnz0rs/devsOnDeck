@@ -2,7 +2,7 @@ import { Job } from './job';
 
 export class Org {
     _id: string;
-    orgname: string;
+    orgName: string;
     fname: string;
     lname: string;
     address: string;
@@ -12,4 +12,5 @@ export class Org {
     email: string;
     bio: string;
     jobs: Array<Job>;
+    accountType: string;
 }

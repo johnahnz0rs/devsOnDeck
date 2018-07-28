@@ -7,19 +7,35 @@
     margin-bottom: 40px;
 }
 
-.row {
+.intro {
+    font-size: large;
 }
 
-
 .section-header {
+    margin: 0 auto;
     text-align: center;
-    padding: 20px;
+    font-size: xx-large;
+}
+
+.dev-instead {
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: medium;
 }
 
 .signup {
     padding: 20px;
-    border-right: 1px solid black;
+    float: none;
+    margin: 0 auto;
 }
-.login {
-    padding: 20px;
+
+.bold-text {
+    font-weight: bold;
 }
+
+.validation {
+    color: red;
+}
+
+
