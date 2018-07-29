@@ -15,7 +15,7 @@ const orgSchema = new mongoose.Schema({
     pw: {type: String, required: true, trim: true},
     accountType: {type: String, required: true, trim: true},
     jobs: {type: Array}
-});
+}, {timestamps: true});
 
 mongoose.model('Org', orgSchema);
 const Org = mongoose.model('Org');

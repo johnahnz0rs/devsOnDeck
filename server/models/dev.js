@@ -17,7 +17,7 @@ const devSchema = new mongoose.Schema({
     languages: {type: Array, required: true},
     frameworks: {type: Array, required: true},
     accountType: {type: String, required: true, trim: true}
-});
+}, {timestamps: true});
 
 mongoose.model('Dev', devSchema);
 const Dev = mongoose.model('Dev');

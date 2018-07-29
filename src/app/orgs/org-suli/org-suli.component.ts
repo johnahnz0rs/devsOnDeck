@@ -18,11 +18,25 @@ export class OrgSuliComponent implements OnInit {
   constructor(private router: Router, private appService: AppService) { }
 
   ngOnInit() {
-      this.newOrg.accountType = 'org';
+      // this.newOrg.accountType = 'org';
   }
 
   registerOrg() {
-      console.log(this.newOrg);
+      console.log('***** registerOrg(this.newOrg)', this.newOrg, '*****');
+
+      const org = {
+          accountType: 'org',
+          orgname: this.newOrg.orgName,
+          fname: this.newOrg.fname,
+          lname: this.newOrg.lname,
+          address: this.newOrg.address,
+          city: this.newOrg.city,
+          state: this.newOrg.state,
+          zip: this.newOrg.zip,
+          email: this.newOrg.email,
+          pw: this.newOrg.pw,
+      };
+      this.appService.createOneOrg(org);
   }
 
 }

@@ -26,16 +26,39 @@ export class DevSuliComponent implements OnInit {
   constructor(private router: Router, private appService: AppService) { }
 
   ngOnInit() {
-      this.newDev.accountType = 'dev';
+      // this.newDev.accountType = 'dev';
       this.newDev.languages = [];
       this.newDev.frameworks = [];
+      this.newDev.skills = [];
       this.showP1 = true;
       this.showP2 = false;
       this.showP3 = false;
   }
 
   registerDev() {
-      console.log(this.newDev);
+
+      for (let i in this.newDev.languages) {
+          this.newDev.skills.push(i);
+      }
+      for (let i in this.newDev.frameworks) {
+          this.newDev.skills.push(i);
+      }
+      const dev = {
+          accountType: 'dev',
+          fname: this.newDev.fname,
+          lname: this.newDev.lname,
+          email: this.newDev.email,
+          address: this.newDev.address,
+          city: this.newDev.city,
+          state: this.newDev.state,
+          zip: this.newDev.zip,
+          skills: this.newDev.skills,
+          languages: this.newDev.languages,
+          frameworks: this.newDev.frameworks,
+      };
+
+      console.log('***** registerDev(dev) ******', dev);
+      this.appService.createOneDev(dev);
   }
 
   previous() {
@@ -60,23 +83,6 @@ export class DevSuliComponent implements OnInit {
       } else if (this.showP3) {
           // pass
       }
-  }
-
-  showMeP1() {
-      this.showP1 = true;
-      this.showP2 = false;
-      this.showP3 = false;
-  }
-
-  showMeP2() {
-      this.showP2 = true;
-      this.showP1 = false;
-      this.showP3 = false;
-  }
-  showMeP3() {
-      this.showP3 = true;
-      this.showP1 = false;
-      this.showP2 = false;
   }
 
   addLanguage(language) {

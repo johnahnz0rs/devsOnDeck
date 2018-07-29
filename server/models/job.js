@@ -8,7 +8,7 @@ const jobSchema = new mongoose.Schema({
     name: {type: String, required: true, trim: true},
     description: {type: String, required: true, trim: true},
     skills: {type: Array, required: true}
-});
+}, {timestamps: true});
 
 mongoose.model('Job', jobSchema);
 const Job = mongoose.model('Job');

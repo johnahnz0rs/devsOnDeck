@@ -6,6 +6,173 @@ const Job = mongoose.model('Job');
 
 module.exports = {
 
+    // ******************
+    // ***** CREATE *****
+    // ******************
+
+    createOneDev: function(request, response) {
+        console.log('***** controller.createOneDev() *****');
+
+
+        // if this email is already registered
+        Dev.findOne({email: request.body.email}, function(error, dev) {
+            // if-not-registered as err handling
+            if (error) {
+                // then create mongo document
+                Dev.create(request.body, function (error) {
+                    if (error) {
+                        console.log('***** ERROR: controller.createOneDev.Dev.create ******');
+                        response.json(error);
+                    // else return new dev object;
+                    } else {
+                        response.json(dev);
+                    }
+                });
+            // if registered, then return a error msg to the template (reg form)
+            } else {
+                console.log('***** ERROR: user already exists *****');
+                response.json(dev);
+            }
+        });
+    },
+
+
+
+    createOneJob: function(request, response) {
+        // code
+        console.log('***** controller.createOneJob() *****');
+
+        // create one job
+        Job.create(request.body, function (error, job) {
+            if (error) {
+                console.log('***** ERROR: controller.createOneDev.Dev.create ******');
+                response.json(error);
+                // else return new dev object;
+            } else {
+                response.json(dev);
+            }
+        });
+    },
+
+    createOneOrg: function(request, response) {
+        // code
+        console.log('***** controller.createOneOrg() *****');
+
+        // if this email is already registered
+        Org.findOne({email: request.body.email}, function(error, dev) {
+            // error: if email is not registered,
+            if (error) {
+                // then create mongo document
+                Dev.create(request.body, function (error) {
+                    if (error) {
+                        console.log('***** ERROR: controller.createOneDev.Dev.create ******');
+                        response.json(error);
+                        // else return new dev object;
+                    } else {
+                        response.json(dev);
+                    }
+                });
+                // else if email IS registered
+            } else {
+                // then return a error msg [to the template (reg form)](?)
+                console.log('***** ERROR: user already exists *****');
+                response.json(dev);
+            }
+        });
+    },
+
+
+
+
+
+    // ****************
+    // ***** READ *****
+    // ****************
+
+    login: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+
+    getAllDevs: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+    getAllJobs: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+    getAllOrgs: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+    getOneDev: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+    getOneJob: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+    getOneOrg: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+
+
+    // ******************
+    // ***** UPDATE *****
+    // ******************
+
+    editOneDev: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+    editOneJob: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+    editOneOrg: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+
+
+
+
+    // ******************
+    // ***** DELETE *****
+    // ******************
+
+    deleteOneDev: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+    deleteOneJob: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+    deleteOneOrg: function(request, response) {
+        // code
+        console.log('*****  *****');
+    },
+
+
+
+
+
 
     // getAllPets: function(request, response) {
     //     Pet.find({}, function(error, pets) {
