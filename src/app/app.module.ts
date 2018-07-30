@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { DevSuliComponent } from './devs/dev-suli/dev-suli.component';
 import { HomeComponent } from './home/home/home.component';
 import { OrgSuliComponent } from './orgs/org-suli/org-suli.component';
+import { OrgDashboardComponent } from './orgs/org-dashboard/org-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DevSuliComponent,
     HomeComponent,
-    OrgSuliComponent
+    OrgSuliComponent,
+    OrgDashboardComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, HttpClientModule

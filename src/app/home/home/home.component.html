@@ -3,30 +3,32 @@
     <p class="header">Find Jobs and Developers for your next project!</p>
 
     <div class="row">
-        <div class="col-sm-3 signup-dev">
+        <div class="col-sm-4 signup-dev">
             <button class="btn btn-lg btn-success" routerLink="/signup/dev">Sign Up<br>as a Developer</button>
         </div>
 
-        <div class="col-sm-3 signup-org">
+        <div class="col-sm-4 signup-org">
             <button class="btn btn-lg btn-primary" routerLink="/signup/org">Sign Up<br>as an Organization</button>
         </div>
 
-        <div class="col-sm-6 login">
+        <div class="col-sm-4 login">
             <h3 class="login-header">Login</h3>
+            <p>{{ loginForm.value | json }}</p>
 
-            <form name="login" action="" method="POST">
+
+            <form #loginForm="ngForm">
 
                 <div class="form-group">
-                    <label for="login-email">Email: </label>
-                    <input class="form-control" type="text" id="login-email">
+                    <label for="email-input">Email: </label>
+                    <input class="form-control" type="text" id="email-input" name="email" [(ngModel)]="loginInfo.email" #email="ngModel">
                 </div>
 
                 <div class="form-group">
-                    <label for="login-password">Password: </label>
-                    <input class="form-control" type="password" id="login-password">
+                    <label for="password">Password: </label>
+                    <input class="form-control" type="password" id="password" name="password" [(ngModel)]="loginInfo.pw" #password="ngModel">
                 </div>
 
-                <button class="btn-lg btn-primary float-right">Log In</button>
+                <button class="btn-lg btn-primary float-right" (click)="login()">Log In</button>
             </form>
         </div>
 

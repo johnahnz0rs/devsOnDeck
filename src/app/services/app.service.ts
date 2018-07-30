@@ -9,6 +9,7 @@ export class AppService {
   private baseDev = '/api/dev';
   private baseJob = '/api/job';
   private baseOrg = '/api/org';
+    private baseLogin = '/api/login';
 
   constructor(private http: HttpClient) {}
 
@@ -36,12 +37,17 @@ export class AppService {
   // ***** READ *****
   // ****************
 
-  login() {
+  login(data) {
     // code
+      console.log('***** service.login(email, pw) *****', data);
+      return this.http.post<any>(this.baseLogin, data);
   }
 
   getAllDevs() {
     // code
+      console.log('***** service.getAllDevs() *****');
+      console.log(this.http.get<any>(this.baseDev));
+      return this.http.get<any>(this.baseDev);
   }
 
   getAllJobs() {

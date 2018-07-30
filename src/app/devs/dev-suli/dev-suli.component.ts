@@ -10,8 +10,7 @@ import { AppService } from '../../services/app.service';
   styleUrls: ['../../bootstrap.css', './dev-suli.component.css']
 })
 export class DevSuliComponent implements OnInit {
-
-    newDev: Dev = new Dev();
+    newDev: Dev;
 
     showP1: boolean;
     showP2: boolean;
@@ -27,6 +26,7 @@ export class DevSuliComponent implements OnInit {
 
   ngOnInit() {
       // this.newDev.accountType = 'dev';
+      this.newDev = new Dev();
       this.newDev.languages = [];
       this.newDev.frameworks = [];
       this.newDev.skills = [];
@@ -36,12 +36,16 @@ export class DevSuliComponent implements OnInit {
   }
 
   registerDev() {
-
-      for (let i in this.newDev.languages) {
-          this.newDev.skills.push(i);
-      }
-      for (let i in this.newDev.frameworks) {
-          this.newDev.skills.push(i);
+      console.log('***** starting registerDev() *****');
+      if (this.newDev.languages || this.newDev.frameworks) {
+          for (let i in this.newDev.languages) {
+              console.log('***** this is the a language being pushed to newDev.skills *****', i);
+              this.newDev.skills.push(this.newDev.languages[i]);
+          }
+          for (let i in this.newDev.frameworks) {
+              console.log('***** this is the a language being pushed to newDev.skills *****', i);
+              this.newDev.skills.push(this.newDev.frameworks[i]);
+          }
       }
       const dev = {
           accountType: 'dev',
@@ -52,13 +56,21 @@ export class DevSuliComponent implements OnInit {
           city: this.newDev.city,
           state: this.newDev.state,
           zip: this.newDev.zip,
+          pw: this.newDev.pw,
           skills: this.newDev.skills,
           languages: this.newDev.languages,
           frameworks: this.newDev.frameworks,
       };
 
       console.log('***** registerDev(dev) ******', dev);
-      this.appService.createOneDev(dev);
+      this.appService.createOneDev(dev)
+          .subscribe((error) => {
+              if (error) {
+                  console.log('error', error);
+              } else {
+                  this.router.navigateByUrl('/');
+              }
+          });
   }
 
   previous() {

@@ -7,6 +7,19 @@ johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
 []7/29/18 - 
+[] why is login function not working? the backend is unable to find the route. why not?
+[] create error msg on dev-suli that alerts user if email is already registered
+[x] get end-to-end new dev user registration working
+[] create password bcrypt on backend
+[] create dev user edit page on frontend
+[] hook up dev user edit end-to-end
+[] debug dev user edit
+[] create temp-login-without-bcrypt
+[] create permanent login with bcrypt
+[] create 
+[] edit nwailes and jahn passwords
+
+
 [x]
 []7/28/18 - create end-to-end dev signup process (create mongo document and return dev object)
 [x] create outline of server/controllers/controller.js
@@ -118,16 +131,18 @@ CLIENT
 
 
 []Client routes:
-	[]Get “/“ : splash page, choose dev or org
+	[x]Get “/“ : splash page, choose dev or org
 	[x]
-	[x]Get /signup/dev
+	[x]Post /signup/dev
+	[x]post /signup/org
+	[x]
+	[x]
 	[]Get /dev/dashboard
 	[]Get /dev/:id/
 	[]Get /dev/:id/edit
 	[]Get /dev/:jobid
 	[]Get /dev/:orgid
 	[x]
-	[x]Get /signup/dev
 	[]Get /org/dashboard
 	[]Get /org/:id/
 	[]Get /org/:id/edit

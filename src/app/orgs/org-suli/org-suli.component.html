@@ -99,7 +99,7 @@
                                 <span class="bold-text">Zip:</span>
                                 <span *ngIf="!zip.valid" class="validation"> *Required</span>
                             </label>
-                            <input class="form-control" type="number" id="zip" name="zip" required [(ngModel)]="newOrg.zip" #zip="ngModel">
+                            <input class="form-control" type="text" id="zip" name="zip" required [(ngModel)]="newOrg.zip" #zip="ngModel">
                         </div>
 
                     </div>

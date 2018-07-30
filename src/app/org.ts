@@ -9,7 +9,7 @@ export class Org {
     address: string;
     city: string;
     state: string;
-    zip: number;
+    zip: string;
     email: string;
     pw: string;
     cpw: string;

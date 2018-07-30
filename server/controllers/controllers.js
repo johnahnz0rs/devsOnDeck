@@ -13,25 +13,25 @@ module.exports = {
     createOneDev: function(request, response) {
         console.log('***** controller.createOneDev() *****');
 
-
-        // if this email is already registered
+        // is this email already registered
         Dev.findOne({email: request.body.email}, function(error, dev) {
             // if-not-registered as err handling
-            if (error) {
-                // then create mongo document
+            if (dev) {
+                console.log('***** this user already exists ****');
+                // error msg to template?
+                response.json('{error: "User already exists. Try logging in."}');
+            } else if (!dev) {
                 Dev.create(request.body, function (error) {
                     if (error) {
-                        console.log('***** ERROR: controller.createOneDev.Dev.create ******');
+                        console.log('***** createOneDev error *****', error);
                         response.json(error);
-                    // else return new dev object;
                     } else {
-                        response.json(dev);
+                        response.json();
                     }
                 });
-            // if registered, then return a error msg to the template (reg form)
-            } else {
-                console.log('***** ERROR: user already exists *****');
-                response.json(dev);
+            } else if (error) {
+                console.log('***** error in Dev.findOne(email) ******');
+                response.json()
             }
         });
     },
@@ -89,15 +89,30 @@ module.exports = {
     // ***** READ *****
     // ****************
 
-    login: function(request, response) {
+    loginUser: function(request, response) {
         // code
-        console.log('*****  *****');
+        console.log('***** controller.loginUser *****', request.body);
+        Dev.find({email: request.email}, function(error, dev) {
+            if (error) {
+                console.log(error);
+                response.json(error);
+            }
+            response.json(dev);
+        });
     },
 
 
     getAllDevs: function(request, response) {
         // code
-        console.log('*****  *****');
+        console.log('***** controller.getAllDevs *****');
+        Dev.find({}, function(error, devs) {
+            if (error) {
+                console.log('***** ERROR in controller.Dev.find() *****', error);
+            } else {
+                console.log('***** all devs *****', devs);
+                response.json(devs);
+            }
+        });
     },
 
     getAllJobs: function(request, response) {
