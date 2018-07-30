@@ -6,39 +6,65 @@ Aka “Fake WebDev Job Site”(?)
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[]7/29/18 - 
-[] why is login function not working? the backend is unable to find the route. why not?
-[] create error msg on dev-suli that alerts user if email is already registered
-[x] get end-to-end new dev user registration working
-[] create password bcrypt on backend
-[] create dev user edit page on frontend
+[]7/30/18 - 
+[] what do i want to do today? I want to:
+[]  make a way to edit a user once they are logged in, so that i can:
+[]   update nwailes and jahn passwords to bcrypt
+[]
+[] **user edit backend**
+[] create user edit backend
 [] hook up dev user edit end-to-end
 [] debug dev user edit
-[] create temp-login-without-bcrypt
+[] update nwailes and jahn passwords to bcrypted passwords
+[]
+[] ** user login w bcrypt backend **
 [] create permanent login with bcrypt
-[] create 
-[] edit nwailes and jahn passwords
-
-
+[]
+[] ** misc **
+[] create error msg on dev-suli that alerts user if email is already registered
+[]
+[x] create temp-login-without-bcrypt (on home screen)
+[x] bug: jahn account had no pw; i used mongo shell to add one;
+[x] fix login - the issue was with the mongo command i was calling 
+[x] create dev dashboard
+[x] create dev user edit page on frontend (on dev dashboard) 
 [x]
-[]7/28/18 - create end-to-end dev signup process (create mongo document and return dev object)
+[x]
+[x]7/29/18 - 
+>[] why is login function not working? the backend is unable to find the route. why not?
+>[] create error msg on dev-suli that alerts user if email is already registered
+[x] get end-to-end new dev user registration working
+>[] create password bcrypt on backend
+>[] create dev user edit page on frontend
+>[] hook up dev user edit end-to-end
+>[] debug dev user edit
+>[] create temp-login-without-bcrypt
+>[] create permanent login with bcrypt
+>[] edit nwailes and jahn passwords
+[x]
+[x]
+[x]7/28/18 - create end-to-end dev signup process (create mongo document and return dev object)
 [x] create outline of server/controllers/controller.js
 [x] flesh out/write the mongo commands for a few functions in controller
 [x] create outline of server/routes/routes.js
 [x] create outline services: F/E api calls 
-[] why is my create new dev not working even though i can create new dev in mongo shell?
+[x] why is my create new dev not working even though i can create new dev in mongo shell?
 [x]
-[x]7/27/18 - quick push through pages 2 and 3 of the dev signup form
+[x]
+[x]7/27/18 -
+[x] quick push through pages 2 and 3 of the dev signup form
 [x] fix the progress bar -- i just removed the progress bar
 [x] fix the register header
 [x] make my selected languages display horizontally, not in a column.
 [x] finish the org signup form
 [x] start the back end server.js and mongoose/mongo
 [x]
-[x]7/26/18 - why wont confirm password validation error go away?
+[x]
+[x]7/26/18 -
+[x] why wont confirm password validation error go away?
 [x] got icons for all languages, frameworks, and libraries
 [x]7/25/18 - get the client side devsuli form to be able to console.log form data. Also: add hidden divs to finish filling out the languages/frameworks sections of Dev object.
-[]Next: do the same for client side orgsuli form (sans languages/frameworks).
+[x]Next: do the same for client side orgsuli form (sans languages/frameworks).
 
 
 

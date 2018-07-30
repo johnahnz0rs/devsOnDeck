@@ -6,6 +6,82 @@ const Job = mongoose.model('Job');
 
 module.exports = {
 
+
+    loginUser: function(request, response) {
+        // code
+        console.log('***** controller.loginUser *****', request.body);
+        Dev.findOne({email: request.body.email}, function(error, dev) {
+            if (error) {
+                console.log(error);
+                response.json(error);
+            } else if (dev) {
+                console.log('***** controller.loginUser found one dev *****', dev);
+                // improve this password check to bcrypt;
+                if (dev.pw == request.body.pw) {
+                    console.log('***** this is dev.pw ******', dev.pw);
+                    console.log('***** this is dev.password *****', dev.password);
+                    response.json(dev);
+                } else {
+                    console.log('***** ERROR: controller.loginUser incorrect password *****');
+                }
+            } else if (!dev) {
+                console.log('***** controller.loginUser: no such dev, searching for orgs *****');
+                Org.findOne({email: request.body.email}, function(error, org) {
+                    if (error) {
+                        console.log(error);
+                        response.json(error);
+                    } else if (org) {
+                        console.log('***** controller.loginUser found one org *****', org);
+                        // improve this password check to bcrypt;
+                        if (org.password === request.body.password) {
+                            response.json(org);
+                        } else {
+                            console.log('****** ERROR: controller.loginUser incorrect password *****');
+                        }
+                    } else if (!org) {
+                        console.log('***** controller.loginUser: no such org either *****');
+                    }
+                });
+            }
+        });
+    },
+
+    login: function(request, response) {
+        console.log('***** controller.login() *****', request.body);
+        if (request.body.email && request.body.pw) {
+            //code
+            Dev.findOne({email: request.body.email}, function(error, dev) {
+                if (error) {
+                    console.log(error);
+                    response.json(error);
+                } else if (dev) {
+                    if (bcrypt.compare(request.body.pw, dev.pw)) {
+                        console.log('***** dev.pw ok *****');
+                        response.json(dev);
+                    } else {
+                        console.log('***** dev.pw is incorrect ****');
+                    }
+                } else {
+                    console.log('***** No such dev found; checking for orgs *****');
+                    Org.findOne({email: request.body.email}, function(error, org) {
+                        if (error) {
+                            console.log(error);
+                            response.json(error);
+                        } else if (org) {
+                            if (bcrypt.compare(request.body.pw, org.pw)) {
+                                console.log('***** org.pw ok *****');
+                                response.json(org);
+                            }
+                        } else {
+                            console.log('***** no org found either ****');
+                            response.json();
+                        }
+                    });
+                }
+            });
+        }
+    },
+
     // ******************
     // ***** CREATE *****
     // ******************
@@ -89,18 +165,6 @@ module.exports = {
     // ***** READ *****
     // ****************
 
-    loginUser: function(request, response) {
-        // code
-        console.log('***** controller.loginUser *****', request.body);
-        Dev.find({email: request.email}, function(error, dev) {
-            if (error) {
-                console.log(error);
-                response.json(error);
-            }
-            response.json(dev);
-        });
-    },
-
 
     getAllDevs: function(request, response) {
         // code
@@ -127,7 +191,18 @@ module.exports = {
 
     getOneDev: function(request, response) {
         // code
-        console.log('*****  *****');
+
+        console.log('***** controller.getOneDev(id) *****', request.params.id);
+        Dev.findOne({_id: request.params.id}, function(error, dev) {
+           if (error) {
+               console.log(error);
+               response.json(error);
+           } else if (dev) {
+               console.log(dev);
+               response.json(dev);
+            }
+        });
+
     },
 
     getOneJob: function(request, response) {
@@ -148,7 +223,7 @@ module.exports = {
 
     editOneDev: function(request, response) {
         // code
-        console.log('*****  *****');
+        console.log('***** controller.editOneDev() *****');
     },
 
     editOneJob: function(request, response) {

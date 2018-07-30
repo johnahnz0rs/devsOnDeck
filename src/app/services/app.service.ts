@@ -9,9 +9,25 @@ export class AppService {
   private baseDev = '/api/dev';
   private baseJob = '/api/job';
   private baseOrg = '/api/org';
-    private baseLogin = '/api/login';
+  private baseLogin = '/api/login';
+  signedIn: string = null;
 
   constructor(private http: HttpClient) {}
+
+  loginTemp(data) {
+    // code
+    console.log('***** service.loginTemp(email, pw) *****', data);
+    return this.http.post<any>('/api/loginTemp', data);
+  }
+
+  login(data) {
+      console.log('***** service.login(email, pw) *****', data);
+      return this.http.post<any>(this.baseLogin, data);
+  }
+
+  logout() {
+      this.signedIn = null;
+  }
 
   // ******************
   // ***** CREATE *****
@@ -24,30 +40,24 @@ export class AppService {
 
   createOneJob(job) {
     // code
-      console.log('***** service.createOneBob(job) *****', job);
+    console.log('***** service.createOneBob(job) *****', job);
     return this.http.post<any>(this.baseJob, job);
   }
 
   createOneOrg(org) {
-      console.log('***** service.createOneOrg(org) *****', org);
-      return this.http.post<any>(this.baseOrg, org);
+    console.log('***** service.createOneOrg(org) *****', org);
+    return this.http.post<any>(this.baseOrg, org);
   }
 
   // ****************
   // ***** READ *****
   // ****************
 
-  login(data) {
-    // code
-      console.log('***** service.login(email, pw) *****', data);
-      return this.http.post<any>(this.baseLogin, data);
-  }
-
   getAllDevs() {
     // code
-      console.log('***** service.getAllDevs() *****');
-      console.log(this.http.get<any>(this.baseDev));
-      return this.http.get<any>(this.baseDev);
+    console.log('***** service.getAllDevs() *****');
+    console.log(this.http.get<any>(this.baseDev));
+    return this.http.get<any>(this.baseDev);
   }
 
   getAllJobs() {
@@ -56,7 +66,11 @@ export class AppService {
 
   getAllOrgs() {}
 
-  getOneDev() {}
+  getOneDev(id) {
+    console.log('***** service.getOneDev(id) *****', id);
+    // console.log(`${this.baseDev}/${id}`);
+    return this.http.get<any>(`${this.baseDev}/${id}`);
+  }
 
   getOneJob() {}
 

@@ -1,0 +1,29 @@
+<p>lol this is the dev dashboard</p>
+
+<button (click)="editMyInfo()">Edit My Info</button>
+
+
+
+<div *ngIf="userId">
+
+    <p>name: {{userInfo.fname}} {{userInfo.lname}}</p>
+    Skills:
+    <ul>
+        <li *ngFor="let i of userInfo.skills">{{i}}</li>
+    </ul>
+
+</div>
+
+<div class="edit-info-form" [hidden]="!displayEditBox">
+    <form #editInfoForm="ngForm">
+        <label for="old-pw">Old Password:</label>
+        <input type="password" id="old-pw" name="old-pw">
+        <label for="new-pw">New Password:</label>
+        <input type="password" id="new-pw" name="new-pw">
+        <label for="cpw">Confirm New Password:</label>
+        <input type="password" id="cpw" name="cpw">
+
+        <button (click)="submitEdit()">submit edits</button>
+    </form>
+
+</div>
