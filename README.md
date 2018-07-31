@@ -3,6 +3,11 @@ Aka “Fake RemoteOK”(?)
 Aka “Fake WebDev Job Site”(?)
 
 
+
+DevsOnDeck is a fake job board where developers can look for jobs, and organizations can post jobs and look for developers.
+Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTML, CSS, Bootstrap
+
+
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
