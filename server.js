@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt-as-promised');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

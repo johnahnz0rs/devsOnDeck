@@ -10,4 +10,5 @@ module.exports = router
     .post('/org', controller.createOneOrg)
     .get('/dev', controller.getAllDevs)
     .get('/dev/:id', controller.getOneDev)
+    .put('/dev/:id', controller.updatePw)
 ;

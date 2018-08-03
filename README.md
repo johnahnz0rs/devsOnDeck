@@ -2,15 +2,23 @@
 Aka “Fake RemoteOK”(?)
 Aka “Fake WebDev Job Site”(?)
 
-
-
 DevsOnDeck is a fake job board where developers can look for jobs, and organizations can post jobs and look for developers.
 Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTML, CSS, Bootstrap
+
+
+
 
 
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
+[]8/2/18 - 
+[] create brypt backend
+[] update current controller.createOneDev to have it encrypt the user's pw before creating a new dev document.
+[x] updated dev registration form so that it bcrypts the passwords
+[] update the login form so that it compares bcrypt passwords.
+[]
+[]
 []7/30/18 - 
 [] what do i want to do today? I want to:
 []  make a way to edit a user once they are logged in, so that i can:
@@ -32,7 +40,7 @@ CURRENTLY WORKING ON:
 [x] bug: jahn account had no pw; i used mongo shell to add one;
 [x] fix login - the issue was with the mongo command i was calling 
 [x] create dev dashboard
-[x] create dev user edit page on frontend (on dev dashboard) 
+[x] create dev user edit page on frontend (on dev dashboard)
 [x]
 [x]
 [x]7/29/18 - 
@@ -68,6 +76,7 @@ CURRENTLY WORKING ON:
 [x]7/26/18 -
 [x] why wont confirm password validation error go away?
 [x] got icons for all languages, frameworks, and libraries
+[x]
 [x]7/25/18 - get the client side devsuli form to be able to console.log form data. Also: add hidden divs to finish filling out the languages/frameworks sections of Dev object.
 [x]Next: do the same for client side orgsuli form (sans languages/frameworks).
 

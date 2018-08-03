@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt-as-promised');
 const Dev = mongoose.model('Dev');
 const Org = mongoose.model('Org');
 const Job = mongoose.model('Job');
+
 
 
 module.exports = {
@@ -82,6 +84,12 @@ module.exports = {
         }
     },
 
+
+
+    updatePw: function(request, response) {
+        console.log(request.body);
+    },
+
     // ******************
     // ***** CREATE *****
     // ******************
@@ -97,14 +105,24 @@ module.exports = {
                 // error msg to template?
                 response.json('{error: "User already exists. Try logging in."}');
             } else if (!dev) {
-                Dev.create(request.body, function (error) {
-                    if (error) {
-                        console.log('***** createOneDev error *****', error);
-                        response.json(error);
-                    } else {
-                        response.json();
-                    }
-                });
+                const newUser = request.body;
+
+                // encrypt the password FIRST...BEFORE creating a new Dev document.
+                bcrypt.hash(request.body.pw, 10)
+                    .then(hashed_pw => {
+                        newUser.pw = hashed_pw;
+                        console.log('**** this is the hashed pw*****', newUser.pw);
+                        console.log('***** controller -- testing the bcrypt hash *****', newUser);
+                        Dev.create(newUser, function(error) {
+                            if (error) {
+                                console.log('***** createOneDev error *****', error);
+                                response.json(error);
+                            } else {
+                                console.log('*****controller.createOneDev -- new user created successfully *****');
+                                response.json();
+                            }
+                        });
+                    });
             } else if (error) {
                 console.log('***** error in Dev.findOne(email) ******');
                 response.json()

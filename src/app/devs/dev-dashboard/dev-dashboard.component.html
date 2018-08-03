@@ -2,7 +2,19 @@
 
 <button (click)="editMyInfo()">Edit My Info</button>
 
+<div class="edit-info-form" [hidden]="!displayEditBox">
+    <form #editInfoForm="ngForm">
+        <!--<label for="old-pw">Old Password:</label>-->
+        <!--<input type="password" id="old-pw" name="old-pw" [(ngModel)]="temp.currentPW" #currentPW="ngModel">-->
+        <label for="new-pw">New Password:</label>
+        <input type="password" id="new-pw" name="new-pw" [(ngModel)]="temp.newPW" #newPW="ngModel">
+        <!--<label for="cpw">Confirm New Password:</label>-->
+        <!--<input type="password" id="cpw" name="cpw" [(ngModel)]="temp.cpw" #cpw="ngModel">-->
 
+        <button (click)="submitEdit()">submit edits</button>
+    </form>
+
+</div>
 
 <div *ngIf="userId">
 
@@ -11,19 +23,5 @@
     <ul>
         <li *ngFor="let i of userInfo.skills">{{i}}</li>
     </ul>
-
-</div>
-
-<div class="edit-info-form" [hidden]="!displayEditBox">
-    <form #editInfoForm="ngForm">
-        <label for="old-pw">Old Password:</label>
-        <input type="password" id="old-pw" name="old-pw">
-        <label for="new-pw">New Password:</label>
-        <input type="password" id="new-pw" name="new-pw">
-        <label for="cpw">Confirm New Password:</label>
-        <input type="password" id="cpw" name="cpw">
-
-        <button (click)="submitEdit()">submit edits</button>
-    </form>
 
 </div>

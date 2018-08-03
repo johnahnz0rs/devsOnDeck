@@ -12,7 +12,7 @@ export class DevDashboardComponent implements OnInit {
     userId: string;
     userInfo: any = {};
     displayEditBox = false;
-    temp: Dev = new Dev();
+    temp = {newPW: '', id: '' };
 
   constructor(private appService: AppService) { }
 
@@ -22,13 +22,13 @@ export class DevDashboardComponent implements OnInit {
           .subscribe(dev => {
           console.log('***** typeof dev *****', typeof dev, dev);
           this.userInfo = dev;
-          this.temp = dev;
       });
   }
 
   submitEdit() {
       // code
       console.log('***** you clicked submitEdit() *****');
+      console.log(this.temp);
 
   }
 
