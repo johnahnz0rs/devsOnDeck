@@ -3,14 +3,20 @@
     <p class="header">Find Jobs and Developers for your next project!</p>
 
     <div class="row">
+
+        <!-- link to DEV SIGNUP -->
         <div class="col-sm-4 signup-dev">
             <button class="btn btn-lg btn-success" routerLink="/signup/dev">Sign Up<br>as a Developer</button>
         </div>
 
+        <!-- link to ORG SIGNUP -->
         <div class="col-sm-4 signup-org">
             <button class="btn btn-lg btn-primary" routerLink="/signup/org">Sign Up<br>as an Organization</button>
         </div>
 
+
+
+        <!-- login form -->
         <div class="col-sm-4 login">
             <h3 class="login-header">Login</h3>
             <p>{{ loginForm.value | json }}</p>
@@ -28,8 +34,8 @@
                     <input class="form-control" type="password" id="password" name="password" [(ngModel)]="loginInfo.pw" #password="ngModel">
                 </div>
 
-                <button class="btn btn-lg btn-primary float-right" (click)="loginTemp()">Log In (TEMP)</button>
                 <button class="btn btn-lg btn-primary float-right" (click)="login()">Log In</button>
+
             </form>
         </div>
 

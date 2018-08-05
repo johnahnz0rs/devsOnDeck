@@ -1,27 +1,94 @@
-<p>lol this is the dev dashboard</p>
 
-<button (click)="editMyInfo()">Edit My Info</button>
+<div class="row">
 
-<div class="edit-info-form" [hidden]="!displayEditBox">
-    <form #editInfoForm="ngForm">
-        <!--<label for="old-pw">Old Password:</label>-->
-        <!--<input type="password" id="old-pw" name="old-pw" [(ngModel)]="temp.currentPW" #currentPW="ngModel">-->
-        <label for="new-pw">New Password:</label>
-        <input type="password" id="new-pw" name="new-pw" [(ngModel)]="temp.newPW" #newPW="ngModel">
-        <!--<label for="cpw">Confirm New Password:</label>-->
-        <!--<input type="password" id="cpw" name="cpw" [(ngModel)]="temp.cpw" #cpw="ngModel">-->
+    <!-- left-col: show bio (default: shown) -->
+    <div class="col-sm-4" [hidden]="displayEditBox">
 
-        <button (click)="submitEdit()">submit edits</button>
-    </form>
+        <h3 class="my-info-header">My Info</h3><button class="edit-my-info-button btn btn-link" (click)="showEditBioForm()"> (Edit Your Bio)</button>
+        <table>
+            <tr>
+                <td class="table-label">Name:</td>
+                <td>{{ myInfo.fname }} {{ myInfo.lname }}</td>
+            </tr>
+
+            <tr>
+                <td class="table-label">Address:</td>
+                <td>{{ myInfo.address }}</td>
+            </tr>
+
+            <tr>
+                <td class="table-label">&nbsp;</td>
+                <td>{{ myInfo.city }}, {{ myInfo.state }} {{ myInfo.zip }}</td>
+            </tr>
+
+            <tr>
+                <td class="table-label">Email:</td>
+                <td>{{ myInfo.email }}</td>
+            </tr>
+
+            <tr>
+                <td class="table-label">Skills:</td>
+                <td>
+                    <figure *ngFor="let skill of myInfo.skills" class="skills">
+                        <img class="figure-img skill" src="assets/img/{{skill}}.png">
+                    </figure>
+                </td>
+            </tr>
+        </table>
+
+
+
+
+    </div>
+
+    <!-- left col: edit bio (default: hidden) -->
+    <div class="col-sm-4" [hidden]="!displayEditBox">
+        <h3>Edit My Info</h3>
+
+        <form>
+
+
+
+        </form>
+        <button class="btn btn-sm btn-secondary" (click)="showEditBioForm()">Cancel</button>
+
+
+
+
+    </div>
+
+
+    <!-- right-col: see avail jobs & orgs -->
+    <div class="col-sm-8">
+        <span>right col test</span>
+    </div>
+
 
 </div>
 
-<div *ngIf="userId">
 
-    <p>name: {{userInfo.fname}} {{userInfo.lname}}</p>
-    Skills:
-    <ul>
-        <li *ngFor="let i of userInfo.skills">{{i}}</li>
-    </ul>
 
-</div>
+
+<!--<div class="edit-info-form" [hidden]="!displayEditBox">-->
+    <!--<form #editInfoForm="ngForm">-->
+        <!--&lt;!&ndash;<label for="old-pw">Old Password:</label>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="password" id="old-pw" name="old-pw" [(ngModel)]="temp.currentPW" #currentPW="ngModel">&ndash;&gt;-->
+        <!--<label for="new-pw">New Password:</label>-->
+        <!--<input type="password" id="new-pw" name="new-pw" [(ngModel)]="temp.newPW" #newPW="ngModel">-->
+        <!--&lt;!&ndash;<label for="cpw">Confirm New Password:</label>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="password" id="cpw" name="cpw" [(ngModel)]="temp.cpw" #cpw="ngModel">&ndash;&gt;-->
+
+        <!--<button (click)="submitEdit()">submit edits</button>-->
+    <!--</form>-->
+
+<!--</div>-->
+
+<!--<div *ngIf="userId">-->
+
+    <!--<p>name: {{userInfo.fname}} {{userInfo.lname}}</p>-->
+    <!--Skills:-->
+    <!--<ul>-->
+        <!--<li *ngFor="let i of userInfo.skills">{{i}}</li>-->
+    <!--</ul>-->
+
+<!--</div>-->

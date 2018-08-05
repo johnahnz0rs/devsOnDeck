@@ -12,30 +12,31 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
+[]8/4/18 - 
+[x] started building dev dashboard; then i realized the app was letting me go ahead to the dev's dashboard even if my password was incorrect. started looking into that. 
+[x] i realized i didn't need to go through the trouble of editing the existing users' unencrypted pw's to bcrypted pw's; instead i could just delete then create them again with bcrypted pw's. so i did that.
+[] build dev dashboard (see templates section on main to-do list below)
+[x]
+[x]
 []8/2/18 - 
-[] create brypt backend
-[] update current controller.createOneDev to have it encrypt the user's pw before creating a new dev document.
+[x] create login with brypt password backend
+[x] update current controller.createOneDev to have it encrypt the user's pw before creating a new dev document.
 [x] updated dev registration form so that it bcrypts the passwords
-[] update the login form so that it compares bcrypt passwords.
-[]
-[]
-[]7/30/18 - 
-[] what do i want to do today? I want to:
-[]  make a way to edit a user once they are logged in, so that i can:
-[]   update nwailes and jahn passwords to bcrypt
-[]
-[] **user edit backend**
-[] create user edit backend
-[] hook up dev user edit end-to-end
-[] debug dev user edit
-[] update nwailes and jahn passwords to bcrypted passwords
-[]
-[] ** user login w bcrypt backend **
-[] create permanent login with bcrypt
-[]
-[] ** misc **
-[] create error msg on dev-suli that alerts user if email is already registered
-[]
+[x] update the login form so that it compares bcrypt passwords.
+[x]
+[x]
+[x]7/30/18 - 
+>[x] **user edit backend**
+>[] create user edit backend
+>[] hook up dev user edit end-to-end
+>[] debug dev user edit
+>[] update nwailes and jahn passwords to bcrypted passwords
+>[x] ** user login w bcrypt backend **
+>[] create permanent login with bcrypt
+>[x]
+>[x] ** misc **
+>[] create error msg on dev-suli that alerts user if email is already registered
+[x]
 [x] create temp-login-without-bcrypt (on home screen)
 [x] bug: jahn account had no pw; i used mongo shell to add one;
 [x] fix login - the issue was with the mongo command i was calling 
@@ -167,6 +168,7 @@ CLIENT
 	[x]Dev - fname, lname, street, city, state, zip, email, pw, cpw, bio, skills (Array<language, framework>), languages, frameworks, resume, 
 	[x]Org - orgname, fname, lname, street, city, state, zip, email, bio, jobs (Array<Job>)
 	[x]Job - orgId, name, descr, skills (Array<Skill>)
+	[x]Login attempt - email, pw
 
 
 
@@ -209,15 +211,14 @@ CLIENT
 	[x]
 	[]Dev dashboard.html
 		[]Header
-			[]Link to dashboard
+			[]Link to splash
 			[]Link logout
-		[]Show bio -leftcol
+		[]Left col - Show bio 
 		[]Btn edit bio -toggles display/hide of form edit bio
 		[]Form edit bio
-		[]Details -rightcol
-		[]Btn see all jobs (default) -toggles display of jobs/devs
-		[x]
-		[]Button see all orgs -toggles display of jobs/dev
+		[]Right col - Details
+		[]  -- Btn see all jobs (default) -toggles display of jobs/devs
+		[]  -- Button see all orgs -toggles display of jobs/dev
 	[x]
 	[]Dev view job.html -comp dev show job
 		[]Read job attrib 

@@ -1,0 +1,20 @@
+
+.my-info-header {
+    display: inline-block;
+}
+
+
+.edit-my-info-button {
+    display: inline-block;
+}
+
+
+.skills {
+    display: inline-block;
+}
+
+/*.skill {*/
+    /*height: 50px;*/
+    /*width: 50px;*/
+    /*display: inline-block;*/
+/*}*/

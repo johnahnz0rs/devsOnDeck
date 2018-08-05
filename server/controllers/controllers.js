@@ -9,7 +9,7 @@ const Job = mongoose.model('Job');
 module.exports = {
 
 
-    loginUser: function(request, response) {
+    loginTemp: function(request, response) {
         // code
         console.log('***** controller.loginUser *****', request.body);
         Dev.findOne({email: request.body.email}, function(error, dev) {
@@ -19,12 +19,13 @@ module.exports = {
             } else if (dev) {
                 console.log('***** controller.loginUser found one dev *****', dev);
                 // improve this password check to bcrypt;
-                if (dev.pw == request.body.pw) {
+                if (dev.pw === request.body.pw) {
                     console.log('***** this is dev.pw ******', dev.pw);
                     console.log('***** this is dev.password *****', dev.password);
                     response.json(dev);
                 } else {
                     console.log('***** ERROR: controller.loginUser incorrect password *****');
+                    response.json();
                 }
             } else if (!dev) {
                 console.log('***** controller.loginUser: no such dev, searching for orgs *****');
@@ -39,9 +40,11 @@ module.exports = {
                             response.json(org);
                         } else {
                             console.log('****** ERROR: controller.loginUser incorrect password *****');
+                            response.json();
                         }
                     } else if (!org) {
                         console.log('***** controller.loginUser: no such org either *****');
+                        response.json();
                     }
                 });
             }
@@ -50,8 +53,10 @@ module.exports = {
 
     login: function(request, response) {
         console.log('***** controller.login() *****', request.body);
+
         if (request.body.email && request.body.pw) {
-            //code
+
+            // check for dev
             Dev.findOne({email: request.body.email}, function(error, dev) {
                 if (error) {
                     console.log(error);
@@ -63,6 +68,8 @@ module.exports = {
                     } else {
                         console.log('***** dev.pw is incorrect ****');
                     }
+
+                // if not a dev, check for org
                 } else {
                     console.log('***** No such dev found; checking for orgs *****');
                     Org.findOne({email: request.body.email}, function(error, org) {
@@ -100,7 +107,11 @@ module.exports = {
         // is this email already registered
         Dev.findOne({email: request.body.email}, function(error, dev) {
             // if-not-registered as err handling
-            if (dev) {
+            if (error) {
+                console.log(error);
+                response.json(error);
+            }
+            else if (dev) {
                 console.log('***** this user already exists ****');
                 // error msg to template?
                 response.json('{error: "User already exists. Try logging in."}');
@@ -123,9 +134,6 @@ module.exports = {
                             }
                         });
                     });
-            } else if (error) {
-                console.log('***** error in Dev.findOne(email) ******');
-                response.json()
             }
         });
     },

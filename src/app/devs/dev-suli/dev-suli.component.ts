@@ -37,6 +37,8 @@ export class DevSuliComponent implements OnInit {
 
   registerDev() {
       console.log('***** starting registerDev() *****');
+
+      // first push both languages and frameworks into one array called skills
       if (this.newDev.languages || this.newDev.frameworks) {
           for (let i in this.newDev.languages) {
               console.log('***** this is the a language being pushed to newDev.skills *****', i);
@@ -47,6 +49,8 @@ export class DevSuliComponent implements OnInit {
               this.newDev.skills.push(this.newDev.frameworks[i]);
           }
       }
+
+      // then format the request data
       const dev = {
           accountType: 'dev',
           fname: this.newDev.fname,
@@ -62,6 +66,8 @@ export class DevSuliComponent implements OnInit {
           frameworks: this.newDev.frameworks,
       };
 
+      // now send the request to backend, like a boss
+      // if created without error, then send browser to login page
       console.log('***** registerDev(dev) ******', dev);
       this.appService.createOneDev(dev)
           .subscribe((error) => {

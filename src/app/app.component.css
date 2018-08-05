@@ -18,35 +18,13 @@
     display: inline-block;
     float: left;
     margin: 10px;
+    vertical-align: center;
 }
 
 .logout {
+    vertical-align: center;
     display: inline-block;
     float: right;
-    margin: 10px;
+
 }
-
-/*.header ul {*/
-    /*list-style-type: none;*/
-    /*display: inline-block;*/
-    /*float: right;*/
-/*}*/
-/*.header li {*/
-    /*float: right;*/
-    /*margin: auto 10px;*/
-/*}*/
-/*.header li a {*/
-    /*color: white;*/
-/*}*/
-
-
-/*.dev-signup {*/
-    /*margin: 20px;*/
-    /*border: 1px solid black;*/
-    /*background-color: gray;*/
-/*}*/
-/*.dev-signup h1 {*/
-    /*text-align: center;*/
-/*}*/
-
 
