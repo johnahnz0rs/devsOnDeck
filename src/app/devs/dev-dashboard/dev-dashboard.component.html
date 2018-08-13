@@ -1,94 +1,121 @@
 
 <div class="row">
 
-    <!-- left-col: show bio (default: shown) -->
-    <div class="col-sm-4" [hidden]="displayEditBox">
+    <!-- left-col: show myInfo -->
+    <div class="col col-sm-4" id="div-showMyInfo">
 
-        <h3 class="my-info-header">My Info</h3><button class="edit-my-info-button btn btn-link" (click)="showEditBioForm()"> (Edit Your Bio)</button>
-        <table>
-            <tr>
-                <td class="table-label">Name:</td>
-                <td>{{ myInfo.fname }} {{ myInfo.lname }}</td>
-            </tr>
-
-            <tr>
-                <td class="table-label">Address:</td>
-                <td>{{ myInfo.address }}</td>
-            </tr>
-
-            <tr>
-                <td class="table-label">&nbsp;</td>
-                <td>{{ myInfo.city }}, {{ myInfo.state }} {{ myInfo.zip }}</td>
-            </tr>
-
-            <tr>
-                <td class="table-label">Email:</td>
-                <td>{{ myInfo.email }}</td>
-            </tr>
-
-            <tr>
-                <td class="table-label">Skills:</td>
-                <td>
-                    <figure *ngFor="let skill of myInfo.skills" class="skills">
-                        <img class="figure-img skill" src="assets/img/{{skill}}.png">
-                    </figure>
-                </td>
-            </tr>
-        </table>
+        <!-- header -->
+        <div id="div-myInfo-header" class="row">
+            <div class="col-sm-8">
+                <h3 class="my-info-header">My Info</h3>
+            </div>
+            <div class="col-sm-4">
+                <!-- this button pops up the editMyInfo modal -->
+                <button class="btn btn-sm btn-outline-primary" (click)="popupEditMyInfo()">Edit My Info</button>
+            </div>
+        </div> <!-- end #div-myInfo-header -->
 
 
+        <!-- display my info -->
+        <div class="row div-myInfo">
+            <div class="col-sm-4 bold-text"><span class="bold-text">Name: </span></div>
+            <div class="col-sm-8"><span>{{ myInfo.fname }} {{ myInfo.lname }}</span></div>
+        </div>
 
+        <div class="row div-myInfo">
+            <div class="col-sm-4 bold-text"><span class="bold-text">Email: </span></div>
+            <div class="col-sm-8">{{ myInfo.email }}</div>
+        </div>
 
-    </div>
+        <div class="row div-myInfo">
+            <div class="col-sm-4 bold-text"><span class="bold-text">Address: </span></div>
+            <div class="col-sm-8"><span>{{myInfo.address}} <br>{{myInfo.city}}, {{myInfo.state}} {{myInfo.zip}}</span></div>
+        </div>
 
-    <!-- left col: edit bio (default: hidden) -->
-    <div class="col-sm-4" [hidden]="!displayEditBox">
-        <h3>Edit My Info</h3>
+        <div class="row div-myInfo">
+            <div class="col-sm-4 bold-text"><span class="bold-text">Bio: </span></div>
+            <div class="col-sm-7" id="bio"><span>{{myInfo.bio}}</span></div>
+        </div>
 
-        <form>
-
-
-
-        </form>
-        <button class="btn btn-sm btn-secondary" (click)="showEditBioForm()">Cancel</button>
+        <div class="row div-myInfo">
+            <div class="col-sm-4 bold-text"><span class="bold-text">Skills: </span></div>
+            <div class="col-sm-7" id="my-skills">
+                <figure *ngFor="let skill of myInfo.skills" class="skills">
+                    <img class="figure-img skill" src="assets/img/{{skill}}.png">
+                </figure>
+            </div>
+        </div>
+    </div> <!-- end #div-showMyInfo -->
 
 
 
 
-    </div>
+    <!-- right-col: show allJobs (default) -->
+    <div class="col col-sm-7" id="div-showAllJobs" *ngIf="showAllJobs">
+
+        <div id="div-showJobs-header" class="row">
+            <div class="col-sm-8">
+                <h3 class="showJobs-header">All Jobs</h3>
+            </div>
+            <div class="col-sm-4">
+                <!-- this button hides #div-showAllJobs && shows #div-showAllOrgs -->
+                <button class="btn btn-sm btn-outline-success" (click)="switchJobsOrgs()">Show All Orgs</button>
+            </div>
+        </div> <!-- end #div-myInfo-header -->
+
+        <div id="div-showJobs-body">
+            <!-- temp test job for display -->
+            <div class="div-job row" (click)="showJobDetail('50_1337')">
+                <div class="col-sm-4"><p>Full Stack Web Dev</p></div>
+                <div class="col-sm-6"><p>You gotta be a l33t hax0rs</p></div>
+                <div class="col-sm-2"><p>Job Match: <br>85%</p></div>
+            </div>
+
+            <!-- display each jeob -->
+            <div class="div-job row" ngFor="let job of allJobs" (click)="showJobDetail(job._id)">
+                {{job}}
+                <div class="col-sm-4"><p>{{job.position}}</p></div>
+                <div class="col-sm-6"><p>{{job.description}}</p></div>
+                <div class="col-sm-2 job-match"><span class="center-text">Job Match: <br>{{job.match}}%</span></div>
+            </div>
+
+        </div> <!-- end #div-showJobs-body -->
+    </div> <!-- end #div-showAllJobs -->
 
 
-    <!-- right-col: see avail jobs & orgs -->
-    <div class="col-sm-8">
-        <span>right col test</span>
-    </div>
+    <div class="col-sm-7" id="div-showAllOrgs" *ngIf="!showAllJobs">
+
+        <div id="div-showOrgs-header" class="row">
+            <div class="col-sm-8">
+                <h3 class="showOrgs-header">All Organizations</h3>
+            </div>
+            <div class="col-sm-4">
+                <!-- this button hides #div-showAllOrgs && shows #div-showAllJobs -->
+                <button class="btn btn-sm btn-outline-success" (click)="switchJobsOrgs()">Show All Jobs</button>
+            </div>
+        </div> <!-- end #div-myInfo-header -->
+
+        <div id="div-showOrgs-body">
+            <!-- temp test job for display -->
+            <div class="div-org row" (click)="showOrgDetail('1337')">
+                <div class="col-sm-4"><p>Org Name: z0rs, Inc.</p></div>
+                <div class="col-sm-5"><p>City, State: Los Angeles, CA</p></div>
+                <div class="col-sm-3"><p>Available Positions<br>3</p></div>
+            </div>
+
+            <!-- display each jeob -->
+            <div class="div-org row" ngFor="let org of allOrgs" (click)="showOrgDetail(org._id)">
+                {{org}}
+                <div class="col-sm-4"><p>{{org.name}}</p></div>
+                <div class="col-sm-6"><p>{{org.city}}, {{org.state}}</p></div>
+                <div class="col-sm-2 position-count"><span class="center-text">Available Positions<br>{{org.jobs.length}}%</span></div>
+            </div>
+
+        </div> <!-- end #div-showJobs-body -->
+    </div> <!-- end #div-showAllOrgs -->
 
 
-</div>
 
 
+</div> <!-- end row/container -->
 
-
-<!--<div class="edit-info-form" [hidden]="!displayEditBox">-->
-    <!--<form #editInfoForm="ngForm">-->
-        <!--&lt;!&ndash;<label for="old-pw">Old Password:</label>&ndash;&gt;-->
-        <!--&lt;!&ndash;<input type="password" id="old-pw" name="old-pw" [(ngModel)]="temp.currentPW" #currentPW="ngModel">&ndash;&gt;-->
-        <!--<label for="new-pw">New Password:</label>-->
-        <!--<input type="password" id="new-pw" name="new-pw" [(ngModel)]="temp.newPW" #newPW="ngModel">-->
-        <!--&lt;!&ndash;<label for="cpw">Confirm New Password:</label>&ndash;&gt;-->
-        <!--&lt;!&ndash;<input type="password" id="cpw" name="cpw" [(ngModel)]="temp.cpw" #cpw="ngModel">&ndash;&gt;-->
-
-        <!--<button (click)="submitEdit()">submit edits</button>-->
-    <!--</form>-->
-
-<!--</div>-->
-
-<!--<div *ngIf="userId">-->
-
-    <!--<p>name: {{userInfo.fname}} {{userInfo.lname}}</p>-->
-    <!--Skills:-->
-    <!--<ul>-->
-        <!--<li *ngFor="let i of userInfo.skills">{{i}}</li>-->
-    <!--</ul>-->
-
-<!--</div>-->

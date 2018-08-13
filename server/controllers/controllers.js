@@ -8,49 +8,6 @@ const Job = mongoose.model('Job');
 
 module.exports = {
 
-
-    loginTemp: function(request, response) {
-        // code
-        console.log('***** controller.loginUser *****', request.body);
-        Dev.findOne({email: request.body.email}, function(error, dev) {
-            if (error) {
-                console.log(error);
-                response.json(error);
-            } else if (dev) {
-                console.log('***** controller.loginUser found one dev *****', dev);
-                // improve this password check to bcrypt;
-                if (dev.pw === request.body.pw) {
-                    console.log('***** this is dev.pw ******', dev.pw);
-                    console.log('***** this is dev.password *****', dev.password);
-                    response.json(dev);
-                } else {
-                    console.log('***** ERROR: controller.loginUser incorrect password *****');
-                    response.json();
-                }
-            } else if (!dev) {
-                console.log('***** controller.loginUser: no such dev, searching for orgs *****');
-                Org.findOne({email: request.body.email}, function(error, org) {
-                    if (error) {
-                        console.log(error);
-                        response.json(error);
-                    } else if (org) {
-                        console.log('***** controller.loginUser found one org *****', org);
-                        // improve this password check to bcrypt;
-                        if (org.password === request.body.password) {
-                            response.json(org);
-                        } else {
-                            console.log('****** ERROR: controller.loginUser incorrect password *****');
-                            response.json();
-                        }
-                    } else if (!org) {
-                        console.log('***** controller.loginUser: no such org either *****');
-                        response.json();
-                    }
-                });
-            }
-        });
-    },
-
     login: function(request, response) {
         console.log('***** controller.login() *****', request.body);
 
@@ -93,9 +50,6 @@ module.exports = {
 
 
 
-    updatePw: function(request, response) {
-        console.log(request.body);
-    },
 
     // ******************
     // ***** CREATE *****
@@ -143,44 +97,11 @@ module.exports = {
     createOneJob: function(request, response) {
         // code
         console.log('***** controller.createOneJob() *****');
-
-        // create one job
-        Job.create(request.body, function (error, job) {
-            if (error) {
-                console.log('***** ERROR: controller.createOneDev.Dev.create ******');
-                response.json(error);
-                // else return new dev object;
-            } else {
-                response.json(dev);
-            }
-        });
     },
 
     createOneOrg: function(request, response) {
         // code
         console.log('***** controller.createOneOrg() *****');
-
-        // if this email is already registered
-        Org.findOne({email: request.body.email}, function(error, dev) {
-            // error: if email is not registered,
-            if (error) {
-                // then create mongo document
-                Dev.create(request.body, function (error) {
-                    if (error) {
-                        console.log('***** ERROR: controller.createOneDev.Dev.create ******');
-                        response.json(error);
-                        // else return new dev object;
-                    } else {
-                        response.json(dev);
-                    }
-                });
-                // else if email IS registered
-            } else {
-                // then return a error msg [to the template (reg form)](?)
-                console.log('***** ERROR: user already exists *****');
-                response.json(dev);
-            }
-        });
     },
 
 
@@ -198,8 +119,12 @@ module.exports = {
         Dev.find({}, function(error, devs) {
             if (error) {
                 console.log('***** ERROR in controller.Dev.find() *****', error);
+                response.json(error);
+            } else if (devs.length === 0) {
+                console.log('***** no devs, mang *****');
+                response.json();
             } else {
-                console.log('***** all devs *****', devs);
+                console.log('***** these are all devs *****', devs);
                 response.json(devs);
             }
         });
@@ -207,12 +132,36 @@ module.exports = {
 
     getAllJobs: function(request, response) {
         // code
-        console.log('*****  *****');
+        console.log('***** controller.getAllJobs *****');
+        Job.find({}, function(error, jobs) {
+           if (error) {
+               console.log('***** ERROR in getAllJobs mongo *****', error);
+               response.json(error);
+           } else if (jobs.length === 0) {
+               console.log('***** no jobs, mang *****');
+               response.json();
+           } else {
+               console.log('***** these are all jeobs *****', jobs);
+               response.json(jobs);
+           }
+        });
     },
 
     getAllOrgs: function(request, response) {
         // code
-        console.log('*****  *****');
+        console.log('***** controller.getAllOrgs *****');
+        Job.find({}, function(error, orgs) {
+            if (error) {
+                console.log('***** ERROR in getAllOrgs mongo *****', error);
+                response.json(error);
+            } else if (orgs.length === 0) {
+                console.log('***** no orgs, mang *****');
+                response.json();
+            } else {
+                console.log('***** these are all orgs *****', orgs);
+                response.json(orgs);
+            }
+        });
     },
 
     getOneDev: function(request, response) {
@@ -221,7 +170,7 @@ module.exports = {
         console.log('***** controller.getOneDev(id) *****', request.params.id);
         Dev.findOne({_id: request.params.id}, function(error, dev) {
            if (error) {
-               console.log(error);
+               console.log('***** ERROR in controller.getOneDev mongo *****', error);
                response.json(error);
            } else if (dev) {
                console.log(dev);
@@ -233,12 +182,12 @@ module.exports = {
 
     getOneJob: function(request, response) {
         // code
-        console.log('*****  *****');
+        console.log('***** controller.getOneJob(), request.body = *****', request.body);
     },
 
     getOneOrg: function(request, response) {
         // code
-        console.log('*****  *****');
+        console.log('***** controller.getOneOrg(), request.body *****', request.body);
     },
 
 

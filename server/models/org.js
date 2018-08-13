@@ -3,7 +3,6 @@ const { Schema } = mongoose;
 
 const orgSchema = new mongoose.Schema({
 
-    _id: {type: String, required: true, trim: true},
     orgName: {type: String, required: true, trim: true},
     fname: {type: String, required: true, trim: true},
     lname: {type: String, required: true, trim: true},

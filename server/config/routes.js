@@ -8,6 +8,9 @@ module.exports = router
     .post('/job', controller.createOneJob)
     .post('/org', controller.createOneOrg)
     .get('/dev', controller.getAllDevs)
+    .get('/job', controller.getAllJobs)
+    .get('/org', controller.getAllOrgs)
     .get('/dev/:id', controller.getOneDev)
-    .put('/dev/:id', controller.updatePw)
+    .get('/dev/job/:id', controller.getOneJob)
+    .get('/dev/org/:id', controller.getOneOrg)
 ;

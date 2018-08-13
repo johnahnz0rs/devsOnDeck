@@ -9,33 +9,68 @@ import { Router } from '@angular/router';
   styleUrls: ['../../bootstrap.css', './dev-dashboard.component.css']
 })
 export class DevDashboardComponent implements OnInit {
-
-  myInfo: any = {};
-  displayEditBox = false;
-  temp = { newPW: '', id: '' };
+  myInfo: any;
+  allJobs: any;
+  showAllJobs = true;
 
   constructor(private appService: AppService, private router: Router) {}
 
   ngOnInit() {
-    if (this.appService.signedIn) {
-      this.appService.getOneDev(this.appService.signedIn)
-          .subscribe(dev => {
-            this.myInfo = dev;
-          });
-    } else {
-      this.router.navigateByUrl('/');
-    }
+
+      // show AllJobs as default &&
+      this.showAllJobs = true;
+
+      // get myInfo to display in #divMyInfo &&
+      this.appService.getOneDev(this.appService.signedIn).subscribe(dev => {
+          this.myInfo = dev;
+          console.log('***** myInfo *****', this.myInfo);
+          console.log('***** dev *****', dev);
+      });
+
+      // get allJobs to display in #divAllJobs
+      this.appService.getAllJobs().subscribe(jobs => {
+          this.allJobs = jobs;
+          console.log('***** jobs *****', jobs);
+      });
+
+    // // if user is signed in:
+    // if (this.appService.signedIn) {
+    //   // then: show AllJobs as default &&
+    //   this.showAllJobs = true;
+    //
+    //   // get myInfo to display in #divMyInfo &&
+    //   this.appService.getOneDev(this.appService.signedIn).subscribe(dev => {
+    //     this.myInfo = dev;
+    //     console.log('***** myInfo *****', this.myInfo);
+    //     console.log('***** dev *****', dev);
+    //   });
+    //
+    //   // get allJobs to display in #divAllJobs
+    //   this.appService.getAllJobs().subscribe(jobs => {
+    //     this.allJobs = jobs;
+    //     console.log('***** jobs *****', jobs);
+    //   });
+    // } else {
+    //   // if not signed in, then re-route to splash page
+    //   this.router.navigateByUrl('/');
+    // }
   }
 
-  submitEdit() {
-    // code
-    console.log('***** you clicked submitEdit() *****');
-    console.log(this.temp);
+  popupEditMyInfo() {
+      console.log('***** you clicked button: edit my info *****');
   }
 
-  showEditBioForm() {
-    // code
-    console.log('***** you clicked showEditBioForm ******');
-    this.displayEditBox = !this.displayEditBox;
+  showJobDetail(job_id) {
+      console.log('***** getting job details for job_id', job_id, '*****');
   }
+
+  showOrgDetail(org_id) {
+      console.log('***** getting org details for org_id', org_id, '*****');
+  }
+
+  switchJobsOrgs() {
+      this.showAllJobs = !this.showAllJobs;
+  }
+
+
 }

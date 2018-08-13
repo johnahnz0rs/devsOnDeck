@@ -62,13 +62,20 @@ export class AppService {
 
   getAllJobs() {
     // code
+      console.log('***** service.getAllJobs() *****');
+      console.log(this.http.get<any>(this.baseJob));
+      return this.http.get<any>(this.baseJob);
   }
 
-  getAllOrgs() {}
+  getAllOrgs() {
+      console.log('***** service.getAllOrgs() *****');
+      console.log(this.http.get<any>(this.baseOrg));
+      return this.http.get<any>(this.baseOrg);
+  }
 
   getOneDev(id) {
     console.log('***** service.getOneDev(id) *****', id);
-    // console.log(`${this.baseDev}/${id}`);
+    console.log(this.http.get<any>(`${this.baseDev}/${id}`));
     return this.http.get<any>(`${this.baseDev}/${id}`);
   }
 

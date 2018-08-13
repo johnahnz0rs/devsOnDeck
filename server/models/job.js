@@ -3,11 +3,11 @@ const { Schema } = mongoose;
 
 const jobSchema = new mongoose.Schema({
 
-    _id: {type: String, required: true, trim: true},
     orgId: {type: String, require: true, trim: true},
-    name: {type: String, required: true, trim: true},
+    position: {type: String, required: true, trim: true},
     description: {type: String, required: true, trim: true},
-    skills: {type: Array, required: true}
+    skills: {type: Array, required: true},
+    match: {type: Number}
 }, {timestamps: true});
 
 mongoose.model('Job', jobSchema);

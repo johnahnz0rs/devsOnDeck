@@ -12,7 +12,22 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[]8/4/18 - 
+[]8/13/18 - 
+[] build org dashboard
+[] build org/add job
+[x]
+[x]
+[x]8/12/18 - 
+[x] build dev dashboard - the default template is complete; bugs: myInfo details not displaying correctly on template
+[x] -- dev showAllJobs 
+[x] -- dev showAllOrgs
+>[] -- dev editMyInfo popup
+>[] -- dev seeOneJob popup
+>[] -- dev seeOneOrg popup
+[]
+[x]
+[x]
+[x]8/4/18 - 
 [x] started building dev dashboard; then i realized the app was letting me go ahead to the dev's dashboard even if my password was incorrect. started looking into that. 
 [x] i realized i didn't need to go through the trouble of editing the existing users' unencrypted pw's to bcrypted pw's; instead i could just delete then create them again with bcrypted pw's. so i did that.
 [] build dev dashboard (see templates section on main to-do list below)
