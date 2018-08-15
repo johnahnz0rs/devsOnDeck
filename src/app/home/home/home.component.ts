@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     this.appService.login(user)
         .subscribe(returnedUser => {
             // set signedIn
-            this.appService.signedIn = returnedUser._id;
+            this.appService.signedIn = returnedUser;
 
             // route to appropriate dashboard
             if (returnedUser.accountType === 'dev') {

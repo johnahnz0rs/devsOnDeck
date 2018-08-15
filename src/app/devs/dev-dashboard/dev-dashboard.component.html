@@ -1,8 +1,12 @@
-
+<p>myInfo: {{myInfo}}</p>
+<p>myInfo|json: {{myInfo | json}}</p>
+<p>myInfo.fname: {{myInfo.fname}}</p>
 <div class="row">
 
     <!-- left-col: show myInfo -->
     <div class="col col-sm-4" id="div-showMyInfo">
+
+        <p>{{myInfo}}</p>
 
         <!-- header -->
         <div id="div-myInfo-header" class="row">
@@ -19,7 +23,7 @@
         <!-- display my info -->
         <div class="row div-myInfo">
             <div class="col-sm-4 bold-text"><span class="bold-text">Name: </span></div>
-            <div class="col-sm-8"><span>{{ myInfo.fname }} {{ myInfo.lname }}</span></div>
+            <div class="col-sm-8"><p>lol {{myInfo.fname}}</p><span>{{ myInfo.fname }} {{ myInfo.lname }}</span></div>
         </div>
 
         <div class="row div-myInfo">

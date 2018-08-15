@@ -12,6 +12,20 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
+[]8/15/18 - 
+[] **** i'm getting a bug in dev-dashboard where the dev's details are not being interpolated
+[] build org-registration
+[] -- check that org-login works
+[] -- copy/paste the dev-dashboard to org-dashboard
+
+[x]
+[x]
+[x]8/14/18 - 
+[x] fixed login (pw match redirects to dashboard (devs only for now))
+[x] fix dev-registration (new dev registration checks for extent account before creating)
+>[] i'm getting a bug in dev-dashboard where the dev's details are not being interpolated
+[x]
+[x]
 []8/13/18 - 
 [] build org dashboard
 [] build org/add job
@@ -24,7 +38,6 @@ CURRENTLY WORKING ON:
 >[] -- dev editMyInfo popup
 >[] -- dev seeOneJob popup
 >[] -- dev seeOneOrg popup
-[]
 [x]
 [x]
 [x]8/4/18 - 

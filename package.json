@@ -22,6 +22,7 @@
     "@angular/router": "^6.0.0",
     "bcrypt": "^3.0.0",
     "bcrypt-as-promised": "^1.1.0",
+    "bcrypt-nodejs-as-promised": "^1.0.4",
     "body-parser": "^1.18.3",
     "core-js": "^2.5.4",
     "express": "^4.16.3",

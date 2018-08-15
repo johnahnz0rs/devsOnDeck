@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-as-promised');
+// const bcrypt = require('bcrypt-as-promised');
+const bcrypt = require('bcrypt');
 const Dev = mongoose.model('Dev');
 const Org = mongoose.model('Org');
 const Job = mongoose.model('Job');
@@ -11,41 +12,66 @@ module.exports = {
     login: function(request, response) {
         console.log('***** controller.login() *****', request.body);
 
+        // wrapper to check if email and pw were entered
+        // they should be because both are required to submit login request;
         if (request.body.email && request.body.pw) {
 
-            // check for dev
-            Dev.findOne({email: request.body.email}, function(error, dev) {
+            // first check if the user is a dev
+            Dev.findOne({email: request.body.email}, function (error, dev) {
                 if (error) {
-                    console.log(error);
+                    console.log('***** error in dev.findOne *****');
                     response.json(error);
                 } else if (dev) {
-                    if (bcrypt.compare(request.body.pw, dev.pw)) {
-                        console.log('***** dev.pw ok *****');
-                        response.json(dev);
-                    } else {
-                        console.log('***** dev.pw is incorrect ****');
-                    }
 
-                // if not a dev, check for org
-                } else {
-                    console.log('***** No such dev found; checking for orgs *****');
+
+                    // if a dev with that email is found, then check pw:
+                    console.log('***** dev account with that email exists, checking password now *****');
+                    bcrypt.compare(request.body.pw, dev.pw, function(error, result) {
+                        if (error) {
+                            console.log('***** error in controller.login => compare dev\'s pw *****', error);
+                            response.json(error);
+                        } else if (result) {
+                            console.log('***** pw match for this dev-user *****', dev);
+                            response.json(dev);
+                        } else if (!result) {
+                            console.log('***** incorrect pw *****');
+                            response.json("{error: 'incorrect password for dev'}");
+                        }
+
+                    });
+                } else if (!dev) {
+                    console.log('***** no dev account with that email was found, checking for org accounts now *****');
+
+
+                    // if no dev with that email is found, check for org;
                     Org.findOne({email: request.body.email}, function(error, org) {
                         if (error) {
-                            console.log(error);
+                            console.log('***** error in org.findOne *****');
                             response.json(error);
                         } else if (org) {
-                            if (bcrypt.compare(request.body.pw, org.pw)) {
-                                console.log('***** org.pw ok *****');
-                                response.json(org);
-                            }
-                        } else {
-                            console.log('***** no org found either ****');
+
+                            // if an org with that email is found, then check pw;
+                            console.log('***** org account with that email exists, checking password now *****');
+                            bcrypt.compare(request.body.pw, org.pw, function(error, result) {
+                                if (error) {
+                                    console.log('***** error in controller.login => compare org\'s pw *****', error);
+                                    response.json(error);
+                                } else if (result) {
+                                    console.log('***** pw match for this org-user *****', org);
+                                    response.json(org);
+                                } else if (!result) {
+                                    console.log('***** incorrect pw *****');
+                                    response.json("{error: 'incorrect password for org'}");
+                                }
+                            })
+                        } else if (!org) {
+                            console.log('***** no org account with that email was found *****');
                             response.json();
                         }
                     });
                 }
             });
-        }
+        } // end if(email && pw);
     },
 
 
@@ -62,32 +88,36 @@ module.exports = {
         Dev.findOne({email: request.body.email}, function(error, dev) {
             // if-not-registered as err handling
             if (error) {
+                console.log('***** error in controller.createOneDev=>dev.findOne(email) *****', error);
+                response.json(error);
+            } else if (dev) {
+                console.log('***** an account with this email already exists *****');
+                response.json();
+            }
+        });
+
+
+        let newUser = request.body;
+        console.log('***** controller.createOneDev - this is the newUser that is to be created, sans pw *****', newUser);
+
+        // encrypting the password
+        bcrypt.hash(request.body.pw, 10, function(error, hash) {
+            if (error) {
                 console.log(error);
                 response.json(error);
-            }
-            else if (dev) {
-                console.log('***** this user already exists ****');
-                // error msg to template?
-                response.json('{error: "User already exists. Try logging in."}');
-            } else if (!dev) {
-                const newUser = request.body;
+            } else {
+                newUser.pw = hash;
+                console.log('***** controller.createOneDev - this is the newUser WITH hashed pw *****', newUser);
 
-                // encrypt the password FIRST...BEFORE creating a new Dev document.
-                bcrypt.hash(request.body.pw, 10)
-                    .then(hashed_pw => {
-                        newUser.pw = hashed_pw;
-                        console.log('**** this is the hashed pw*****', newUser.pw);
-                        console.log('***** controller -- testing the bcrypt hash *****', newUser);
-                        Dev.create(newUser, function(error) {
-                            if (error) {
-                                console.log('***** createOneDev error *****', error);
-                                response.json(error);
-                            } else {
-                                console.log('*****controller.createOneDev -- new user created successfully *****');
-                                response.json();
-                            }
-                        });
-                    });
+                // create new Dev document with hashed pw;
+                Dev.create(newUser, function(error) {
+                    if (error) {
+                        console.log('***** error in creating new dev doc *****', error);
+                        response.json(error);
+                    }
+                    console.log('***** new dev doc created successfully *****');
+                    response.json();
+                });
             }
         });
     },

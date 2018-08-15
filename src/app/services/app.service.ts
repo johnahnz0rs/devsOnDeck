@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,9 @@ export class AppService {
   private baseJob = '/api/job';
   private baseOrg = '/api/org';
   private baseLogin = '/api/login';
-  signedIn: string = null;
+  signedIn: any;
 
-  constructor(private http: HttpClient) {}
-
-  loginTemp(data) {
-    // code
-    console.log('***** service.loginTemp(email, pw) *****', data);
-    return this.http.post<any>('/api/loginTemp', data);
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(data) {
       console.log('***** service.login(email, pw) *****', data);
@@ -27,6 +22,7 @@ export class AppService {
 
   logout() {
       this.signedIn = null;
+      this.router.navigateByUrl('/');
   }
 
   // ******************
