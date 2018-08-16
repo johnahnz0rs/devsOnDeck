@@ -26,7 +26,7 @@ export class OrgSuliComponent implements OnInit {
 
       const org = {
           accountType: 'org',
-          orgname: this.newOrg.orgName,
+          orgName: this.newOrg.orgName,
           fname: this.newOrg.fname,
           lname: this.newOrg.lname,
           address: this.newOrg.address,
@@ -35,8 +35,16 @@ export class OrgSuliComponent implements OnInit {
           zip: this.newOrg.zip,
           email: this.newOrg.email,
           pw: this.newOrg.pw,
+          jobs: []
       };
-      this.appService.createOneOrg(org);
+      this.appService.createOneOrg(org)
+        .subscribe(error => {
+          if (error) {
+            console.log('***** error in createOneOrg *****', error);
+          } else {
+            this.router.navigateByUrl('/');
+          }
+        });
   }
 
 }

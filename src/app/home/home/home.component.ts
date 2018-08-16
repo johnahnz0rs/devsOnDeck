@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
             // route to appropriate dashboard
             if (returnedUser.accountType === 'dev') {
-                this.router.navigateByUrl('/dev/dashboard');
+                this.router.navigateByUrl(`/dev/dashboard`);
             } else if (returnedUser.accountType === 'org') {
                 this.router.navigateByUrl('/org/dashboard');
             }

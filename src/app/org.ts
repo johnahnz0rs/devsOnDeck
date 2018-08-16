@@ -3,7 +3,6 @@ import { Job } from './job';
 export class Org {
     _id: string;
     orgName: string;
-    bio: string;
     fname: string;
     lname: string;
     address: string;

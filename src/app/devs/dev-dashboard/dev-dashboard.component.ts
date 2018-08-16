@@ -1,7 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
 import { Dev } from '../../dev';
+import { Org } from "../../org";
 import { Router } from '@angular/router';
+import { Observable } from "rxjs";
+
+// import { ActivatedRoute } from '@angular/router';
+//
+// import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dev-dashboard',
@@ -9,41 +15,63 @@ import { Router } from '@angular/router';
   styleUrls: ['../../bootstrap.css', './dev-dashboard.component.css']
 })
 export class DevDashboardComponent implements OnInit {
-  myInfo: any = {};
+  myInfo: Dev = this.appService.signedIn;
   allJobs: any = [];
+  allOrgs = this.appService.getAllOrgs();
   showAllJobs = true;
 
+  constructor(private appService: AppService, private router: Router, private cd: ChangeDetectorRef) {
 
-  constructor(private appService: AppService, private router: Router) {}
+  }
 
   ngOnInit() {
 
-      // load the logged in user's info || reroute to login page if not logged in;
-      if (!this.appService.signedIn) {
-          this.router.navigateByUrl('/');
-      } else {
-          // this.myInfo = this.appService.signedIn;
-      }
+    console.log('***** this is dashboard.allOrgs on OnInit *****', this.allOrgs);
 
-      // show AllJobs as default &&
-      this.showAllJobs = true;
 
-      // get allJobs to display in #divAllJobs
-      this.appService.getAllJobs().subscribe(jobs => {
-          this.allJobs = jobs;
-          console.log('***** jobs *****', jobs);
-      });
+    // reroute to login page if not logged in;
+    if (!this.appService.signedIn) {
+      this.router.navigateByUrl('/');
+    }
+
+    // show AllJobs is default view (can be toggled to show AllOrgs by using switchJobsOrgs() below);
+    this.showAllJobs = true;
+
+    // get allJobs to display in #divAllJobs
+    this.appService.getAllJobs().subscribe(jobs => {
+      this.allJobs = jobs;
+      console.log('***** retrieved all jobs *****', jobs);
+    });
+    // console.log('***** this is all Jobs *****', this.allJobs);
+
+    // getAllOrgs to display in #divAllOrgs
+    // this.appService.getAllOrgs().subscribe(orgs => {
+    //   this.allOrgs = orgs;
+    //   console.log('***** retrieved all orgs *****', orgs);
+    // });
+    // console.log('***** this is allOrgs *****', this.allOrgs);
+
   }
 
+  //
+  // ngAfterViewInit() {
+  //   this.myInfo = this.appService.signedIn;
+  //   console.log('***** dashboard.ngAfterViewInit ==> this is myInfo *****', this.myInfo);
+  // }
+
   popupEditMyInfo() {
-      console.log('***** you clicked button: edit my info *****');
-      console.log(this.myInfo);
+    console.log('***** you clicked button: edit my info *****');
+    console.log(this.myInfo);
   }
 
   switchJobsOrgs() {
-      this.showAllJobs = !this.showAllJobs;
-      console.log('**** this is showAllJobs *****', this.showAllJobs);
+    this.showAllJobs ? console.log('***** switching from showAllJobs to showAllOrgs *****') : console.log('***** switching from' +
+      ' showAllOrgs to showAllJobs *****');
+
+    this.showAllJobs = !this.showAllJobs;
   }
 
-
+  showOrgDetail(id) {
+    console.log('***** you clicked on an org with id *****', id);
+  }
 }

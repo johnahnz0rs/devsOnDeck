@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {Router} from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AppService {
   private baseDev = '/api/dev';
   private baseJob = '/api/job';
@@ -14,14 +16,21 @@ export class AppService {
   signedIn: any;
 
   constructor(private http: HttpClient, private router: Router) {}
+  //
+  // resolve(route: ActivatedRouteSnapshot, rstate: RouterStateSnapshot): Observable<any> {
+  //   console.log('***** service => logging collected router param *****', route.params['id']);
+  //   return this.http.get<any>(`${this.baseDev}/${route.params['id']}`);
+  // }
 
-  login(data) {
+  login(data): Observable<any> {
       console.log('***** service.login(email, pw) *****', data);
+      // console.log('***** service.login => this is what we get back from the back-end *****', this.http.post<any>(this.baseLogin, data));
       return this.http.post<any>(this.baseLogin, data);
   }
 
   logout() {
       this.signedIn = null;
+      console.log('***** you are logged out *****', this.signedIn);
       this.router.navigateByUrl('/');
   }
 
@@ -40,7 +49,7 @@ export class AppService {
     return this.http.post<any>(this.baseJob, job);
   }
 
-  createOneOrg(org) {
+  createOneOrg(org): Observable<any> {
     console.log('***** service.createOneOrg(org) *****', org);
     return this.http.post<any>(this.baseOrg, org);
   }
@@ -49,29 +58,32 @@ export class AppService {
   // ***** READ *****
   // ****************
 
+  loadMyInfo() {
+
+  }
+
   getAllDevs() {
     // code
     console.log('***** service.getAllDevs() *****');
-    console.log(this.http.get<any>(this.baseDev));
+    // console.log(this.http.get<any>(this.baseDev));
     return this.http.get<any>(this.baseDev);
   }
 
   getAllJobs() {
     // code
       console.log('***** service.getAllJobs() *****');
-      console.log(this.http.get<any>(this.baseJob));
       return this.http.get<any>(this.baseJob);
   }
 
-  getAllOrgs() {
+  getAllOrgs(): Observable<any> {
       console.log('***** service.getAllOrgs() *****');
-      console.log(this.http.get<any>(this.baseOrg));
+      // console.log(this.http.get<any>(this.baseOrg));
       return this.http.get<any>(this.baseOrg);
   }
 
-  getOneDev(id) {
+  getOneDev(id): Observable<any> {
     console.log('***** service.getOneDev(id) *****', id);
-    console.log(this.http.get<any>(`${this.baseDev}/${id}`));
+    console.log('***** service.getOneDev() received this from back-end *****', this.http.get<any>(`${this.baseDev}/${id}`));
     return this.http.get<any>(`${this.baseDev}/${id}`);
   }
 
@@ -84,15 +96,15 @@ export class AppService {
   // ******************
 
   updateOneDev() {
-    //code
+    // code
   }
 
   updateOneJob() {
-    //code
+    // code
   }
 
   updateOneOrg() {
-    //code
+    // code
   }
 
   // ********************
@@ -100,14 +112,14 @@ export class AppService {
   // ********************
 
   deleteOneDev() {
-    //code
+    // code
   }
 
   deleteOneJob() {
-    //code
+    // code
   }
 
   deleteOneOrg() {
-    //code
+    // code
   }
 }

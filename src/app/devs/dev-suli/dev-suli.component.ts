@@ -64,6 +64,7 @@ export class DevSuliComponent implements OnInit {
           skills: this.newDev.skills,
           languages: this.newDev.languages,
           frameworks: this.newDev.frameworks,
+          bio: this.newDev.bio
       };
 
       // now send the request to backend, like a boss
@@ -72,7 +73,7 @@ export class DevSuliComponent implements OnInit {
       this.appService.createOneDev(dev)
           .subscribe((error) => {
               if (error) {
-                  console.log('error', error);
+                  console.log('***** error in createOneDev() *****', error);
               } else {
                   this.router.navigateByUrl('/');
               }

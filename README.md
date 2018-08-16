@@ -12,12 +12,19 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[]8/15/18 - 
-[] **** i'm getting a bug in dev-dashboard where the dev's details are not being interpolated
-[] build org-registration
-[] -- check that org-login works
+[]8/16/18 - 
+[] **** bug in dev dashboard.loadAllOrgs -- i have one org in db but it's not showing (re: observable)
 [] -- copy/paste the dev-dashboard to org-dashboard
-
+[] make a front-end error message if the user entered an incorrect pw
+[x]
+[x]
+[x]8/15/18 - 
+[x] **** i'm getting a bug in dev-dashboard where the dev's details are not being interpolated
+[x] build org-registration
+[x] -- check that org-login works
+>[] **** bug in dev dashboard.loadAllOrgs -- i have one org in db but it's not showing (re: observable)
+>[] -- copy/paste the dev-dashboard to org-dashboard
+>[] make a front-end error message if the user entered an incorrect pw
 [x]
 [x]
 [x]8/14/18 - 
