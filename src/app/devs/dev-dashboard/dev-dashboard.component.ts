@@ -16,8 +16,8 @@ import { Observable } from "rxjs";
 })
 export class DevDashboardComponent implements OnInit {
   myInfo: Dev = this.appService.signedIn;
-  allJobs: any = [];
-  allOrgs = this.appService.getAllOrgs();
+  allJobs: Array<any> = this.appService.allJobs;
+  allOrgs: Array<any> = this.appService.allOrgs;
   showAllJobs = true;
 
   constructor(private appService: AppService, private router: Router, private cd: ChangeDetectorRef) {
@@ -37,27 +37,23 @@ export class DevDashboardComponent implements OnInit {
     // show AllJobs is default view (can be toggled to show AllOrgs by using switchJobsOrgs() below);
     this.showAllJobs = true;
 
-    // get allJobs to display in #divAllJobs
-    this.appService.getAllJobs().subscribe(jobs => {
-      this.allJobs = jobs;
-      console.log('***** retrieved all jobs *****', jobs);
-    });
-    // console.log('***** this is all Jobs *****', this.allJobs);
+    // // get allJobs to display in #divAllJobs
+    // this.appService.getAllJobs().subscribe(jobs => {
+    //   this.allJobs = jobs;
+    //   console.log('***** retrieved all jobs *****', jobs);
+    // });
+    // // console.log('***** this is all Jobs *****', this.allJobs);
 
     // getAllOrgs to display in #divAllOrgs
     // this.appService.getAllOrgs().subscribe(orgs => {
+    //   console.log('***** dev-dashboard.OnInit => retrieved all orgs *****', orgs);
     //   this.allOrgs = orgs;
-    //   console.log('***** retrieved all orgs *****', orgs);
+    //   console.log('***** dev-dashboard.OnInit => this is allOrgs *****', this.allOrgs);
     // });
-    // console.log('***** this is allOrgs *****', this.allOrgs);
 
+    console.log('***** dev-dashboard.OnInit => this is allOrgs *****', this.allOrgs);
   }
 
-  //
-  // ngAfterViewInit() {
-  //   this.myInfo = this.appService.signedIn;
-  //   console.log('***** dashboard.ngAfterViewInit ==> this is myInfo *****', this.myInfo);
-  // }
 
   popupEditMyInfo() {
     console.log('***** you clicked button: edit my info *****');

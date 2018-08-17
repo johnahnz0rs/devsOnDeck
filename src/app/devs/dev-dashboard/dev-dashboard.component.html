@@ -1,3 +1,4 @@
+
 <div class="row">
 
     <!-- left-col: show myInfo -->
@@ -151,11 +152,11 @@
             </div>
 
             <!-- display each jeob -->
-            <div class="div-org row" ngFor="let org of allOrgs" (click)="showOrgDetail(org._id)" *ngIf="allOrgs">
+            <div class="div-org row" *ngFor="let org of allOrgs" (click)="showOrgDetail(org._id)">
                 <!--{{org}}-->
-                <div class="col-sm-4"><p class="bold-text">Org Name</p><p>{{org.name}}</p></div>
-                <div class="col-sm-6"><p class="bold-text">Location</p><p>{{org.city}}, {{org.state}}</p></div>
-                <div class="col-sm-2 position-count"><p class="bold-text">Available Positions</p><p>{{org.jobs.length}}</p></div>
+                <div class="col-sm-4"><p class="bold-text">Org Name</p><p>{{org.orgName}}</p></div>
+                <div class="col-sm-5"><p class="bold-text">Location</p><p>{{org.city}}, {{org.state}}</p></div>
+                <div class="col-sm-3"><p class="bold-text">Available Positions</p><p>{{org.jobs.length}}</p></div>
             </div>
 
         </div> <!-- end #div-showOrgs-body -->

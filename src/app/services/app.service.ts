@@ -14,6 +14,9 @@ export class AppService {
   private baseOrg = '/api/org';
   private baseLogin = '/api/login';
   signedIn: any;
+  allJobs: Array<any>;
+  allOrgs: Array<any>;
+  allDevs: Array<any>;
 
   constructor(private http: HttpClient, private router: Router) {}
   //
@@ -24,7 +27,6 @@ export class AppService {
 
   login(data): Observable<any> {
       console.log('***** service.login(email, pw) *****', data);
-      // console.log('***** service.login => this is what we get back from the back-end *****', this.http.post<any>(this.baseLogin, data));
       return this.http.post<any>(this.baseLogin, data);
   }
 
@@ -58,26 +60,18 @@ export class AppService {
   // ***** READ *****
   // ****************
 
-  loadMyInfo() {
-
-  }
-
   getAllDevs() {
-    // code
     console.log('***** service.getAllDevs() *****');
-    // console.log(this.http.get<any>(this.baseDev));
     return this.http.get<any>(this.baseDev);
   }
 
   getAllJobs() {
-    // code
       console.log('***** service.getAllJobs() *****');
       return this.http.get<any>(this.baseJob);
   }
 
   getAllOrgs(): Observable<any> {
       console.log('***** service.getAllOrgs() *****');
-      // console.log(this.http.get<any>(this.baseOrg));
       return this.http.get<any>(this.baseOrg);
   }
 

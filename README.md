@@ -13,9 +13,12 @@ johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
 []8/16/18 - 
-[] **** bug in dev dashboard.loadAllOrgs -- i have one org in db but it's not showing (re: observable)
-[] -- copy/paste the dev-dashboard to org-dashboard
+[x] **** bug in dev dashboard.loadAllOrgs -- i have one org in db but it's not showing (re: observable)
+[x] -- copy/paste the dev-dashboard to org-dashboard
+[] -- -- edit/build the org-dashboard
+[] -- -- add job form
 [] make a front-end error message if the user entered an incorrect pw
+[] make fake data to be loaded if no db docs
 [x]
 [x]
 [x]8/15/18 - 

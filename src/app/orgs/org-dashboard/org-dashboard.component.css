@@ -1,0 +1,97 @@
+
+
+#div-showMyJobs {
+    border: 1px solid black;
+    border-radius: 9px;
+    margin: 10px;
+    margin-left: 20px;
+}
+
+#div-myJobs-header {
+    padding: 10px;
+}
+
+.my-jobs-header
+
+.div-myInfo {
+    margin-bottom: 10px;
+}
+
+#bio {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+#bio-content {
+    margin: 5px;
+}
+
+.skills {
+    width: 30px;
+    display: inline-block;
+    margin: 5px;
+}
+
+#my-skills {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+.skill {
+    width: 30px;
+}
+
+#div-showAllJobs {
+    border: 1px solid black;
+    border-radius: 9px;
+    margin: 10px;
+}
+
+
+#div-showJobs-header {
+    padding: 10px;
+}
+
+.div-job {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 9px;
+}
+
+#div-showAllOrgs {
+    border: 1px solid black;
+    border-radius: 9px;
+    margin: 10px;
+}
+
+
+#div-showOrgs-header {
+    padding: 10px;
+}
+
+.div-org {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 9px;
+}
+
+
+
+.bold-text {
+    font-weight: bold;
+}
+.center-text {
+    text-align: center;
+}
+.position-count {
+    width: 100%;
+    text-align: center;
+}
+.job-match {
+    width: 100%;
+    text-align: center;
+}

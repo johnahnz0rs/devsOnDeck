@@ -12,7 +12,8 @@ export class HomeComponent implements OnInit {
 
   loginInfo: Login;
 
-  constructor(private appService: AppService, private router: Router) {}
+  constructor(private appService: AppService, private router: Router) {
+  }
 
   ngOnInit() {
     this.loginInfo = new Login();
@@ -24,18 +25,41 @@ export class HomeComponent implements OnInit {
     console.log('***** running home.login() *****', user);
 
     this.appService.login(user)
-        .subscribe(returnedUser => {
-            // set signedIn
-            this.appService.signedIn = returnedUser;
+    // first, if login is successful, then set currentUser aka appService.signedIn;
+      .subscribe(returnedUser => {
+        // set signedIn
+        this.appService.signedIn = returnedUser;
 
-            // route to appropriate dashboard
-            if (returnedUser.accountType === 'dev') {
-                this.router.navigateByUrl(`/dev/dashboard`);
-            } else if (returnedUser.accountType === 'org') {
-                this.router.navigateByUrl('/org/dashboard');
-            }
-         });
-  }
+        // then, get all Jobs;
+        this.appService.getAllJobs()
+          .subscribe(allJobs => {
+            this.appService.allJobs = allJobs;
+            console.log('***** home.login => allJobs *****', this.appService.allJobs);
 
+            // then, get all Orgs;
+            this.appService.getAllOrgs()
+              .subscribe(allOrgs => {
+                this.appService.allOrgs = allOrgs;
+                console.log('***** home.login => allOrgs *****', this.appService.allOrgs);
+
+                // then, get all Devs;
+                this.appService.getAllDevs()
+                  .subscribe(allDevs => {
+                    this.appService.allDevs = allDevs;
+                    console.log('***** home.login => allDevs *****', this.appService.allDevs);
+
+                    // finally, route to appropriate dashboard;
+                    // ***** remember to add "&& this.appService.allJobs" to both of these if statements;
+                    if (returnedUser.accountType === 'dev' && this.appService.allOrgs) {
+                      this.router.navigateByUrl(`/dev/dashboard`);
+                    } else if (returnedUser.accountType === 'org' && this.appService.allOrgs) {
+                      this.router.navigateByUrl('/org/dashboard');
+                    }
+
+                  });
+              });
+          });
+      });
+  } // end login()
 
 }

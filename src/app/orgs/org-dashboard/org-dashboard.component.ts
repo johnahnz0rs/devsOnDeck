@@ -8,24 +8,30 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-org-dashboard',
   templateUrl: './org-dashboard.component.html',
-  styleUrls: ['./org-dashboard.component.css']
+  styleUrls: ['../../bootstrap.css', './org-dashboard.component.css']
 })
 export class OrgDashboardComponent implements OnInit {
-  devs: Array<Dev> = [];
+
+  myInfo: Org = this.appService.signedIn;
+  allJobs: Array<any> = this.appService.allJobs;
+  allOrgs: Array<any> = this.appService.allOrgs;
+  allDevs: Array<any> = this.appService.allDevs;
+  // showAllJobs = true;
+
   constructor(private appService: AppService, private http: HttpClient) {}
 
   ngOnInit() {
-    this.getAllDevs();
+    console.log('***** org-dashboard.OnInit => allJobs *****', this.allJobs);
+    console.log('***** org-dashboard.OnInit => allOrgs *****', this.allOrgs);
+    console.log('***** org-dashboard.OnInit => allDevs *****', this.allDevs);
   }
 
-  getAllDevs() {
-    this.appService.getAllDevs().subscribe(allDevs => {
-        console.log('***** this is orgDashboard.getAllDevs() result *****', allDevs);
-        console.log(typeof allDevs);
-        for (let i of allDevs) {
-            this.devs.push(i);
-        }
-        console.log('***** this.devs *****', this.devs);
-    });
+
+  addNewJob() {
+    console.log('***** org-dashboard => you clicked addNewJob() *****');
+  }
+
+  showMyJob(id) {
+    console.log('***** org-dashboard => you clicked showMyJob(id) *****', id);
   }
 }

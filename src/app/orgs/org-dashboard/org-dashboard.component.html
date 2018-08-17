@@ -1,1 +1,175 @@
-<p>lol this is org dashboard</p>
+
+<div class="row">
+
+    <!-- left-col: show myJobs -->
+    <div class="col col-sm-4" id="div-showMyJobs">
+
+
+        <!-- header -->
+        <div id="div-myJobs-header" class="row">
+            <div class="col-sm-8">
+                <h3 class="my-jobs-header">My Jobs</h3>
+            </div>
+
+            <!-- a button that opens a pop-up: editMyJobs modal -->
+            <div class="col-sm-4">
+                <button class="btn btn-sm btn-outline-primary" (click)="addNewJob()">Add New Job</button>
+            </div>
+
+        </div> <!-- end #div-myJobs-header -->
+
+
+
+
+
+
+        <!-- display my jobs -->
+
+        <div *ngFor="let job of myInfo.jobs" (click)="showMyJob(job._id)">
+
+        </div>
+
+        <!-- row 1: name -->
+        <div class="row div-myInfo" *ngIf="myInfo">
+            <div class="col-sm-4 bold-text"><span class="bold-text">Name: </span></div>
+            <div class="col-sm-8"><span>{{myInfo.fname}}</span>
+                <!--<span>{{ myInfo?.fname }} {{ myInfo?.lname }}</span>-->
+            </div>
+        </div>
+
+
+        <!-- row 2: email -->
+        <div class="row div-myInfo" *ngIf="myInfo">
+            <div class="col-sm-4 bold-text"><span class="bold-text">Email: </span></div>
+            <div class="col-sm-8"><span>{{ myInfo.email }}</span></div>
+        </div>
+
+
+        <!-- row 3: address -->
+        <div class="row div-myInfo" *ngIf="myInfo">
+            <div class="col-sm-4 bold-text"><span class="bold-text">Address: </span></div>
+            <div class="col-sm-8"><span>{{myInfo.address}} <br>{{myInfo.city}}, {{myInfo.state}} {{myInfo.zip}}</span></div>
+        </div>
+
+
+        <!-- row 4: bio -->
+        <div class="row div-myInfo" *ngIf="myInfo">
+            <div class="col-sm-4 bold-text"><span class="bold-text">Bio: </span></div>
+            <div class="col-sm-7" id="bio"><span id="bio-content">{{myInfo.bio}}</span></div>
+        </div>
+
+
+        <!-- row 5: skills -->
+        <div class="row div-myInfo" *ngIf="myInfo">
+            <div class="col-sm-4 bold-text"><span class="bold-text">Skills: </span></div>
+            <div class="col-sm-7" id="my-skills">
+                <figure *ngFor="let skill of myInfo.skills" class="skills">
+                    <img class="figure-img skill" src="assets/img/{{skill}}.png">
+                </figure>
+            </div>
+        </div>
+
+
+    </div> <!-- end #div-showMyInfo -->
+
+
+
+
+
+
+
+
+    <!-- right-col: show allJobs (default) -->
+    <div class="col col-sm-7" id="div-showAllJobs" *ngIf="showAllJobs">
+
+        <div id="div-showJobs-header" class="row">
+            <div class="col-sm-8">
+                <h3 class="showJobs-header">All Jobs</h3>
+            </div>
+            <div class="col-sm-4">
+                <!-- this button hides #div-showAllJobs && shows #div-showAllOrgs -->
+                <button class="btn btn-sm btn-outline-success" (click)="switchJobsOrgs()">Show All Orgs</button>
+            </div>
+        </div> <!-- end #div-myInfo-header -->
+
+        <div id="div-showJobs-body">
+            <!-- temp test job for display -->
+            <div class="div-job row" (click)="showJobDetail('50_1337')">
+                <div class="col-sm-4"><p class="bold-text">Position</p><p>Full Stack Web Dev</p></div>
+                <div class="col-sm-6"><p class="bold-text">Description</p><p>You gotta be a l33t hax0rs</p></div>
+                <div class="col-sm-2"><p class="bold-text">Job Match</p><p>85%</p></div>
+            </div>
+            <div class="div-job row" (click)="showJobDetail('50_1337')">
+                <div class="col-sm-4"><p class="bold-text">Position</p><p>Hired Muscle</p></div>
+                <div class="col-sm-6"><p class="bold-text">Description</p><p>Fire off a few reverse curls</p></div>
+                <div class="col-sm-2"><p class="bold-text">Job Match</p><p>69%</p></div>
+            </div>
+
+            <!-- display each jeob -->
+            <div class="div-job row" ngFor="let job of allJobs" (click)="showJobDetail(job._id)" *ngIf="allJobs">
+                <!--{{job}}-->
+                <div class="col-sm-4"><p class="bold-text">Position</p><p>{{job.position}}</p></div>
+                <div class="col-sm-6"><p class="bold-text">Description</p><p>{{job.description}}</p></div>
+                <div class="col-sm-2 job-match"><p class="bold-text">Job Match</p><p>{{job.match}}%</p></div>
+            </div>
+
+        </div> <!-- end #div-showJobs-body -->
+    </div> <!-- end #div-showAllJobs -->
+
+
+
+
+
+
+
+
+    <!-- right-col: show allOrgs (optional) -->
+    <div class="col-sm-7" id="div-showAllOrgs" *ngIf="!showAllJobs">
+
+        <div id="div-showOrgs-header" class="row">
+            <div class="col-sm-8">
+                <h3 class="showOrgs-header">All Organizations</h3>
+            </div>
+
+
+            <!-- this button hides #div-showAllOrgs && shows #div-showAllJobs -->
+            <div class="col-sm-4">
+                <button class="btn btn-sm btn-outline-success" (click)="switchJobsOrgs()">Show All Jobs</button>
+            </div>
+
+        </div> <!-- end #div-myInfo-header -->
+
+
+
+        <div id="div-showOrgs-body">
+            <!-- temp test job for display -->
+            <div class="div-org row" (click)="showOrgDetail('1337')">
+                <div class="col-sm-4"><p class="bold-text">Org Name<p><p>Jabroni, Corp.</p></div>
+                <div class="col-sm-5"><p class="bold-text">Location</p><p>Los Angeles, CA</p></div>
+                <div class="col-sm-3"><p class="bold-text">Available Positions</p><p>3</p></div>
+            </div>
+
+            <div class="div-org row" (click)="showOrgDetail('69696969')">
+                <div class="col-sm-4"><p class="bold-text">Org Name</p><p>Yo Mama</p></div>
+                <div class="col-sm-5"><p class="bold-text">Location</p><p>All up in dem guts</p></div>
+                <div class="col-sm-3"><p class="bold-text">Available Positions</p><p>5+</p></div>
+            </div>
+
+            <!-- display each jeob -->
+            <div class="div-org row" *ngFor="let org of allOrgs" (click)="showOrgDetail(org._id)">
+                <!--{{org}}-->
+                <div class="col-sm-4"><p class="bold-text">Org Name</p><p>{{org.orgName}}</p></div>
+                <div class="col-sm-5"><p class="bold-text">Location</p><p>{{org.city}}, {{org.state}}</p></div>
+                <div class="col-sm-3"><p class="bold-text">Available Positions</p><p>{{org.jobs.length}}</p></div>
+            </div>
+
+        </div> <!-- end #div-showOrgs-body -->
+
+
+    </div> <!-- end #div-showAllOrgs -->
+
+
+
+
+</div> <!-- end row/container -->
+
