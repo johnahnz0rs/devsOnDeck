@@ -11,37 +11,57 @@
     padding: 10px;
 }
 
-.my-jobs-header
+#list-myJobs {
+    margin-bottom: 10px;
+}
+.one-of-my-jobs {
+    color: blue;
+    text-decoration: underline;
+}
+.my-jobs-header {
+    display: inline-block;
+}
 
-.div-myInfo {
+
+
+
+
+.toggle {
+    /* this class comprises the buttons that toggle between displaying all devs/orgs/jobs */
+    margin: 5px;
+}
+
+
+
+
+
+#div-showAllDevs {
+    border: 1px solid black;
+    border-radius: 9px;
+    margin: 10px;
+}
+#div-showDevs-header {
+    padding: 10px;
+}
+
+#list-allDevs {
+    /* this is the ul that contains li's of each dev */
     margin-bottom: 10px;
 }
 
-#bio {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 5px;
-    margin-right: 5px;
-}
-
-#bio-content {
-    margin: 5px;
-}
-
-.skills {
-    width: 30px;
+.each-dev-col {
     display: inline-block;
-    margin: 5px;
 }
 
-#my-skills {
-    border: 1px solid black;
-    border-radius: 10px;
-    margin-right: 5px;
+
+.lol {
+
 }
-.skill {
-    width: 30px;
-}
+
+
+
+
+
 
 #div-showAllJobs {
     border: 1px solid black;
@@ -60,6 +80,12 @@
     border: 1px solid black;
     border-radius: 9px;
 }
+
+
+
+
+
+
 
 #div-showAllOrgs {
     border: 1px solid black;
@@ -81,6 +107,12 @@
 
 
 
+
+
+
+.big-header-text {
+    font-size: x-large;
+}
 .bold-text {
     font-weight: bold;
 }
@@ -94,4 +126,19 @@
 .job-match {
     width: 100%;
     text-align: center;
+}
+.blue-text {
+    color: blue;
+}
+
+.table-borderless th,
+.table-borderless td,
+.table-borderless thead th,
+.table-borderless tbody + tbody {
+    border: 0;
+}
+
+.skill-icon {
+    width: 25px;
+    height: 25px;
 }

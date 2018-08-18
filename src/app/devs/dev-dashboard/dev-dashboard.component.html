@@ -1,7 +1,7 @@
 
 <div class="row">
 
-    <!-- left-col: show myInfo -->
+    <!-- left-col: #div-showMyInfo -->
     <div class="col col-sm-4" id="div-showMyInfo">
 
 
@@ -16,10 +16,8 @@
                 <button class="btn btn-sm btn-outline-primary" (click)="popupEditMyInfo()">Edit My Info</button>
             </div>
 
-        </div> <!-- end #div-myInfo-header -->
-
-
-
+        </div>
+        <!-- end #div-myInfo-header -->
 
 
 
@@ -66,7 +64,10 @@
         </div>
 
 
-    </div> <!-- end #div-showMyInfo -->
+    </div>
+    <!-- end left-col: #div-showMyInfo -->
+    <!-- end left-col: #div-showMyInfo -->
+    <!-- end left-col: #div-showMyInfo -->
 
 
 
@@ -75,9 +76,14 @@
 
 
 
-    <!-- right-col: show allJobs (default) -->
+    <!-- right-col: #div-showAllJobs (default) (option 1 of 3) -->
+    <!-- right-col: #div-showAllJobs (default) (option 1 of 3) -->
+    <!-- right-col: #div-showAllJobs (default) (option 1 of 3) -->
+
     <div class="col col-sm-7" id="div-showAllJobs" *ngIf="showAllJobs">
 
+
+        <!-- #div-showJobs-header -->
         <div id="div-showJobs-header" class="row">
             <div class="col-sm-8">
                 <h3 class="showJobs-header">All Jobs</h3>
@@ -86,8 +92,12 @@
                 <!-- this button hides #div-showAllJobs && shows #div-showAllOrgs -->
                 <button class="btn btn-sm btn-outline-success" (click)="switchJobsOrgs()">Show All Orgs</button>
             </div>
-        </div> <!-- end #div-myInfo-header -->
+        </div>
+        <!-- end #div-showJobs-header -->
 
+
+
+        <!-- #div-showJobs-body -->
         <div id="div-showJobs-body">
             <!-- temp test job for display -->
             <div class="div-job row" (click)="showJobDetail('50_1337')">
@@ -109,8 +119,13 @@
                 <div class="col-sm-2 job-match"><p class="bold-text">Job Match</p><p>{{job.match}}%</p></div>
             </div>
 
-        </div> <!-- end #div-showJobs-body -->
-    </div> <!-- end #div-showAllJobs -->
+        </div>
+        <!-- end #div-showJobs-body -->
+
+    </div>
+    <!-- end right-col: #div-showAllJobs (option 1 of 3) -->
+    <!-- end right-col: #div-showAllJobs (option 1 of 3) -->
+    <!-- end right-col: #div-showAllJobs (option 1 of 3) -->
 
 
 
@@ -119,7 +134,7 @@
 
 
 
-    <!-- right-col: show allOrgs (optional) -->
+    <!-- right-col: showAllOrgs (option 2 of 3) -->
     <div class="col-sm-7" id="div-showAllOrgs" *ngIf="!showAllJobs">
 
         <div id="div-showOrgs-header" class="row">

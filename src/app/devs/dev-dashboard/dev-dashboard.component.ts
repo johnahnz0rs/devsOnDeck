@@ -1,13 +1,10 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
 import { Dev } from '../../dev';
-import { Org } from "../../org";
+import { Org } from '../../org';
+import { Job } from '../../job';
 import { Router } from '@angular/router';
-import { Observable } from "rxjs";
 
-// import { ActivatedRoute } from '@angular/router';
-//
-// import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dev-dashboard',
@@ -16,11 +13,11 @@ import { Observable } from "rxjs";
 })
 export class DevDashboardComponent implements OnInit {
   myInfo: Dev = this.appService.signedIn;
-  allJobs: Array<any> = this.appService.allJobs;
-  allOrgs: Array<any> = this.appService.allOrgs;
+  allJobs: Array<Job> = this.appService.allJobs;
+  allOrgs: Array<Org> = this.appService.allOrgs;
   showAllJobs = true;
 
-  constructor(private appService: AppService, private router: Router, private cd: ChangeDetectorRef) {
+  constructor(private appService: AppService, private router: Router) {
 
   }
 
@@ -34,24 +31,10 @@ export class DevDashboardComponent implements OnInit {
       this.router.navigateByUrl('/');
     }
 
-    // show AllJobs is default view (can be toggled to show AllOrgs by using switchJobsOrgs() below);
+    // show AllJobs is default view
+    // can be toggled to show AllOrgs by using switchJobsOrgs() below;
     this.showAllJobs = true;
 
-    // // get allJobs to display in #divAllJobs
-    // this.appService.getAllJobs().subscribe(jobs => {
-    //   this.allJobs = jobs;
-    //   console.log('***** retrieved all jobs *****', jobs);
-    // });
-    // // console.log('***** this is all Jobs *****', this.allJobs);
-
-    // getAllOrgs to display in #divAllOrgs
-    // this.appService.getAllOrgs().subscribe(orgs => {
-    //   console.log('***** dev-dashboard.OnInit => retrieved all orgs *****', orgs);
-    //   this.allOrgs = orgs;
-    //   console.log('***** dev-dashboard.OnInit => this is allOrgs *****', this.allOrgs);
-    // });
-
-    console.log('***** dev-dashboard.OnInit => this is allOrgs *****', this.allOrgs);
   }
 
 
@@ -70,4 +53,5 @@ export class DevDashboardComponent implements OnInit {
   showOrgDetail(id) {
     console.log('***** you clicked on an org with id *****', id);
   }
+
 }

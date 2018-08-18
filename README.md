@@ -12,7 +12,18 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[]8/16/18 - 
+[] 8/18/18 - 
+[] build add-new-job form/pop-up
+[x]
+[x]
+[x] 8/17/18 -
+[x] finish customizing org-dashboard layout
+[] -- build add-new-job form/popup
+[] add dummy data to load if db is empty
+[] 
+[x]
+[x]
+[x] 8/16/18 - 
 [x] **** bug in dev dashboard.loadAllOrgs -- i have one org in db but it's not showing (re: observable)
 [x] -- copy/paste the dev-dashboard to org-dashboard
 [] -- -- edit/build the org-dashboard
@@ -21,7 +32,7 @@ CURRENTLY WORKING ON:
 [] make fake data to be loaded if no db docs
 [x]
 [x]
-[x]8/15/18 - 
+[x] 8/15/18 - 
 [x] **** i'm getting a bug in dev-dashboard where the dev's details are not being interpolated
 [x] build org-registration
 [x] -- check that org-login works
@@ -30,18 +41,18 @@ CURRENTLY WORKING ON:
 >[] make a front-end error message if the user entered an incorrect pw
 [x]
 [x]
-[x]8/14/18 - 
+[x] 8/14/18 - 
 [x] fixed login (pw match redirects to dashboard (devs only for now))
 [x] fix dev-registration (new dev registration checks for extent account before creating)
 >[] i'm getting a bug in dev-dashboard where the dev's details are not being interpolated
 [x]
 [x]
-[]8/13/18 - 
+[x] 8/13/18 - 
 [] build org dashboard
 [] build org/add job
 [x]
 [x]
-[x]8/12/18 - 
+[x] 8/12/18 - 
 [x] build dev dashboard - the default template is complete; bugs: myInfo details not displaying correctly on template
 [x] -- dev showAllJobs 
 [x] -- dev showAllOrgs
@@ -50,20 +61,20 @@ CURRENTLY WORKING ON:
 >[] -- dev seeOneOrg popup
 [x]
 [x]
-[x]8/4/18 - 
+[x] 8/4/18 - 
 [x] started building dev dashboard; then i realized the app was letting me go ahead to the dev's dashboard even if my password was incorrect. started looking into that. 
 [x] i realized i didn't need to go through the trouble of editing the existing users' unencrypted pw's to bcrypted pw's; instead i could just delete then create them again with bcrypted pw's. so i did that.
 [] build dev dashboard (see templates section on main to-do list below)
 [x]
 [x]
-[]8/2/18 - 
+[x] 8/2/18 - 
 [x] create login with brypt password backend
 [x] update current controller.createOneDev to have it encrypt the user's pw before creating a new dev document.
 [x] updated dev registration form so that it bcrypts the passwords
 [x] update the login form so that it compares bcrypt passwords.
 [x]
 [x]
-[x]7/30/18 - 
+[x] 7/30/18 - 
 >[x] **user edit backend**
 >[] create user edit backend
 >[] hook up dev user edit end-to-end
@@ -82,7 +93,7 @@ CURRENTLY WORKING ON:
 [x] create dev user edit page on frontend (on dev dashboard)
 [x]
 [x]
-[x]7/29/18 - 
+[x] 7/29/18 - 
 >[] why is login function not working? the backend is unable to find the route. why not?
 >[] create error msg on dev-suli that alerts user if email is already registered
 [x] get end-to-end new dev user registration working
@@ -95,7 +106,7 @@ CURRENTLY WORKING ON:
 >[] edit nwailes and jahn passwords
 [x]
 [x]
-[x]7/28/18 - create end-to-end dev signup process (create mongo document and return dev object)
+[x] 7/28/18 - create end-to-end dev signup process (create mongo document and return dev object)
 [x] create outline of server/controllers/controller.js
 [x] flesh out/write the mongo commands for a few functions in controller
 [x] create outline of server/routes/routes.js
@@ -103,7 +114,7 @@ CURRENTLY WORKING ON:
 [x] why is my create new dev not working even though i can create new dev in mongo shell?
 [x]
 [x]
-[x]7/27/18 -
+[x] 7/27/18 -
 [x] quick push through pages 2 and 3 of the dev signup form
 [x] fix the progress bar -- i just removed the progress bar
 [x] fix the register header
@@ -112,11 +123,11 @@ CURRENTLY WORKING ON:
 [x] start the back end server.js and mongoose/mongo
 [x]
 [x]
-[x]7/26/18 -
+[x] 7/26/18 -
 [x] why wont confirm password validation error go away?
 [x] got icons for all languages, frameworks, and libraries
 [x]
-[x]7/25/18 - get the client side devsuli form to be able to console.log form data. Also: add hidden divs to finish filling out the languages/frameworks sections of Dev object.
+[x] 7/25/18 - get the client side devsuli form to be able to console.log form data. Also: add hidden divs to finish filling out the languages/frameworks sections of Dev object.
 [x]Next: do the same for client side orgsuli form (sans languages/frameworks).
 
 
