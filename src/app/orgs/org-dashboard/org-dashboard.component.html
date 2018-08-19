@@ -10,13 +10,13 @@
         <!-- header -->
         <div id="div-myJobs-header" class="row">
             <div class="col-sm-8">
-                <span class="big-header-text bold-text">My Jobs</span>
+                <span class="big-header-text bold-text">Positions to Fill</span>
                 <br><span>(Click on a job to view/edit)</span>
             </div>
 
             <!-- a button that opens a pop-up: editMyJobs modal -->
             <div class="col-sm-4">
-                <button class="btn btn-sm btn-primary" (click)="addNewJob()">Add New Job</button>
+                <button class="btn btn-sm btn-primary" (click)="openAddNewJob()">List a New Position</button>
             </div>
 
         </div>
@@ -232,8 +232,70 @@
 <!-- end row/container -->
 
 
-<div class="row" id="add-job-form">
-    <form>
 
+
+
+
+<!-- #add-job-form -->
+<!-- #add-job-form -->
+<!-- #add-job-form -->
+
+<div class="row" id="add-job-form">
+    <h3>Add a Position</h3>
+
+
+    <form #newJobForm="ngForm">
+        <p>{{ newJobForm.value | json }}</p>
+
+
+        <!-- row 0: position name -->
+        <div class="form-group">
+            <label for="positionName">
+                <span class="bold-text">Name </span>
+                <span *ngIf="!positionName.valid" class="validation"> *Required</span>
+            </label>
+            <input class="form-control" id="positionName" name="positionName" type="text" required minlength="4" [(ngModel)]="newJob.position" #positionName="ngModel">
+        </div>
+
+        <!-- row 1: description -->
+        <div class="form-group">
+            <label for="positionDescription">
+                <span class="bold-text">Description: </span>
+                <span *ngIf="!positionDescription.valid" class="validation"> *Required</span>
+            </label>
+            <input class="form-control" id="positionDescription" name="positionDescription" type="textarea" required [(ngModel)]="newJob.description" #positionDescription="ngModel">
+        </div>
+
+
+        <!-- row 2: required skills -->
+
+        <!-- my selected skills -->
+        <div class="row" id="my-required-skills">
+            <p>My selected skillz</p>
+            <figure *ngFor="let skill of newJob.skills" class="col-sm-2">
+                <img class="figure-img" src="assets/img/{{skill}}.png">
+            </figure>
+        </div>
+
+
+
+        <div class="form-group">
+
+            <!-- load each image with caption -->
+            <figure *ngFor="let skill of allSkills" class="figure col-sm-3" (click)="addRequiredSkill(skill)">
+                <img class="figure-img" src="assets/img/{{skill}}.png">
+                <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
+                <figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>
+            </figure>
+        </div>
+
+
+
+
+        <button class="btn btn-lg btn-success float-right" (click)="createNewJob()">Add Position</button>
+        <button (click)="showMeSkills()">Show me skills</button>
     </form>
 </div>
+<!-- end #add-job-form -->
+<!-- end #add-job-form -->
+<!-- end #add-job-form -->

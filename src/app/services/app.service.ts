@@ -45,9 +45,9 @@ export class AppService {
     return this.http.post<any>(this.baseDev, dev);
   }
 
-  createOneJob(job) {
+  createOneJob(job): Observable<any> {
     // code
-    console.log('***** service.createOneBob(job) *****', job);
+    console.log('***** service.createOneJob(job) *****', job);
     return this.http.post<any>(this.baseJob, job);
   }
 

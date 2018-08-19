@@ -133,8 +133,15 @@ module.exports = {
   },
 
   createOneJob: function(request, response) {
-    // code
     console.log("***** controller.createOneJob() *****");
+    Job.create(request.body, function(error) {
+      if (error) {
+        console.log('***** error in creating new job doc *****', error);
+        response.json(error);
+      }
+      console.log('***** new job doc created successfully *****');
+      response.json();
+    });
   },
 
   createOneOrg: function(request, response) {

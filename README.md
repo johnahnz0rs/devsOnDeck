@@ -12,8 +12,15 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[] 8/18/18 - 
-[] build add-new-job form/pop-up
+[] 8/19/18 - 
+[] ****** bug - new job doc is not being created; the back-end controller is not console.logging when controller.createOneJob() starts
+[] learn how to bootstrap-popup/modal
+>[] show and hide different content on mobile/desktop devices (re: org-dashboard.showAllDevs.dev.skills) (this is a simple css trick; check your browser bookmarks)
+[x]
+[x]
+[x] 8/18/18 - 
+[x] build add-new-job form
+>[] show and hide different content on mobile/desktop devices (re: org-dashboard.showAllDevs.dev.skills) (this is a simple css trick; check your browser bookmarks)
 [x]
 [x]
 [x] 8/17/18 -
@@ -33,7 +40,7 @@ CURRENTLY WORKING ON:
 [x]
 [x]
 [x] 8/15/18 - 
-[x] **** i'm getting a bug in dev-dashboard where the dev's details are not being interpolated
+[x] **** bug - i'm getting a bug in dev-dashboard where the dev's details are not being interpolated
 [x] build org-registration
 [x] -- check that org-login works
 >[] **** bug in dev dashboard.loadAllOrgs -- i have one org in db but it's not showing (re: observable)

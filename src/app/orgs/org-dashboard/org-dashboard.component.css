@@ -142,3 +142,25 @@
     width: 25px;
     height: 25px;
 }
+
+
+.validation {
+    color: red;
+}
+
+
+img {
+    /*height: 80px;*/
+    margin-top: 15px;
+    height: 50px;
+    width: 50px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.figure-img:hover {
+    cursor: pointer;
+}
+
+#my-required-skills {
+    border: 1px solid black;
+}
