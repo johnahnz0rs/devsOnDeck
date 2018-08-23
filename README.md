@@ -13,6 +13,7 @@ johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
 []8/23/18 -
+[x] edit orgDashboard.myPositions --> created addNewPosition form (front end only)
 [] finish building devDashboard
 [] ****** bug - new job doc is not being created; the back-end controller is not console.logging when controller.createOneJob() starts
 [] learn how to bootstrap-popup/modal

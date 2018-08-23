@@ -21,21 +21,34 @@ export class OrgDashboardComponent implements OnInit {
   showAllOrgs = false;
   showAllDevs = true;
 
-  newJob: Job = new Job();
+  addJobForm = false;
+  newJob: Job;
 
-  allSkills = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML', 'MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
+  languages = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML'];
+
+  frameworks = ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
 
   constructor(private appService: AppService, private http: HttpClient, private router: Router) {}
 
   ngOnInit() {
-    console.log('***** org-dashboard.OnInit => allJobs *****', this.allJobs);
-    console.log('***** org-dashboard.OnInit => allOrgs *****', this.allOrgs);
-    console.log('***** org-dashboard.OnInit => allDevs *****', this.allDevs);
-
     if (!this.appService.signedIn) {
       this.router.navigateByUrl('/');
     }
+  }
 
+  toggleAddJobForm() {
+    console.log('***** you clicked button: toggleAddJobForm() *****');
+    this.newJob = new Job();
+    this.addJobForm = !this.addJobForm;
+    console.log('***** this is addJobForm.value *****', this.addJobForm);
+  }
+
+
+  // default = showMyJobs
+  showMyJob(id) {
+    // this is the button function that displays one of MY jobs.
+    console.log('***** org-dashboard => you clicked showMyJob(id); this should open a popup that lets me: edit my job info, &&  see a' +
+      ' list of devs with match percentages *****', id);
   }
 
 
@@ -49,10 +62,6 @@ export class OrgDashboardComponent implements OnInit {
   // addNewJob Form
   // addNewJob Form
   // addNewJob Form
-
-  openAddNewJob() {
-    console.log('***** org-dashboard => you clicked addNewJob(); this should open a popup *****');
-  }
 
   addRequiredSkill(skill) {
     console.log('***** org-dashboard.addRequiredSkill => adding this skill ******', skill);
@@ -71,14 +80,16 @@ export class OrgDashboardComponent implements OnInit {
   }
 
 
+  submitNewJob() {
+    // update this function
+    console.log('***** you clicked button: addThisPosition, with this data *****', this.newJob);
 
-  createNewJob() {
-    if (!this.newJob.orgId) {
-      this.newJob.orgId = this.myInfo._id;
-    }
-    console.log('***** org-dashboard ==> lol k i will send a post request to create a new job doc *****', this.newJob);
-
-    this.appService.createOneJob(this.newJob);
+    // if (!this.newJob.orgId) {
+    //   this.newJob.orgId = this.myInfo._id;
+    // }
+    // console.log('***** org-dashboard ==> lol k i will send a post request to create a new job doc *****', this.newJob);
+    //
+    // this.appService.createOneJob(this.newJob);
   }
 
   // end addNewJob Form
@@ -96,9 +107,7 @@ export class OrgDashboardComponent implements OnInit {
 
 
 
-  showMyJob(id) {
-    console.log('***** org-dashboard => you clicked showMyJob(id); this should open a popup *****', id);
-  }
+
 
 
   showOrgs() {

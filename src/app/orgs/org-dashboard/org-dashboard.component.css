@@ -1,4 +1,5 @@
 
+/* left-col: showMyJobs (default) */
 
 #div-showMyJobs {
     border: 1px solid black;
@@ -10,17 +11,62 @@
 #div-myJobs-header {
     padding: 10px;
 }
+#button-toggle-addJobForm {
+    width: 100%;
+}
 
-#list-myJobs {
-    margin-bottom: 10px;
+#div-myJobsList {
+    /* this is the container that will hold a list of all my jeobs */
 }
 .one-of-my-jobs {
     color: blue;
     text-decoration: underline;
 }
-.my-jobs-header {
-    display: inline-block;
+
+/* end left-col: showMyJobs (default) */
+
+
+
+
+/* left-col: addJobForm (option 2) */
+#div-addJobForm {
+    border: 1px solid black;
+    border-radius: 9px;
+    margin: 10px;
+    padding: 10px;
 }
+#div-addJobForm-header {
+    padding: 10px;
+}
+#btn-toggle-cancelAddJob {
+    float: right;
+    margin: 10px;
+}
+#div-the-addJobForm {
+    border: 1px solid black;
+    border-radius: 9px;
+    margin: 10px;
+    margin-left: 20px;
+    padding: 10px;
+}
+.skill {
+    width: 30px;
+    height: 30px;
+}
+#button-cancel {
+    float: right;
+    margin: 10px;
+}
+#button-submitNewJob {
+    float: right;
+    margin: 10px;
+}
+#required-skills {
+    border: 1px solid black;
+    border-radius: 9px;
+    padding: 5px;
+}
+/* end left-col: addJobForm (option 2) */
 
 
 
@@ -109,7 +155,7 @@
 
 
 
-
+/* misc style */
 .big-header-text {
     font-size: x-large;
 }
@@ -164,3 +210,4 @@ img {
 #my-required-skills {
     border: 1px solid black;
 }
+/* end misc style */

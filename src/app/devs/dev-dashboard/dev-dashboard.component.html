@@ -83,7 +83,11 @@
                 <button id="btn-toggle-cancelEdit" class="btn btn-sm btn-danger" (click)="toggleEditForm()">x</button>
             </div>
         </div>
+        <!-- end header -->
 
+
+
+        <!-- the editMyInfo form -->
         <div id="div-the-editForm">
             <p>updateDevForm.value|json {{ updateDevForm.value | json}}</p>
 
@@ -247,21 +251,16 @@
                 </div>
 
 
-
-
-
-
-
-
-
-
                 <!-- change pw -->
+                <!-- code here -->
+
 
 
                 <button class="btn btn-sm btn-danger" id="btn-cancelEdit" (click)="toggleEditForm()">Cancel</button>
                 <button class="btn btn-sm btn-success" id="btn-submitUpdates" (click)="submitUpdatesToDev()">Update My Info</button>
             </form>
         </div>
+        <!-- end the editMyInfo form -->
 
     </div>
     <!-- end left-col: #div-editForm (option2)-->
