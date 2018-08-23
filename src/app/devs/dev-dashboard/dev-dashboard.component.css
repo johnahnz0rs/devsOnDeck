@@ -1,5 +1,5 @@
 
-
+/* left-col: showMyInfo (default) */
 #div-showMyInfo {
     border: 1px solid black;
     border-radius: 9px;
@@ -9,6 +9,21 @@
 
 #div-myInfo-header {
     padding: 10px;
+}
+
+#btn-toggle-editForm {
+    width: 100%;
+}
+#btn-toggle-cancelEdit {
+    float: right;
+}
+
+
+#div-myInfoDetail {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 9px;
 }
 
 .div-myInfo {
@@ -32,15 +47,63 @@
     margin: 5px;
 }
 
-#my-skills {
+.my-skills {
     border: 1px solid black;
     border-radius: 10px;
     margin-right: 5px;
 }
 .skill {
     width: 30px;
+    height: 30px;
 }
+/* end left-col: showMyInfo (default) */
 
+
+
+
+
+/* left-col: showEditForm (option 2) */
+
+#div-editForm {
+    border: 1px solid black;
+    border-radius: 9px;
+    margin: 10px;
+    padding: 10px;
+}
+#div-editForm-header {
+    padding: 10px;
+}
+#div-the-editForm {
+    border: 1px solid black;
+    border-radius: 9px;
+    margin: 10px;
+    margin-left: 20px;
+    padding: 10px;
+}
+#btn-cancelEdit {
+    float: right;
+    margin: 10px;
+}
+#btn-submitUpdates {
+    float: right;
+    margin: 10px;
+}
+/* end left-col: showEditForm (option 2) */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* right-col: showAllJobs (default) */
 #div-showAllJobs {
     border: 1px solid black;
     border-radius: 9px;
@@ -58,7 +121,12 @@
     border: 1px solid black;
     border-radius: 9px;
 }
+/* end right-col: showAllJobs (default) */
 
+
+
+
+/* right-col: showAllOrgs (option 2) */
 #div-showAllOrgs {
     border: 1px solid black;
     border-radius: 9px;
@@ -76,14 +144,20 @@
     border: 1px solid black;
     border-radius: 9px;
 }
+/* end right-col: showAllOrgs (option 2) */
 
 
 
+
+/* misc style */
 .bold-text {
     font-weight: bold;
 }
 .center-text {
     text-align: center;
+}
+.red-text {
+    color: red;
 }
 .position-count {
     width: 100%;
@@ -93,3 +167,4 @@
     width: 100%;
     text-align: center;
 }
+/* misc style */

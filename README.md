@@ -12,9 +12,17 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[] 8/19/18 - 
+[]8/23/18 -
+[] finish building devDashboard
 [] ****** bug - new job doc is not being created; the back-end controller is not console.logging when controller.createOneJob() starts
 [] learn how to bootstrap-popup/modal
+[] show and hide different content on mobile/desktop devices (re: org-dashboard.showAllDevs.dev.skills) (this is a simple css trick; check your browser bookmarks)
+[x]
+[x]
+[x] 8/22/18 - 
+[x] edit devDashboard
+>[] ****** bug - new job doc is not being created; the back-end controller is not console.logging when controller.createOneJob() starts
+>[] learn how to bootstrap-popup/modal
 >[] show and hide different content on mobile/desktop devices (re: org-dashboard.showAllDevs.dev.skills) (this is a simple css trick; check your browser bookmarks)
 [x]
 [x]

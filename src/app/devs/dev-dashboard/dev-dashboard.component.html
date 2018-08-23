@@ -1,78 +1,284 @@
 
 <div class="row">
 
-    <!-- left-col: #div-showMyInfo -->
-    <div class="col col-sm-4" id="div-showMyInfo">
+
+
+    <!-- left-col: #div-showMyInfo (default)-->
+    <!-- left-col: #div-showMyInfo (default)-->
+    <!-- left-col: #div-showMyInfo (default)-->
+    <div class="col col-sm-4" id="div-showMyInfo" *ngIf="!showEditForm">
 
 
         <!-- header -->
         <div id="div-myInfo-header" class="row">
-            <div class="col-sm-8">
-                <h3 class="my-info-header">My Info</h3>
+            <div class="col-sm-12">
+                <button id="btn-toggle-editForm" class="btn btn-lg btn-primary" (click)="toggleEditForm()"><span class="center-text">Edit My Info</span></button>
             </div>
-
-            <!-- a button that opens a pop-up: editMyInfo modal -->
-            <div class="col-sm-4">
-                <button class="btn btn-sm btn-outline-primary" (click)="popupEditMyInfo()">Edit My Info</button>
-            </div>
-
         </div>
         <!-- end #div-myInfo-header -->
 
 
 
         <!-- display my info -->
+        <div id="div-myInfoDetails">
 
-        <!-- row 1: name -->
-        <div class="row div-myInfo" *ngIf="myInfo">
-            <div class="col-sm-4 bold-text"><span class="bold-text">Name: </span></div>
-            <div class="col-sm-8"><span>{{myInfo.fname}}</span>
-                <!--<span>{{ myInfo?.fname }} {{ myInfo?.lname }}</span>-->
+            <!-- row 1: name -->
+            <div class="row div-myInfo" *ngIf="myInfo">
+                <div class="col-sm-4 bold-text"><span class="bold-text">Name: </span></div>
+                <div class="col-sm-8"><span>{{myInfo.fname}}</span>
+                    <!--<span>{{ myInfo?.fname }} {{ myInfo?.lname }}</span>-->
+                </div>
             </div>
-        </div>
 
-
-        <!-- row 2: email -->
-        <div class="row div-myInfo" *ngIf="myInfo">
-            <div class="col-sm-4 bold-text"><span class="bold-text">Email: </span></div>
-            <div class="col-sm-8"><span>{{ myInfo.email }}</span></div>
-        </div>
-
-
-        <!-- row 3: address -->
-        <div class="row div-myInfo" *ngIf="myInfo">
-            <div class="col-sm-4 bold-text"><span class="bold-text">Address: </span></div>
-            <div class="col-sm-8"><span>{{myInfo.address}} <br>{{myInfo.city}}, {{myInfo.state}} {{myInfo.zip}}</span></div>
-        </div>
-
-
-        <!-- row 4: bio -->
-        <div class="row div-myInfo" *ngIf="myInfo">
-            <div class="col-sm-4 bold-text"><span class="bold-text">Bio: </span></div>
-            <div class="col-sm-7" id="bio"><span id="bio-content">{{myInfo.bio}}</span></div>
-        </div>
-
-
-        <!-- row 5: skills -->
-        <div class="row div-myInfo" *ngIf="myInfo">
-            <div class="col-sm-4 bold-text"><span class="bold-text">Skills: </span></div>
-            <div class="col-sm-7" id="my-skills">
-                <figure *ngFor="let skill of myInfo.skills" class="skills">
-                    <img class="figure-img skill" src="assets/img/{{skill}}.png">
-                </figure>
+            <!-- row 2: email -->
+            <div class="row div-myInfo" *ngIf="myInfo">
+                <div class="col-sm-4 bold-text"><span class="bold-text">Email: </span></div>
+                <div class="col-sm-8"><span>{{ myInfo.email }}</span></div>
             </div>
+
+            <!-- row 3: address -->
+            <div class="row div-myInfo" *ngIf="myInfo">
+                <div class="col-sm-4 bold-text"><span class="bold-text">Address: </span><span class="red-text">*only city and state are displayed</span></div>
+                <div class="col-sm-8"><span>{{myInfo.address}} <br>{{myInfo.city}}, {{myInfo.state}} {{myInfo.zip}}</span></div>
+            </div>
+
+            <!-- row 4: bio -->
+            <div class="row div-myInfo" *ngIf="myInfo">
+                <div class="col-sm-4 bold-text"><span class="bold-text">Bio: </span></div>
+                <div class="col-sm-7" id="bio"><span id="bio-content">{{myInfo.bio}}</span></div>
+            </div>
+
+            <!-- row 5: skills -->
+            <div class="row div-myInfo" *ngIf="myInfo">
+                <div class="col-sm-4 bold-text"><span class="bold-text">Skills: </span></div>
+                <div class="col-sm-7 my-skills">
+                    <figure *ngFor="let skill of myInfo.skills" class="skills">
+                        <img class="figure-img skill" src="assets/img/{{skill}}.png">
+                    </figure>
+                </div>
+            </div>
+
         </div>
+        <!-- end #div-myInfoDetails -->
 
 
     </div>
-    <!-- end left-col: #div-showMyInfo -->
-    <!-- end left-col: #div-showMyInfo -->
-    <!-- end left-col: #div-showMyInfo -->
+    <!-- end left-col: #div-showMyInfo (default) -->
+    <!-- end left-col: #div-showMyInfo (default) -->
+    <!-- end left-col: #div-showMyInfo (default) -->
 
 
 
 
 
+
+    <!-- left-col: #div-editForm (option2)-->
+    <!-- left-col: #div-editForm (option2)-->
+    <!-- left-col: #div-editForm (option2)-->
+    <div class="col col-sm-4" id="div-editForm" *ngIf="showEditForm">
+
+        <!-- header -->
+        <div id="div-editForm-header" class="row">
+            <div class="col-sm-12">
+                <button id="btn-toggle-cancelEdit" class="btn btn-sm btn-danger" (click)="toggleEditForm()">x</button>
+            </div>
+        </div>
+
+        <div id="div-the-editForm">
+            <p>updateDevForm.value|json {{ updateDevForm.value | json}}</p>
+
+            <form #updateDevForm="ngForm">
+
+                <!-- fname -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="fname">
+                            <span class="bold-text">First Name:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="fname" name="fname" type="text" placeholder="{{myInfo.fname}}" [(ngModel)]="updateDev.fname">
+                    </div>
+                </div>
+
+                <!-- lname -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="lname">
+                            <span class="bold-text">Last Name:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="lname" name="lname" type="text" placeholder="{{myInfo.lname}}" [(ngModel)]="updateDev.lname">
+                    </div>
+                </div>
+
+                <!-- email -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="email">
+                            <span class="bold-text">Email:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="email" name="email" type="text" placeholder="{{myInfo.email}}" [(ngModel)]="updateDev.email">
+                    </div>
+                </div>
+
+                <!-- address -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="address">
+                            <span class="bold-text">Address:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="address" name="address" type="text" placeholder="{{myInfo.address}}" [(ngModel)]="updateDev.address">
+                    </div>
+                </div>
+
+                <!-- city -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="city">
+                            <span class="bold-text">City:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="city" name="city" type="text" placeholder="{{myInfo.city}}" [(ngModel)]="updateDev.city">
+                    </div>
+                </div>
+
+                <!-- state -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="state">
+                            <span class="bold-text">State:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select class="form-control" id="state" name="state" [(ngModel)]="updateDev.state">
+                            <option *ngFor="let state of states">
+                                {{ state }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- zip -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="zip">
+                            <span class="bold-text">Zip:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="zip" name="zip" type="number" placeholder="{{myInfo.zip}}" [(ngModel)]="updateDev.zip">
+                    </div>
+                </div>
+
+                <!-- bio -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="bio-update">
+                            <span class="bold-text">Bio:</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" id="bio-update" name="bio-update" placeholder="{{myInfo.bio}}" [(ngModel)]="updateDev.bio"></textarea>
+                    </div>
+                </div>
+
+                <!-- my skills -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="skills"><span class="bold-text">My Skills:</span></label>
+                    </div>
+                    <div class="col-sm-7 my-skills" id="skills">
+                        <figure *ngFor="let language of updateDev.languages" class="figure">
+                            <img class="figure-img skill" src="assets/img/{{language}}.png">
+                            <figcaption *ngIf="language != 'Csharp'" class="figure-caption">
+                                {{language}}
+                            </figcaption>
+                            <figcaption *ngIf="language == 'Csharp'" class="figure-caption">
+                                C#
+                            </figcaption>
+                        </figure>
+                        <figure *ngFor="let framework of updateDev.frameworks" class="figure">
+                            <img class="figure-img skill" src="assets/img/{{framework}}.png">
+                            <figcaption class="figure-caption">
+                                {{framework}}
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- languages -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="edit-language"><span class="bold-text">Edit Languages:</span></label>
+                    </div>
+                    <div class="col-sm-7 my-skills" id="edit-language">
+                        <figure *ngFor="let language of languages" class="figure" (click)="addLanguageToUpdateDev(language)">
+                            <img class="figure-img skill" src="assets/img/{{language}}.png">
+                            <figcaption *ngIf="language != 'Csharp'" class="figure-caption">
+                                {{language}}
+                            </figcaption>
+                            <figcaption *ngIf="language == 'Csharp'" class="figure-caption">
+                                    C#
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- frameworks -->
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <label for="edit-framework"><span class="bold-text">Add Skills:</span></label>
+                    </div>
+                    <div class="col-sm-7 my-skills" id="edit-framework">
+                        <figure *ngFor="let framework of frameworks" class="figure" (click)="addFrameworkToUpdateDev(framework)">
+                            <img class="figure-img skill" src="assets/img/{{framework}}.png">
+                            <figcaption class="figure-caption">
+                                {{framework}}
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <!-- change pw -->
+
+
+                <button class="btn btn-sm btn-danger" id="btn-cancelEdit" (click)="toggleEditForm()">Cancel</button>
+                <button class="btn btn-sm btn-success" id="btn-submitUpdates" (click)="submitUpdatesToDev()">Update My Info</button>
+            </form>
+        </div>
+
+    </div>
+    <!-- end left-col: #div-editForm (option2)-->
+    <!-- end left-col: #div-editForm (option2)-->
+    <!-- end left-col: #div-editForm (option2)-->
+
+
+
+
+
+    <!-- /\ /\ left-col /\ /\ -->
+    <!-- ***************************************************** -->
+    <!-- ***************************************************** -->
+    <!-- ***************************************************** -->
+    <!-- ***************************************************** -->
+    <!-- ***************************************************** -->
+    <!-- \/ \/ right-col \/ \/ -->
 
 
 
@@ -112,11 +318,22 @@
             </div>
 
             <!-- display each jeob -->
-            <div class="div-job row" ngFor="let job of allJobs" (click)="showJobDetail(job._id)" *ngIf="allJobs">
-                <!--{{job}}-->
-                <div class="col-sm-4"><p class="bold-text">Position</p><p>{{job.position}}</p></div>
-                <div class="col-sm-6"><p class="bold-text">Description</p><p>{{job.description}}</p></div>
-                <div class="col-sm-2 job-match"><p class="bold-text">Job Match</p><p>{{job.match}}%</p></div>
+            <div class="div-jobs-list row" *ngIf="allJobs">
+                <p>lol</p>
+                <div class="div-job row" *ngFor="let job of allJobs" (click)="showJobDetail(job._id)">
+                    <div class="col-sm-4">
+                        <p class="bold-text">Position</p>
+                        <p>{{job.position}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="bold-text">Description</p>
+                        <p>{{job.description}}</p>
+                    </div>
+                    <div class="col-sm-2 job-match">
+                        <p class="bold-text">Job Match</p>
+                        <p>{{job.match}}%</p>
+                    </div>
+                </div>
             </div>
 
         </div>
