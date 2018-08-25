@@ -13,18 +13,19 @@ import { Router } from '@angular/router';
 })
 export class DevDashboardComponent implements OnInit {
 
+  myInfo: Dev = this.appService.signedIn;
+  allJobs: Array<Job> = this.appService.allJobs;
+  allOrgs: Array<Org> = this.appService.allOrgs;
+
+  showAllJobs = true;
+  showEditForm = false;
+  updateDev: Dev;
+
   states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
 
   languages = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML'];
 
   frameworks = ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
-
-  myInfo: Dev = this.appService.signedIn;
-  allJobs: Array<Job> = this.appService.allJobs;
-  allOrgs: Array<Org> = this.appService.allOrgs;
-  showAllJobs = true;
-  showEditForm = false;
-  updateDev: Dev;
 
 
   constructor(private appService: AppService, private router: Router) {

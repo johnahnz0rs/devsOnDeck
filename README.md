@@ -12,9 +12,17 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[]8/23/18 -
+[x] 8/24/18 - 
+[x] shore up dev-dash and org-dash templates (sans modals)
+[] ***** bug - modal not working. did i install jquery correctly?
+[] how to bootstrap modals
+[] org-dash: start building backend
+[] dev-dash: start building backend
+[x]
+[x]
+[x] 8/23/18 -
 [x] edit orgDashboard.myPositions --> created addNewPosition form (front end only)
-[] finish building devDashboard
+[x] finish building devDashboard-=
 [] ****** bug - new job doc is not being created; the back-end controller is not console.logging when controller.createOneJob() starts
 [] learn how to bootstrap-popup/modal
 [] show and hide different content on mobile/desktop devices (re: org-dashboard.showAllDevs.dev.skills) (this is a simple css trick; check your browser bookmarks)

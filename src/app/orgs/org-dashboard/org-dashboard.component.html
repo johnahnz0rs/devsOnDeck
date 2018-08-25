@@ -106,15 +106,17 @@
                 <!-- show required skills -->
                 <div class="form-group row">
                     <div class="col col-sm-4">
-                        <label for="required-skills">Required Skills:</label>
+                        <label for="required-skills">
+                            <span class="bold-text">Required Skills:</span>
+                        </label>
                     </div>
-                </div>
-                <div class="col col-sm-7" id="required-skills">
-                    <figure *ngFor="let skill of newJob.skills" class="figure">
-                        <img class="figure-img skill" src="assets/img/{{skill}}.png">
-                        <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
-                        <figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>
-                    </figure>
+                    <div class="col col-sm-7" id="required-skills">
+                        <figure *ngFor="let skill of newJob.skills" class="figure text-center">
+                            <img class="figure-img skill" src="assets/img/{{skill}}.png">
+                            <figcaption *ngIf="skill != 'Csharp'" class="figure-caption caption">{{skill}}</figcaption>
+                            <figcaption *ngIf="skill == 'Csharp'" class="figure-caption caption">C#</figcaption>
+                        </figure>
+                    </div>
                 </div>
 
                 <!-- add skill -->
@@ -125,14 +127,14 @@
                         </label>
                     </div>
                     <div class="col col-sm-7" id="skills">
-                        <figure *ngFor="let language of languages" class="figure" (click)="addRequiredSkill(language)">
+                        <figure *ngFor="let language of languages" class="figure text-center" (click)="addRequiredSkill(language)">
                             <img class="figure-img skill" src="assets/img/{{language}}.png">
-                            <figcaption *ngIf="language != 'Csharp'" class="figure-caption">{{language}}</figcaption>
-                            <figcaption *ngIf="language == 'Csharp'" class="figure-caption">C#</figcaption>
+                            <figcaption *ngIf="language != 'Csharp'" class="figure-caption caption">{{language}}</figcaption>
+                            <figcaption *ngIf="language == 'Csharp'" class="figure-caption caption">C#</figcaption>
                         </figure>
-                        <figure *ngFor="let framework of frameworks" class="figure" (click)="addRequiredSkill(framework)">
+                        <figure *ngFor="let framework of frameworks" class="figure text-center" (click)="addRequiredSkill(framework)">
                             <img class="figure-img skill" src="assets/img/{{framework}}.png">
-                            <figcaption class="figure-caption">{{framework}}</figcaption>
+                            <figcaption class="figure-caption caption">{{framework}}</figcaption>
                         </figure>
                     </div>
                 </div>
@@ -158,6 +160,18 @@
 
 
 
+    <!-- /\ /\ left-col /\ /\ -->
+    <!-- ***************************************************** -->
+    <!-- ***************************************************** -->
+    <!-- ***************************************************** -->
+    <!-- ***************************************************** -->
+    <!-- ***************************************************** -->
+    <!-- \/ \/ right-col \/ \/ -->
+
+
+
+
+
 
 
     <!-- right-col: showAllDevs (default) -->
@@ -168,17 +182,12 @@
 
         <!-- #div-showDevs-header -->
         <div id="div-showDevs-header" class="row">
-
-            <div class="col-sm-7">
-                <span class="big-header-text bold-text">All Developers</span>
-                <br><span>(Click on a developer to view/edit)</span>
+            <div class="col-sm-8">
+                <h3 class="showDevs-header">All Developers</h3>
             </div>
-
-            <div class="col-sm-5">
+            <div class="col-sm-4">
                 <!-- this button hides #div-showAllJobs && shows #div-showAllOrgs -->
-                <button class="btn btn-sm btn-outline-success toggle disabled" (click)="showDevs()" disabled aria-disabled="true">Show All Devs</button>
-                <button class="btn btn-sm btn-success toggle" (click)="showOrgs()">Show All Orgs</button>
-                <button class="btn btn-sm btn-success toggle" (click)="showJobs()">Show All Jobs</button>
+                <button class="btn btn-sm btn-outline-success" (click)="switchDevsOrgs()">Show All Orgs</button>
             </div>
         </div>
         <!-- end #div-showDevs-header -->
@@ -186,7 +195,6 @@
 
 
         <div id="div-showDevs-body">
-
             <!-- display each dev -->
             <table class="table table-hover table-borderless table-striped">
                 <thead>
@@ -196,13 +204,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let dev of allDevs" (click)="showMeADev(dev._id)">
-                        <td>{{dev.fname}} {{dev.lname}}</td>
+                    <tr *ngFor="let dev of allDevs" (click)="showDevDetail(dev._id)">
                         <td>
-                            <figure *ngFor="let skill of dev.skills" class="figure col-sm-2">
+                            <figure>
+                                <!-- how do i add an image to a mongo document? -->
+                                <img *ngIf="!dev.avatar" class="figure-img avatar" src="assets/img/blank_avatar.png">
+                            </figure>
+                            <p class="center-text bold-text">{{dev.fname}} {{dev.lname}}</p>
+                        </td>
+                        <td>
+                            <figure *ngFor="let skill of dev.skills" class="figure text-center col-sm-2">
                                 <img class="figure-img skill-icon" src="assets/img/{{skill}}.png">
-                                <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
-                                <figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>
+                                <figcaption *ngIf="skill != 'Csharp'" class="figure-caption caption">{{skill}}</figcaption>
+                                <figcaption *ngIf="skill == 'Csharp'" class="figure-caption caption">C#</figcaption>
                             </figure>
                         </td>
                     </tr>
@@ -215,9 +229,9 @@
 
 
     </div>
-    <!-- end right-col: #div-showAllDevs -->
-    <!-- end right-col: #div-showAllDevs -->
-    <!-- end right-col: #div-showAllDevs -->
+    <!-- end right-col: #div-showAllDevs (default) -->
+    <!-- end right-col: #div-showAllDevs (default) -->
+    <!-- end right-col: #div-showAllDevs (default) -->
 
 
 
@@ -228,52 +242,47 @@
 
 
 
-    <!-- right-col: show allOrgs (option 2 of 3) -->
-    <!-- right-col: show allOrgs (option 2 of 3) -->
-    <!-- right-col: show allOrgs (option 2 of 3) -->
+    <!-- right-col: show allOrgs (option 2) -->
+    <!-- right-col: show allOrgs (option 2) -->
+    <!-- right-col: show allOrgs (option 2) -->
 
-    <div class="col-sm-7" id="div-showAllOrgs" *ngIf="showAllOrgs">
+    <div class="col-sm-7" id="div-showAllOrgs" *ngIf="!showAllDevs">
 
         <div id="div-showOrgs-header" class="row">
-            <div class="col-sm-7">
-                <h3>All Organizations</h3>
+            <div class="col-sm-8">
+                <h3 class="showOrgs-Header">All Organizations</h3>
             </div>
 
 
-            <!-- this button hides #div-showAllOrgs && shows #div-showAllJobs -->
-            <div class="col-sm-5">
-                <button class="btn btn-sm btn-success toggle" (click)="showDevs()">Show All Devs</button>
-                <button class="btn btn-sm btn-outline-success toggle disabled" (click)="showOrgs()" disabled aria-disabled="true">Show All Orgs</button>
-                <button class="btn btn-sm btn-success toggle" (click)="showJobs()">Show All Jobs</button>
+            <!-- this button hides #div-showAllOrgs && shows #div-showAllDevs -->
+            <div class="col-sm-4">
+                <button class="btn btn-sm btn-outline-success" (click)="switchDevsOrgs()">Show All Devs</button>
             </div>
 
-        </div> <!-- end #div-myInfo-header -->
+        </div>
+        <!-- end #div-myInfo-header -->
 
 
         <div id="div-showOrgs-body">
-            <p>lol this is #div-showOrgs-body</p>
+            <div class="div-org row" (click)="showOrgDetail('1337')">
+                <div class="col-sm-4"><p class="bold-text">Org Name<p><p>Jabroni, Corp.</p></div>
+                <div class="col-sm-5"><p class="bold-text">Location</p><p>Los Angeles, CA</p></div>
+                <div class="col-sm-3"><p class="bold-text">Available Positions</p><p>3</p></div>
+            </div>
 
+            <div class="div-org row" (click)="showOrgDetail('69696969')">
+                <div class="col-sm-4"><p class="bold-text">Org Name</p><p>Yo Mama</p></div>
+                <div class="col-sm-5"><p class="bold-text">Location</p><p>All up in dem guts</p></div>
+                <div class="col-sm-3"><p class="bold-text">Available Positions</p><p>5+</p></div>
+            </div>
 
-            <!--&lt;!&ndash; temp test job for display &ndash;&gt;-->
-            <!--<div class="div-org row" (click)="showOrgDetail('1337')">-->
-                <!--<div class="col-sm-4"><p class="bold-text">Org Name<p><p>Jabroni, Corp.</p></div>-->
-                <!--<div class="col-sm-5"><p class="bold-text">Location</p><p>Los Angeles, CA</p></div>-->
-                <!--<div class="col-sm-3"><p class="bold-text">Available Positions</p><p>3</p></div>-->
-            <!--</div>-->
-
-            <!--<div class="div-org row" (click)="showOrgDetail('69696969')">-->
-                <!--<div class="col-sm-4"><p class="bold-text">Org Name</p><p>Yo Mama</p></div>-->
-                <!--<div class="col-sm-5"><p class="bold-text">Location</p><p>All up in dem guts</p></div>-->
-                <!--<div class="col-sm-3"><p class="bold-text">Available Positions</p><p>5+</p></div>-->
-            <!--</div>-->
-
-            <!--&lt;!&ndash; display each jeob &ndash;&gt;-->
-            <!--<div class="div-org row" *ngFor="let org of allOrgs" (click)="showOrgDetail(org._id)">-->
-                <!--&lt;!&ndash;{{org}}&ndash;&gt;-->
-                <!--<div class="col-sm-4"><p class="bold-text">Org Name</p><p>{{org.orgName}}</p></div>-->
-                <!--<div class="col-sm-5"><p class="bold-text">Location</p><p>{{org.city}}, {{org.state}}</p></div>-->
-                <!--<div class="col-sm-3"><p class="bold-text">Available Positions</p><p>{{org.jobs.length}}</p></div>-->
-            <!--</div>-->
+            <!-- display each jeob -->
+            <div class="div-org row" *ngFor="let org of allOrgs" (click)="showOrgDetail(org._id)">
+                <!--{{org}}-->
+                <div class="col-sm-4"><p class="bold-text">Org Name</p><p>{{org.orgName}}</p></div>
+                <div class="col-sm-5"><p class="bold-text">Location</p><p>{{org.city}}, {{org.state}}</p></div>
+                <div class="col-sm-3"><p class="bold-text">Available Positions</p><p>{{org.jobs.length}}</p></div>
+            </div>
 
 
         </div>
@@ -289,108 +298,5 @@
 
 
 
-
-
-
-    <!-- right-col: showAllJobs (option 3 of 3) -->
-    <!-- right-col: showAllJobs (option 3 of 3) -->
-    <!-- right-col: showAllJobs (option 3 of 3) -->
-
-    <div class="col-sm-7" id="div-showAllJobs" *ngIf="showAllJobs">
-
-        <div id="div-showJobs-header" class="row">
-            <div class="col-sm-7">
-                <h3 class="showOrgs-header">All Jobs</h3>
-            </div>
-
-            <!-- this button hides #div-showAllOrgs && shows #div-showAllJobs -->
-            <div class="col-sm-5">
-                <button class="btn btn-sm btn-success toggle" (click)="showDevs()">Show All Devs</button>
-                <button class="btn btn-sm btn-success toggle" (click)="showOrgs()">Show All Orgs</button>
-                <button class="btn btn-sm btn-outline-success toggle disabled" disabled aria-disabled="true">Show All Jobs</button>
-            </div>
-
-        </div> <!-- end #div-myInfo-header -->
-
-
-        <div id="div-showJobs-body">
-          <p>lol this is #div-showJobs-body</p>
-        </div>
-        <!-- end #div-showJobs-body -->
-
-    </div>
-    <!-- end right-col: showAllJobs -->
-    <!-- end right-col: showAllJobs -->
-    <!-- end right-col: showAllJobs -->
-
 </div>
 <!-- end row/container -->
-
-
-
-
-
-
-<!-- #add-job-form -->
-<!-- #add-job-form -->
-<!-- #add-job-form -->
-
-<!--<div class="row" id="add-job-form">-->
-    <!--<h3>Add a Position</h3>-->
-
-
-    <!--<form #newJobForm="ngForm">-->
-        <!--<p>{{ newJobForm.value | json }}</p>-->
-
-
-        <!--&lt;!&ndash; row 0: position name &ndash;&gt;-->
-        <!--<div class="form-group">-->
-            <!--<label for="positionName">-->
-                <!--<span class="bold-text">Name </span>-->
-                <!--<span *ngIf="!positionName.valid" class="validation"> *Required</span>-->
-            <!--</label>-->
-            <!--<input class="form-control" id="positionName" name="positionName" type="text" required minlength="4" [(ngModel)]="newJob.position" #positionName="ngModel">-->
-        <!--</div>-->
-
-        <!--&lt;!&ndash; row 1: description &ndash;&gt;-->
-        <!--<div class="form-group">-->
-            <!--<label for="positionDescription">-->
-                <!--<span class="bold-text">Description: </span>-->
-                <!--<span *ngIf="!positionDescription.valid" class="validation"> *Required</span>-->
-            <!--</label>-->
-            <!--<input class="form-control" id="positionDescription" name="positionDescription" type="textarea" required [(ngModel)]="newJob.description" #positionDescription="ngModel">-->
-        <!--</div>-->
-
-
-        <!--&lt;!&ndash; row 2: required skills &ndash;&gt;-->
-
-        <!--&lt;!&ndash; my selected skills &ndash;&gt;-->
-        <!--<div class="row" id="my-required-skills">-->
-            <!--<p>My selected skillz</p>-->
-            <!--<figure *ngFor="let skill of newJob.skills" class="col-sm-2">-->
-                <!--<img class="figure-img" src="assets/img/{{skill}}.png">-->
-            <!--</figure>-->
-        <!--</div>-->
-
-
-
-        <!--<div class="form-group">-->
-
-            <!--&lt;!&ndash; load each image with caption &ndash;&gt;-->
-            <!--<figure *ngFor="let skill of allSkills" class="figure col-sm-3" (click)="addRequiredSkill(skill)">-->
-                <!--<img class="figure-img" src="assets/img/{{skill}}.png">-->
-                <!--<figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>-->
-                <!--<figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>-->
-            <!--</figure>-->
-        <!--</div>-->
-
-
-
-
-        <!--<button class="btn btn-lg btn-success float-right" (click)="createNewJob()">Add Position</button>-->
-        <!--<button (click)="showMeSkills()">Show me skills</button>-->
-    <!--</form>-->
-<!--</div>-->
-<!-- end #add-job-form -->
-<!-- end #add-job-form -->
-<!-- end #add-job-form -->

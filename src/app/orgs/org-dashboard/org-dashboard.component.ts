@@ -5,6 +5,7 @@ import { Job } from '../../job';
 import { AppService } from '../../services/app.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-org-dashboard',
@@ -14,11 +15,11 @@ import { Router } from '@angular/router';
 export class OrgDashboardComponent implements OnInit {
 
   myInfo: Org = this.appService.signedIn;
+
   allJobs: Array<Job> = this.appService.allJobs;
   allOrgs: Array<Org> = this.appService.allOrgs;
   allDevs: Array<Dev> = this.appService.allDevs;
-  showAllJobs = false;
-  showAllOrgs = false;
+
   showAllDevs = true;
 
   addJobForm = false;
@@ -101,35 +102,23 @@ export class OrgDashboardComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-
-  showOrgs() {
-    this.showAllJobs = false;
-    this.showAllDevs = false;
-    this.showAllOrgs = true;
+  switchDevsOrgs() {
+    console.log('***** switching between showAllDevs and showAllOrgs *****');
+    this.showAllDevs = !this.showAllDevs;
   }
 
-  showJobs() {
-    this.showAllDevs = false;
-    this.showAllOrgs = false;
-    this.showAllJobs = true;
-  }
 
-  showDevs() {
-    this.showAllJobs = false;
-    this.showAllOrgs = false;
-    this.showAllDevs = true;
-  }
 
-  showMeADev(id) {
+  showDevDetail(id) {
     console.log('***** org-dashboard => you clicked showMeADev(id); this should open a popup *****', id);
   }
+
+
+
+  showOrgDetail(id) {
+    console.log('***** you clicked on an org with id *****', id);
+  }
+
+
 
 }
