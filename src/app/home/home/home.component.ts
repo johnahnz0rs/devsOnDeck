@@ -16,6 +16,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    if (this.appService.signedIn) {
+      this.appService.signedIn.accountType == 'dev' ? this.router.navigateByUrl('/dev/dashboard') : this.router.navigateByUrl('/org/dashboard');
+    }
+
     this.loginInfo = new Login();
   }
 

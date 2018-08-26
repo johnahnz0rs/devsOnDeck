@@ -7,15 +7,27 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 
 
 
-
-
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
+[] 8/26/18 - 
+[] ***** bug - on dev-dash --> #div-myInfoDetails is not loading until after i click on a job in the right-col
+[x]
+[x]
+[x] 8/25/18 - 
+>[] ***** bug - on dev-dash --> #div-myInfoDetails is not loading until after i click on a job in the right-col
+[x] when adding skills (eg dev-reg, org-addJob): put the fig-img and fig-caption inside a bordered box, and make the pointer icon change when inside the box (currently, the pointer changes only when hovering over the fig-img)
+[x] change cursor to: pointer, zoom-in;
+[x] start modal-job content
+[] modal-org content (copy from modal-job)
+[] edit color scheme: cornflower blue, sage, gold, rose;
+[]
+[x]
+[x]
 [x] 8/24/18 - 
 [x] shore up dev-dash and org-dash templates (sans modals)
-[] ***** bug - modal not working. did i install jquery correctly?
-[] how to bootstrap modals
+[x] ***** bug - modal not working. did i install jquery correctly? -- fix: you have to also install bootstrap.js (didn't know there was a bootstrap.js)
+[x] how to bootstrap modals
 [] org-dash: start building backend
 [] dev-dash: start building backend
 [x]
@@ -24,7 +36,6 @@ CURRENTLY WORKING ON:
 [x] edit orgDashboard.myPositions --> created addNewPosition form (front end only)
 [x] finish building devDashboard-=
 [] ****** bug - new job doc is not being created; the back-end controller is not console.logging when controller.createOneJob() starts
-[] learn how to bootstrap-popup/modal
 [] show and hide different content on mobile/desktop devices (re: org-dashboard.showAllDevs.dev.skills) (this is a simple css trick; check your browser bookmarks)
 [x]
 [x]

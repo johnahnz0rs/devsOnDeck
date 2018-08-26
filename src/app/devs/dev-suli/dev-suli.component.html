@@ -1,19 +1,20 @@
 <div class="container-fluid">
-    <div class="welcome">
-        <h1>Welcome, Dev</h1>
-        <p class="intro">Let's find you a new project</p>
+
+    <div id="header-welcome">
+        <h1>Welcome!</h1>
+        <p id="intro">Let's find you a new project</p>
     </div>
 
     <!-- a row of two forms: signup and login -->
     <div class="row">
 
         <!-- first col-sm-7: signup form -->
-        <!-- lol -->
-        <div class="signup col-sm-7">
+        <div id="div-signup-form" class="col col-sm-7">
 
             <!-- show this header on all 3 "pages" of the signup form -->
-            <div class="section-header align-midddle">Register</div>
-            <div class="org-instead align-middle"><a href="/signup/org">(Register as Organization?)</a></div>
+            <div id="common-header" class="align-midddle">Register</div>
+            <div id="org-instead" class="align-middle"><a href="/signup/org">(Register as Organization?)</a></div>
+
             <form #newDevForm="ngForm">
 
 
@@ -22,94 +23,92 @@
                     <!--<p>{{ newDevForm.value | json }}</p>-->
 
                     <!-- row 1: fname && lname -->
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label for="fname">
-                                    <span class="bold-text">First Name:</span>
-                                    <span *ngIf="!fname.valid" class="validation"> *Required</span>
-                                </label>
-                                <input class="form-control" id="fname" name="fname" type="text" required [(ngModel)]="newDev.fname" #fname="ngModel">
+                    <div class="form-group row">
+                        <div class="col col-sm-6">
+                            <label for="fname">
+                                <span class="bold-text">First Name:</span>
+                                <span *ngIf="!fname.valid" class="validation"> *Required</span>
+                            </label>
+                            <input class="form-control" id="fname" name="fname" type="text" required [(ngModel)]="newDev.fname" #fname="ngModel">
 
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="lname">
-                                    <span class="bold-text">Last Name:</span>
-                                    <span *ngIf="!lname.valid" class="validation"> *Required</span>
-                                </label>
-                                <input class="form-control" id="lname" name="lname" type="text" required [(ngModel)]="newDev.lname" #lname="ngModel">
-                            </div>
+                        </div>
+                        <div class="col col-sm-6">
+                            <label for="lname">
+                                <span class="bold-text">Last Name:</span>
+                                <span *ngIf="!lname.valid" class="validation"> *Required</span>
+                            </label>
+                            <input class="form-control" id="lname" name="lname" type="text" required [(ngModel)]="newDev.lname" #lname="ngModel">
                         </div>
                     </div>
 
                     <!-- row 2: email -->
-                    <div class="form-group">
-                        <label for="email">
-                            <span class="bold-text">Email:</span>
-                            <span *ngIf="!email.valid" class="validation"> *Required</span>
-                        </label>
-                        <input class="form-control" type="text" id="email" name="email" required [(ngModel)]="newDev.email" #email="ngModel">
+                    <div class="form-group row">
+                        <div class="col col-sm-12">
+                            <label for="email">
+                                <span class="bold-text">Email:</span>
+                                <span *ngIf="!email.valid" class="validation"> *Required</span>
+                            </label>
+                            <input class="form-control" type="text" id="email" name="email" required [(ngModel)]="newDev.email" #email="ngModel">
+                        </div>
                     </div>
 
                     <!-- row 3: address -->
-                    <div class="form-group">
-                        <label for="address">
-                            <span class="bold-text">Address:</span>
-                            <span *ngIf="!address.valid" class="validation"> *Required</span>
-                        </label>
-                        <input class="form-control" type="text" id="address" name="address" required [(ngModel)]="newDev.address" #address="ngModel">
+                    <div class="form-group row">
+                        <div class="col col-sm-12">
+                            <label for="address">
+                                <span class="bold-text">Address:</span>
+                                <span *ngIf="!address.valid" class="validation"> *Required</span>
+                            </label>
+                            <input class="form-control" type="text" id="address" name="address" required [(ngModel)]="newDev.address" #address="ngModel">
+                        </div>
                     </div>
 
                     <!-- row 4: city && state && zip -->
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <label for="city">
-                                    <span class="bold-text">City:</span>
-                                    <span *ngIf="!city.valid" class="validation"> *Required</span>
-                                </label>
-                                <input class="form-control" type="text" id="city" name="city" required [(ngModel)]="newDev.city" #city="ngModel">
-                            </div>
-                            <div class="col-sm-3">
-                                <label for="State">
-                                    <span class="bold-text">State</span>
-                                    <span *ngIf="!state.valid" class="validation"> *Required</span>
-                                </label>
-                                <select class="form-control" id="state" name="state" required [(ngModel)]="newDev.state" #state="ngModel">
-                                    <option *ngFor="let state of states">
-                                        {{ state }}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="zip">
-                                    <span class="bold-text">Zip:</span>
-                                    <span *ngIf="!zip.valid" class="validation"> *Required</span>
-                                </label>
-                                <input class="form-control" type="text" id="zip" name="zip" required [(ngModel)]="newDev.zip" #zip="ngModel">
-                            </div>
+                    <div class="form-group row">
+                        <div class="col col-sm-5">
+                            <label for="city">
+                                <span class="bold-text">City:</span>
+                                <span *ngIf="!city.valid" class="validation"> *Required</span>
+                            </label>
+                            <input class="form-control" type="text" id="city" name="city" required [(ngModel)]="newDev.city" #city="ngModel">
+                        </div>
+                        <div class="col col-sm-3">
+                            <label for="State">
+                                <span class="bold-text">State:</span>
+                                <span *ngIf="!state.valid" class="validation"> *Required</span>
+                            </label>
+                            <select class="form-control" id="state" name="state" required [(ngModel)]="newDev.state" #state="ngModel">
+                                <option *ngFor="let state of states">
+                                    {{ state }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col col-sm-4">
+                            <label for="zip">
+                                <span class="bold-text">Zip Code:</span>
+                                <span *ngIf="!zip.valid" class="validation"> *Required</span>
+                            </label>
+                            <input class="form-control" type="number" id="zip" name="zip" required [(ngModel)]="newDev.zip" #zip="ngModel">
                         </div>
                     </div>
 
                     <!-- row 5: pw && cpw -->
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label for="pw">
-                                    <span class="bold-text">Password:</span>
-                                    <span *ngIf="!pw.valid" class="validation"> *Required (min. 8 char.)</span>
-                                </label>
-                                <input class="form-control" type="password" id="pw" name="pw" required minlength="8" [(ngModel)]="newDev.pw" #pw="ngModel">
-                            </div>
-                            <div class="col-sm-6">
-                                <label for="cpw">
-                                    <span class="bold-text">Confirm Password:</span>
-                                    <span *ngIf="!newDev.pw || newDev.pw != newDev.cpw" class="validation"> *Passwords must match</span>
-                                </label>
-                                <input class="form-control" type="password" id="cpw" name="cpw" required [(ngModel)]="newDev.cpw" #cpw="ngModel">
-                            </div>
-                        </div> <!-- end row -->
-                    </div> <!-- end form-group -->
+                    <div class="form-group row">
+                        <div class="col col-sm-6">
+                            <label for="pw">
+                                <span class="bold-text">Password:</span>
+                                <span *ngIf="!pw.valid" class="validation"> *Required (min. 8 char.)</span>
+                            </label>
+                            <input class="form-control" type="password" id="pw" name="pw" required minlength="8" [(ngModel)]="newDev.pw" #pw="ngModel">
+                        </div>
+                        <div class="col col-sm-6">
+                            <label for="cpw">
+                                <span class="bold-text">Confirm Password:</span>
+                                <span *ngIf="!newDev.pw || newDev.pw != newDev.cpw" class="validation"> *Passwords must match</span>
+                            </label>
+                            <input class="form-control" type="password" id="cpw" name="cpw" required [(ngModel)]="newDev.cpw" #cpw="ngModel">
+                        </div>
+                    </div>
 
                 </div> <!-- end #signup-1 -->
 
@@ -119,19 +118,20 @@
                 <div id="signup-2" [hidden]="!showP2">
                     <!--<p>{{ newDevForm.value | json }}</p>-->
 
-
                     <!-- row 1: Top 5 Languages -->
                     <div class="form-group row">
                         <!-- header -->
-                        <div class="col-sm-7">
-                            <h2 class="pick-top-5">Pick Your Top 5 Languages</h2>
+                        <div class="col col-sm-6">
+                            <h2 id="header-pick-top-5">Pick Your Top 5 Languages</h2>
                         </div>
 
                         <!-- my selected languages -->
-                        <div class="col-sm-5">
+                        <div class="col col-sm-6">
                             <div class="my-5-languages row">
-                                <figure *ngFor="let language of newDev.languages" class="col-sm-2">
+                                <figure *ngFor="let language of newDev.languages" class="figure text-center">
                                     <img class="figure-img each-of-my-languages" src="assets/img/{{language}}.png">
+                                    <figcaption *ngIf="language == 'Csharp'" class="figure-caption">C#</figcaption>
+                                    <figcaption *ngIf="language != 'Csharp'" class="figure-caption">{{language}}</figcaption>
                                 </figure>
                             </div>
                         </div>
@@ -183,8 +183,9 @@
                         <!-- my selected languages -->
                         <div class="col-sm-5">
                             <div class="my-5-languages row">
-                                <figure *ngFor="let framework of newDev.frameworks" class="col-sm-2">
+                                <figure *ngFor="let framework of newDev.frameworks" class="">
                                     <img class="figure-img each-of-my-languages" src="assets/img/{{framework}}.png">
+                                    <figcaption
                                 </figure>
                             </div>
                         </div>
@@ -227,10 +228,10 @@
             </form>
 
         </div>
-
-
+        <!-- end #div-signup-form -->
 
     </div>
+    <!-- end row -->
 
 
 </div>

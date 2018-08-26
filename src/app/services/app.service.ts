@@ -19,11 +19,6 @@ export class AppService {
   allDevs: Array<any>;
 
   constructor(private http: HttpClient, private router: Router) {}
-  //
-  // resolve(route: ActivatedRouteSnapshot, rstate: RouterStateSnapshot): Observable<any> {
-  //   console.log('***** service => logging collected router param *****', route.params['id']);
-  //   return this.http.get<any>(`${this.baseDev}/${route.params['id']}`);
-  // }
 
   login(data): Observable<any> {
       console.log('***** service.login(email, pw) *****', data);
@@ -81,9 +76,17 @@ export class AppService {
     return this.http.get<any>(`${this.baseDev}/${id}`);
   }
 
-  getOneJob() {}
+  getOneJob(id): Observable<any> {
+    console.log('*** service.getOneJob(id ***', id);
+    console.log('*** service.getOneJob() received this form back-end ***', this.http.get<any>(`${this.baseJob}/${id}`));
+    return this.http.get<any>(`${this.baseJob}/${id}`);
+  }
 
-  getOneOrg() {}
+  getOneOrg(id): Observable<any> {
+    console.log('*** service.getOneOrg(id ***', id);
+    console.log('*** service.getOneOrg() received this form back-end ***', this.http.get<any>(`${this.baseOrg}/${id}`));
+    return this.http.get<any>(`${this.baseOrg}/${id}`);
+  }
 
   // ******************
   // ***** UPDATE *****

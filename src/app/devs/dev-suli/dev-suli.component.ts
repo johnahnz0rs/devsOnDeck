@@ -25,11 +25,12 @@ export class DevSuliComponent implements OnInit {
   constructor(private router: Router, private appService: AppService) { }
 
   ngOnInit() {
-      // this.newDev.accountType = 'dev';
       this.newDev = new Dev();
+
       this.newDev.languages = [];
       this.newDev.frameworks = [];
       this.newDev.skills = [];
+
       this.showP1 = true;
       this.showP2 = false;
       this.showP3 = false;
@@ -39,14 +40,16 @@ export class DevSuliComponent implements OnInit {
       console.log('***** starting registerDev() *****');
 
       // first push both languages and frameworks into one array called skills
-      if (this.newDev.languages || this.newDev.frameworks) {
-          for (let i in this.newDev.languages) {
-              console.log('***** this is the a language being pushed to newDev.skills *****', i);
-              this.newDev.skills.push(this.newDev.languages[i]);
-          }
-          for (let i in this.newDev.frameworks) {
-              console.log('***** this is the a language being pushed to newDev.skills *****', i);
-              this.newDev.skills.push(this.newDev.frameworks[i]);
+      if (this.newDev.languages) {
+        for (let language of this.newDev.languages) {
+          console.log('***** this is the a language being pushed to newDev.skills *****', language);
+          this.newDev.skills.push(language);
+        }
+      }
+      if (this.newDev.frameworks) {
+          for (let framework of this.newDev.frameworks) {
+              console.log('***** this is the a language being pushed to newDev.skills *****', framework);
+              this.newDev.skills.push(framework);
           }
       }
 
@@ -81,9 +84,8 @@ export class DevSuliComponent implements OnInit {
   }
 
   previous() {
-      if (this.showP1) {
-          // pass
-      } else if (this.showP2) {
+    // go to previous page in registration
+      if (this.showP2) {
           this.showP2 = false;
           this.showP1 = true;
       } else if (this.showP3) {
@@ -93,39 +95,36 @@ export class DevSuliComponent implements OnInit {
   }
 
   next() {
+    // go to next page in registration
       if (this.showP1) {
           this.showP1 = false;
           this.showP2 = true;
       } else if (this.showP2) {
           this.showP2 = false;
           this.showP3 = true;
-      } else if (this.showP3) {
-          // pass
       }
   }
 
   addLanguage(language) {
-      console.log(language, ' is being clicked');
-      // if newDev.languages has language
+    // add language if new, remove if already in list
       if (this.newDev.languages.includes(language)) {
+        console.log('*** removing language ***', language);
           this.newDev.languages.splice(this.newDev.languages.indexOf(language), 1);
-      } else if (!this.newDev.languages.includes(language) && this.newDev.languages.length < 5) {
-          this.newDev.languages.push(language);
-          console.log(this.newDev.languages);
       } else {
-          console.log('you already chose 5 languages');
-          // error handling? message on template?
+        console.log('*** adding language ***', language);
+          this.newDev.languages.push(language);
+          // console.log(this.newDev.languages);
       }
   }
 
   addFramework(framework) {
+    // add framework if new, remove if already in list
       if (this.newDev.frameworks.includes(framework)) {
+        console.log('*** removing framework ***', framework);
           this.newDev.frameworks.splice(this.newDev.frameworks.indexOf(framework), 1);
-      } else if (!this.newDev.frameworks.includes(framework) && this.newDev.frameworks.length < 5) {
-          this.newDev.frameworks.push(framework);
       } else {
-          console.log('you already chose 5 frameworks/libraries');
-          // error handling? message on template?
+        console.log('*** adding framework ***', framework);
+          this.newDev.frameworks.push(framework);
       }
   }
 
