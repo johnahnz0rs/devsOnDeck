@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-dev-dashboard',
   templateUrl: './dev-dashboard.component.html',
-  styleUrls: ['../../bootstrap.css', './dev-dashboard.component.css']
+  styleUrls: ['./dev-dashboard.component.css']
+//  '../../bootstrap.css',
 })
 export class DevDashboardComponent implements OnInit {
 
@@ -40,8 +41,6 @@ export class DevDashboardComponent implements OnInit {
     if (!this.appService.signedIn) {
       this.router.navigateByUrl('/');
     }
-
-    this.showEditForm = false;
   }
 
   toggleEditForm() {
@@ -137,6 +136,16 @@ export class DevDashboardComponent implements OnInit {
       }
     }
     return (numerator / (jobSkills.length)) * 100;
+  }
+
+  sendMsgToJob() {
+    console.log('*** you want to send the entered msg to this job\'s org ***', this.selectedJob._id, this.selectedJob.position);
+    // console.log(form.body);
+  }
+
+  sendMsgToOrg() {
+    console.log('*** you want to send the entered msg to this org ***', this.selectedOrg._id, this.selectedOrg.orgName);
+    // console.log(form.body);
   }
 
 }

@@ -57,7 +57,8 @@
     /*border-radius: 9px;*/
 }
 .each-skill-img {
-    width: 30px;
+    height: 30px;
+    width: auto;
 }
 .div-col-my-skills { /* a div for list of skills */
     border: 1px solid black;
@@ -247,13 +248,50 @@
     width: 100%;
     height: 100%;
 }
-table, tr, td {
-    border: none;
+#modal-job-details {
+    /* this div is the left-col in viewOneJob modal*/
+}
+#modal-send-msg-to-job {
+    /* this div contains the form to msg a job */
+    /*!*margin: 5px;*!*/
+    border: 1px solid cornflowerblue;
+    border-radius: 9px;
+    /*margin-right: 5px;*/
+}
+#job-msg-subject {
+    /*width: 600px;*/
+    width: 100%;
+}
+#job-msg-message {
+    width: 100%;
 }
 /* end viewOneJob modal */
 
 
 /* viewOneOrg modal */
+#modal-org-details {
+    /* this div is the left-col in viewOneOrg modal, incl. #modal-send-msg-to-org below */
+}
+#modal-send-msg-to-org {
+    margin: 5px;
+}
+#modal-list-of-orgs-jobs {
+    /* this div contains a list of each of the org's jobs */
+}
+.modal-org-each-job {
+    border-radius: 9px;
+    border: 1px solid black;
+    margin: 5px;
+}
+#send-msg-to-org-form {
+    margin: 5px;
+}
+#org-msg-subject {
+    width: 100%;
+}
+#org-msg-message {
+    width: 100%;
+}
 /* end viewOneOrg modal */
 
 
@@ -294,5 +332,13 @@ table, tr, td {
 }
 .figure-caption {
     /* color: #DEAAA4;*/ /*rose*/
+}
+.table-borderless > tbody > tr > td,
+.table-borderless > tbody > tr > th,
+.table-borderless > tfoot > tr > td,
+.table-borderless > tfoot > tr > th,
+.table-borderless > thead > tr > td,
+.table-borderless > thead > tr > th {
+    border: none;
 }
 /* end misc style */

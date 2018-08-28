@@ -10,8 +10,15 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[] 8/26/18 - 
+[] 8/28/18 - 
 [] ***** bug - on dev-dash --> #div-myInfoDetails is not loading until after i click on a job in the right-col
+[] ***** bug - on org-dash --> the showMyJob-modal isn't opening. hmmmm.
+[]
+[x]
+[x]
+[x] 8/27/18 - 
+[x] dev-dash - finish building modal templates
+[x] org-dash - finish building modal templates
 [x]
 [x]
 [x] 8/25/18 - 

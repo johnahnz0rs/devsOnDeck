@@ -10,7 +10,8 @@ import * as $ from 'jquery';
 @Component({
   selector: 'app-org-dashboard',
   templateUrl: './org-dashboard.component.html',
-  styleUrls: ['../../bootstrap.css', './org-dashboard.component.css']
+  styleUrls: ['./org-dashboard.component.css']
+  //  '../../bootstrap.css'
 })
 export class OrgDashboardComponent implements OnInit {
 
@@ -25,6 +26,10 @@ export class OrgDashboardComponent implements OnInit {
   addJobForm = false;
   newJob: Job;
 
+  selectedDev: Dev;
+  selectedOrg: Org;
+  selectedJob: Job;
+
   languages = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML'];
 
   frameworks = ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
@@ -35,6 +40,13 @@ export class OrgDashboardComponent implements OnInit {
     if (!this.appService.signedIn) {
       this.router.navigateByUrl('/');
     }
+
+    this.selectedDev = new Dev();
+    this.selectedDev.fname = 'lol fname';
+    this.selectedJob = new Job();
+    this.selectedJob.position = 'jizmopper';
+    this.selectedOrg = new Org();
+    this.selectedOrg.orgName = 'jabroniville';
   }
 
   toggleAddJobForm() {
@@ -50,6 +62,12 @@ export class OrgDashboardComponent implements OnInit {
     // this is the button function that displays one of MY jobs.
     console.log('***** org-dashboard => you clicked showMyJob(id); this should open a popup that lets me: edit my job info, &&  see a' +
       ' list of devs with match percentages *****', id);
+
+    // this get request is disabled for now bc there are currently no Job docs (8/27/18)
+    // this.appService.getOneJob(id)
+    //   .subscribe(returnedJob => {
+    //     this.selectedJob = returnedJob;
+    //   });
   }
 
 
@@ -111,14 +129,30 @@ export class OrgDashboardComponent implements OnInit {
 
   showDevDetail(id) {
     console.log('***** org-dashboard => you clicked showMeADev(id); this should open a popup *****', id);
+    this.appService.getOneDev(id)
+      .subscribe(returnedDev => {
+        this.selectedDev = returnedDev;
+      });
   }
 
 
 
   showOrgDetail(id) {
     console.log('***** you clicked on an org with id *****', id);
+    this.appService.getOneOrg(id)
+      .subscribe(returnedOrg => {
+        this.selectedOrg = returnedOrg;
+      });
   }
 
+  sendMsgToDev() {
+    console.log('*** you want to send the entered msg to this dev ***', this.selectedDev._id, this.selectedDev.fname);
+    // console.log(form.body);
+  }
 
+  sendMsgToOrg() {
+    console.log('*** you want to send the entered msg to this org ***', this.selectedOrg._id, this.selectedOrg.fname);
+    // console.log(form.body);
+  }
 
 }

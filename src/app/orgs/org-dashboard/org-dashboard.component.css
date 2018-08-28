@@ -54,9 +54,6 @@
     height: auto;
     margin: 10px;
 }
-.caption {
-    margin: 5px;
-}
 #button-cancel {
     float: right;
     margin: 10px;
@@ -65,10 +62,25 @@
     float: right;
     margin: 10px;
 }
-#required-skills {
+#div-required-skills {
     border: 1px solid black;
     border-radius: 9px;
     padding: 5px;
+    margin-left: 10px;
+}
+.show-required-skill-figure {
+    /* this is the figure for each skill displayed in "Required Skills" */
+}
+.show-required-skill-img {
+    height: 25px;
+    width: auto;
+}
+.add-required-skill-figure:hover {
+    cursor: alias;
+}
+.add-required-skill-img {
+    height: 30px;
+    width: auto;
 }
 /* end left-col: addJobForm (option 2) */
 
@@ -99,12 +111,23 @@
     /* this is the ul that contains li's of each dev */
     margin-bottom: 10px;
 }
+.table tr:hover {
+    cursor: pointer;
+}
 .each-dev-col {
     display: inline-block;
 }
 .avatar {
     width: 100px;
     height: 100px;
+}
+.skill-icon {
+    /*height: 80px;*/
+    margin-top: 15px;
+    height: 50px;
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
 }
 /* end right-col: showAllDevs (default) */
 
@@ -156,30 +179,13 @@
 .blue-text {
     color: blue;
 }
-
 .table-borderless th,
 .table-borderless td,
 .table-borderless thead th,
 .table-borderless tbody + tbody {
     border: 0;
 }
-
-.skill-icon {
-    width: 25px;
-    height: 25px;
-}
 .validation {
     color: red;
-}
-img {
-    /*height: 80px;*/
-    margin-top: 15px;
-    height: 50px;
-    width: 50px;
-    margin-right: auto;
-    margin-left: auto;
-}
-.figure-img:hover {
-    cursor: pointer;
 }
 /* end misc style */
