@@ -10,10 +10,13 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[] 8/28/18 - 
+[] 8/29/18 - 
 [] ***** bug - on dev-dash --> #div-myInfoDetails is not loading until after i click on a job in the right-col
 [] ***** bug - on org-dash --> the showMyJob-modal isn't opening. hmmmm.
-[]
+[x]
+[x]
+[x] 8/28/18 - 
+[x] watched a couple of youtube videos about angular+bootstrap modals
 [x]
 [x]
 [x] 8/27/18 - 
