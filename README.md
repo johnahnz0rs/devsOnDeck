@@ -10,6 +10,18 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
+[] 8/30/18 -
+[] what can i modularize?
+[]  -- component: dev-showMyInfo + modal-editMyInfo
+[]  -- component: dev-showAllJobs + modal-showOneJob
+[]  -- component: dev-showAllDevs + modal-showOneDev
+[]  -- component: org-showMyJobs + modal-showOneJob + modal-showOneOrg
+[x]
+[] how do i use html form method/action:
+[]  -- method = only get (default) or post - create a new route
+[]  -- action = this is the route u give the get or post method 
+[x]
+[x]
 [] 8/29/18 - 
 [] ***** bug - on dev-dash --> #div-myInfoDetails is not loading until after i click on a job in the right-col
 [] ***** bug - on org-dash --> the showMyJob-modal isn't opening. hmmmm.

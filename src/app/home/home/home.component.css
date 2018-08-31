@@ -1,13 +1,48 @@
-.container-fluid {
+
+#div-home-page {
+    margin-top: 20px;
 }
 
-.header {
+
+
+#body-choose-display {
+    padding: 10px;
+}
+
+.show-button {
+    border-radius: 9px;
+    background-color: cornflowerblue;
+    color: white;
+    width: 70%;
+}
+
+.display-each {
+    margin: 10px;
+    border: 1px solid cornflowerblue;
+    border-radius: 9px;
+
+}
+
+
+
+#login-register {
+    /*text-align: center;*/
+}
+
+.login-button {
+    height: 100px;
+    width: 150px;
     text-align: center;
+    padding: auto;
+    margin: 10px auto;
 }
 
-.row {
-    margin-top: 50px;
-}
+
+
+
+
+
+
 
 .signup-dev {
     display: flex;

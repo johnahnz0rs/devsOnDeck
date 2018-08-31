@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppService } from './services/app.service';
+import { DevService } from './services/dev.service';
+import { OrgService } from './services/org.service';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +28,7 @@ import { DevDashboardComponent } from './devs/dev-dashboard/dev-dashboard.compon
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, HttpClientModule
   ],
-  providers: [AppService],
+  providers: [AppService, DevService, OrgService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

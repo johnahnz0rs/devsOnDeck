@@ -6,25 +6,21 @@
     margin: 20px auto;
 }
 
-.header {
-    background-color: saddlebrown;
-    height: 35px;
-}
-.header-link {
+
+
+#header {
+    background-color: cornflowerblue;
     color: white;
+    padding: 10px;
 }
-
-.logo {
+#header-logo {
     display: inline-block;
-    float: left;
-    margin: 10px;
-    vertical-align: center;
+    vertical-align: middle;
 }
-
-.logout {
-    vertical-align: center;
+#header-logout {
     display: inline-block;
+    vertical-align: middle;
     float: right;
-
+    color: white;
 }
 
