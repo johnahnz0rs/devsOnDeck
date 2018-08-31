@@ -15,11 +15,11 @@ import * as $ from 'jquery';
 })
 export class OrgDashboardComponent implements OnInit {
 
-  myInfo: Org = this.appService.signedIn;
+  myInfo = this.appService.signedIn;
 
-  allJobs: Array<Job> = this.appService.allJobs;
-  allOrgs: Array<Org> = this.appService.allOrgs;
-  allDevs: Array<Dev> = this.appService.allDevs;
+  allJobs = this.appService.allJobs;
+  allOrgs = this.appService.allOrgs;
+  allDevs = this.appService.allDevs;
 
   showAllDevs = true;
 
@@ -129,20 +129,20 @@ export class OrgDashboardComponent implements OnInit {
 
   showDevDetail(id) {
     console.log('***** org-dashboard => you clicked showMeADev(id); this should open a popup *****', id);
-    this.appService.getOneDev(id)
-      .subscribe(returnedDev => {
-        this.selectedDev = returnedDev;
-      });
+    // this.appService.getOneDev(id)
+    //   .subscribe(returnedDev => {
+    //     this.selectedDev = returnedDev;
+    //   });
   }
 
 
 
   showOrgDetail(id) {
     console.log('***** you clicked on an org with id *****', id);
-    this.appService.getOneOrg(id)
-      .subscribe(returnedOrg => {
-        this.selectedOrg = returnedOrg;
-      });
+    // this.appService.getOneOrg(id)
+    //   .subscribe(returnedOrg => {
+    //     this.selectedOrg = returnedOrg;
+    //   });
   }
 
   sendMsgToDev() {

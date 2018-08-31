@@ -37,14 +37,14 @@ export class OrgSuliComponent implements OnInit {
           pw: this.newOrg.pw,
           jobs: []
       };
-      this.appService.createOneOrg(org)
-        .subscribe(error => {
-          if (error) {
-            console.log('***** error in createOneOrg *****', error);
-          } else {
-            this.router.navigateByUrl('/');
-          }
-        });
+      // this.appService.createOneOrg(org)
+      //   .subscribe(error => {
+      //     if (error) {
+      //       console.log('***** error in createOneOrg *****', error);
+      //     } else {
+      //       this.router.navigateByUrl('/');
+      //     }
+      //   });
   }
 
 }

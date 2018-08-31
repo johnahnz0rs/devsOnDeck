@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
+import { Observable } from 'rxjs';
 import { Dev } from '../../dev';
 import { Org } from '../../org';
 import { Job } from '../../job';
@@ -15,9 +16,9 @@ import { Router } from '@angular/router';
 export class DevDashboardComponent implements OnInit {
 
   showEditForm = false;
-  myInfo: Dev = this.appService.signedIn;
-  allJobs: Array<Job> = this.appService.allJobs;
-  allOrgs: Array<Org> = this.appService.allOrgs;
+  myInfo = this.appService.signedIn;
+  allJobs = this.appService.allJobs;
+  allOrgs = this.appService.allOrgs;
 
   showAllJobs = true;
 
@@ -47,11 +48,11 @@ export class DevDashboardComponent implements OnInit {
     // console.log('***** you clicked button: edit my info *****');
     // set default values;
     this.updateDev = new Dev();
-    this.updateDev._id = this.myInfo._id;
+    // this.updateDev._id = this.myInfo._id;
 
-
-    this.updateDev.languages = this.myInfo.languages;
-    this.updateDev.frameworks = this.myInfo.frameworks;
+    //
+    // this.updateDev.languages = this.myInfo.languages;
+    // this.updateDev.frameworks = this.myInfo.frameworks;
 
     console.log('**** you clicked button: editMyInfo OR x OR cancel *****', this.updateDev);
     // toggle div
@@ -104,14 +105,14 @@ export class DevDashboardComponent implements OnInit {
 
   showJobDetail(id) {
     console.log('***** you clicked on a job with id *****', id);
-    this.selectedJob = new Job();
-    this.selectedJob._id = id;
-    this.selectedJob.position = 'hax0rs';
-    this.selectedJob.orgName = 'z0rs corps' + id;
-    this.selectedJob.location = 'Los Angeles, CA';
-    this.selectedJob.description = 'gotsta do the coding';
-    this.selectedJob.skills = ['HTML 5', 'CSS 3', 'XML', 'MongoDB', 'Angular'];
-    this.selectedJob.match = this.matchDevToJob(this.myInfo.skills, this.selectedJob.skills);
+    // this.selectedJob = new Job();
+    // this.selectedJob._id = id;
+    // this.selectedJob.position = 'hax0rs';
+    // this.selectedJob.orgName = 'z0rs corps' + id;
+    // this.selectedJob.location = 'Los Angeles, CA';
+    // this.selectedJob.description = 'gotsta do the coding';
+    // this.selectedJob.skills = ['HTML 5', 'CSS 3', 'XML', 'MongoDB', 'Angular'];
+    // this.selectedJob.match = this.matchDevToJob(this.myInfo.skills, this.selectedJob.skills);
 
     // this.appService.getOneJob(id)
     //   .subscribe(returnedJob => {
@@ -122,10 +123,10 @@ export class DevDashboardComponent implements OnInit {
 
   showOrgDetail(id) {
     console.log('***** you clicked on an org with id *****', id);
-    this.appService.getOneOrg(id)
-      .subscribe(returnedOrg => {
-        this.selectedOrg = returnedOrg;
-      });
+    // this.appService.getOneOrg(id)
+    //   .subscribe(returnedOrg => {
+    //     this.selectedOrg = returnedOrg;
+    //   });
   }
 
   matchDevToJob(devSkills, jobSkills) {

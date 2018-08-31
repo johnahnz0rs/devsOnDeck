@@ -1,59 +1,12 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-
-<div id="div-home-page" class="container-fluid row">
-
-    <div id="body" class="col col-sm-8 text-center">
-
-        <div id="body-choose-display" class="row">
-            <p class="col col-sm-4 text-center">
-                <button class="btn btn-sm show-button" (click)="showAllJobs()"><span>Show All Jobs</span></button>
-            </p>
-            <p class="col col-sm-4 text-center">
-                <button class="btn btn-sm show-button" (click)="showAllDevs()"><span>Show All Developers</span></button>
-            </p>
-            <p class="col col-sm-4 text-center">
-                <button class="btn btn-sm show-button" (click)="showAllOrgs()"><span>Show All Organizations</span></button>
-            </p>
-        </div>
-
-        <div id="body-content" class="row">
-            <!-- display all jobs, devs, orgs -->
-            <div id="display-all-jobs" class="col col-sm-8" *ngIf="displayJobs">
-                <div class="display-each" *ngFor="let job of displayJobs">
-
-                </div>
-            </div>
-
-            <div id="display-all-devs" class="col col-sm-8" *ngIf="displayDevs">
-
-            </div>
-
-            <div id="display-all-orgs" class="col col-sm-8" *ngIf="displayOrgs">
-
-            </div>
-
-        </div>
-
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">Fluid jumbotron</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
     </div>
-
-
-
-    <!-- login & register -->
-    <div id="login-register" class="col col-sm-4">
-
-        <p class="text-center">
-            <button class="btn btn-primary login-button "><span>Log In As<br>Developer</span></button>
-        </p>
-        <p class="text-center">
-            <button class="btn btn-warning login-button"><span>Log In As<br>Organization</span></button>
-        </p>
-        <p class="text-center">
-            <button class="btn btn-success login-button"><span>Register<br>New Account</span></button>
-        </p>
-    </div>
-
 </div>
+
 
 
 
@@ -103,20 +56,6 @@
     <!--</div>-->
 
 
-
-
-
-
-    <!--<table>-->
-        <!--<tr>-->
-            <!--<td>-->
-
-            <!--</td>-->
-            <!--<td>-->
-
-            <!--</td>-->
-        <!--</tr>-->
-    <!--</table>-->
 
 
 

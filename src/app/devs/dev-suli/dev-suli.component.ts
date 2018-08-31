@@ -36,53 +36,53 @@ export class DevSuliComponent implements OnInit {
       this.showP3 = false;
   }
 
-  registerDev() {
-      console.log('***** starting registerDev() *****');
-
-      // first push both languages and frameworks into one array called skills
-      if (this.newDev.languages) {
-        for (let language of this.newDev.languages) {
-          console.log('***** this is the a language being pushed to newDev.skills *****', language);
-          this.newDev.skills.push(language);
-        }
-      }
-      if (this.newDev.frameworks) {
-          for (let framework of this.newDev.frameworks) {
-              console.log('***** this is the a language being pushed to newDev.skills *****', framework);
-              this.newDev.skills.push(framework);
-          }
-      }
-
-      // then format the request data
-      const dev = {
-          accountType: 'dev',
-          fname: this.newDev.fname,
-          lname: this.newDev.lname,
-          email: this.newDev.email,
-          address: this.newDev.address,
-          city: this.newDev.city,
-          state: this.newDev.state,
-          zip: this.newDev.zip,
-          pw: this.newDev.pw,
-          skills: this.newDev.skills,
-          languages: this.newDev.languages,
-          frameworks: this.newDev.frameworks,
-          bio: this.newDev.bio
-      };
-
-      // now send the request to backend, like a boss
-      // if created without error, then send browser to login page
-      console.log('***** registerDev(dev) ******', dev);
-      this.appService.createOneDev(dev)
-          .subscribe((error) => {
-              if (error) {
-                  console.log('***** error in createOneDev() *****', error);
-              } else {
-                  this.router.navigateByUrl('/');
-              }
-          });
-  }
-
+  // registerDev() {
+  //     console.log('***** starting registerDev() *****');
+  //
+  //     // first push both languages and frameworks into one array called skills
+  //     if (this.newDev.languages) {
+  //       for (let language of this.newDev.languages) {
+  //         console.log('***** this is the a language being pushed to newDev.skills *****', language);
+  //         this.newDev.skills.push(language);
+  //       }
+  //     }
+  //     if (this.newDev.frameworks) {
+  //         for (let framework of this.newDev.frameworks) {
+  //             console.log('***** this is the a language being pushed to newDev.skills *****', framework);
+  //             this.newDev.skills.push(framework);
+  //         }
+  //     }
+  //
+  //     // then format the request data
+  //     const dev = {
+  //         accountType: 'dev',
+  //         fname: this.newDev.fname,
+  //         lname: this.newDev.lname,
+  //         email: this.newDev.email,
+  //         address: this.newDev.address,
+  //         city: this.newDev.city,
+  //         state: this.newDev.state,
+  //         zip: this.newDev.zip,
+  //         pw: this.newDev.pw,
+  //         skills: this.newDev.skills,
+  //         languages: this.newDev.languages,
+  //         frameworks: this.newDev.frameworks,
+  //         bio: this.newDev.bio
+  //     };
+  //
+  //     // now send the request to backend, like a boss
+  //     // if created without error, then send browser to login page
+  //     console.log('***** registerDev(dev) ******', dev);
+  //     this.appService.createOneDev(dev)
+  //         .subscribe((error) => {
+  //             if (error) {
+  //                 console.log('***** error in createOneDev() *****', error);
+  //             } else {
+  //                 this.router.navigateByUrl('/');
+  //             }
+  //         });
+  // }
+  //
   previous() {
     // go to previous page in registration
       if (this.showP2) {
@@ -104,28 +104,28 @@ export class DevSuliComponent implements OnInit {
           this.showP3 = true;
       }
   }
-
-  addLanguage(language) {
-    // add language if new, remove if already in list
-      if (this.newDev.languages.includes(language)) {
-        console.log('*** removing language ***', language);
-          this.newDev.languages.splice(this.newDev.languages.indexOf(language), 1);
-      } else {
-        console.log('*** adding language ***', language);
-          this.newDev.languages.push(language);
-          // console.log(this.newDev.languages);
-      }
-  }
-
-  addFramework(framework) {
-    // add framework if new, remove if already in list
-      if (this.newDev.frameworks.includes(framework)) {
-        console.log('*** removing framework ***', framework);
-          this.newDev.frameworks.splice(this.newDev.frameworks.indexOf(framework), 1);
-      } else {
-        console.log('*** adding framework ***', framework);
-          this.newDev.frameworks.push(framework);
-      }
-  }
+  //
+  // addLanguage(language) {
+  //   // add language if new, remove if already in list
+  //     if (this.newDev.languages.includes(language)) {
+  //       console.log('*** removing language ***', language);
+  //         this.newDev.languages.splice(this.newDev.languages.indexOf(language), 1);
+  //     } else {
+  //       console.log('*** adding language ***', language);
+  //         this.newDev.languages.push(language);
+  //         // console.log(this.newDev.languages);
+  //     }
+  // }
+  //
+  // addFramework(framework) {
+  //   // add framework if new, remove if already in list
+  //     if (this.newDev.frameworks.includes(framework)) {
+  //       console.log('*** removing framework ***', framework);
+  //         this.newDev.frameworks.splice(this.newDev.frameworks.indexOf(framework), 1);
+  //     } else {
+  //       console.log('*** adding framework ***', framework);
+  //         this.newDev.frameworks.push(framework);
+  //     }
+  // }
 
 }

@@ -2,25 +2,6 @@
     font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
-.container-fluid {
-    margin: 20px auto;
-}
-
-
-
-#header {
-    background-color: cornflowerblue;
-    color: white;
-    padding: 10px;
-}
-#header-logo {
-    display: inline-block;
-    vertical-align: middle;
-}
-#header-logout {
-    display: inline-block;
-    vertical-align: middle;
-    float: right;
-    color: white;
-}
-
+/*.container-fluid {*/
+    /*margin: 20px auto;*/
+/*}*/

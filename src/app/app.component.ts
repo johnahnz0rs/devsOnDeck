@@ -12,6 +12,6 @@ export class AppComponent {
   title = 'app';
 
   logout() {
-    this.appService.logout();
+    // this.appService.logout();
   }
 }

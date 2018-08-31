@@ -19,6 +19,8 @@ export class AppService {
   // private baseLogin = '/api/login';
   signedIn: BehaviorSubject<any> = null;
 
+
+  // Jobs: <any> = this.http.get('api/job');
   private Jobs = new BehaviorSubject<any>([]);
   private Devs = new BehaviorSubject<any>([]);
   private Orgs = new BehaviorSubject<any>([]);
@@ -34,20 +36,20 @@ export class AppService {
   //     return this.http.post<any>(this.baseLogin, data);
   // }
 
-  getAllData() {
-    this.http.get(`${this.baseJob}`).subscribe(jobs => {
-      this.Jobs = jobs;
-    });
-    this.http.get(`${this.baseDev}`).subscribe(devs => {
-      this.Devs = devs;
-    })
-  }
-
-  logout() {
-      this.signedIn = null;
-      console.log('***** you are logged out *****', this.signedIn);
-      this.router.navigateByUrl('/');
-  }
+  // getAllData() {
+  //   this.http.get(`${this.baseJob}`).subscribe(jobs => {
+  //     this.Jobs = jobs;
+  //   });
+  //   this.http.get(`${this.baseDev}`).subscribe(devs => {
+  //     this.Devs = devs;
+  //   })
+  // }
+  //
+  // logout() {
+  //     this.signedIn = null;
+  //     console.log('***** you are logged out *****', this.signedIn);
+  //     this.router.navigateByUrl('/');
+  // }
 
   // ******************
   // ***** CREATE *****
