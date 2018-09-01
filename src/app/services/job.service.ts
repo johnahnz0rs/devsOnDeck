@@ -6,36 +6,38 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class DevService {
+export class JobService {
 
-  testAPI = 'http(s)://5b8af02d78169a0014daacf8.mockapi.io/devs';
+  testAPI = 'http(s)://5b8af02d78169a0014daacf8.mockapi.io/jobs';
 
   constructor(private http: HttpClient) { }
 
-  createNewDev(dev): Observable<any> {
-    console.log('*** CREATE devService.createNewDev(dev) ***', dev);
+  createNewJob(job): Observable<any> {
+    console.log(`*** CREATE jobService.createNewJob(${job}) ***`);
     // return this.http.post<any>('/api/devs', dev);
-    return this.http.post<any>(`${this.testAPI}`, dev);
+    return this.http.post<any>(`${this.testAPI}`, job);
   }
 
-  readAllDevs(): Observable<any> {
-    console.log('*** READ devService.getAllDevs ***');
+  readAllJobs(): Observable<any> {
+    console.log('*** READ jobService.getAllJobs() ***');
     // return this.http.get<any>('/api/devs');
     return this.http.get<any>(`${this.testAPI}`);
   }
 
-  readOneDev(id): Observable<any> {
-    console.log('*** READ devService.getOneDev(id) ***', id);
+  readOneJob(id): Observable<any> {
+    console.log(`*** READ jobService.getOneJob(${id}) ***`);
     // return this.http.get<any>(`/api/devs/${id}`);
     return this.http.get<any>(`${this.testAPI}/${id}`);
   }
 
-  updateOneDev(id, data): Observable<any> {
+  updateOneJob(id, data): Observable<any> {
+    console.log(`UPDATE jobService.updateOneJob(${id}) ***`);
     // return this.http.put<any>(`/api/devs/${id}`, data);
     return this.http.put<any>(`${this.testAPI}/${id}`, data);
   }
 
-  destroyOneDev(id): Observable<any> {
+  deleteOneJob(id): Observable<any> {
+    console.log(`DELETE jobService.deleteOneJob(${id})`);
     // return this.http.delete<any>(`/api/devs/${id}`);
     return this.http.delete<any>(`${this.testAPI}/${id}`);
   }

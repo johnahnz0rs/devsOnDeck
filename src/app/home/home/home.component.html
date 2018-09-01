@@ -1,5 +1,35 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!-- template -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: cornflowerblue">
+    <!-- left side of navbar -->
+    <a class="navbar-brand" href="#">devJobs</a>
 
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Find Jobs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="modal-register-org">Find Developers</a>
+            </li>
+        </ul>
+    </div>
+    <!-- end left side of navbar -->
+
+    <!-- right side of navbar -->
+    <div class="d-flex flex-row order-2 order-lg-3 ml-auto">
+        <ul class="navbar-nav flex-row">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#modal-login">Login</a>
+            </li>
+        </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <!-- end right side of navbar -->
+</nav>
+
+<!-- carousel of images -->
 <div class="container-fluid">
     <div id="background-img-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -19,58 +49,80 @@
         </div>
     </div>
 </div>
+<!-- end carousel -->
+
+<!-- end template -->
 
 
 
 
+<!--modals -->
+<!--modals -->
+<!--modals -->
+
+<!-- #modal-login -->
+<div class="modal fade" role="dialog" id="modal-login" aria-labelledby="modal-login-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Log In</h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <app-login></app-login>
+            </div>
+            <div class="modal-footer">
+                <a data-toggle="modal" data-target="#modal-register"id="register-link">Register with devJobs</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end #modal-login-->
 
 
+<!-- #modal-register-dev -->
+<div class="modal fade" id="modal-register-dev" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+    <div class="modal-dialog modal" role="document">
+        <div class="modal-content">
 
-    <!-- old -->
-    <!--<div class="row">-->
+            <div class="modal-header">
+                <!--<h3 class="modal-title" id="modal-job-label">Position: {{selectedJob.position}}</h3>-->
+                <h3 class="modal-title id=modal-register-label">Register</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-        <!--&lt;!&ndash; link to DEV SIGNUP &ndash;&gt;-->
-        <!--<div class="col-sm-4 signup-dev">-->
-            <!--<button class="btn btn-lg btn-success" routerLink="/signup/dev">Sign Up<br>as a Developer</button>-->
-        <!--</div>-->
+            <div class="modal-body">
 
-        <!--&lt;!&ndash; link to ORG SIGNUP &ndash;&gt;-->
-        <!--<div class="col-sm-4 signup-org">-->
-            <!--<button class="btn btn-lg btn-primary" routerLink="/signup/org">Sign Up<br>as an Organization</button>-->
-        <!--</div>-->
-
-
-
-        <!--&lt;!&ndash; login form &ndash;&gt;-->
-        <!--<div class="col-sm-4 login">-->
-            <!--<h3 class="login-header">Login</h3>-->
-            <!--<p>{{ loginForm.value | json }}</p>-->
-
-
-            <!--<form #loginForm="ngForm">-->
-
-                <!--<div class="form-group">-->
-                    <!--<label for="email-input">Email: </label>-->
-                    <!--<input class="form-control" type="text" id="email-input" name="email" [(ngModel)]="loginInfo.email" #email="ngModel">-->
-                <!--</div>-->
-
-                <!--<div class="form-group">-->
-                    <!--<label for="password">Password: </label>-->
-                    <!--<input class="form-control" type="password" id="password" name="password" [(ngModel)]="loginInfo.pw" #password="ngModel">-->
-                <!--</div>-->
-
-                <!--<button class="btn btn-lg btn-primary float-right" (click)="login()">Log In</button>-->
-
-            <!--</form>-->
-        <!--</div>-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end #modal-register-dev -->
 
 
-    <!--</div>-->
-
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<!-- #modal-register-org -->
+<div class="modal fade" role="dialog" id="modal-register-org" aria-labelledby="modal-login-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Register Your Organization</h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-lg btn-success" (click)="registerOrg()"></button>-->
+                <!--<a data-toggle="modal" data-target="#modal-register">Register with devJobs</a>-->
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end #modal-register-org-->

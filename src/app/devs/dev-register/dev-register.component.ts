@@ -5,11 +5,11 @@ import { Dev } from '../../dev';
 import { AppService } from '../../services/app.service';
 
 @Component({
-  selector: 'app-dev-suli',
-  templateUrl: './dev-suli.component.html',
-  styleUrls: ['../../bootstrap.css', './dev-suli.component.css']
+  selector: 'app-dev-register',
+  templateUrl: './dev-register.component.html',
+  styleUrls: ['../../bootstrap.css', './dev-register.component.css']
 })
-export class DevSuliComponent implements OnInit {
+export class DevRegisterComponent implements OnInit {
     newDev: Dev;
 
     showP1: boolean;

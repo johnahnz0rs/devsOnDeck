@@ -16,7 +16,7 @@ export class AppService {
   private baseDev = '/api/dev';
   private baseJob = '/api/job';
   private baseOrg = '/api/org';
-  private baseLogin = '/api/login';
+  // private baseLogin = '/api/login';
   signedIn: BehaviorSubject<any> = null;
 
 
@@ -31,10 +31,7 @@ export class AppService {
   constructor(private http: HttpClient, private router: Router) {}
 
 
-  login(login) {
-    console.log('*** appService.login() ***');
-    return this.http.post<any>(this.baseLogin, login);
-  }
+
 
 
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrgSuliComponent } from './org-suli.component';
+import { OrgRegisterComponent } from './org-register.component';
 
-describe('OrgSuliComponent', () => {
-  let component: OrgSuliComponent;
-  let fixture: ComponentFixture<OrgSuliComponent>;
+describe('OrgRegisterComponent', () => {
+  let component: OrgRegisterComponent;
+  let fixture: ComponentFixture<OrgRegisterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrgSuliComponent ]
+      declarations: [ OrgRegisterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrgSuliComponent);
+    fixture = TestBed.createComponent(OrgRegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

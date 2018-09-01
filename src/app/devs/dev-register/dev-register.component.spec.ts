@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DevSuliComponent } from './dev-suli.component';
+import { DevRegisterComponent } from './dev-register.component';
 
-describe('DevSuliComponent', () => {
-  let component: DevSuliComponent;
-  let fixture: ComponentFixture<DevSuliComponent>;
+describe('DevRegisterComponent', () => {
+  let component: DevRegisterComponent;
+  let fixture: ComponentFixture<DevRegisterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DevSuliComponent ]
+      declarations: [ DevRegisterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DevSuliComponent);
+    fixture = TestBed.createComponent(DevRegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

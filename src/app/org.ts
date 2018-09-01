@@ -5,13 +5,13 @@ export class Org {
     orgName: string;
     fname: string;
     lname: string;
+    email: string;
+    pw: string;
+    cpw: string;
     address: string;
     city: string;
     state: string;
     zip: string;
-    email: string;
-    pw: string;
-    cpw: string;
     jobs: Array<Job>;
     accountType: string;
 }
