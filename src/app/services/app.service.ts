@@ -16,7 +16,7 @@ export class AppService {
   private baseDev = '/api/dev';
   private baseJob = '/api/job';
   private baseOrg = '/api/org';
-  // private baseLogin = '/api/login';
+  private baseLogin = '/api/login';
   signedIn: BehaviorSubject<any> = null;
 
 
@@ -29,6 +29,21 @@ export class AppService {
   public allOrgs = this.Orgs.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}
+
+
+  login(login) {
+    console.log('*** appService.login() ***');
+    return this.http.post<any>(this.baseLogin, login);
+  }
+
+
+
+
+
+  // getAllPets(): Observable<any> {
+  //   console.log('***** petService is getting all pets *****');
+  //   return this.http.get<any>(this.base);
+  // }
 
   //
   // login(data): Observable<any> {

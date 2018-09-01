@@ -5,13 +5,10 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: cornflowerblue">
         <a class="navbar-brand" href="#">devJobs</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto">
                     <!--<li class="nav-item active">-->
                         <!--<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
                     <!--</li>-->
@@ -22,14 +19,22 @@
                         <a class="nav-link" href="#">Find Developers</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="modal" data-target="#modal-login">Log In</a>
-                    </li>
-                </ul>
-
-
         </div>
+
+        <div class="d-flex flex-row order-2 order-lg-3 ml-auto">
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#modal-login">Log In</a>
+                </li>
+            </ul>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+
+
     </nav>
 
 
@@ -46,7 +51,7 @@
 
 
 <!-- #modal-login -->
-<div class="modal fade" role="dialog" id="modal-login">
+<div class="modal fade" role="dialog" id="modal-login" aria-labelledby="modal-login-label" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
@@ -54,35 +59,98 @@
               <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-              <form id="login-form" action="" method="post">
+              <form id="login-form" #loginForm="ngForm">
                   <div class="form-group">
-                      <!--<label for="login-email">Email:</label>-->
-                      <input class="form-control" type="email" id="login-email" placeholder="Email" required>
+                      <input class="form-control" type="email" id="login-email" placeholder="Email" required [(ngModel)]="login.email"aria-describedby="emailHelp">
                   </div>
                   <div class="form-group">
-                      <!--<label for="login-password">Password:</label>-->
-                      <input class="form-control" type="password" id="login-password" placeholder="Password" required>
+                      <input class="form-control" type="password" id="login-password" placeholder="Password" required [(ngModel)]="login.email">
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                   </div>
 
                   <div class="form-group">
                       <span>Are you a: </span>
-                      <div class="form-check form-check-inline">
+                          <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" name="login-type" id="inlineRadio1" value="dev">
                           <label class="form-check-label" for="inlineRadio1">Developer</label>
                       </div>
                       <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="login-type" id="inlineRadio2" value="org">
+                          <input class="form-control btn btn-lg btn-outline-primary" type="radio" name="login-type" id="inlineRadio2" value="org" aria-describedby="emailHelp">
                           <label class="form-check-label" for="inlineRadio2">Employer</label>
                       </div>
                   </div>
               </form>
           </div>
           <div class="modal-footer">
-              <input type="submit" class="btn btn-success" form="login-form" value="Log In">
+              <button type="button" class="btn btn-lg btn-success" (click)="submitLogin()"></button>
+              <p id="register-link" data-toggle="modal" data-target="#modal-register">Register with devJobs</p>
           </div>
       </div>
   </div>
 </div>
+
+
+<div class="modal fade" >
+
+</div>
+
+<div class="modal fade" id="modal-register" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
+    <div class="modal-dialog modal" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <!--<h3 class="modal-title" id="modal-job-label">Position: {{selectedJob.position}}</h3>-->
+                <h3 class="modal-title id=modal-register-label">Register</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+
+                </div>
+                <div class="row">
+                    <div class="col col-sm-6" id="modal-job-details">
+                        <!-- left-col: job details -->
+                        <table class="table table-borderless">
+                            <tbody>
+
+                            <tr>
+                                <td><span class="bold-text">Description:</span></td>
+                                <td>{{selectedJob.description}}</td>
+                            </tr>
+                            <tr>
+                                <td><span class="bold-text">Required Skills:</span>
+                                    <br>({{selectedJob.match}}% Match)
+                                </td>
+                                <td>
+                                    <figure *ngFor="let skill of selectedJob.skills" class="figure display-each-skill-figure text-center">
+                                        <img class="figure-img each-skill-img" src="assets/img/{{skill}}.png">
+                                        <figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>
+                                        <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
+                                    </figure>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col col-sm-5" id="modal-see-all-dev-matches">
+                        <div *ngFor="let dev of allDevs">
+                            <p>{{dev.fname}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end viewMyJob modal -->
 
 
 
