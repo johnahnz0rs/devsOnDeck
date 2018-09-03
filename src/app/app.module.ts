@@ -8,22 +8,22 @@ import { AppComponent } from './app.component';
 import { AppService } from './services/app.service';
 
 
-import { HomeComponent } from './home/home/home.component';
-import { SplashComponent } from './home/splash/splash.component';
-import { JobsComponent } from './home/jobs/jobs.component';
-import { DevsComponent } from './home/devs/devs.component';
-import { LoginComponent } from './home/login/login.component';
+import { HomeDashboardComponent } from './home/home-dashboard/home-dashboard.component';
+import { HomeSplashComponent } from './home/home-splash/home-splash.component';
+import { HomeJobsComponent } from './home/home-jobs/home-jobs.component';
+import { HomeDevsComponent } from './home/home-devs/home-devs.component';
+import { HomeLoginComponent } from './home/home-login/home-login.component';
 import { LoginService } from './services/login.service';
-import { DevRegisterComponent } from './home/dev-register/dev-register.component';
-import { OrgRegisterComponent } from './home/org-register/org-register.component';
+import { HomeRegisterDevComponent } from './home/home-register-dev/home-register-dev.component';
+import { HomeRegisterOrgComponent } from './home/home-register-org/home-register-org.component';
 
 
 import { DevDashboardComponent } from './devs/dev-dashboard/dev-dashboard.component';
 import { DevService } from './services/dev.service';
-import { ShowJobsComponent } from './devs/show-jobs/show-jobs.component';
-import { ShowDevsComponent } from './devs/show-devs/show-devs.component';
-import { ShowOrgsComponent } from './devs/show-orgs/show-orgs.component';
-import { ShowProfileComponent } from './devs/show-profile/show-profile.component';
+import { DevShowJobsComponent } from './devs/dev-show-jobs/dev-show-jobs.component';
+import { DevShowDevsComponent } from './devs/dev-show-devs/dev-show-devs.component';
+import { DevShowOrgsComponent } from './devs/dev-show-orgs/dev-show-orgs.component';
+import { DevShowProfileComponent } from './devs/dev-show-profile/dev-show-profile.component';
 
 
 import { OrgDashboardComponent } from './orgs/org-dashboard/org-dashboard.component';
@@ -31,13 +31,14 @@ import { OrgService } from './services/org.service';
 import { OrgShowDevsComponent } from './orgs/org-show-devs/org-show-devs.component';
 import { OrgShowOrgsComponent } from './orgs/org-show-orgs/org-show-orgs.component';
 import { OrgShowJobsComponent } from './orgs/org-show-jobs/org-show-jobs.component';
-import { OrgShowProfileComponent } from './orgs/org-show-profile/org-show-profile.component';
+import { OrgProfileComponent } from './orgs/org-profile/org-profile.component';
 
 
 import { JobService } from './services/job.service';
 
 
 import { TestCompComponent } from './test/test-comp/test-comp.component';
+import { OrgAddJobComponent } from './orgs/org-add-job/org-add-job.component';
 
 
 
@@ -46,24 +47,25 @@ import { TestCompComponent } from './test/test-comp/test-comp.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent,
-    OrgRegisterComponent,
+    HomeDashboardComponent,
+    HomeLoginComponent,
+    HomeRegisterOrgComponent,
     OrgDashboardComponent,
-    DevRegisterComponent,
+    HomeRegisterDevComponent,
     DevDashboardComponent,
     TestCompComponent,
-    JobsComponent,
-    DevsComponent,
-    SplashComponent,
-    ShowJobsComponent,
-    ShowOrgsComponent,
-    ShowProfileComponent,
-    ShowDevsComponent,
+    HomeJobsComponent,
+    HomeDevsComponent,
+    HomeSplashComponent,
+    DevShowJobsComponent,
+    DevShowOrgsComponent,
+    DevShowProfileComponent,
+    DevShowDevsComponent,
     OrgShowDevsComponent,
     OrgShowOrgsComponent,
     OrgShowJobsComponent,
-    OrgShowProfileComponent
+    OrgProfileComponent,
+    OrgAddJobComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, HttpClientModule

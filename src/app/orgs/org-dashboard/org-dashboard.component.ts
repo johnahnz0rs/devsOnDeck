@@ -6,6 +6,7 @@ import { AppService } from '../../services/app.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+import { JobService } from '../../services/job.service';
 
 @Component({
   selector: 'app-org-dashboard',
@@ -15,22 +16,9 @@ import { LoginService } from '../../services/login.service';
 })
 export class OrgDashboardComponent implements OnInit {
 
-  // myInfo = this.appService.signedIn;
-
   myInfo;
+  myJobs;
   showThisComp = 'devs';
-  // allJobs = this.appService.allJobs;
-  // allOrgs = this.appService.allOrgs;
-  // allDevs = this.appService.allDevs;
-
-  // showAllDevs = true;
-  //
-  // addJobForm = false;
-  // newJob: Job;
-
-  // selectedDev: Dev;
-  // selectedOrg: Org;
-  // selectedJob: Job;
 
   languages = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML'];
 
@@ -39,100 +27,35 @@ export class OrgDashboardComponent implements OnInit {
   constructor(
     private appService: AppService,
     private loginService: LoginService,
-    private http: HttpClient,
+    private jobService: JobService,
     private router: Router) {}
 
   ngOnInit() {
-    this.loginService.getUser().subscribe(response => { this.myInfo = response; });
+    this.loginService.getUser()
+      .subscribe(response => {
+        this.myInfo = response;
+        this.getMyJobs(response._id);
+      });
+  }
+
+  getMyJobs(id) {
+    this.jobService.getMyJobs(id)
+      .subscribe(response => {
+        this.myJobs = response;
+      });
   }
 
   clickThisComp(comp) {
     this.showThisComp = comp;
   }
 
+  logout() {
+    console.log('*** lol u clicked logout ***');
+    console.log('johnahnz0rs is 1337');
+  }
 
-
-
-
-
-
-  // addNewJob Form
-  // addNewJob Form
-  // addNewJob Form
-  // addNewJob Form
-  // addNewJob Form
-
-  // addRequiredSkill(skill) {
-  //   console.log('***** org-dashboard.addRequiredSkill => adding this skill ******', skill);
-  //
-  //   if (!this.newJob.skills) {
-  //     this.newJob.skills = [skill];
-  //   } else if (this.newJob.skills.includes(skill)) {
-  //     this.newJob.skills.splice(this.newJob.skills.indexOf(skill), 1);
-  //   } else {
-  //     this.newJob.skills.push(skill);
-  //   }
-  // }
-  //
-  // showMeSkills() {
-  //   console.log('****** this is the skills array *****', this.newJob.skills);
-  // }
-
-
-  // submitNewJob() {
-  //   // update this function
-  //   console.log('***** you clicked button: addThisPosition, with this data *****', this.newJob);
-  //
-  //   // if (!this.newJob.orgId) {
-  //   //   this.newJob.orgId = this.myInfo._id;
-  //   // }
-  //   // console.log('***** org-dashboard ==> lol k i will send a post request to create a new job doc *****', this.newJob);
-  //   //
-  //   // this.appService.createOneJob(this.newJob);
-  // }
-
-  // end addNewJob Form
-  // end addNewJob Form
-  // end addNewJob Form
-  // end addNewJob Form
-  // end addNewJob Form
-
-
-
-  //
-  // switchDevsOrgs() {
-  //   console.log('***** switching between showAllDevs and showAllOrgs *****');
-  //   this.showAllDevs = !this.showAllDevs;
-  // }
-
-
-
-  // showDevDetail(id) {
-  //   console.log('***** org-dashboard => you clicked showMeADev(id); this should open a popup *****', id);
-  //   // this.appService.getOneDev(id)
-  //   //   .subscribe(returnedDev => {
-  //   //     this.selectedDev = returnedDev;
-  //   //   });
-  // }
-
-
-
-  // showOrgDetail(id) {
-  //   console.log('***** you clicked on an org with id *****', id);
-    // this.appService.getOneOrg(id)
-    //   .subscribe(returnedOrg => {
-    //     this.selectedOrg = returnedOrg;
-    //   });
-  // }
-  //
-  // sendMsgToDev() {
-  //   console.log('*** you want to send the entered msg to this dev ***', this.selectedDev._id, this.selectedDev.fname);
-  //   // console.log(form.body);
-  // }
-  //
-  // sendMsgToOrg() {
-  //   console.log('*** you want to send the entered msg to this org ***', this.selectedOrg._id, this.selectedOrg.fname);
-  //   // console.log(form.body);
-  // }
+  nothingClick() {
+    console.log('*** clicky clicky ***');
+  }
 
 }

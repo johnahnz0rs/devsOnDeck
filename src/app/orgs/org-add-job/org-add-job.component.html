@@ -1,0 +1,87 @@
+<p>
+  org-add-job works!
+</p>
+
+
+<!-- the addJob form -->
+<div id="div-the-addJobForm">
+    <p>addJobForm.value|json {{addJobForm.value | json}}</p>
+
+    <form #addJobForm="ngForm">
+
+        <!-- position -->
+        <div class="form-group row">
+            <div class="col col-sm-4">
+                <label for="position">
+                    <span class="bold-text">Position:</span>
+                </label>
+            </div>
+            <div class="col col-sm-8">
+                <input class="form-control" id="position" name="position" type="text" required [(ngModel)]="newJob.position">
+            </div>
+        </div>
+
+        <!-- description -->
+        <div class="form-group row">
+            <div class="col col-sm-4">
+                <label for="description">
+                    <span class="bold-text">Description:</span>
+                </label>
+            </div>
+            <div class="col col-sm-8">
+                <textarea class="form-control" id="description" name="description" required [(ngModel)]="newJob.description"></textarea>
+            </div>
+        </div>
+
+        <!-- show required skills -->
+        <div class="form-group row">
+            <div class="col col-sm-4">
+                <label for="div-required-skills">
+                    <span class="bold-text">Required Skills:</span>
+                </label>
+            </div>
+            <div class="col col-sm-7" id="div-required-skills">
+                <div class="row">
+                    <figure *ngFor="let skill of newJob.skills" class="figure text-center show-required-skill-figure col col-sm-3">
+                        <img class="figure-img show-required-skill-img" src="assets/img/{{skill}}.png">
+                        <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
+                        <figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>
+                    </figure>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- add skill -->
+        <div class="form-group row">
+            <div class="col col-sm-4">
+                <label for="skills">
+                    <span class="bold-text">Add Required Skills:</span>
+                </label>
+            </div>
+            <div class="col col-sm-7" id="skills">
+                <div class="row">
+                    <figure *ngFor="let language of languages" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(language)">
+                        <img class="figure-img add-required-skill-img" src="assets/img/{{language}}.png">
+                        <figcaption *ngIf="language != 'Csharp'" class="figure-caption">{{language}}</figcaption>
+                        <figcaption *ngIf="language == 'Csharp'" class="figure-caption">C#</figcaption>
+                    </figure>
+                    <figure *ngFor="let framework of frameworks" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(framework)">
+                        <img class="figure-img add-required-skill-img" src="assets/img/{{framework}}.png">
+                        <figcaption class="figure-caption">{{framework}}</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-sm btn-danger" id="button-cancel" (click)="toggleAddJobForm()">Cancel</button>
+        <button class="btn btn-sm btn-success" id="button-submitNewJob" (click)="submitNewJob()">Add This Position</button>
+
+    </form>
+    <!-- end the addJob form -->
+
+</div>
+
+<!-- end left-col: #div-addJobForm (option 2) -->
+<!-- end left-col: #div-addJobForm (option 2) -->
+<!-- end left-col: #div-addJobForm (option 2) -->

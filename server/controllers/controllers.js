@@ -4,150 +4,50 @@ const bcrypt = require("bcrypt");
 const Dev = mongoose.model("Dev");
 const Org = mongoose.model("Org");
 const Job = mongoose.model("Job");
+const User = mongoose.model("User");
 
 module.exports = {
 
-  loginDev: function(request, response) {
-    console.log(`*** controller.login(${request.body}) ***`);
-    Dev.findOne({ email: request.body.email }, function(error, dev) {
+  login: function(request, response) {
+    console.log('*** controller is running testLogin(login) ***', request.body);
+    User.findOne({email: request.body.email}, function(error, user) {
       if (error) {
-        console.log("*** error in Dev.findOne ***");
+        console.log('*** ERR controller.testLogin 1 ***', error);
         response.json(error);
-      } else if (dev) {
-        // if a dev with that email is found, then check pw:
-        console.log("*** dev account with that email exists, checking password now ***");
-        bcrypt.compare(request.body.pw, dev.pw, function(error, result) {
+      } else if (user) {
+        bcrypt.compare(request.body.pw, user.pw, function(error, correct) {
           if (error) {
-            console.log("*** error in controller.login => compare dev's pw ***", error);
-            response.json(error);
-          } else if (result) {
-            // *** SUCCESS!! ***
-            console.log("*** pw match for this dev-user ***", dev);
-            response.json(dev);
-          } else if (!result) {
-            console.log("*** incorrect pw ***");
-            response.json("{error: 'incorrect password for dev'}");
+            console.log('*** error in testLogin.bcrypt() ***', error);
+          } else if (correct) {
+            console.log('*** the password was correct, my bro w2g! ***', user);
+            response.json(user);
+          } else if (!correct) {
+            console.log('*** sorry bro ur pw is WRONG ***');
+            response.json({error: 'incorrect pw'});
           }
         });
-      } else if (!dev) {
-        console.log("*** no dev account with that email was found, checking for org accounts now ***");
-        response.json("{error: 'no account exists'}");
-      }
-    });
-  },
-
-  loginOrg: function(request, response) {
-    // returns error(s) OR an Org;
-    console.log(`*** controller.loginOrg(${request.body})`);
-    Org.findOne({email: request.body.email}, function(error, org) {
-      if (error) {
-        console.log('*** ERROR Org.findOne() ***', error);
-        response.json(error);
-      } else if (org) {
-        console.log('*** found an org ***');
-        bcrypt.compare(request.body.pw, org.pw, function(error, result) {
-          if (error) {
-            console.log("*** error in controller.loginOrg => compare org's pw ***", error);
-            response.json(error);
-          } else if (result) {
-            // *** SUCCESS!! ***
-            console.log("*** pw match for this org-user ***", result);
-            response.json(result);
-          } else if (!result) {
-            console.log("*** incorrect pw ***");
-            response.json("{error: 'incorrect password for org'}");
-          }
-        });
-      } else if (!org) {
-        console.log('*** no org found ***');
-        response.json("{error: 'no org found'}");
+      } else {
+        console.log('*** controller.testLogin: no such user exists ***');
+        response.json({error: "no such user exists"});
       }
     });
   },
 
 
-  // login: function(request, response) {
-  //   console.log("*** controller.login() ***", request.body);
-  //
-  //   // wrapper to check if email and pw were entered
-  //   // they should be because both are required to submit login request;
-  //   if (request.body.email && request.body.pw) {
-  //     // first check if the user is a dev
-  //     Dev.findOne({ email: request.body.email }, function(error, dev) {
-  //       if (error) {
-  //         console.log("*** error in dev.findOne ***");
-  //         response.json(error);
-  //       } else if (dev) {
-  //         // if a dev with that email is found, then check pw:
-  //         console.log(
-  //           "*** dev account with that email exists, checking password now ***"
-  //         );
-  //         bcrypt.compare(request.body.pw, dev.pw, function(error, result) {
-  //           if (error) {
-  //             console.log(
-  //               "*** error in controller.login => compare dev's pw ***",
-  //               error
-  //             );
-  //             response.json(error);
-  //           } else if (result) {
-  //             console.log("*** pw match for this dev-user ***", dev);
-  //             response.json(dev);
-  //           } else if (!result) {
-  //             console.log("*** incorrect pw ***");
-  //             response.json("{error: 'incorrect password for dev'}");
-  //           }
-  //         });
-  //       } else if (!dev) {
-  //         console.log(
-  //           "*** no dev account with that email was found, checking for org accounts now ***"
-  //         );
-  //
-  //         // if no dev with that email is found, check for org;
-  //         Org.findOne({ email: request.body.email }, function(error, org) {
-  //           if (error) {
-  //             console.log("*** error in org.findOne ***");
-  //             response.json(error);
-  //           } else if (org) {
-  //             // if an org with that email is found, then check pw;
-  //             console.log(
-  //               "*** org account with that email exists, checking password now ***"
-  //             );
-  //             bcrypt.compare(request.body.pw, org.pw, function(error, result) {
-  //               if (error) {
-  //                 console.log(
-  //                   "*** error in controller.login => compare org's pw ***",
-  //                   error
-  //                 );
-  //                 response.json(error);
-  //               } else if (result) {
-  //                 console.log("*** pw match for this org-user ***", org);
-  //                 response.json(org);
-  //               } else if (!result) {
-  //                 console.log("*** incorrect pw ***");
-  //                 response.json("{error: 'incorrect password for org'}");
-  //               }
-  //             });
-  //           } else if (!org) {
-  //             console.log(
-  //               "*** no org account with that email was found ***"
-  //             );
-  //             response.json();
-  //           }
-  //         });
-  //       }
-  //     });
-  //   } // end if(email && pw);
-  // },
 
   // *********
   // *** CREATE ***
   // *********
 
+  // function checkIfEmailExists(email) {
+  //   console.log('lol');
+  // },
+
   createOneDev: function(request, response) {
     console.log("*** controller.createOneDev() ***", request.body);
 
     // is this email already registered
-    Dev.findOne({ email: request.body.email }, function(error, dev) {
+    User.findOne({ email: request.body.email }, function(error, dev) {
       // if-not-registered as err handling
       if (error) {
         console.log(
@@ -208,7 +108,7 @@ module.exports = {
     console.log("*** controller is running createOneOrg() with arg: ***", request.body);
 
     // is this email already registered
-    Org.findOne({ email: request.body.email }, function(error, org) {
+    User.findOne({ email: request.body.email }, function(error, org) {
       if (error) {
         console.log(
           "*** error in controller.createOneOrg => org.findOne(email) ***",
@@ -219,15 +119,11 @@ module.exports = {
         console.log(
           "*** an org account with this email already exists ***"
         );
-        response.json('{"lol": "ha"}');
+        response.json({error: "user already exists"});
       }
     });
 
     let newOrg = request.body;
-    // console.log(
-    //   "*** controller.createOneOrg -- this is the newOrg that is to be created, sans pw",
-    //   newOrg
-    // );
 
     // encrypting the password
     bcrypt.hash(request.body.pw, 10, function(error, hash) {
@@ -258,10 +154,27 @@ module.exports = {
   // *** READ ***
   // ********
 
+
+  getJobsByOrg: function(request, response) {
+    console.log('*** getJobsByOrgs(id) ***', request.params.id);
+    Job.find({orgId: request.params.id}, function(error, jobs) {
+      if (error) {
+        console.log('*** error in getJobsByOrgs 1 ***', error);
+        response.json(error);
+      } else if (jobs) {
+        console.log('*** hooray, we found our jrrrbs!!! ***', jobs);
+        response.json(jobs);
+      } else if (!jobs) {
+        console.log('*** no jobs??? ***');
+        response.json({error: 'no jeobs'});
+      }
+    });
+  },
+
   getAllDevs: function(request, response) {
     // code
     console.log("*** controller.getAllDevs ***");
-    Dev.find({}, function(error, devs) {
+    User.find({accountType: "dev"}, function(error, devs) {
       if (error) {
         console.log("*** ERROR in controller.Dev.find() ***", error);
         response.json(error);
@@ -283,7 +196,7 @@ module.exports = {
         console.log("*** ERROR in getAllJobs mongo ***", error);
         response.json(error);
       } else if (jobs.length === 0) {
-        console.log("*** no jobs, mang ***");
+        console.log("*** no home-jobs, mang ***");
         response.json();
       } else {
         console.log("*** these are all jeobs ***", jobs);
@@ -296,7 +209,7 @@ module.exports = {
     // code
     console.log("*** controller.getAllOrgs ***");
 
-    Org.find({}, function(error, orgs) {
+    User.find({accountType: "org"}, function(error, orgs) {
       if (error) {
         console.log("*** ERROR in getAllOrgs mongo ***", error);
         response.json(error);
@@ -314,7 +227,7 @@ module.exports = {
     // code
 
     console.log("*** controller.getOneDev(id) ***", request.params.id);
-    Dev.findOne({ _id: request.params.id }, function(error, dev) {
+    User.findOne({ _id: request.params.id }, function(error, dev) {
       if (error) {
         console.log("*** ERROR in controller.getOneDev mongo ***", error);
         response.json(error);
@@ -344,10 +257,16 @@ module.exports = {
 
   getOneOrg: function(request, response) {
     // code
-    console.log(
-      "*** controller.getOneOrg(), request.body ***",
-      request.body
-    );
+    console.log("*** controller.getOneOrg(id) ***", request.params.id);
+    User.findOne({ _id: request.params.id }, function(error, org) {
+      if (error) {
+        console.log("*** ERROR in controller.getOneDev mongo ***", error);
+        response.json(error);
+      } else if (org) {
+        console.log(org);
+        response.json(org);
+      }
+    });
   },
 
   // *********

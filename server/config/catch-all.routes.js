@@ -4,7 +4,7 @@ const path = require('path');
 router.all('*', function(request, response) {
     // console.log('***** catch-all.routes *****');
     // console.log('***** route', request.url, ' not found; sending index.html ******');
-    console.log('*** you fucked up the route cuz this is catch-all-routes sending u back to index ***');
+    console.log('*** hmm something went awry, my friend, because this is catch-all-routes ***');
     response.sendFile(path.join(__dirname, '../../dist/devsOnDeck/index.html'));
 });
 

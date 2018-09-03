@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class JobService {
 
-  testAPI = 'https://5b8af02d78169a0014daacf8.mockapi.io/jobs';
+  testAPI = 'https://5b8af02d78169a0014daacf8.mockapi.io/home-jobs';
 
   public allJobs;
 
@@ -19,17 +19,21 @@ export class JobService {
   // certified
   createNewJob(job) {
     console.log('*** jobService is running createNewJob(job) ***', job);
-    this.http.post<any>('/api/jobs', job)
+    this.http.post<any>('/api/home-jobs', job)
       .subscribe(response => { console.log('*** API.createNewJob() response ***', response); });
     // return this.http.post<any>(`${this.testAPI}`, job);
   }
 
+  getMyJobs(id): Observable<any> {
+    console.log('*** jobService is running getMyJobs(id) ***', id);
+    return this.http.get<any>(`/api/jobsbyorg/${id}`);
+  }
+
+  // certified
   readAllJobs(): Observable<any> {
     console.log('*** jobService is running getAllJobs() ***');
-    // return this.http.get<any>('/api/devs');
-    this.allJobs = this.http.get<any>('/api/jobs');
-    console.log('*** jobService received these jobs ***', this.allJobs);
-    return this.http.get<any>('/api/jobs');
+    this.http.get<any>('/api/home-jobs').subscribe(jobs => { this.allJobs = jobs; });
+    return this.http.get<any>('/api/home-jobs');
     // this.allJobs = this.http.get<any>(`${this.testAPI}`);
   }
 
@@ -41,13 +45,13 @@ export class JobService {
 
   updateOneJob(id, data): Observable<any> {
     console.log(`UPDATE jobService.updateOneJob(${id}) ***`);
-    // return this.http.put<any>(`/api/devs/${id}`, data);
+    // return this.http.put<any>(`/api/home-devs/${id}`, data);
     return this.http.put<any>(`${this.testAPI}/${id}`, data);
   }
 
   deleteOneJob(id): Observable<any> {
     console.log(`DELETE jobService.deleteOneJob(${id})`);
-    // return this.http.delete<any>(`/api/devs/${id}`);
+    // return this.http.delete<any>(`/api/home-devs/${id}`);
     return this.http.delete<any>(`${this.testAPI}/${id}`);
   }
 }

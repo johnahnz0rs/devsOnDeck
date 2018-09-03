@@ -1,0 +1,15 @@
+
+#account-type-select-bar {
+    border: 1px solid black;
+    border-radius: 9px;
+    width: 75%;
+    margin: 0 auto;
+    height: 50px;
+}
+#account-type-select-bar p {
+    margin: auto 0;
+}
+
+.account-type-button {
+    margin-right: 20px;
+}

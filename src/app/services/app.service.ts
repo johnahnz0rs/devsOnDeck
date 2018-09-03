@@ -16,7 +16,7 @@ export class AppService {
   private baseDev = '/api/dev';
   private baseJob = '/api/job';
   private baseOrg = '/api/org';
-  // private baseLogin = '/api/login';
+  // private baseLogin = '/api/home-login';
   signedIn: BehaviorSubject<any> = null;
 
 
@@ -43,17 +43,17 @@ export class AppService {
   // }
 
   //
-  // login(data): Observable<any> {
-  //     console.log('***** service.login(email, pw) *****', data);
+  // home-login(data): Observable<any> {
+  //     console.log('***** service.home-login(email, pw) *****', data);
   //     return this.http.post<any>(this.baseLogin, data);
   // }
 
   // getAllData() {
-  //   this.http.get(`${this.baseJob}`).subscribe(jobs => {
-  //     this.Jobs = jobs;
+  //   this.http.get(`${this.baseJob}`).subscribe(home-jobs => {
+  //     this.Jobs = home-jobs;
   //   });
-  //   this.http.get(`${this.baseDev}`).subscribe(devs => {
-  //     this.Devs = devs;
+  //   this.http.get(`${this.baseDev}`).subscribe(home-devs => {
+  //     this.Devs = home-devs;
   //   })
   // }
   //

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { catchError } from "rxjs/operators";
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -57,13 +57,13 @@ export class OrgService {
 
   updateOneOrg(id, data): Observable<any> {
     console.log(`UPDATE orgService.updateOneOrg(${id}) ***`);
-    // return this.http.put<any>(`/api/devs/${id}`, data);
+    // return this.http.put<any>(`/api/home-devs/${id}`, data);
     return this.http.put<any>(`${this.testAPI}/${id}`, data);
   }
 
   deleteOneOrg(id): Observable<any> {
     console.log(`DELETE orgService.deleteOneOrg(${id})`);
-    // return this.http.delete<any>(`/api/devs/${id}`);
+    // return this.http.delete<any>(`/api/home-devs/${id}`);
     return this.http.delete<any>(`${this.testAPI}/${id}`);
   }
 }

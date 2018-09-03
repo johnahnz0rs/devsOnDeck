@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { OrgService } from '../../services/org.service';
 
 @Component({
-  selector: 'app-org-show-orgs',
-  templateUrl: './org-show-orgs.component.html',
-  styleUrls: ['../../../../node_modules/bootstrap/dist/css/bootstrap.css', './org-show-orgs.component.css']
+  selector: 'app-dev-show-orgs',
+  templateUrl: './dev-show-orgs.component.html',
+  styleUrls: ['../../../../node_modules/bootstrap/dist/css/bootstrap.css', './dev-show-orgs.component.css']
 })
-export class OrgShowOrgsComponent implements OnInit {
+export class DevShowOrgsComponent implements OnInit {
 
   allOrgs;
 

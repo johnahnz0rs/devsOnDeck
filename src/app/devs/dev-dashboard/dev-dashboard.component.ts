@@ -64,6 +64,10 @@ export class DevDashboardComponent implements OnInit {
     return Object.keys(obj);
   }
 
+  logout() {
+    console.log('*** lol u clicked LOGOUT ***');
+  }
+
   toggleEditForm() {
     // console.log('***** you clicked button: edit my info *****');
     // set default values;

@@ -27,8 +27,8 @@
                 <a class="nav-link" (click)="clickThisComp('profile')">My Profile</a>
             </li>
             <li class="nav-item">
-                <!--<a class="nav-link" data-toggle="modal" data-target="#modal-login">Login</a>-->
-                <a class="nav-link" href="#">Log Out</a>
+                <!--<a class="nav-link" data-toggle="modal" data-target="#modal-home-login">Login</a>-->
+                <a class="nav-link" role="button" (click)="logout()">Log Out</a>
             </li>
         </ul>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,12 +41,28 @@
 <!-- end navbar -->
 <!-- end navbar -->
 
-<p>dev-dashboard works!</p>
+<div class="container row">
+    <div class="col-sm-4">
+        <h3>Positions to Fill</h3>
+        <div *ngIf="myJobs">
+            <div *ngFor="let job of myJobs" style="border: 1px solid black;">
+                <span>{{job.position}}</span>
+            </div>
+        </div>
+        <div *ngIf="myJobs.length === 0">
+            <p>Add a position you'd like filled.</p>
+            <button class="btn btn-sm btn-outline-primary" (click)="nothingClick()">button</button>
+        </div>
 
-<app-org-show-devs *ngIf="showThisComp === 'devs'"></app-org-show-devs>
-<app-org-show-orgs *ngIf="showThisComp === 'orgs'"></app-org-show-orgs>
-<app-org-show-jobs *ngIf="showThisComp === 'jobs'"></app-org-show-jobs>
-<app-org-show-profile *ngIf="showThisComp === 'profile'"></app-org-show-profile>
+    </div>
+
+    <div class="col-sm-8">
+        <app-org-show-devs *ngIf="showThisComp === 'devs'"></app-org-show-devs>
+        <app-org-show-orgs *ngIf="showThisComp === 'orgs'"></app-org-show-orgs>
+        <app-org-show-jobs *ngIf="showThisComp === 'jobs'"></app-org-show-jobs>
+        <app-org-profile *ngIf="showThisComp === 'profile'"></app-org-profile>
+    </div>
+</div>
 
 
 
@@ -75,7 +91,7 @@
 
 
 
-        <!--&lt;!&ndash; display my jobs &ndash;&gt;-->
+        <!--&lt;!&ndash; display my home-jobs &ndash;&gt;-->
         <!--<div id="div-myJobsList">-->
 
             <!--<table class="table table-hover table-borderless table-striped">-->
@@ -83,20 +99,20 @@
                 <!--<tbody>-->
                     <!--&lt;!&ndash; fake job 1 &ndash;&gt;-->
                     <!--<tr (click)="showMyJob('42')">-->
-                        <!--<td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">Job 1</td>-->
+                        <!--<td class="one-of-my-home-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">Job 1</td>-->
                     <!--</tr>-->
                     <!--&lt;!&ndash; fake job 2 &ndash;&gt;-->
                     <!--<tr (click)="showMyJob('1337')">-->
-                        <!--<td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">l33t hax0r</td>-->
+                        <!--<td class="one-of-my-home-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">l33t hax0r</td>-->
                     <!--</tr>-->
                     <!--&lt;!&ndash; fake job 3 &ndash;&gt;-->
                     <!--<tr (click)="showMyJob('69696969')">-->
-                        <!--<td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">People's Champ</td>-->
+                        <!--<td class="one-of-my-home-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">People's Champ</td>-->
                     <!--</tr>-->
 
-                    <!--&lt;!&ndash; real jobs &ndash;&gt;-->
-                    <!--&lt;!&ndash;<tr *ngFor="let job of myInfo.jobs" (click)="showMyJob(job._id)">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">{{job.position}}</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash; real home-jobs &ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr *ngFor="let job of myInfo.home-jobs" (click)="showMyJob(job._id)">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td class="one-of-my-home-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">{{job.position}}</td>&ndash;&gt;-->
                     <!--&lt;!&ndash;</tr>&ndash;&gt;-->
                 <!--</tbody>-->
 
@@ -114,104 +130,105 @@
 
 
 
-    <!--&lt;!&ndash; left-col: #div-addJobForm (option 2) &ndash;&gt;-->
-    <!--&lt;!&ndash; left-col: #div-addJobForm (option 2) &ndash;&gt;-->
-    <!--&lt;!&ndash; left-col: #div-addJobForm (option 2) &ndash;&gt;-->
-    <!--<div *ngIf="addJobForm" class="col col-sm-4" id="div-addJobForm">-->
+    <!-- left-col: #div-addJobForm (option 2) -->
+    <!-- left-col: #div-addJobForm (option 2) -->
+    <!-- left-col: #div-addJobForm (option 2) -->
 
-        <!--&lt;!&ndash; header &ndash;&gt;-->
-        <!--<div id="div-addJobForm-header" class="row">-->
-            <!--<div class="col col-sm-12">-->
-                <!--<button id="btn-toggle-cancelAddJob" class="btn btn-sm btn-danger" (click)="toggleAddJobForm()">x</button>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash; end header &ndash;&gt;-->
+    <div *ngIf="addJobForm" class="col col-sm-4" id="div-addJobForm">
+
+        <!-- header -->
+        <div id="div-addJobForm-header" class="row">
+            <div class="col col-sm-12">
+                <button id="btn-toggle-cancelAddJob" class="btn btn-sm btn-danger" (click)="toggleAddJobForm()">x</button>
+            </div>
+        </div>
+        <!-- end header -->
 
 
-        <!--&lt;!&ndash; the addJob form &ndash;&gt;-->
-        <!--<div id="div-the-addJobForm">-->
-            <!--<p>addJobForm.value|json {{addJobForm.value | json}}</p>-->
+        <!-- the addJob form -->
+        <div id="div-the-addJobForm">
+            <p>addJobForm.value|json {{addJobForm.value | json}}</p>
 
-            <!--<form #addJobForm="ngForm">-->
+            <form #addJobForm="ngForm">
 
-                <!--&lt;!&ndash; position &ndash;&gt;-->
-                <!--<div class="form-group row">-->
-                    <!--<div class="col col-sm-4">-->
-                        <!--<label for="position">-->
-                            <!--<span class="bold-text">Position:</span>-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="col col-sm-8">-->
-                        <!--<input class="form-control" id="position" name="position" type="text" required [(ngModel)]="newJob.position">-->
-                    <!--</div>-->
-                <!--</div>-->
+                <!-- position -->
+                <div class="form-group row">
+                    <div class="col col-sm-4">
+                        <label for="position">
+                            <span class="bold-text">Position:</span>
+                        </label>
+                    </div>
+                    <div class="col col-sm-8">
+                        <input class="form-control" id="position" name="position" type="text" required [(ngModel)]="newJob.position">
+                    </div>
+                </div>
 
-                <!--&lt;!&ndash; description &ndash;&gt;-->
-                <!--<div class="form-group row">-->
-                    <!--<div class="col col-sm-4">-->
-                        <!--<label for="description">-->
-                            <!--<span class="bold-text">Description:</span>-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="col col-sm-8">-->
-                        <!--<textarea class="form-control" id="description" name="description" required [(ngModel)]="newJob.description"></textarea>-->
-                    <!--</div>-->
-                <!--</div>-->
+                <!-- description -->
+                <div class="form-group row">
+                    <div class="col col-sm-4">
+                        <label for="description">
+                            <span class="bold-text">Description:</span>
+                        </label>
+                    </div>
+                    <div class="col col-sm-8">
+                        <textarea class="form-control" id="description" name="description" required [(ngModel)]="newJob.description"></textarea>
+                    </div>
+                </div>
 
-                <!--&lt;!&ndash; show required skills &ndash;&gt;-->
-                <!--<div class="form-group row">-->
-                    <!--<div class="col col-sm-4">-->
-                        <!--<label for="div-required-skills">-->
-                            <!--<span class="bold-text">Required Skills:</span>-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="col col-sm-7" id="div-required-skills">-->
-                        <!--<div class="row">-->
-                            <!--<figure *ngFor="let skill of newJob.skills" class="figure text-center show-required-skill-figure col col-sm-3">-->
-                                <!--<img class="figure-img show-required-skill-img" src="assets/img/{{skill}}.png">-->
-                                <!--<figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>-->
-                                <!--<figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>-->
-                            <!--</figure>-->
-                        <!--</div>-->
+                <!-- show required skills -->
+                <div class="form-group row">
+                    <div class="col col-sm-4">
+                        <label for="div-required-skills">
+                            <span class="bold-text">Required Skills:</span>
+                        </label>
+                    </div>
+                    <div class="col col-sm-7" id="div-required-skills">
+                        <div class="row">
+                            <figure *ngFor="let skill of newJob.skills" class="figure text-center show-required-skill-figure col col-sm-3">
+                                <img class="figure-img show-required-skill-img" src="assets/img/{{skill}}.png">
+                                <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
+                                <figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>
+                            </figure>
+                        </div>
 
-                    <!--</div>-->
-                <!--</div>-->
+                    </div>
+                </div>
 
-                <!--&lt;!&ndash; add skill &ndash;&gt;-->
-                <!--<div class="form-group row">-->
-                    <!--<div class="col col-sm-4">-->
-                        <!--<label for="skills">-->
-                            <!--<span class="bold-text">Add Required Skills:</span>-->
-                        <!--</label>-->
-                    <!--</div>-->
-                    <!--<div class="col col-sm-7" id="skills">-->
-                        <!--<div class="row">-->
-                            <!--<figure *ngFor="let language of languages" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(language)">-->
-                                <!--<img class="figure-img add-required-skill-img" src="assets/img/{{language}}.png">-->
-                                <!--<figcaption *ngIf="language != 'Csharp'" class="figure-caption">{{language}}</figcaption>-->
-                                <!--<figcaption *ngIf="language == 'Csharp'" class="figure-caption">C#</figcaption>-->
-                            <!--</figure>-->
-                            <!--<figure *ngFor="let framework of frameworks" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(framework)">-->
-                                <!--<img class="figure-img add-required-skill-img" src="assets/img/{{framework}}.png">-->
-                                <!--<figcaption class="figure-caption">{{framework}}</figcaption>-->
-                            <!--</figure>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
+                <!-- add skill -->
+                <div class="form-group row">
+                    <div class="col col-sm-4">
+                        <label for="skills">
+                            <span class="bold-text">Add Required Skills:</span>
+                        </label>
+                    </div>
+                    <div class="col col-sm-7" id="skills">
+                        <div class="row">
+                            <figure *ngFor="let language of languages" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(language)">
+                                <img class="figure-img add-required-skill-img" src="assets/img/{{language}}.png">
+                                <figcaption *ngIf="language != 'Csharp'" class="figure-caption">{{language}}</figcaption>
+                                <figcaption *ngIf="language == 'Csharp'" class="figure-caption">C#</figcaption>
+                            </figure>
+                            <figure *ngFor="let framework of frameworks" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(framework)">
+                                <img class="figure-img add-required-skill-img" src="assets/img/{{framework}}.png">
+                                <figcaption class="figure-caption">{{framework}}</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
 
-                <!--<button class="btn btn-sm btn-danger" id="button-cancel" (click)="toggleAddJobForm()">Cancel</button>-->
-                <!--<button class="btn btn-sm btn-success" id="button-submitNewJob" (click)="submitNewJob()">Add This Position</button>-->
+                <button class="btn btn-sm btn-danger" id="button-cancel" (click)="toggleAddJobForm()">Cancel</button>
+                <button class="btn btn-sm btn-success" id="button-submitNewJob" (click)="submitNewJob()">Add This Position</button>
 
-            <!--</form>-->
+            </form>
 
-        <!--</div>-->
-        <!--&lt;!&ndash; end the addJob form &ndash;&gt;-->
+        </div>
+        <!-- end the addJob form -->
 
-    <!--</div>-->
+    </div>
 
-    <!--&lt;!&ndash; end left-col: #div-addJobForm (option 2) &ndash;&gt;-->
-    <!--&lt;!&ndash; end left-col: #div-addJobForm (option 2) &ndash;&gt;-->
-    <!--&lt;!&ndash; end left-col: #div-addJobForm (option 2) &ndash;&gt;-->
+    <!-- end left-col: #div-addJobForm (option 2) -->
+    <!-- end left-col: #div-addJobForm (option 2) -->
+    <!-- end left-col: #div-addJobForm (option 2) -->
 
 
 
@@ -342,7 +359,7 @@
                 <!--&lt;!&ndash;{{org}}&ndash;&gt;-->
                 <!--<div class="col col-sm-4"><p class="bold-text">Org Name</p><p>{{org.orgName}}</p></div>-->
                 <!--<div class="col col-sm-5"><p class="bold-text">Location</p><p>{{org.city}}, {{org.state}}</p></div>-->
-                <!--<div class="col col-sm-3"><p class="bold-text">Available Positions</p><p>{{org.jobs.length}}</p></div>-->
+                <!--<div class="col col-sm-3"><p class="bold-text">Available Positions</p><p>{{org.home-jobs.length}}</p></div>-->
             <!--</div>-->
 
 
@@ -541,7 +558,7 @@
                         <!--&lt;!&ndash;</div>&ndash;&gt;-->
                     <!--</div>-->
 
-                    <!--<div class="col col-sm-6" id="modal-list-of-orgs-jobs">-->
+                    <!--<div class="col col-sm-6" id="modal-list-of-orgs-home-jobs">-->
                         <!--&lt;!&ndash; fake jeobs &ndash;&gt;-->
                         <!--<div class="row modal-org-each-job">-->
                             <!--<div class="col col-sm-8">-->
@@ -565,7 +582,7 @@
                         <!--</div>-->
 
                         <!--&lt;!&ndash; real jeobs &ndash;&gt;-->
-                        <!--<div class="row modal-org-each-job">&lt;!&ndash; *ngFor="let job of selectedOrg.jobs" &ndash;&gt;-->
+                        <!--<div class="row modal-org-each-job">&lt;!&ndash; *ngFor="let job of selectedOrg.home-jobs" &ndash;&gt;-->
                             <!--<div class="col col-sm-8">-->
                                 <!--<p class="bold-text">job.position</p>-->
                                 <!--<p>job.description &lt;!&ndash;{{job.description}}&ndash;&gt;</p>-->

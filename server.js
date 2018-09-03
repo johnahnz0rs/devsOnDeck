@@ -14,6 +14,7 @@ require('./server/config/database.js');
 require('./server/models/dev.js');
 require('./server/models/job.js');
 require('./server/models/org.js');
+require('./server/models/user.js');
 
 
 // serve angular files from 'dist' directory

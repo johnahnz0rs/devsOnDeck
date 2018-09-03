@@ -27,8 +27,8 @@
                 <a class="nav-link" (click)="clickThisComp('profile')">My Profile</a>
             </li>
             <li class="nav-item">
-                <!--<a class="nav-link" data-toggle="modal" data-target="#modal-login">Login</a>-->
-                <a class="nav-link" href="#">Log Out</a>
+                <!--<a class="nav-link" data-toggle="modal" data-target="#modal-home-login">Login</a>-->
+                <a class="nav-link" (click)="logout()">Log Out</a>
             </li>
         </ul>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,10 +43,10 @@
 
 <!--<p>dev-dashboard works!</p>-->
 
-<app-show-jobs *ngIf="showThisComp === 'jobs'"></app-show-jobs>
-<app-show-devs *ngIf="showThisComp === 'devs'"></app-show-devs>
-<app-show-orgs *ngIf="showThisComp === 'orgs'"></app-show-orgs>
-<app-show-profile *ngIf="showThisComp === 'profile'"></app-show-profile>
+<app-dev-show-jobs *ngIf="showThisComp === 'jobs'"></app-dev-show-jobs>
+<app-dev-show-devs *ngIf="showThisComp === 'devs'"></app-dev-show-devs>
+<app-dev-show-orgs *ngIf="showThisComp === 'orgs'"></app-dev-show-orgs>
+<app-dev-show-profile *ngIf="showThisComp === 'profile'"></app-dev-show-profile>
 
 
 
@@ -344,7 +344,7 @@
             <!--<div class="col col-sm-4">-->
                 <!--&lt;!&ndash; this button hides #div-showAllJobs && shows #div-showAllOrgs &ndash;&gt;-->
                 <!--&lt;!&ndash;btn-outline-success&ndash;&gt;-->
-                <!--<button class="btn btn-lg btn-toggle-jobs-orgs" (click)="switchJobsOrgs()">Show All Organizations</button>-->
+                <!--<button class="btn btn-lg btn-toggle-home-jobs-orgs" (click)="switchJobsOrgs()">Show All Organizations</button>-->
             <!--</div>-->
         <!--</div>-->
         <!--&lt;!&ndash; end #div-showJobs-header &ndash;&gt;-->
@@ -371,7 +371,7 @@
             <!--</div>-->
 
             <!--&lt;!&ndash; display each jeob &ndash;&gt;-->
-            <!--<div class="div-jobs-list" *ngIf="allJobs">-->
+            <!--<div class="div-home-jobs-list" *ngIf="allJobs">-->
 
                 <!--<div *ngFor="let job of allJobs" class="div-job row" type="button" data-toggle="modal" data-target="#modal-show-one-job" (click)="showJobDetail(job._id)">-->
                     <!--<div class="col col-sm-4">-->
@@ -411,7 +411,7 @@
 
             <!--&lt;!&ndash; this button hides #div-showAllOrgs && shows #div-showAllJobs &ndash;&gt;-->
             <!--<div class="col col-sm-4">-->
-                <!--<button class="btn btn-lg btn-toggle-jobs-orgs" (click)="switchJobsOrgs()">Show All Positions</button>-->
+                <!--<button class="btn btn-lg btn-toggle-home-jobs-orgs" (click)="switchJobsOrgs()">Show All Positions</button>-->
             <!--</div>-->
 
         <!--</div>-->
@@ -435,7 +435,7 @@
                 <!--&lt;!&ndash;{{org}}&ndash;&gt;-->
                 <!--<div class="col col-sm-4"><p class="bold-text">Org Name</p><p>{{org.orgName}}</p></div>-->
                 <!--<div class="col col-sm-5"><p class="bold-text">Location</p><p>{{org.city}}, {{org.state}}</p></div>-->
-                <!--<div class="col col-sm-3"><p class="bold-text"># of Available Positions</p><p class="center-text">{{org.jobs.length}}</p></div>-->
+                <!--<div class="col col-sm-3"><p class="bold-text"># of Available Positions</p><p class="center-text">{{org.home-jobs.length}}</p></div>-->
             <!--</div>-->
 
         <!--</div> &lt;!&ndash; end #div-showOrgs-body &ndash;&gt;-->
@@ -582,7 +582,7 @@
                         <!--&lt;!&ndash;</div>&ndash;&gt;-->
                     <!--</div>-->
 
-                    <!--<div class="col col-sm-6" id="modal-list-of-orgs-jobs">-->
+                    <!--<div class="col col-sm-6" id="modal-list-of-orgs-home-jobs">-->
                         <!--&lt;!&ndash; fake jeobs &ndash;&gt;-->
                         <!--<div class="row modal-org-each-job">-->
                             <!--<div class="col col-sm-8">-->
@@ -606,7 +606,7 @@
                         <!--</div>-->
 
                         <!--&lt;!&ndash; real jeobs &ndash;&gt;-->
-                        <!--<div class="row modal-org-each-job">&lt;!&ndash; *ngFor="let job of selectedOrg.jobs" &ndash;&gt;-->
+                        <!--<div class="row modal-org-each-job">&lt;!&ndash; *ngFor="let job of selectedOrg.home-jobs" &ndash;&gt;-->
                             <!--<div class="col col-sm-8">-->
                                 <!--<p class="bold-text">job.position</p>-->
                                 <!--<p>job.description &lt;!&ndash;{{job.description}}&ndash;&gt;</p>-->

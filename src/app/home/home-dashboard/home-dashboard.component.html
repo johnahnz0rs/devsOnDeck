@@ -1,0 +1,185 @@
+<!-- template -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: cornflowerblue">
+    <!-- left side of navbar -->
+    <a class="navbar-brand" href="#" (click)="clickComp('splash')">devJobs</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#" (click)="clickComp('jobs')">Find Jobs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" (click)="clickComp('devs')">Find Developers</a>
+            </li>
+        </ul>
+    </div>
+    <!-- end left side of navbar -->
+
+    <!-- right side of navbar -->
+    <div class="d-flex flex-row order-2 order-lg-3 ml-auto">
+        <ul class="navbar-nav flex-row">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#modal-login">Login</a>
+            </li>
+        </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <!-- end right side of navbar -->
+</nav>
+<!-- end navbar -->
+<!-- end navbar -->
+<!-- end navbar -->
+
+
+
+
+<!-- buttons that toggle display of the Add Org to DB, and Add Job to DB forms -->
+<!--<div>-->
+    <!--<button class="btn btn-sm btn-outline-danger" (click)="toggleAddOrgForm()">Toggle Add Org Form</button>-->
+    <!--<button class="btn btn-sm btn-outline-danger" (click)="toggleAddJobForm()">Toggle Add Job Form</button>-->
+<!--</div>-->
+
+<div *ngIf="showAddOrgForm" style="border: 1px solid black; margin: 100px auto;">
+    <form id="add-org-form" #addOrgForm="ngForm">
+        <div class="form-group">
+            <label>Org Name: </label><input class="form-control" id="org-name" name="org-name" type="text" [(ngModel)]="createOrg.orgName">
+        </div>
+        <div class="form-group">
+            <label>First Name: </label><input class="form-control" id="fname" name="fname" type="text" [(ngModel)]="createOrg.fname">
+        </div>
+        <div class="form-group">
+            <label>Last Name: </label><input class="form-control" id="lname" name="lname" type="text" [(ngModel)]="createOrg.lname">
+        </div>
+        <div class="form-group">
+            <label>Email: </label><input class="form-control" id="email" name="email" type="email" [(ngModel)]="createOrg.email">
+        </div>
+        <div class="form-group">
+            <label>Password: </label><input class="form-control" id="pw" name="pw" type="text" [(ngModel)]="createOrg.pw">
+        </div>
+        <div class="form-group">
+            <label>Street Address: </label><input class="form-control" id="address" name="address" type="text" [(ngModel)]="createOrg.address">
+        </div>
+        <div class="form-group">
+            <label>City: </label><input class="form-control" id="city" name="city" type="text" [(ngModel)]="createOrg.city">
+        </div>
+        <div class="form-group">
+            <label>State: </label>
+            <select class="form-control" id="state" name="state" required [(ngModel)]="createOrg.state">
+                <option *ngFor="let state of states">
+                    {{ state }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Zip: </label><input class="form-control" id="zip" name="zip" type="text" [(ngModel)]="createOrg.zip">
+        </div>
+    </form>
+
+    <button class="btn btn-lg btn-success" (click)="submitCreateOrg()">Create This Org</button>
+</div>
+<!-- end addOrgForm -->
+
+<div *ngIf="showAddJobForm" style="border: 1px solid black; margin: 100px auto;">
+    <form id="add-job-form" #addJobForm="ngForm">
+        <div class="form-group">
+            <label>Position: </label><input class="form-control" id="position" name="position" type="text" [(ngModel)]="createJob.position">
+        </div>
+        <div class="form-group">
+            <label>Description: </label><input class="form-control" id="description" name="description" type="text" [(ngModel)]="createJob.description">
+        </div>
+    </form>
+
+    <button class="btn btn-lg btn-success" (click)="submitCreateJob()">Create This Job</button>
+</div>
+<!-- end addJobForm -->
+
+
+
+<!-- buttons that toggle display of the register-dev and register-org modals -->
+<div>
+    <button class="btn btn-sm btn-outline-warning" type="button" data-toggle="modal" data-target="#modal-register-dev" (click)="modalButtonClicked()">Register Dev </button>
+    <button class="btn btn-sm btn-outline-warning" type="button" data-toggle="modal" data-target="#modal-register-org" (click)="modalButtonClicked()">Register Org</button>
+</div>
+
+<app-home-splash *ngIf="displayThisComp === 'splash'"></app-home-splash>
+<app-home-jobs *ngIf="displayThisComp ==='jobs'"></app-home-jobs>
+<app-home-devs *ngIf="displayThisComp ==='devs'"></app-home-devs>
+<!-- end template -->
+
+
+
+
+<!--modals -->
+<!--modals -->
+<!--modals -->
+
+<!-- #modal-login -->
+<div class="modal fade" role="dialog" tabindex="-1" id="modal-login" aria-labelledby="modal-login-label" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-login-label">Log In</h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <app-home-login></app-home-login>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
+                <a data-toggle="modal" data-target="#modal-register" id="register-link">Register with devJobs</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end #modal-login-->
+
+
+<!-- #modal-register-dev -->
+<div class="modal fade" id="modal-register-dev" tabindex="-1" role="dialog" aria-labelledby="modal-register-dev-label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <!--<h3 class="modal-title" id="modal-job-label">Position: {{selectedJob.position}}</h3>-->
+                <h3 class="modal-title" id="modal-register-dev-label">Register</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <app-home-register-dev></app-home-register-dev>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end #modal-register-dev -->
+
+
+<!-- #modal-register-org -->
+<div class="modal fade" role="dialog" id="modal-register-org" tabindex="-1" aria-labelledby="modal-register-org-label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-register-org-label">Register Your Organization</h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <app-home-register-org></app-home-register-org>
+            </div>
+            <div class="modal-footer">
+                <!--<button type="button" class="btn btn-lg btn-success" (click)="registerOrg()"></button>-->
+                <!--<a data-toggle="modal" data-target="#modal-register">Register with devJobs</a>-->
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end #modal-register-org-->
+

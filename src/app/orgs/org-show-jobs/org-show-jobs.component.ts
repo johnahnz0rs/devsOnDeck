@@ -17,6 +17,7 @@ export class OrgShowJobsComponent implements OnInit {
 
   ngOnInit() {
     this.jobService.readAllJobs().subscribe(response => { this.allJobs = response; });
+    // this.jobService.
   }
 
   keys(obj) {
@@ -24,7 +25,7 @@ export class OrgShowJobsComponent implements OnInit {
   }
 
   printAllJobs() {
-    console.log('*** show-jobs-comp is printing allJobs ***', this.allJobs);
+    console.log('*** dev-show-home-jobs-comp is printing allJobs ***', this.allJobs);
   }
 
 }
