@@ -205,7 +205,7 @@ module.exports = {
   },
 
   createOneOrg: function(request, response) {
-    console.log("*** controller.createOneOrg() ***", request.body);
+    console.log("*** controller is running createOneOrg() with arg: ***", request.body);
 
     // is this email already registered
     Org.findOne({ email: request.body.email }, function(error, org) {
@@ -232,7 +232,7 @@ module.exports = {
     // encrypting the password
     bcrypt.hash(request.body.pw, 10, function(error, hash) {
       if (error) {
-        console.log(error);
+        console.log('*** hash got fucked up ***', error);
         response.json(error);
       } else {
         newOrg.pw = hash;
@@ -331,6 +331,15 @@ module.exports = {
       "*** controller.getOneJob(), request.body = ***",
       request.body
     );
+    Job.findOne({_id: request.params.id}, function(error, org) {
+      if (error) {
+        console.log('*** error in controller.getOneJob ***', error);
+        response.json(error);
+      } else if (org) {
+        console.log(org);
+        response.json(org);
+      }
+    });
   },
 
   getOneOrg: function(request, response) {

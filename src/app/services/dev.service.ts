@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class DevService {
 
+  allDevs;
+
   testAPI = 'https://5b8af02d78169a0014daacf8.mockapi.io/devs';
 
   constructor(private http: HttpClient) { }
@@ -19,9 +21,11 @@ export class DevService {
   }
 
   readAllDevs(): Observable<any> {
-    console.log('*** READ devService.getAllDevs ***');
-    // return this.http.get<any>('/api/devs');
-    return this.http.get<any>(`${this.testAPI}`);
+    console.log('*** devService is running readAllDevs() ***');
+    this.allDevs = this.http.get<any>('/api/devs');
+    console.log('*** devService received these devs ***', this.allDevs);
+    return this.http.get<any>('/api/devs');
+    // return this.http.get<any>(`${this.testAPI}`);
   }
 
   readOneDev(id): Observable<any> {

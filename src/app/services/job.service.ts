@@ -16,23 +16,27 @@ export class JobService {
     private http: HttpClient
   ) { }
 
-  createNewJob(job): Observable<any> {
-    console.log(`*** CREATE jobService.createNewJob(${job}) ***`);
-    // return this.http.post<any>('/api/devs', dev);
-    return this.http.post<any>(`${this.testAPI}`, job);
+  // certified
+  createNewJob(job) {
+    console.log('*** jobService is running createNewJob(job) ***', job);
+    this.http.post<any>('/api/jobs', job)
+      .subscribe(response => { console.log('*** API.createNewJob() response ***', response); });
+    // return this.http.post<any>(`${this.testAPI}`, job);
   }
 
   readAllJobs(): Observable<any> {
-    console.log('*** READ jobService.getAllJobs() ***');
+    console.log('*** jobService is running getAllJobs() ***');
     // return this.http.get<any>('/api/devs');
-    return this.http.get<any>(`${this.testAPI}`);
+    this.allJobs = this.http.get<any>('/api/jobs');
+    console.log('*** jobService received these jobs ***', this.allJobs);
+    return this.http.get<any>('/api/jobs');
     // this.allJobs = this.http.get<any>(`${this.testAPI}`);
   }
 
   readOneJob(id): Observable<any> {
-    console.log(`*** READ jobService.getOneJob(${id}) ***`);
-    // return this.http.get<any>(`/api/devs/${id}`);
-    return this.http.get<any>(`${this.testAPI}/${id}`);
+    console.log('*** jobService is running readOneJob(id) ***', id);
+    return this.http.get<any>(`/api/jobs/${id}`);
+    // return this.http.get<any>(`${this.testAPI}/${id}`);
   }
 
   updateOneJob(id, data): Observable<any> {

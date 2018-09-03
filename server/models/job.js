@@ -4,6 +4,8 @@ const { Schema } = mongoose;
 const jobSchema = new mongoose.Schema({
 
     orgId: {type: String, require: true, trim: true},
+    orgName: {type: String, require: true, trim: true},
+    location: {type: String, require: true, trim: true},
     position: {type: String, required: true, trim: true},
     description: {type: String, required: true, trim: true},
     skills: {type: Array, required: true},

@@ -4,6 +4,8 @@ import { AppService } from '../../services/app.service';
 import { Router } from '@angular/router';
 import { Org } from '../../org';
 import { OrgService } from '../../services/org.service';
+import { Job } from '../../job';
+import { JobService } from '../../services/job.service';
 
 @Component({
   selector: 'app-home',
@@ -13,23 +15,23 @@ import { OrgService } from '../../services/org.service';
 })
 export class HomeComponent implements OnInit {
 
-  // loginInfo: Login;
-  displayJobs = false;
-  displayDevs = false;
-  displayHome = true;
-  // displayOrgs = false;
-
+  displayThisComp = 'splash';
   allJobs;
   allDevs;
   allOrgs;
 
+  showAddOrgForm = false;
+  showAddJobForm = false;
+
   createOrg: Org = new Org();
+  createJob: Job = new Job();
 
   states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
 
   constructor(
     private appService: AppService,
     private orgService: OrgService,
+    private jobService: JobService,
     private router: Router) {
   }
 
@@ -37,39 +39,17 @@ export class HomeComponent implements OnInit {
 
   }
 
-  showAllJobs() {
-    this.displayJobs = true;
-    this.displayDevs = false;
-    this.displayHome = false;
-    // this.displayOrgs = false;
+  toggleAddOrgForm() {
+    this.showAddOrgForm = !this.showAddOrgForm;
   }
 
-  showAllDevs() {
-    this.displayDevs = true;
-    this.displayJobs = false;
-    this.displayHome = false;
-    // this.displayOrgs = false;
+  toggleAddJobForm() {
+    this.showAddJobForm = !this.showAddJobForm;
   }
 
-  showHome() {
-    this.displayHome = true;
-    this.displayDevs = false;
-    this.displayJobs = false;
+  clickComp(comp) {
+    this.displayThisComp = comp;
   }
-
-  // _id: string;
-  //   // orgName: string;
-  //   // fname: string;
-  //   // lname: string;
-  //   // email: string;
-  //   // pw: string;
-  //   // cpw: string;
-  //   // address: string;
-  //   // city: string;
-  //   // state: string;
-  //   // zip: string;
-  //   // jobs: Array<Job>;
-  //   // accountType: string;
 
   submitCreateOrg() {
     const newOrg = {
@@ -87,6 +67,20 @@ export class HomeComponent implements OnInit {
     };
     console.log('*** home-comp: you clicked submitCreateOrg(org) ***', newOrg);
     this.orgService.createNewOrg(newOrg);
+  }
+
+
+  submitCreateJob() {
+    const newJob = {
+      orgId: '5b751a8debe058cb69905952',
+      orgName: 'z0rs, Inc.',
+      location: 'Los Angeles, CA',
+      position: this.createJob.position,
+      description: this.createJob.description,
+      skills: ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'MongoDB', 'Express.js', 'Angular', 'Node.js', 'Django', 'MySQL']
+    };
+    console.log('*** home-comp: you clicked submitCreateJob(job) ***', newJob);
+    this.jobService.createNewJob(newJob);
   }
 
   // showAllOrgs() {

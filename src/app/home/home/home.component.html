@@ -1,15 +1,15 @@
 <!-- template -->
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: cornflowerblue">
     <!-- left side of navbar -->
-    <a class="navbar-brand" href="#" (click)="showHome()">devJobs</a>
+    <a class="navbar-brand" href="#" (click)="clickComp('splash')">devJobs</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#" (click)="showAllJobs()">Find Jobs</a>
+                <a class="nav-link" href="#" (click)="clickComp('jobs')">Find Jobs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" (click)="showAllDevs()">Find Developers</a>
+                <a class="nav-link" href="#" (click)="clickComp('devs')">Find Developers</a>
             </li>
         </ul>
     </div>
@@ -36,23 +36,13 @@
 <!--<p>{{states}}</p>-->
 
 
+<!--<div>-->
+    <!--<button class="btn btn-sm btn-outline-danger" (click)="toggleAddOrgForm()">Toggle Add Org Form</button>-->
+    <!--<button class="btn btn-sm btn-outline-danger" (click)="toggleAddJobForm()">Toggle Add Job Form</button>-->
+<!--</div>-->
 
 
-<!--_id: string;-->
-<!--orgName: string;-->
-<!--fname: string;-->
-<!--lname: string;-->
-<!--email: string;-->
-<!--pw: string;-->
-<!--cpw: string;-->
-<!--address: string;-->
-<!--city: string;-->
-<!--state: string;-->
-<!--zip: string;-->
-<!--jobs: Array<Job>;-->
-<!--accountType: string;-->
-
-<div style="border: 1px solid black; margin: 100px auto;">
+<div *ngIf="showAddOrgForm" style="border: 1px solid black; margin: 100px auto;">
     <form id="add-org-form" #addOrgForm="ngForm">
         <div class="form-group">
             <label>Org Name: </label><input class="form-control" id="org-name" name="org-name" type="text" [(ngModel)]="createOrg.orgName">
@@ -90,113 +80,28 @@
 
     <button class="btn btn-lg btn-success" (click)="submitCreateOrg()">Create This Org</button>
 </div>
+<!-- end addOrgForm -->
 
 
 
-<!--<form #addJobForm="ngForm">-->
+<div *ngIf="showAddJobForm" style="border: 1px solid black; margin: 100px auto;">
+    <form id="add-job-form" #addJobForm="ngForm">
+        <div class="form-group">
+            <label>Position: </label><input class="form-control" id="position" name="position" type="text" [(ngModel)]="createJob.position">
+        </div>
+        <div class="form-group">
+            <label>Description: </label><input class="form-control" id="description" name="description" type="text" [(ngModel)]="createJob.description">
+        </div>
+    </form>
 
-<!--&lt;!&ndash; position &ndash;&gt;-->
-<!--<div class="form-group row">-->
-<!--<div class="col col-sm-4">-->
-<!--<label for="position">-->
-<!--<span class="bold-text">Position:</span>-->
-<!--</label>-->
-<!--</div>-->
-<!--<div class="col col-sm-8">-->
-<!--<input class="form-control" id="position" name="position" type="text" required [(ngModel)]="newJob.position">-->
-<!--</div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; description &ndash;&gt;-->
-<!--<div class="form-group row">-->
-<!--<div class="col col-sm-4">-->
-<!--<label for="description">-->
-<!--<span class="bold-text">Description:</span>-->
-<!--</label>-->
-<!--</div>-->
-<!--<div class="col col-sm-8">-->
-<!--<textarea class="form-control" id="description" name="description" required [(ngModel)]="newJob.description"></textarea>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; show required skills &ndash;&gt;-->
-<!--<div class="form-group row">-->
-<!--<div class="col col-sm-4">-->
-<!--<label for="div-required-skills">-->
-<!--<span class="bold-text">Required Skills:</span>-->
-<!--</label>-->
-<!--</div>-->
-<!--<div class="col col-sm-7" id="div-required-skills">-->
-<!--<div class="row">-->
-<!--<figure *ngFor="let skill of newJob.skills" class="figure text-center show-required-skill-figure col col-sm-3">-->
-<!--<img class="figure-img show-required-skill-img" src="assets/img/{{skill}}.png">-->
-<!--<figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>-->
-<!--<figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>-->
-<!--</figure>-->
-<!--</div>-->
-
-<!--</div>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; add skill &ndash;&gt;-->
-<!--<div class="form-group row">-->
-<!--<div class="col col-sm-4">-->
-<!--<label for="skills">-->
-<!--<span class="bold-text">Add Required Skills:</span>-->
-<!--</label>-->
-<!--</div>-->
-<!--<div class="col col-sm-7" id="skills">-->
-<!--<div class="row">-->
-<!--<figure *ngFor="let language of languages" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(language)">-->
-<!--<img class="figure-img add-required-skill-img" src="assets/img/{{language}}.png">-->
-<!--<figcaption *ngIf="language != 'Csharp'" class="figure-caption">{{language}}</figcaption>-->
-<!--<figcaption *ngIf="language == 'Csharp'" class="figure-caption">C#</figcaption>-->
-<!--</figure>-->
-<!--<figure *ngFor="let framework of frameworks" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(framework)">-->
-<!--<img class="figure-img add-required-skill-img" src="assets/img/{{framework}}.png">-->
-<!--<figcaption class="figure-caption">{{framework}}</figcaption>-->
-<!--</figure>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<button class="btn btn-sm btn-danger" id="button-cancel" (click)="toggleAddJobForm()">Cancel</button>-->
-<!--<button class="btn btn-sm btn-success" id="button-submitNewJob" (click)="submitNewJob()">Add This Position</button>-->
-
-<!--</form>-->
+    <button class="btn btn-lg btn-success" (click)="submitCreateJob()">Create This Job</button>
+</div>
 
 
 
-
-<app-splash *ngIf="displayHome"></app-splash>
-<app-jobs *ngIf="displayJobs"></app-jobs>
-<app-devs *ngIf="displayDevs"></app-devs>
-
-<!-- carousel of images -->
-<!--<div class="container-fluid">-->
-    <!--<div id="background-img-carousel" class="carousel slide" data-ride="carousel">-->
-        <!--<div class="carousel-inner">-->
-            <!--<div class="carousel-item active">-->
-                <!--&lt;!&ndash;<img class="d-block w-100" src="../../../assets/img/home-bg-0.png" alt="A slide">&ndash;&gt;-->
-                <!--<app-jobs></app-jobs>-->
-            <!--</div>-->
-            <!--<div class="carousel-item">-->
-                <!--&lt;!&ndash;<img class="d-block w-100" src="../../../assets/img/home-bg-1.png" alt="A slide">&ndash;&gt;-->
-                <!--<app-devs></app-devs>-->
-            <!--</div>-->
-            <!--<div class="carousel-item">-->
-                <!--&lt;!&ndash;<img class="d-block w-100" src="../../../assets/img/home-bg-2.png" alt="A slide">&ndash;&gt;-->
-                <!--<app-splash></app-splash>-->
-            <!--</div>-->
-
-            <!--&lt;!&ndash;<div class="carousel-item">&ndash;&gt;-->
-                <!--&lt;!&ndash;<img class="d-block w-100" src="../../../assets/img/home-bg-3.png" alt="A slide">&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-<!-- end carousel -->
-
+<app-splash *ngIf="displayThisComp === 'splash'"></app-splash>
+<app-jobs *ngIf="displayThisComp ==='jobs'"></app-jobs>
+<app-devs *ngIf="displayThisComp ==='devs'"></app-devs>
 <!-- end template -->
 
 

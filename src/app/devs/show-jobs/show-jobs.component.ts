@@ -9,6 +9,7 @@ import { JobService } from '../../services/job.service';
 export class ShowJobsComponent implements OnInit {
 
   allJobs;
+  selectedJob;
 
   constructor(
     private jobService: JobService
@@ -24,6 +25,13 @@ export class ShowJobsComponent implements OnInit {
 
   printAllJobs() {
     console.log('*** show-jobs-comp is printing allJobs ***', this.allJobs);
+  }
+
+  selectThisJob(job) {
+    // this.jobService.readOneJob(id)
+    //   .subscribe(response => { this.selectedJob = response; });
+    // this.selectedJob = this.jobService.readOneJob(id);
+    this.selectedJob = job;
   }
 
 }

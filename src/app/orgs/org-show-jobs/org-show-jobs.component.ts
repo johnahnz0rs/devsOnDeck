@@ -9,6 +9,7 @@ import { JobService } from '../../services/job.service';
 export class OrgShowJobsComponent implements OnInit {
 
   allJobs;
+  selectedJob;
 
   constructor(
     private jobService: JobService

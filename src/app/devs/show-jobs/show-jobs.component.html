@@ -6,10 +6,55 @@
 <button class="btn btn-sm btn-warning" (click)="printAllJobs()">Print All Jobs</button>
 
 
+
+
 <div *ngIf="allJobs">
-    <div *ngFor="let job of allJobs" style="border: 1px solid black;">
-        <span *ngFor="let i of keys(job)">
-            {{i}} : {{job[i]}}
-        </span>
+
+    <div *ngFor="let job of allJobs" class="each-job row" type="button" data-toggle="modal" data-target="#modal-each-job" (click)="selectThisJob(job)">
+        <div class="col-sm-3">Position:<br>{{job.position}}</div>
+        <div class="col-sm-3">Location:<br>{{job.location}}</div>
+        <div class="col-sm-3">Description:<br>{{job.description}}</div>
+        <div class="col-sm-3">Skills:<br><span *ngFor="let i of job.skills">{{i}}, </span></div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- #modal-each-job -->
+<div *ngIf="selectedJob" class="modal fade" id="modal-each-job" tabindex="-1" role="dialog" aria-labelledby="modal-job-label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-job-label">{{selectedJob.position}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>this is the jeob</p>
+                <div class="row">
+                    <div class="col-sm-3">Position:<br>{{selectedJob.position}}</div>
+                    <div class="col-sm-3">Location:<br>{{selectedJob.location}}</div>
+                    <div class="col-sm-3">Org:<br>{{selectedJob.orgName}}</div>
+                    <div class="col-sm-3">Required Skills:<br><span *ngFor="let i of selectedJob.skills">{{i}}, </span></div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+
+        </div>
     </div>
 </div>
+<!-- end #modal-each-job -->

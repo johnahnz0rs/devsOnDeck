@@ -5,13 +5,71 @@
 <button class="btn btn-lg btn-warning" (click)="printAllJobs()">print current this.allJobs</button>
 
 <div *ngIf="allJobs">
-    <p *ngFor="let job of allJobs" style="border:1px solid black;">
-        <span *ngFor="let prop of keys(job)">
-            {{prop}} : {{job[prop]}}
-        </span>
 
-    </p>
-    <!--<p>lol {{allJobs}}</p>-->
+    <div *ngFor="let job of allJobs" class="each-job row" type="button" data-toggle="modal" data-target="#modal-each-job">
+        <div class="col-sm-3">Position:<br>{{job.position}}</div>
+        <div class="col-sm-3">Location:<br>{{job.location}}</div>
+        <div class="col-sm-3">Description:<br>{{job.description}}</div>
+        <div class="col-sm-3">Skills:<br><span *ngFor="let i of job.skills">{{i}}, </span></div>
+    </div>
+
 </div>
 
+<!-- #modal-each-job -->
+<div class="modal fade" id="modal-each-job" tabindex="-1" role="dialog" aria-labelledby="modal-job-label" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
 
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-job-label">this is a job</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>this is the body</p>
+                <p>Register to see more!</p>
+                <!--<div class="row">-->
+                    <!--<div class="col col-sm-6" id="modal-job-details">-->
+                        <!--&lt;!&ndash; left-col: job details &ndash;&gt;-->
+                        <!--<table class="table table-borderless">-->
+                            <!--<tbody>-->
+                                <!--<tr>-->
+                                    <!--<td><span class="bold-text">Description:</span></td>-->
+                                    <!--<td>{{selectedJob.description}}</td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td>-->
+                                        <!--<span class="bold-text">Required Skills:</span>-->
+                                        <!--<br>({{selectedJob.match}}% Match)-->
+                                    <!--</td>-->
+                                    <!--<td>-->
+                                        <!--<figure *ngFor="let skill of selectedJob.skills" class="figure display-each-skill-figure text-center">-->
+                                            <!--<img class="figure-img each-skill-img" src="assets/img/{{skill}}.png">-->
+                                            <!--<figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>-->
+                                            <!--<figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>-->
+                                        <!--</figure>-->
+                                     <!--</td>-->
+                                <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+                        <!---->
+                    <!--<div class="col col-sm-5" id="modal-see-all-dev-matches">-->
+                        <!--<div *ngFor="let dev of allDevs">-->
+                          <!--<p>{{dev.fname}}</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end #modal-each-job -->
