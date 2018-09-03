@@ -7,14 +7,67 @@ const Job = mongoose.model("Job");
 
 module.exports = {
 
-  login: function(request, response) {
+  loginDev: function(request, response) {
     console.log(`*** controller.login(${request.body}) ***`);
-    response.json();
+    Dev.findOne({ email: request.body.email }, function(error, dev) {
+      if (error) {
+        console.log("*** error in Dev.findOne ***");
+        response.json(error);
+      } else if (dev) {
+        // if a dev with that email is found, then check pw:
+        console.log("*** dev account with that email exists, checking password now ***");
+        bcrypt.compare(request.body.pw, dev.pw, function(error, result) {
+          if (error) {
+            console.log("*** error in controller.login => compare dev's pw ***", error);
+            response.json(error);
+          } else if (result) {
+            // *** SUCCESS!! ***
+            console.log("*** pw match for this dev-user ***", dev);
+            response.json(dev);
+          } else if (!result) {
+            console.log("*** incorrect pw ***");
+            response.json("{error: 'incorrect password for dev'}");
+          }
+        });
+      } else if (!dev) {
+        console.log("*** no dev account with that email was found, checking for org accounts now ***");
+        response.json("{error: 'no account exists'}");
+      }
+    });
+  },
+
+  loginOrg: function(request, response) {
+    // returns error(s) OR an Org;
+    console.log(`*** controller.loginOrg(${request.body})`);
+    Org.findOne({email: request.body.email}, function(error, org) {
+      if (error) {
+        console.log('*** ERROR Org.findOne() ***', error);
+        response.json(error);
+      } else if (org) {
+        console.log('*** found an org ***');
+        bcrypt.compare(request.body.pw, org.pw, function(error, result) {
+          if (error) {
+            console.log("*** error in controller.loginOrg => compare org's pw ***", error);
+            response.json(error);
+          } else if (result) {
+            // *** SUCCESS!! ***
+            console.log("*** pw match for this org-user ***", result);
+            response.json(result);
+          } else if (!result) {
+            console.log("*** incorrect pw ***");
+            response.json("{error: 'incorrect password for org'}");
+          }
+        });
+      } else if (!org) {
+        console.log('*** no org found ***');
+        response.json("{error: 'no org found'}");
+      }
+    });
   },
 
 
   // login: function(request, response) {
-  //   console.log("***** controller.login() *****", request.body);
+  //   console.log("*** controller.login() ***", request.body);
   //
   //   // wrapper to check if email and pw were entered
   //   // they should be because both are required to submit login request;
@@ -22,61 +75,61 @@ module.exports = {
   //     // first check if the user is a dev
   //     Dev.findOne({ email: request.body.email }, function(error, dev) {
   //       if (error) {
-  //         console.log("***** error in dev.findOne *****");
+  //         console.log("*** error in dev.findOne ***");
   //         response.json(error);
   //       } else if (dev) {
   //         // if a dev with that email is found, then check pw:
   //         console.log(
-  //           "***** dev account with that email exists, checking password now *****"
+  //           "*** dev account with that email exists, checking password now ***"
   //         );
   //         bcrypt.compare(request.body.pw, dev.pw, function(error, result) {
   //           if (error) {
   //             console.log(
-  //               "***** error in controller.login => compare dev's pw *****",
+  //               "*** error in controller.login => compare dev's pw ***",
   //               error
   //             );
   //             response.json(error);
   //           } else if (result) {
-  //             console.log("***** pw match for this dev-user *****", dev);
+  //             console.log("*** pw match for this dev-user ***", dev);
   //             response.json(dev);
   //           } else if (!result) {
-  //             console.log("***** incorrect pw *****");
+  //             console.log("*** incorrect pw ***");
   //             response.json("{error: 'incorrect password for dev'}");
   //           }
   //         });
   //       } else if (!dev) {
   //         console.log(
-  //           "***** no dev account with that email was found, checking for org accounts now *****"
+  //           "*** no dev account with that email was found, checking for org accounts now ***"
   //         );
   //
   //         // if no dev with that email is found, check for org;
   //         Org.findOne({ email: request.body.email }, function(error, org) {
   //           if (error) {
-  //             console.log("***** error in org.findOne *****");
+  //             console.log("*** error in org.findOne ***");
   //             response.json(error);
   //           } else if (org) {
   //             // if an org with that email is found, then check pw;
   //             console.log(
-  //               "***** org account with that email exists, checking password now *****"
+  //               "*** org account with that email exists, checking password now ***"
   //             );
   //             bcrypt.compare(request.body.pw, org.pw, function(error, result) {
   //               if (error) {
   //                 console.log(
-  //                   "***** error in controller.login => compare org's pw *****",
+  //                   "*** error in controller.login => compare org's pw ***",
   //                   error
   //                 );
   //                 response.json(error);
   //               } else if (result) {
-  //                 console.log("***** pw match for this org-user *****", org);
+  //                 console.log("*** pw match for this org-user ***", org);
   //                 response.json(org);
   //               } else if (!result) {
-  //                 console.log("***** incorrect pw *****");
+  //                 console.log("*** incorrect pw ***");
   //                 response.json("{error: 'incorrect password for org'}");
   //               }
   //             });
   //           } else if (!org) {
   //             console.log(
-  //               "***** no org account with that email was found *****"
+  //               "*** no org account with that email was found ***"
   //             );
   //             response.json();
   //           }
@@ -86,31 +139,31 @@ module.exports = {
   //   } // end if(email && pw);
   // },
 
-  // ******************
-  // ***** CREATE *****
-  // ******************
+  // *********
+  // *** CREATE ***
+  // *********
 
   createOneDev: function(request, response) {
-    console.log("***** controller.createOneDev() *****");
+    console.log("*** controller.createOneDev() ***", request.body);
 
     // is this email already registered
     Dev.findOne({ email: request.body.email }, function(error, dev) {
       // if-not-registered as err handling
       if (error) {
         console.log(
-          "***** error in controller.createOneDev=>dev.findOne(email) *****",
+          "*** error in controller.createOneDev=>dev.findOne(email) ***",
           error
         );
         response.json(error);
       } else if (dev) {
-        console.log("***** a dev account with this email already exists *****");
+        console.log("*** a dev account with this email already exists ***");
         response.json();
       }
     });
 
     let newDev = request.body;
     console.log(
-      "***** controller.createOneDev - this is the newDev that is to be created, sans pw *****",
+      "*** controller.createOneDev - this is the newDev that is to be created, sans pw ***",
       newDev
     );
 
@@ -122,17 +175,17 @@ module.exports = {
       } else {
         newDev.pw = hash;
         console.log(
-          "***** controller.createOneDev - this is the newDev WITH hashed pw *****",
+          "*** controller.createOneDev - this is the newDev WITH hashed pw ***",
           newDev
         );
 
         // create new Dev document with hashed pw;
         Dev.create(newDev, function(error) {
           if (error) {
-            console.log("***** error in creating new dev doc *****", error);
+            console.log("*** error in creating new dev doc ***", error);
             response.json(error);
           }
-          console.log("***** new dev doc created successfully *****");
+          console.log("*** new dev doc created successfully ***");
           response.json();
         });
       }
@@ -140,41 +193,41 @@ module.exports = {
   },
 
   createOneJob: function(request, response) {
-    console.log("***** controller.createOneJob() *****");
+    console.log("*** controller.createOneJob() ***");
     Job.create(request.body, function(error) {
       if (error) {
-        console.log('***** error in creating new job doc *****', error);
+        console.log('*** error in creating new job doc ***', error);
         response.json(error);
       }
-      console.log('***** new job doc created successfully *****');
+      console.log('*** new job doc created successfully ***');
       response.json();
     });
   },
 
   createOneOrg: function(request, response) {
-    console.log("***** controller.createOneOrg() *****");
+    console.log("*** controller.createOneOrg() ***", request.body);
 
     // is this email already registered
     Org.findOne({ email: request.body.email }, function(error, org) {
       if (error) {
         console.log(
-          "***** error in controller.createOneOrg => org.findOne(email) *****",
+          "*** error in controller.createOneOrg => org.findOne(email) ***",
           error
         );
         response.json(error);
       } else if (org) {
         console.log(
-          "***** an org account with this email already exists *****"
+          "*** an org account with this email already exists ***"
         );
-        response.json();
+        response.json('{"lol": "ha"}');
       }
     });
 
     let newOrg = request.body;
-    console.log(
-      "***** controller.createOneOrg -- this is the newOrg that is to be created, sans pw",
-      newOrg
-    );
+    // console.log(
+    //   "*** controller.createOneOrg -- this is the newOrg that is to be created, sans pw",
+    //   newOrg
+    // );
 
     // encrypting the password
     bcrypt.hash(request.body.pw, 10, function(error, hash) {
@@ -184,39 +237,39 @@ module.exports = {
       } else {
         newOrg.pw = hash;
         console.log(
-          "***** controller.createOneOrg -- this is the newOrg WITH hashed pw *****",
+          "*** controller.createOneOrg -- this is the newOrg WITH hashed pw ***",
           newOrg
         );
 
         // create new Org document with hashed pw;
         Org.create(newOrg, function(error) {
           if (error) {
-            console.log("***** error in created new org doc *****", error);
+            console.log("*** error in created new org doc ***", error);
             response.json(error);
           }
-          console.log("***** new org doc created successfully *****");
+          console.log("*** new org doc created successfully ***");
           response.json();
         });
       }
     });
   },
 
-  // ****************
-  // ***** READ *****
-  // ****************
+  // ********
+  // *** READ ***
+  // ********
 
   getAllDevs: function(request, response) {
     // code
-    console.log("***** controller.getAllDevs *****");
+    console.log("*** controller.getAllDevs ***");
     Dev.find({}, function(error, devs) {
       if (error) {
-        console.log("***** ERROR in controller.Dev.find() *****", error);
+        console.log("*** ERROR in controller.Dev.find() ***", error);
         response.json(error);
       } else if (devs.length === 0) {
-        console.log("***** no devs, mang *****");
+        console.log("*** no devs, mang ***");
         response.json();
       } else {
-        console.log("***** these are all devs *****", devs);
+        console.log("*** these are all devs ***", devs);
         response.json(devs);
       }
     });
@@ -224,16 +277,16 @@ module.exports = {
 
   getAllJobs: function(request, response) {
     // code
-    console.log("***** controller.getAllJobs *****");
+    console.log("*** controller.getAllJobs ***");
     Job.find({}, function(error, jobs) {
       if (error) {
-        console.log("***** ERROR in getAllJobs mongo *****", error);
+        console.log("*** ERROR in getAllJobs mongo ***", error);
         response.json(error);
       } else if (jobs.length === 0) {
-        console.log("***** no jobs, mang *****");
+        console.log("*** no jobs, mang ***");
         response.json();
       } else {
-        console.log("***** these are all jeobs *****", jobs);
+        console.log("*** these are all jeobs ***", jobs);
         response.json(jobs);
       }
     });
@@ -241,16 +294,17 @@ module.exports = {
 
   getAllOrgs: function(request, response) {
     // code
-    console.log("***** controller.getAllOrgs *****");
+    console.log("*** controller.getAllOrgs ***");
+
     Org.find({}, function(error, orgs) {
       if (error) {
-        console.log("***** ERROR in getAllOrgs mongo *****", error);
+        console.log("*** ERROR in getAllOrgs mongo ***", error);
         response.json(error);
       } else if (orgs.length === 0) {
-        console.log("***** no orgs, mang *****");
+        console.log("*** no orgs, mang ***");
         response.json();
       } else {
-        console.log("***** these are all orgs *****", orgs);
+        console.log("*** these are all orgs ***", orgs);
         response.json(orgs);
       }
     });
@@ -259,10 +313,10 @@ module.exports = {
   getOneDev: function(request, response) {
     // code
 
-    console.log("***** controller.getOneDev(id) *****", request.params.id);
+    console.log("*** controller.getOneDev(id) ***", request.params.id);
     Dev.findOne({ _id: request.params.id }, function(error, dev) {
       if (error) {
-        console.log("***** ERROR in controller.getOneDev mongo *****", error);
+        console.log("*** ERROR in controller.getOneDev mongo ***", error);
         response.json(error);
       } else if (dev) {
         console.log(dev);
@@ -274,7 +328,7 @@ module.exports = {
   getOneJob: function(request, response) {
     // code
     console.log(
-      "***** controller.getOneJob(), request.body = *****",
+      "*** controller.getOneJob(), request.body = ***",
       request.body
     );
   },
@@ -282,58 +336,58 @@ module.exports = {
   getOneOrg: function(request, response) {
     // code
     console.log(
-      "***** controller.getOneOrg(), request.body *****",
+      "*** controller.getOneOrg(), request.body ***",
       request.body
     );
   },
 
-  // ******************
-  // ***** UPDATE *****
-  // ******************
+  // *********
+  // *** UPDATE ***
+  // *********
 
   editOneDev: function(request, response) {
     // code
-    console.log("***** controller.editOneDev() *****");
+    console.log("*** controller.editOneDev() ***");
   },
 
   editOneJob: function(request, response) {
     // code
-    console.log("*****  *****");
+    console.log("***  ***");
   },
 
   editOneOrg: function(request, response) {
     // code
-    console.log("*****  *****");
+    console.log("***  ***");
   },
 
-  // ******************
-  // ***** DELETE *****
-  // ******************
+  // *********
+  // *** DELETE ***
+  // *********
 
   deleteOneDev: function(request, response) {
     // code
-    console.log("*****  *****");
+    console.log("***  ***");
   },
 
   deleteOneJob: function(request, response) {
     // code
-    console.log("*****  *****");
+    console.log("***  ***");
   },
 
   deleteOneOrg: function(request, response) {
     // code
-    console.log("*****  *****");
+    console.log("***  ***");
   }
 
   // getAllPets: function(request, response) {
   //     Pet.find({}, function(error, pets) {
   //         if (error) {
-  //             console.log('***** petController error *****', error);
+  //             console.log('*** petController error ***', error);
   //             response.json(error);
   //         } else {
   //             if (pets.length > 0) {
   //                 // if there was no error AND there are pets in db;
-  //                 console.log('***** petController found', pets.length, 'pets in db *****');
+  //                 console.log('*** petController found', pets.length, 'pets in db ***');
   //                 response.json(pets);
   //
   //             } else {
@@ -380,12 +434,12 @@ module.exports = {
   //
   //                 Pet.insertMany(mongoQuery, function(error) {
   //                     if (error) {
-  //                         console.log('***** petController addInitialData error *****', error);
+  //                         console.log('*** petController addInitialData error ***', error);
   //                         response.json(error);
   //                     } else {
   //                         Pet.find({}, function(error2, pets2) {
   //                             if (error2) {
-  //                                 console.log('***** petController error when finding pets after addInitialData *****', error);
+  //                                 console.log('*** petController error when finding pets after addInitialData ***', error);
   //                                 response.json(error2);
   //                             } else {
   //                                 response.json(pets2);
@@ -403,14 +457,14 @@ module.exports = {
   //
   // // .post('/pets', petController.addNewPet)
   // addNewPet: function(request, response) {
-  //     console.log('***** this is what the user submitted *****', request.body);
+  //     console.log('*** this is what the user submitted ***', request.body);
   //
   //     Pet.create(request.body, function(error) {
   //         if (error) {
-  //             console.log('***** petController addNewPet() error', error);
+  //             console.log('*** petController addNewPet() error', error);
   //             response.json(error);
   //         } else {
-  //             console.log('****** petController pet added *****');
+  //             console.log('*** petController pet added ***');
   //             response.json();
   //         }
   //     });
@@ -421,10 +475,10 @@ module.exports = {
   // getOnePet: function(request, response) {
   //     Pet.findOne({_id: request.params.id}, function(error, pet) {
   //         if (error) {
-  //             console.log('****** petController getOnePet() error *****', error);
+  //             console.log('*** petController getOnePet() error ***', error);
   //             response.json(error);
   //         } else {
-  //             console.log('***** found the pet *****');
+  //             console.log('*** found the pet ***');
   //             response.json(pet);
   //         }
   //     });
@@ -432,14 +486,14 @@ module.exports = {
   //
   // // .put('/pets/:id', petController.updateOnePet)
   // updateOnePet: function(request, response) {
-  //     console.log('***** this is what the user submitted *****', request.body);
+  //     console.log('*** this is what the user submitted ***', request.body);
   //
   //     Pet.updateOne({_id: request.params.id}, request.body, function(error, pet) {
   //         if (error) {
-  //             console.log('***** petController updateOnePet() error *****', error);
+  //             console.log('*** petController updateOnePet() error ***', error);
   //             response.json(error);
   //         } else {
-  //             console.log('***** pet updated *****');
+  //             console.log('*** pet updated ***');
   //             response.json(pet);
   //         }
   //     });
@@ -449,10 +503,10 @@ module.exports = {
   // deleteOnePet: function(request, response) {
   //     Pet.deleteOne({_id: request.params.id}, function(error, result) {
   //         if (error) {
-  //             console.log('***** petController deleteOnePet() error *****', error);
+  //             console.log('*** petController deleteOnePet() error ***', error);
   //             response.json(error);
   //         } else{
-  //             console.log('***** one pet deleted ******');
+  //             console.log('*** one pet deleted ***');
   //             response.json(result);
   //         }
   //     });

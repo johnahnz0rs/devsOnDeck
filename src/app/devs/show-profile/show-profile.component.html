@@ -1,0 +1,15 @@
+<p>
+  show-profile works!
+</p>
+
+<button class="btn btn-sm btn-warning" (click)="printUserMyInfo()">print myInfo</button>
+
+<div style="border: 1px solid black">
+    <p>myInfo</p>
+    <div *ngIf="myInfo">
+        <p *ngFor="let i of keys(myInfo)">
+            {{i}} : {{myInfo[i]}}
+        </p>
+    </div>
+</div>
+

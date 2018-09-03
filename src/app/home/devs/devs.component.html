@@ -1,0 +1,18 @@
+<p>
+  devs works!
+</p>
+
+<button class="btn btn-lg btn-warning" (click)="printAllDevs()">print current this.allDevs</button>
+
+
+<div *ngIf="allDevs">
+    <p *ngFor="let dev of allDevs" style="border:1px solid black;">
+        <span *ngFor="let prop of keys(dev)">
+            {{prop}} : {{dev[prop]}}
+        </span>
+
+    </p>
+    <!--<p>lol {{allDevs}}</p>-->
+</div>
+
+

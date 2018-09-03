@@ -1,0 +1,12 @@
+<p>
+  org-show-profile works!
+</p>
+
+
+<button class="btn btn-sm btn-warning" (click)="printMyInfo()">Print myInfo</button>
+
+<div *ngIf="myInfo"  style="border: 1px solid black;">
+    <p *ngFor="let i of keys(myInfo)">
+        {{i}} : {{myInfo[i]}}
+    </p>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Login } from '../../login';
 import { LoginService } from '../../services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,26 +10,38 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  login: Login = new Login();
+  login: Login = new Login('', '', '');
   error: any;
-  email: string;
-  pw: string;
 
-  constructor(private loginService: LoginService) { }
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
-  tryLogin() {
-    // console.log(`*** tryLogin(${this.login.email}, ${this.login.pw}) ***`);
-    // console.log(this.login);
+  printThisLogin(form) {
+    // for (const value of form.values()) {
+    //   console.log(value);
+    // }
+    console.log(JSON.stringify(form));
+  }
 
-    const data = {email: this.email, pw: this.pw};
-    console.log('*** data ***', data);
-    console.log('*** login ***', this.login);
-    // this.login.accountType === 'dev' ?
-    //   this.loginService.loginDev(data) :
-    //   this.loginService.loginOrg(data);
+  tryLogin() {
+    const data = {email: this.login.email, pw: this.login.pw};
+    console.log('*** login > tryLogin(data) ***', data);
+    this.login.accountType === 'dev' ?
+      this.loginService.loginDev(data)
+        .subscribe(dev => {
+          console.log('its a dev!');
+          this.router.navigateByUrl('/dev');
+        }) :
+      this.loginService.loginOrg(data)
+        .subscribe(org => {
+          console.log('its an org!');
+          this.router.navigateByUrl('/org');
+        });
   }
 
   //
@@ -36,6 +49,14 @@ export class LoginComponent implements OnInit {
   //   this.loginService.login(this.login);
   // }
 
+  testLoginDev() {
+    this.loginService.testLoginDev('1');
+    this.router.navigateByUrl('/dev');
+  }
 
+  testLoginOrg() {
+    this.loginService.testLoginOrg('1');
+    this.router.navigateByUrl('/org');
+  }
 
 }

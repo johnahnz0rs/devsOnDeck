@@ -8,9 +8,13 @@ import { Router } from '@angular/router';
 })
 export class JobService {
 
-  testAPI = 'http(s)://5b8af02d78169a0014daacf8.mockapi.io/jobs';
+  testAPI = 'https://5b8af02d78169a0014daacf8.mockapi.io/jobs';
 
-  constructor(private http: HttpClient) { }
+  public allJobs;
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   createNewJob(job): Observable<any> {
     console.log(`*** CREATE jobService.createNewJob(${job}) ***`);
@@ -22,6 +26,7 @@ export class JobService {
     console.log('*** READ jobService.getAllJobs() ***');
     // return this.http.get<any>('/api/devs');
     return this.http.get<any>(`${this.testAPI}`);
+    // this.allJobs = this.http.get<any>(`${this.testAPI}`);
   }
 
   readOneJob(id): Observable<any> {

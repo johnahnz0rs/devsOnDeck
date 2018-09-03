@@ -1,15 +1,15 @@
 <!-- template -->
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: cornflowerblue">
     <!-- left side of navbar -->
-    <a class="navbar-brand" href="#">devJobs</a>
+    <a class="navbar-brand" href="#" (click)="showHome()">devJobs</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Find Jobs</a>
+                <a class="nav-link" href="#" (click)="showAllJobs()">Find Jobs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="modal-register-org">Find Developers</a>
+                <a class="nav-link" href="#" (click)="showAllDevs()">Find Developers</a>
             </li>
         </ul>
     </div>
@@ -28,27 +28,173 @@
     </div>
     <!-- end right side of navbar -->
 </nav>
+<!-- end navbar -->
+<!-- end navbar -->
+<!-- end navbar -->
+
+
+<!--<p>{{states}}</p>-->
+
+
+
+
+<!--_id: string;-->
+<!--orgName: string;-->
+<!--fname: string;-->
+<!--lname: string;-->
+<!--email: string;-->
+<!--pw: string;-->
+<!--cpw: string;-->
+<!--address: string;-->
+<!--city: string;-->
+<!--state: string;-->
+<!--zip: string;-->
+<!--jobs: Array<Job>;-->
+<!--accountType: string;-->
+
+<div style="border: 1px solid black; margin: 100px auto;">
+    <form id="add-org-form" #addOrgForm="ngForm">
+        <div class="form-group">
+            <label>Org Name: </label><input class="form-control" id="org-name" name="org-name" type="text" [(ngModel)]="createOrg.orgName">
+        </div>
+        <div class="form-group">
+            <label>First Name: </label><input class="form-control" id="fname" name="fname" type="text" [(ngModel)]="createOrg.fname">
+        </div>
+        <div class="form-group">
+            <label>Last Name: </label><input class="form-control" id="lname" name="lname" type="text" [(ngModel)]="createOrg.lname">
+        </div>
+        <div class="form-group">
+            <label>Email: </label><input class="form-control" id="email" name="email" type="email" [(ngModel)]="createOrg.email">
+        </div>
+        <div class="form-group">
+            <label>Password: </label><input class="form-control" id="pw" name="pw" type="text" [(ngModel)]="createOrg.pw">
+        </div>
+        <div class="form-group">
+            <label>Street Address: </label><input class="form-control" id="address" name="address" type="text" [(ngModel)]="createOrg.address">
+        </div>
+        <div class="form-group">
+            <label>City: </label><input class="form-control" id="city" name="city" type="text" [(ngModel)]="createOrg.city">
+        </div>
+        <div class="form-group">
+            <label>State: </label>
+            <select class="form-control" id="state" name="state" required [(ngModel)]="createOrg.state">
+                <option *ngFor="let state of states">
+                    {{ state }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Zip: </label><input class="form-control" id="zip" name="zip" type="text" [(ngModel)]="createOrg.zip">
+        </div>
+    </form>
+
+    <button class="btn btn-lg btn-success" (click)="submitCreateOrg()">Create This Org</button>
+</div>
+
+
+
+<!--<form #addJobForm="ngForm">-->
+
+<!--&lt;!&ndash; position &ndash;&gt;-->
+<!--<div class="form-group row">-->
+<!--<div class="col col-sm-4">-->
+<!--<label for="position">-->
+<!--<span class="bold-text">Position:</span>-->
+<!--</label>-->
+<!--</div>-->
+<!--<div class="col col-sm-8">-->
+<!--<input class="form-control" id="position" name="position" type="text" required [(ngModel)]="newJob.position">-->
+<!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; description &ndash;&gt;-->
+<!--<div class="form-group row">-->
+<!--<div class="col col-sm-4">-->
+<!--<label for="description">-->
+<!--<span class="bold-text">Description:</span>-->
+<!--</label>-->
+<!--</div>-->
+<!--<div class="col col-sm-8">-->
+<!--<textarea class="form-control" id="description" name="description" required [(ngModel)]="newJob.description"></textarea>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; show required skills &ndash;&gt;-->
+<!--<div class="form-group row">-->
+<!--<div class="col col-sm-4">-->
+<!--<label for="div-required-skills">-->
+<!--<span class="bold-text">Required Skills:</span>-->
+<!--</label>-->
+<!--</div>-->
+<!--<div class="col col-sm-7" id="div-required-skills">-->
+<!--<div class="row">-->
+<!--<figure *ngFor="let skill of newJob.skills" class="figure text-center show-required-skill-figure col col-sm-3">-->
+<!--<img class="figure-img show-required-skill-img" src="assets/img/{{skill}}.png">-->
+<!--<figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>-->
+<!--<figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>-->
+<!--</figure>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; add skill &ndash;&gt;-->
+<!--<div class="form-group row">-->
+<!--<div class="col col-sm-4">-->
+<!--<label for="skills">-->
+<!--<span class="bold-text">Add Required Skills:</span>-->
+<!--</label>-->
+<!--</div>-->
+<!--<div class="col col-sm-7" id="skills">-->
+<!--<div class="row">-->
+<!--<figure *ngFor="let language of languages" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(language)">-->
+<!--<img class="figure-img add-required-skill-img" src="assets/img/{{language}}.png">-->
+<!--<figcaption *ngIf="language != 'Csharp'" class="figure-caption">{{language}}</figcaption>-->
+<!--<figcaption *ngIf="language == 'Csharp'" class="figure-caption">C#</figcaption>-->
+<!--</figure>-->
+<!--<figure *ngFor="let framework of frameworks" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(framework)">-->
+<!--<img class="figure-img add-required-skill-img" src="assets/img/{{framework}}.png">-->
+<!--<figcaption class="figure-caption">{{framework}}</figcaption>-->
+<!--</figure>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<button class="btn btn-sm btn-danger" id="button-cancel" (click)="toggleAddJobForm()">Cancel</button>-->
+<!--<button class="btn btn-sm btn-success" id="button-submitNewJob" (click)="submitNewJob()">Add This Position</button>-->
+
+<!--</form>-->
+
+
+
+
+<app-splash *ngIf="displayHome"></app-splash>
+<app-jobs *ngIf="displayJobs"></app-jobs>
+<app-devs *ngIf="displayDevs"></app-devs>
 
 <!-- carousel of images -->
-<div class="container-fluid">
-    <div id="background-img-carousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="../../../assets/img/home-bg-0.png" alt="A slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="../../../assets/img/home-bg-1.png" alt="A slide">
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="../../../assets/img/home-bg-2.png" alt="A slide">
-            </div>
+<!--<div class="container-fluid">-->
+    <!--<div id="background-img-carousel" class="carousel slide" data-ride="carousel">-->
+        <!--<div class="carousel-inner">-->
+            <!--<div class="carousel-item active">-->
+                <!--&lt;!&ndash;<img class="d-block w-100" src="../../../assets/img/home-bg-0.png" alt="A slide">&ndash;&gt;-->
+                <!--<app-jobs></app-jobs>-->
+            <!--</div>-->
+            <!--<div class="carousel-item">-->
+                <!--&lt;!&ndash;<img class="d-block w-100" src="../../../assets/img/home-bg-1.png" alt="A slide">&ndash;&gt;-->
+                <!--<app-devs></app-devs>-->
+            <!--</div>-->
+            <!--<div class="carousel-item">-->
+                <!--&lt;!&ndash;<img class="d-block w-100" src="../../../assets/img/home-bg-2.png" alt="A slide">&ndash;&gt;-->
+                <!--<app-splash></app-splash>-->
+            <!--</div>-->
 
-            <div class="carousel-item">
-                <img class="d-block w-100" src="../../../assets/img/home-bg-3.png" alt="A slide">
-            </div>
-        </div>
-    </div>
-</div>
+            <!--&lt;!&ndash;<div class="carousel-item">&ndash;&gt;-->
+                <!--&lt;!&ndash;<img class="d-block w-100" src="../../../assets/img/home-bg-3.png" alt="A slide">&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 <!-- end carousel -->
 
 <!-- end template -->
@@ -72,7 +218,8 @@
                 <app-login></app-login>
             </div>
             <div class="modal-footer">
-                <a data-toggle="modal" data-target="#modal-register"id="register-link">Register with devJobs</a>
+                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
+                <a data-toggle="modal" data-target="#modal-register" id="register-link">Register with devJobs</a>
             </div>
         </div>
     </div>

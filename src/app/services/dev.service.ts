@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class DevService {
 
-  testAPI = 'http(s)://5b8af02d78169a0014daacf8.mockapi.io/devs';
+  testAPI = 'https://5b8af02d78169a0014daacf8.mockapi.io/devs';
 
   constructor(private http: HttpClient) { }
 

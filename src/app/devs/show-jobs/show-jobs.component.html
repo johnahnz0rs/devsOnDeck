@@ -1,0 +1,15 @@
+<p>
+  show-jobs works!
+</p>
+
+
+<button class="btn btn-sm btn-warning" (click)="printAllJobs()">Print All Jobs</button>
+
+
+<div *ngIf="allJobs">
+    <div *ngFor="let job of allJobs" style="border: 1px solid black;">
+        <span *ngFor="let i of keys(job)">
+            {{i}} : {{job[i]}}
+        </span>
+    </div>
+</div>

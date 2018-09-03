@@ -1,0 +1,17 @@
+<p>
+  jobs works!
+</p>
+
+<button class="btn btn-lg btn-warning" (click)="printAllJobs()">print current this.allJobs</button>
+
+<div *ngIf="allJobs">
+    <p *ngFor="let job of allJobs" style="border:1px solid black;">
+        <span *ngFor="let prop of keys(job)">
+            {{prop}} : {{job[prop]}}
+        </span>
+
+    </p>
+    <!--<p>lol {{allJobs}}</p>-->
+</div>
+
+

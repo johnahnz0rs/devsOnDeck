@@ -1,5 +1,7 @@
 export class Login {
-    email: string;
-    pw: string;
-    accountType: string;
+  constructor(
+    public email: string,
+    public pw: string,
+    public accountType: string
+  ) { }
 }

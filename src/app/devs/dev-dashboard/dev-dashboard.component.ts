@@ -5,22 +5,33 @@ import { Dev } from '../../dev';
 import { Org } from '../../org';
 import { Job } from '../../job';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 
 @Component({
   selector: 'app-dev-dashboard',
   templateUrl: './dev-dashboard.component.html',
-  styleUrls: ['./dev-dashboard.component.css']
+  styleUrls: ['../../../../node_modules/bootstrap/dist/css/bootstrap.css', './dev-dashboard.component.css']
 //  '../../bootstrap.css',
 })
 export class DevDashboardComponent implements OnInit {
 
+
+  // myInfo = this.appService.signedIn;
+  myInfo;
+  showThisComp = 'jobs';
+  // showJobs = true;
+  // showDevs = false;
+  // showOrgs = false;
+  // showProfile = false;
+
+
+
   showEditForm = false;
-  myInfo = this.appService.signedIn;
   allJobs = this.appService.allJobs;
   allOrgs = this.appService.allOrgs;
 
-  showAllJobs = true;
+  // showAllJobs = true;
 
   updateDev: Dev = new Dev();
 
@@ -34,14 +45,23 @@ export class DevDashboardComponent implements OnInit {
   frameworks = ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL']; // all available frameworks;
 
 
-  constructor(private appService: AppService, private router: Router) {
-  }
+  constructor(
+    private appService: AppService,
+    private loginService: LoginService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    // reroute to login page if not logged in;
-    if (!this.appService.signedIn) {
-      this.router.navigateByUrl('/');
-    }
+    this.loginService.getUser().subscribe(response => { this.myInfo = response; });
+  }
+
+
+  clickThisComp(comp) {
+    this.showThisComp = comp;
+  }
+
+  keys(obj) {
+    return Object.keys(obj);
   }
 
   toggleEditForm() {
@@ -96,12 +116,12 @@ export class DevDashboardComponent implements OnInit {
     }
   }
 
-  switchJobsOrgs() {
-    this.showAllJobs ? console.log('***** switching from showAllJobs to showAllOrgs *****') : console.log('***** switching from' +
-      ' showAllOrgs to showAllJobs *****');
-
-    this.showAllJobs = !this.showAllJobs;
-  }
+  // switchJobsOrgs() {
+  //   this.showAllJobs ? console.log('***** switching from showAllJobs to showAllOrgs *****') : console.log('***** switching from' +
+  //     ' showAllOrgs to showAllJobs *****');
+  //
+  //   this.showAllJobs = !this.showAllJobs;
+  // }
 
   showJobDetail(id) {
     console.log('***** you clicked on a job with id *****', id);

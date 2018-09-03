@@ -4,8 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home/home.component';
 
-import { DevRegisterComponent } from './devs/dev-register/dev-register.component';
-import { OrgRegisterComponent } from './orgs/org-register/org-register.component';
+import { DevRegisterComponent } from './home/dev-register/dev-register.component';
+import { OrgRegisterComponent } from './home/org-register/org-register.component';
 import { OrgDashboardComponent } from './orgs/org-dashboard/org-dashboard.component';
 import { DevDashboardComponent } from './devs/dev-dashboard/dev-dashboard.component';
 
@@ -21,6 +21,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

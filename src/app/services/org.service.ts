@@ -9,13 +9,17 @@ import { Router } from '@angular/router';
 })
 export class OrgService {
 
-  testAPI = 'http(s)://5b8af02d78169a0014daacf8.mockapi.io/orgs';
+  testAPI = 'https://5b8af02d78169a0014daacf8.mockapi.io/orgs';
 
   constructor(private http: HttpClient) { }
 
-  createNewOrg(org): Observable<any> {
-    console.log(`*** CREATE orgService.createNewOrg(${org}) ***`);
-    // return this.http.post<any>('/api/devs', dev);
+  createNewOrg(org) {
+    console.log('*** orgService is running createNewOrg(org) ***', org);
+    return this.http.post<any>('/api/org', org);
+  }
+
+  testCreateNewOrg(org) {
+    console.log('*** orgService.testCreateNewOrg(org) ***', org);
     return this.http.post<any>(`${this.testAPI}`, org);
   }
 

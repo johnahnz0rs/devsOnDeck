@@ -1,544 +1,597 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: cornflowerblue">
+    <!-- left side of navbar -->
+    <a class="navbar-brand" (click)="clickThisComp('devs')">devJobs</a>
 
-<div class="row">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <!--<a class="nav-link" href="#" (click)="showAllJobs()">Find Jobs</a>-->
+                <a class="nav-link" (click)="clickThisComp('devs')">Find Devs</a>
+            </li>
+            <li class="nav-item">
+                <!--<a class="nav-link" href="#" (click)="showAllDevs()">Find Developers</a>-->
+                <a class="nav-link" (click)="clickThisComp('orgs')">See Orgs</a>
+            </li>
+            <li class="nav-item">
+                <!--<a class="nav-link" href="#" (click)="showAllDevs()">Find Developers</a>-->
+                <a class="nav-link" (click)="clickThisComp('jobs')">All Jobs</a>
+            </li>
+        </ul>
+    </div>
+    <!-- end left side of navbar -->
+
+    <!-- right side of navbar -->
+    <div class="d-flex flex-row order-2 order-lg-3 ml-auto">
+        <ul class="navbar-nav flex-row">
+            <li class="nav-item">
+                <a class="nav-link" (click)="clickThisComp('profile')">My Profile</a>
+            </li>
+            <li class="nav-item">
+                <!--<a class="nav-link" data-toggle="modal" data-target="#modal-login">Login</a>-->
+                <a class="nav-link" href="#">Log Out</a>
+            </li>
+        </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <!-- end right side of navbar -->
+</nav>
+<!-- end navbar -->
+<!-- end navbar -->
+<!-- end navbar -->
+
+<p>dev-dashboard works!</p>
+
+<app-org-show-devs *ngIf="showThisComp === 'devs'"></app-org-show-devs>
+<app-org-show-orgs *ngIf="showThisComp === 'orgs'"></app-org-show-orgs>
+<app-org-show-jobs *ngIf="showThisComp === 'jobs'"></app-org-show-jobs>
+<app-org-show-profile *ngIf="showThisComp === 'profile'"></app-org-show-profile>
 
 
 
 
-    <!-- left-col: #div-showMyJobs (default) -->
-    <!-- left-col: #div-showMyJobs (default) -->
-    <!-- left-col: #div-showMyJobs (default) -->
-    <div *ngIf="!addJobForm" class="col col-sm-4" id="div-showMyJobs">
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">-->
 
-
-        <!-- header -->
-        <div id="div-myJobs-header" class="row">
-            <div class="col col-sm-12">
-                <button id="button-toggle-addJobForm" class="btn btn-lg btn-primary" (click)="toggleAddJobForm()"><span class="center-text">Add New Position</span></button>
-            </div>
-        </div>
-        <!-- end #div-myJobs-header -->
+<!--<div class="row">-->
 
 
 
 
-        <!-- display my jobs -->
-        <div id="div-myJobsList">
+    <!--&lt;!&ndash; left-col: #div-showMyJobs (default) &ndash;&gt;-->
+    <!--&lt;!&ndash; left-col: #div-showMyJobs (default) &ndash;&gt;-->
+    <!--&lt;!&ndash; left-col: #div-showMyJobs (default) &ndash;&gt;-->
+    <!--<div *ngIf="!addJobForm" class="col col-sm-4" id="div-showMyJobs">-->
 
-            <table class="table table-hover table-borderless table-striped">
 
-                <tbody>
-                    <!-- fake job 1 -->
-                    <tr (click)="showMyJob('42')">
-                        <td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">Job 1</td>
-                    </tr>
-                    <!-- fake job 2 -->
-                    <tr (click)="showMyJob('1337')">
-                        <td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">l33t hax0r</td>
-                    </tr>
-                    <!-- fake job 3 -->
-                    <tr (click)="showMyJob('69696969')">
-                        <td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">People's Champ</td>
-                    </tr>
+        <!--&lt;!&ndash; header &ndash;&gt;-->
+        <!--<div id="div-myJobs-header" class="row">-->
+            <!--<div class="col col-sm-12">-->
+                <!--<button id="button-toggle-addJobForm" class="btn btn-lg btn-primary" (click)="toggleAddJobForm()"><span class="center-text">Add New Position</span></button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end #div-myJobs-header &ndash;&gt;-->
 
-                    <!-- real jobs -->
-                    <!--<tr *ngFor="let job of myInfo.jobs" (click)="showMyJob(job._id)">-->
-                        <!--<td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">{{job.position}}</td>-->
+
+
+
+        <!--&lt;!&ndash; display my jobs &ndash;&gt;-->
+        <!--<div id="div-myJobsList">-->
+
+            <!--<table class="table table-hover table-borderless table-striped">-->
+
+                <!--<tbody>-->
+                    <!--&lt;!&ndash; fake job 1 &ndash;&gt;-->
+                    <!--<tr (click)="showMyJob('42')">-->
+                        <!--<td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">Job 1</td>-->
                     <!--</tr>-->
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
-    <!-- end left-col: #div-showMyJobs (default) -->
-    <!-- end left-col: #div-showMyJobs (default) -->
-    <!-- end left-col: #div-showMyJobs (default) -->
-
-
-
-
-
-
-    <!-- left-col: #div-addJobForm (option 2) -->
-    <!-- left-col: #div-addJobForm (option 2) -->
-    <!-- left-col: #div-addJobForm (option 2) -->
-    <div *ngIf="addJobForm" class="col col-sm-4" id="div-addJobForm">
-
-        <!-- header -->
-        <div id="div-addJobForm-header" class="row">
-            <div class="col col-sm-12">
-                <button id="btn-toggle-cancelAddJob" class="btn btn-sm btn-danger" (click)="toggleAddJobForm()">x</button>
-            </div>
-        </div>
-        <!-- end header -->
-
-
-        <!-- the addJob form -->
-        <div id="div-the-addJobForm">
-            <p>addJobForm.value|json {{addJobForm.value | json}}</p>
-
-            <form #addJobForm="ngForm">
-
-                <!-- position -->
-                <div class="form-group row">
-                    <div class="col col-sm-4">
-                        <label for="position">
-                            <span class="bold-text">Position:</span>
-                        </label>
-                    </div>
-                    <div class="col col-sm-8">
-                        <input class="form-control" id="position" name="position" type="text" required [(ngModel)]="newJob.position">
-                    </div>
-                </div>
-
-                <!-- description -->
-                <div class="form-group row">
-                    <div class="col col-sm-4">
-                        <label for="description">
-                            <span class="bold-text">Description:</span>
-                        </label>
-                    </div>
-                    <div class="col col-sm-8">
-                        <textarea class="form-control" id="description" name="description" required [(ngModel)]="newJob.description"></textarea>
-                    </div>
-                </div>
-
-                <!-- show required skills -->
-                <div class="form-group row">
-                    <div class="col col-sm-4">
-                        <label for="div-required-skills">
-                            <span class="bold-text">Required Skills:</span>
-                        </label>
-                    </div>
-                    <div class="col col-sm-7" id="div-required-skills">
-                        <div class="row">
-                            <figure *ngFor="let skill of newJob.skills" class="figure text-center show-required-skill-figure col col-sm-3">
-                                <img class="figure-img show-required-skill-img" src="assets/img/{{skill}}.png">
-                                <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
-                                <figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>
-                            </figure>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- add skill -->
-                <div class="form-group row">
-                    <div class="col col-sm-4">
-                        <label for="skills">
-                            <span class="bold-text">Add Required Skills:</span>
-                        </label>
-                    </div>
-                    <div class="col col-sm-7" id="skills">
-                        <div class="row">
-                            <figure *ngFor="let language of languages" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(language)">
-                                <img class="figure-img add-required-skill-img" src="assets/img/{{language}}.png">
-                                <figcaption *ngIf="language != 'Csharp'" class="figure-caption">{{language}}</figcaption>
-                                <figcaption *ngIf="language == 'Csharp'" class="figure-caption">C#</figcaption>
-                            </figure>
-                            <figure *ngFor="let framework of frameworks" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(framework)">
-                                <img class="figure-img add-required-skill-img" src="assets/img/{{framework}}.png">
-                                <figcaption class="figure-caption">{{framework}}</figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-
-                <button class="btn btn-sm btn-danger" id="button-cancel" (click)="toggleAddJobForm()">Cancel</button>
-                <button class="btn btn-sm btn-success" id="button-submitNewJob" (click)="submitNewJob()">Add This Position</button>
-
-            </form>
-
-        </div>
-        <!-- end the addJob form -->
-
-    </div>
-
-    <!-- end left-col: #div-addJobForm (option 2) -->
-    <!-- end left-col: #div-addJobForm (option 2) -->
-    <!-- end left-col: #div-addJobForm (option 2) -->
-
-
-
-
-
-
-
-
-    <!-- /\ /\ left-col /\ /\ -->
-    <!-- ***************************************************** -->
-    <!-- ***************************************************** -->
-    <!-- ***************************************************** -->
-    <!-- ***************************************************** -->
-    <!-- ***************************************************** -->
-    <!-- \/ \/ right-col \/ \/ -->
-
-
-
-
-
-
-
-    <!-- right-col: showAllDevs (default) -->
-    <!-- right-col: showAllDevs (default) -->
-    <!-- right-col: showAllDevs (default) -->
-
-    <div class="col col-sm-7" id="div-showAllDevs" *ngIf="showAllDevs">
-
-        <!-- #div-showDevs-header -->
-        <div id="div-showDevs-header" class="row">
-            <div class="col col-sm-8">
-                <h3 class="showDevs-header">All Developers</h3>
-            </div>
-            <div class="col col-sm-4">
-                <!-- this button hides #div-showAllJobs && shows #div-showAllOrgs -->
-                <button class="btn btn-sm btn-outline-success" (click)="switchDevsOrgs()">Show All Orgs</button>
-            </div>
-        </div>
-        <!-- end #div-showDevs-header -->
-
-
-
-        <div id="div-showDevs-body">
-            <!-- display each dev -->
-            <table class="table table-hover table-borderless table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Skills</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let dev of allDevs" (click)="showDevDetail(dev._id)" type="button" data-toggle="modal" data-target="#modal-show-one-dev">
-                        <td>
-                            <figure>
-                                <!-- how do i add an image to a mongo document? -->
-                                <!--<img *ngIf="!dev.avatar" class="figure-img avatar" src="assets/img/blank_avatar.png">-->
-                                <img class="figure-img avatar" src="assets/img/blank_avatar.png">
-                            </figure>
-                            <p class="center-text bold-text">{{dev.fname}} {{dev.lname}}</p>
-                        </td>
-                        <td>
-                            <figure *ngFor="let skill of dev.skills" class="figure text-center col col-sm-2">
-                                <img class="figure-img skill-icon" src="assets/img/{{skill}}.png">
-                                <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
-                                <figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>
-                            </figure>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </div>
-        <!-- end #div-showDevs-body -->
-
-
-    </div>
-    <!-- end right-col: #div-showAllDevs (default) -->
-    <!-- end right-col: #div-showAllDevs (default) -->
-    <!-- end right-col: #div-showAllDevs (default) -->
-
-
-
-
-
-
-
-
-
-
-    <!-- right-col: show allOrgs (option 2) -->
-    <!-- right-col: show allOrgs (option 2) -->
-    <!-- right-col: show allOrgs (option 2) -->
-
-    <div class="col col-sm-7" id="div-showAllOrgs" *ngIf="!showAllDevs">
-
-        <div id="div-showOrgs-header" class="row">
-            <div class="col col-sm-8">
-                <h3 class="showOrgs-Header">All Organizations</h3>
-            </div>
-
-
-            <!-- this button hides #div-showAllOrgs && shows #div-showAllDevs -->
-            <div class="col col-sm-4">
-                <button class="btn btn-sm btn-outline-success" (click)="switchDevsOrgs()">Show All Devs</button>
-            </div>
-
-        </div>
-        <!-- end #div-myInfo-header -->
-
-
-        <div id="div-showOrgs-body">
-            <div class="div-org row" (click)="showOrgDetail('1337')" type="button" data-toggle="modal" data-target="#modal-show-one-org">
-                <div class="col col-sm-4"><p class="bold-text">Org Name<p><p>Jabroni, Corp.</p></div>
-                <div class="col col-sm-5"><p class="bold-text">Location</p><p>Los Angeles, CA</p></div>
-                <div class="col col-sm-3"><p class="bold-text">Available Positions</p><p>3</p></div>
-            </div>
-
-            <div class="div-org row" (click)="showOrgDetail('69696969')">
-                <div class="col col-sm-4"><p class="bold-text">Org Name</p><p>Yo Mama</p></div>
-                <div class="col col-sm-5"><p class="bold-text">Location</p><p>All up in dem guts</p></div>
-                <div class="col col-sm-3"><p class="bold-text">Available Positions</p><p>5+</p></div>
-            </div>
-
-            <!-- display each jeob -->
-            <div class="div-org row" *ngFor="let org of allOrgs" (click)="showOrgDetail(org._id)">
-                <!--{{org}}-->
-                <div class="col col-sm-4"><p class="bold-text">Org Name</p><p>{{org.orgName}}</p></div>
-                <div class="col col-sm-5"><p class="bold-text">Location</p><p>{{org.city}}, {{org.state}}</p></div>
-                <div class="col col-sm-3"><p class="bold-text">Available Positions</p><p>{{org.jobs.length}}</p></div>
-            </div>
-
-
-        </div>
-        <!-- end #div-showOrgs-body -->
-
-    </div>
-    <!-- end right-col: #div-showAllOrgs -->
-    <!-- end right-col: #div-showAllOrgs -->
-    <!-- end right-col: #div-showAllOrgs -->
-
-
-
-
-
-
-</div>
-<!-- end row/container -->
-
-
-
-
-<!-- viewMyJob modal -->
-<div class="modal fade" id="modal-show-one-job" tabindex="-1" role="dialog" aria-labelledby="modal-job-label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modal-job-label">Position: {{selectedJob.position}}</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col col-sm-6" id="modal-job-details">
-                        <!-- left-col: job details -->
-                        <table class="table table-borderless">
-                            <tbody>
-
-                                <tr>
-                                    <td><span class="bold-text">Description:</span></td>
-                                    <td>{{selectedJob.description}}</td>
-                                </tr>
-                                <tr>
-                                    <td><span class="bold-text">Required Skills:</span>
-                                        <br>({{selectedJob.match}}% Match)
-                                    </td>
-                                    <td>
-                                        <figure *ngFor="let skill of selectedJob.skills" class="figure display-each-skill-figure text-center">
-                                            <img class="figure-img each-skill-img" src="assets/img/{{skill}}.png">
-                                            <figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>
-                                            <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
-                                        </figure>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="col col-sm-5" id="modal-see-all-dev-matches">
-                        <div *ngFor="let dev of allDevs">
-                            <p>{{dev.fname}}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
-                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end viewMyJob modal -->
-
-
-
-<!-- viewOneDev modal -->
-<div *ngIf="selectedDev" class="modal fade" id="modal-show-one-dev" tabindex="-1" role="dialog" aria-labelledby="modal-dev-label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title bold-text" id="modal-dev-label">Developer: {{selectedDev.fname}} {{selectedDev.lname}} ({{selectedDev.city}}, {{selectedDev.state}})</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col col-sm-6" id="modal-dev-details">
-                    <!-- left-col: Dev details -->
-                        <table class="table table-borderless">
-                            <tbody>
-                            <tr>
-                                <td><span class="bold-text">Bio:</span></td>
-                                <td>{{selectedDev.bio}}</td>
-                            </tr>
-                            <tr>
-                                <td><span class="bold-text">Skills</span></td>
-                                <td *ngIf="selectedDev">
-                                    <figure *ngFor="let skill of selectedDev.skills" class="figure display-each-skill-figure text-center">
-                                        <img class="figure-img each-skill-img" src="assets/img/{{skill}}.png">
-                                        <figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>
-                                        <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
-                                    </figure>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="col col-sm-5" id="modal-send-msg-to-dev">
-                    <!-- right-col: msg form -->
-                        <h5 class="bold-text cornflower-text center-text">Send a Message<br>to this Developer</h5>
-                        <form #sendMsgToJob="ngForm">
-
-                            <div class="form-group row">
-                                <div class="col col-sm-3">
-                                    <label for="dev-msg-subject">Subject:</label>
-                                </div>
-                                <div class="col col-sm-9">
-                                    <input type="text" id="dev-msg-subject" name="dev-msg-subject" value="you're hired, {{selectedDev.fname}}">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col col-sm-3">
-                                    <label for="dev-msg-message">Message:</label>
-                                </div>
-                                <div class="col col-sm-9">
-                                    <textarea id="dev-msg-message" name="dev-msg-message"></textarea>
-                                </div>
-                            </div>
-
-                            <button class="btn btn-sm btn-success float-right" (click)="sendMsgToDev()">Send</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
-                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end viewOneDev modal -->
-
-
-
-<!-- viewOneOrg modal -->
-<div *ngIf="selectedOrg" class="modal fade" id="modal-show-one-org" tabindex="-1" role="dialog" aria-labelledby="modal-org-label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modal-org-label">OrgName (City, State)</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col col-sm-6" id="modal-org-details">
-                        <table class="table table-borderless">
-                            <tbody>
-                            <tr>
-                                <td><span class="bold-text">Contact Person:</span></td>
-                                <td>fname, lname</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <!--<div class="row" id="modal-send-msg-to-org">-->
-
-                        <form #sendMsgToOrg="ngForm" id="send-msg-to-org-form">
-
-                            <div class="form-group row">
-                                <div class="col col-sm-3">
-                                    <label for="org-msg-subject">Subject:</label>
-                                </div>
-                                <div class="col col-sm-9">
-                                    <input type="text" id="org-msg-subject" name="org-msg-subject" value="I dig j00r company {{selectedOrg.orgName}}">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col col-sm-3">
-                                    <label for="org-msg-message">Message:</label>
-                                </div>
-                                <div class="col col-sm-9">
-                                    <textarea id="org-msg-message" name="org-msg-message"></textarea>
-                                </div>
-                            </div>
-
-                            <button class="btn btn-sm btn-success float-right" (click)="sendMsgToOrg()">Send</button>
-                        </form>
+                    <!--&lt;!&ndash; fake job 2 &ndash;&gt;-->
+                    <!--<tr (click)="showMyJob('1337')">-->
+                        <!--<td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">l33t hax0r</td>-->
+                    <!--</tr>-->
+                    <!--&lt;!&ndash; fake job 3 &ndash;&gt;-->
+                    <!--<tr (click)="showMyJob('69696969')">-->
+                        <!--<td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">People's Champ</td>-->
+                    <!--</tr>-->
+
+                    <!--&lt;!&ndash; real jobs &ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr *ngFor="let job of myInfo.jobs" (click)="showMyJob(job._id)">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td class="one-of-my-jobs" type="button" data-toggle="modal" data-target="modal-show-one-job">{{job.position}}</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                <!--</tbody>-->
+
+            <!--</table>-->
+
+        <!--</div>-->
+
+    <!--</div>-->
+    <!--&lt;!&ndash; end left-col: #div-showMyJobs (default) &ndash;&gt;-->
+    <!--&lt;!&ndash; end left-col: #div-showMyJobs (default) &ndash;&gt;-->
+    <!--&lt;!&ndash; end left-col: #div-showMyJobs (default) &ndash;&gt;-->
+
+
+
+
+
+
+    <!--&lt;!&ndash; left-col: #div-addJobForm (option 2) &ndash;&gt;-->
+    <!--&lt;!&ndash; left-col: #div-addJobForm (option 2) &ndash;&gt;-->
+    <!--&lt;!&ndash; left-col: #div-addJobForm (option 2) &ndash;&gt;-->
+    <!--<div *ngIf="addJobForm" class="col col-sm-4" id="div-addJobForm">-->
+
+        <!--&lt;!&ndash; header &ndash;&gt;-->
+        <!--<div id="div-addJobForm-header" class="row">-->
+            <!--<div class="col col-sm-12">-->
+                <!--<button id="btn-toggle-cancelAddJob" class="btn btn-sm btn-danger" (click)="toggleAddJobForm()">x</button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end header &ndash;&gt;-->
+
+
+        <!--&lt;!&ndash; the addJob form &ndash;&gt;-->
+        <!--<div id="div-the-addJobForm">-->
+            <!--<p>addJobForm.value|json {{addJobForm.value | json}}</p>-->
+
+            <!--<form #addJobForm="ngForm">-->
+
+                <!--&lt;!&ndash; position &ndash;&gt;-->
+                <!--<div class="form-group row">-->
+                    <!--<div class="col col-sm-4">-->
+                        <!--<label for="position">-->
+                            <!--<span class="bold-text">Position:</span>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="col col-sm-8">-->
+                        <!--<input class="form-control" id="position" name="position" type="text" required [(ngModel)]="newJob.position">-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash; description &ndash;&gt;-->
+                <!--<div class="form-group row">-->
+                    <!--<div class="col col-sm-4">-->
+                        <!--<label for="description">-->
+                            <!--<span class="bold-text">Description:</span>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="col col-sm-8">-->
+                        <!--<textarea class="form-control" id="description" name="description" required [(ngModel)]="newJob.description"></textarea>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--&lt;!&ndash; show required skills &ndash;&gt;-->
+                <!--<div class="form-group row">-->
+                    <!--<div class="col col-sm-4">-->
+                        <!--<label for="div-required-skills">-->
+                            <!--<span class="bold-text">Required Skills:</span>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="col col-sm-7" id="div-required-skills">-->
+                        <!--<div class="row">-->
+                            <!--<figure *ngFor="let skill of newJob.skills" class="figure text-center show-required-skill-figure col col-sm-3">-->
+                                <!--<img class="figure-img show-required-skill-img" src="assets/img/{{skill}}.png">-->
+                                <!--<figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>-->
+                                <!--<figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>-->
+                            <!--</figure>-->
                         <!--</div>-->
-                    </div>
 
-                    <div class="col col-sm-6" id="modal-list-of-orgs-jobs">
-                        <!-- fake jeobs -->
-                        <div class="row modal-org-each-job">
-                            <div class="col col-sm-8">
-                                <p class="bold-text">Description</p>
-                                <p>do it to it!</p>
-                            </div>
-                            <div class="col col-sm-4">
-                                <p class="bold-text">Match %</p>
-                                <p>99%</p>
-                            </div>
-                        </div>
-                        <div class="row modal-org-each-job">
-                            <div class="col col-sm-8">
-                                <p class="bold-text">Description</p>
-                                <p>do it 2 it!</p>
-                            </div>
-                            <div class="col col-sm-4">
-                                <p class="bold-text">Match %</p>
-                                <p>110%</p>
-                            </div>
-                        </div>
+                    <!--</div>-->
+                <!--</div>-->
 
-                        <!-- real jeobs -->
-                        <div class="row modal-org-each-job"><!-- *ngFor="let job of selectedOrg.jobs" -->
-                            <div class="col col-sm-8">
-                                <p class="bold-text">job.position</p>
-                                <p>job.description <!--{{job.description}}--></p>
-                            </div>
-                            <div class="col col-sm-4">
-                                <p class="bold-text">Match %</p>
-                                <p>job.match <!--{{job.match}}}--></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end viewOneOrg modal -->
+                <!--&lt;!&ndash; add skill &ndash;&gt;-->
+                <!--<div class="form-group row">-->
+                    <!--<div class="col col-sm-4">-->
+                        <!--<label for="skills">-->
+                            <!--<span class="bold-text">Add Required Skills:</span>-->
+                        <!--</label>-->
+                    <!--</div>-->
+                    <!--<div class="col col-sm-7" id="skills">-->
+                        <!--<div class="row">-->
+                            <!--<figure *ngFor="let language of languages" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(language)">-->
+                                <!--<img class="figure-img add-required-skill-img" src="assets/img/{{language}}.png">-->
+                                <!--<figcaption *ngIf="language != 'Csharp'" class="figure-caption">{{language}}</figcaption>-->
+                                <!--<figcaption *ngIf="language == 'Csharp'" class="figure-caption">C#</figcaption>-->
+                            <!--</figure>-->
+                            <!--<figure *ngFor="let framework of frameworks" class="figure text-center add-required-skill-figure col col-sm-4" (click)="addRequiredSkill(framework)">-->
+                                <!--<img class="figure-img add-required-skill-img" src="assets/img/{{framework}}.png">-->
+                                <!--<figcaption class="figure-caption">{{framework}}</figcaption>-->
+                            <!--</figure>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<button class="btn btn-sm btn-danger" id="button-cancel" (click)="toggleAddJobForm()">Cancel</button>-->
+                <!--<button class="btn btn-sm btn-success" id="button-submitNewJob" (click)="submitNewJob()">Add This Position</button>-->
+
+            <!--</form>-->
+
+        <!--</div>-->
+        <!--&lt;!&ndash; end the addJob form &ndash;&gt;-->
+
+    <!--</div>-->
+
+    <!--&lt;!&ndash; end left-col: #div-addJobForm (option 2) &ndash;&gt;-->
+    <!--&lt;!&ndash; end left-col: #div-addJobForm (option 2) &ndash;&gt;-->
+    <!--&lt;!&ndash; end left-col: #div-addJobForm (option 2) &ndash;&gt;-->
 
 
 
 
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+    <!--&lt;!&ndash; /\ /\ left-col /\ /\ &ndash;&gt;-->
+    <!--&lt;!&ndash; ***************************************************** &ndash;&gt;-->
+    <!--&lt;!&ndash; ***************************************************** &ndash;&gt;-->
+    <!--&lt;!&ndash; ***************************************************** &ndash;&gt;-->
+    <!--&lt;!&ndash; ***************************************************** &ndash;&gt;-->
+    <!--&lt;!&ndash; ***************************************************** &ndash;&gt;-->
+    <!--&lt;!&ndash; \/ \/ right-col \/ \/ &ndash;&gt;-->
+
+
+
+
+
+
+
+    <!--&lt;!&ndash; right-col: showAllDevs (default) &ndash;&gt;-->
+    <!--&lt;!&ndash; right-col: showAllDevs (default) &ndash;&gt;-->
+    <!--&lt;!&ndash; right-col: showAllDevs (default) &ndash;&gt;-->
+
+    <!--<div class="col col-sm-7" id="div-showAllDevs" *ngIf="showAllDevs">-->
+
+        <!--&lt;!&ndash; #div-showDevs-header &ndash;&gt;-->
+        <!--<div id="div-showDevs-header" class="row">-->
+            <!--<div class="col col-sm-8">-->
+                <!--<h3 class="showDevs-header">All Developers</h3>-->
+            <!--</div>-->
+            <!--<div class="col col-sm-4">-->
+                <!--&lt;!&ndash; this button hides #div-showAllJobs && shows #div-showAllOrgs &ndash;&gt;-->
+                <!--<button class="btn btn-sm btn-outline-success" (click)="switchDevsOrgs()">Show All Orgs</button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end #div-showDevs-header &ndash;&gt;-->
+
+
+
+        <!--<div id="div-showDevs-body">-->
+            <!--&lt;!&ndash; display each dev &ndash;&gt;-->
+            <!--<table class="table table-hover table-borderless table-striped">-->
+                <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<th scope="col">Name</th>-->
+                        <!--<th scope="col">Skills</th>-->
+                    <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                    <!--<tr *ngFor="let dev of allDevs" (click)="showDevDetail(dev._id)" type="button" data-toggle="modal" data-target="#modal-show-one-dev">-->
+                        <!--<td>-->
+                            <!--<figure>-->
+                                <!--&lt;!&ndash; how do i add an image to a mongo document? &ndash;&gt;-->
+                                <!--&lt;!&ndash;<img *ngIf="!dev.avatar" class="figure-img avatar" src="assets/img/blank_avatar.png">&ndash;&gt;-->
+                                <!--<img class="figure-img avatar" src="assets/img/blank_avatar.png">-->
+                            <!--</figure>-->
+                            <!--<p class="center-text bold-text">{{dev.fname}} {{dev.lname}}</p>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<figure *ngFor="let skill of dev.skills" class="figure text-center col col-sm-2">-->
+                                <!--<img class="figure-img skill-icon" src="assets/img/{{skill}}.png">-->
+                                <!--<figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>-->
+                                <!--<figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>-->
+                            <!--</figure>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+
+                <!--</tbody>-->
+            <!--</table>-->
+
+        <!--</div>-->
+        <!--&lt;!&ndash; end #div-showDevs-body &ndash;&gt;-->
+
+
+    <!--</div>-->
+    <!--&lt;!&ndash; end right-col: #div-showAllDevs (default) &ndash;&gt;-->
+    <!--&lt;!&ndash; end right-col: #div-showAllDevs (default) &ndash;&gt;-->
+    <!--&lt;!&ndash; end right-col: #div-showAllDevs (default) &ndash;&gt;-->
+
+
+
+
+
+
+
+
+
+
+    <!--&lt;!&ndash; right-col: show allOrgs (option 2) &ndash;&gt;-->
+    <!--&lt;!&ndash; right-col: show allOrgs (option 2) &ndash;&gt;-->
+    <!--&lt;!&ndash; right-col: show allOrgs (option 2) &ndash;&gt;-->
+
+    <!--<div class="col col-sm-7" id="div-showAllOrgs" *ngIf="!showAllDevs">-->
+
+        <!--<div id="div-showOrgs-header" class="row">-->
+            <!--<div class="col col-sm-8">-->
+                <!--<h3 class="showOrgs-Header">All Organizations</h3>-->
+            <!--</div>-->
+
+
+            <!--&lt;!&ndash; this button hides #div-showAllOrgs && shows #div-showAllDevs &ndash;&gt;-->
+            <!--<div class="col col-sm-4">-->
+                <!--<button class="btn btn-sm btn-outline-success" (click)="switchDevsOrgs()">Show All Devs</button>-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <!--&lt;!&ndash; end #div-myInfo-header &ndash;&gt;-->
+
+
+        <!--<div id="div-showOrgs-body">-->
+            <!--<div class="div-org row" (click)="showOrgDetail('1337')" type="button" data-toggle="modal" data-target="#modal-show-one-org">-->
+                <!--<div class="col col-sm-4"><p class="bold-text">Org Name<p><p>Jabroni, Corp.</p></div>-->
+                <!--<div class="col col-sm-5"><p class="bold-text">Location</p><p>Los Angeles, CA</p></div>-->
+                <!--<div class="col col-sm-3"><p class="bold-text">Available Positions</p><p>3</p></div>-->
+            <!--</div>-->
+
+            <!--<div class="div-org row" (click)="showOrgDetail('69696969')">-->
+                <!--<div class="col col-sm-4"><p class="bold-text">Org Name</p><p>Yo Mama</p></div>-->
+                <!--<div class="col col-sm-5"><p class="bold-text">Location</p><p>All up in dem guts</p></div>-->
+                <!--<div class="col col-sm-3"><p class="bold-text">Available Positions</p><p>5+</p></div>-->
+            <!--</div>-->
+
+            <!--&lt;!&ndash; display each jeob &ndash;&gt;-->
+            <!--<div class="div-org row" *ngFor="let org of allOrgs" (click)="showOrgDetail(org._id)">-->
+                <!--&lt;!&ndash;{{org}}&ndash;&gt;-->
+                <!--<div class="col col-sm-4"><p class="bold-text">Org Name</p><p>{{org.orgName}}</p></div>-->
+                <!--<div class="col col-sm-5"><p class="bold-text">Location</p><p>{{org.city}}, {{org.state}}</p></div>-->
+                <!--<div class="col col-sm-3"><p class="bold-text">Available Positions</p><p>{{org.jobs.length}}</p></div>-->
+            <!--</div>-->
+
+
+        <!--</div>-->
+        <!--&lt;!&ndash; end #div-showOrgs-body &ndash;&gt;-->
+
+    <!--</div>-->
+    <!--&lt;!&ndash; end right-col: #div-showAllOrgs &ndash;&gt;-->
+    <!--&lt;!&ndash; end right-col: #div-showAllOrgs &ndash;&gt;-->
+    <!--&lt;!&ndash; end right-col: #div-showAllOrgs &ndash;&gt;-->
+
+
+
+
+
+
+<!--</div>-->
+<!--&lt;!&ndash; end row/container &ndash;&gt;-->
+
+
+
+
+<!--&lt;!&ndash; viewMyJob modal &ndash;&gt;-->
+<!--<div class="modal fade" id="modal-show-one-job" tabindex="-1" role="dialog" aria-labelledby="modal-job-label" aria-hidden="true">-->
+    <!--<div class="modal-dialog modal-lg" role="document">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<h3 class="modal-title" id="modal-job-label">Position: {{selectedJob.position}}</h3>-->
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                    <!--<span aria-hidden="true">&times;</span>-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--<div class="row">-->
+                    <!--<div class="col col-sm-6" id="modal-job-details">-->
+                        <!--&lt;!&ndash; left-col: job details &ndash;&gt;-->
+                        <!--<table class="table table-borderless">-->
+                            <!--<tbody>-->
+
+                                <!--<tr>-->
+                                    <!--<td><span class="bold-text">Description:</span></td>-->
+                                    <!--<td>{{selectedJob.description}}</td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td><span class="bold-text">Required Skills:</span>-->
+                                        <!--<br>({{selectedJob.match}}% Match)-->
+                                    <!--</td>-->
+                                    <!--<td>-->
+                                        <!--<figure *ngFor="let skill of selectedJob.skills" class="figure display-each-skill-figure text-center">-->
+                                            <!--<img class="figure-img each-skill-img" src="assets/img/{{skill}}.png">-->
+                                            <!--<figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>-->
+                                            <!--<figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>-->
+                                        <!--</figure>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+
+                    <!--<div class="col col-sm-5" id="modal-see-all-dev-matches">-->
+                        <!--<div *ngFor="let dev of allDevs">-->
+                            <!--<p>{{dev.fname}}</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>-->
+                <!--&lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; end viewMyJob modal &ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash; viewOneDev modal &ndash;&gt;-->
+<!--<div *ngIf="selectedDev" class="modal fade" id="modal-show-one-dev" tabindex="-1" role="dialog" aria-labelledby="modal-dev-label" aria-hidden="true">-->
+    <!--<div class="modal-dialog modal-lg" role="document">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<h3 class="modal-title bold-text" id="modal-dev-label">Developer: {{selectedDev.fname}} {{selectedDev.lname}} ({{selectedDev.city}}, {{selectedDev.state}})</h3>-->
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                    <!--<span aria-hidden="true">&times;</span>-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--<div class="row">-->
+                    <!--<div class="col col-sm-6" id="modal-dev-details">-->
+                    <!--&lt;!&ndash; left-col: Dev details &ndash;&gt;-->
+                        <!--<table class="table table-borderless">-->
+                            <!--<tbody>-->
+                            <!--<tr>-->
+                                <!--<td><span class="bold-text">Bio:</span></td>-->
+                                <!--<td>{{selectedDev.bio}}</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td><span class="bold-text">Skills</span></td>-->
+                                <!--<td *ngIf="selectedDev">-->
+                                    <!--<figure *ngFor="let skill of selectedDev.skills" class="figure display-each-skill-figure text-center">-->
+                                        <!--<img class="figure-img each-skill-img" src="assets/img/{{skill}}.png">-->
+                                        <!--<figcaption *ngIf="skill == 'Csharp'" class="figure-caption">C#</figcaption>-->
+                                        <!--<figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>-->
+                                    <!--</figure>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+
+                    <!--<div class="col col-sm-5" id="modal-send-msg-to-dev">-->
+                    <!--&lt;!&ndash; right-col: msg form &ndash;&gt;-->
+                        <!--<h5 class="bold-text cornflower-text center-text">Send a Message<br>to this Developer</h5>-->
+                        <!--<form #sendMsgToJob="ngForm">-->
+
+                            <!--<div class="form-group row">-->
+                                <!--<div class="col col-sm-3">-->
+                                    <!--<label for="dev-msg-subject">Subject:</label>-->
+                                <!--</div>-->
+                                <!--<div class="col col-sm-9">-->
+                                    <!--<input type="text" id="dev-msg-subject" name="dev-msg-subject" value="you're hired, {{selectedDev.fname}}">-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group row">-->
+                                <!--<div class="col col-sm-3">-->
+                                    <!--<label for="dev-msg-message">Message:</label>-->
+                                <!--</div>-->
+                                <!--<div class="col col-sm-9">-->
+                                    <!--<textarea id="dev-msg-message" name="dev-msg-message"></textarea>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<button class="btn btn-sm btn-success float-right" (click)="sendMsgToDev()">Send</button>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>-->
+                <!--&lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; end viewOneDev modal &ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash; viewOneOrg modal &ndash;&gt;-->
+<!--<div *ngIf="selectedOrg" class="modal fade" id="modal-show-one-org" tabindex="-1" role="dialog" aria-labelledby="modal-org-label" aria-hidden="true">-->
+    <!--<div class="modal-dialog modal-lg" role="document">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<h3 class="modal-title" id="modal-org-label">OrgName (City, State)</h3>-->
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+                    <!--<span aria-hidden="true">&times;</span>-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--<div class="row">-->
+                    <!--<div class="col col-sm-6" id="modal-org-details">-->
+                        <!--<table class="table table-borderless">-->
+                            <!--<tbody>-->
+                            <!--<tr>-->
+                                <!--<td><span class="bold-text">Contact Person:</span></td>-->
+                                <!--<td>fname, lname</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                        <!--&lt;!&ndash;<div class="row" id="modal-send-msg-to-org">&ndash;&gt;-->
+
+                        <!--<form #sendMsgToOrg="ngForm" id="send-msg-to-org-form">-->
+
+                            <!--<div class="form-group row">-->
+                                <!--<div class="col col-sm-3">-->
+                                    <!--<label for="org-msg-subject">Subject:</label>-->
+                                <!--</div>-->
+                                <!--<div class="col col-sm-9">-->
+                                    <!--<input type="text" id="org-msg-subject" name="org-msg-subject" value="I dig j00r company {{selectedOrg.orgName}}">-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group row">-->
+                                <!--<div class="col col-sm-3">-->
+                                    <!--<label for="org-msg-message">Message:</label>-->
+                                <!--</div>-->
+                                <!--<div class="col col-sm-9">-->
+                                    <!--<textarea id="org-msg-message" name="org-msg-message"></textarea>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<button class="btn btn-sm btn-success float-right" (click)="sendMsgToOrg()">Send</button>-->
+                        <!--</form>-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--</div>-->
+
+                    <!--<div class="col col-sm-6" id="modal-list-of-orgs-jobs">-->
+                        <!--&lt;!&ndash; fake jeobs &ndash;&gt;-->
+                        <!--<div class="row modal-org-each-job">-->
+                            <!--<div class="col col-sm-8">-->
+                                <!--<p class="bold-text">Description</p>-->
+                                <!--<p>do it to it!</p>-->
+                            <!--</div>-->
+                            <!--<div class="col col-sm-4">-->
+                                <!--<p class="bold-text">Match %</p>-->
+                                <!--<p>99%</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="row modal-org-each-job">-->
+                            <!--<div class="col col-sm-8">-->
+                                <!--<p class="bold-text">Description</p>-->
+                                <!--<p>do it 2 it!</p>-->
+                            <!--</div>-->
+                            <!--<div class="col col-sm-4">-->
+                                <!--<p class="bold-text">Match %</p>-->
+                                <!--<p>110%</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--&lt;!&ndash; real jeobs &ndash;&gt;-->
+                        <!--<div class="row modal-org-each-job">&lt;!&ndash; *ngFor="let job of selectedOrg.jobs" &ndash;&gt;-->
+                            <!--<div class="col col-sm-8">-->
+                                <!--<p class="bold-text">job.position</p>-->
+                                <!--<p>job.description &lt;!&ndash;{{job.description}}&ndash;&gt;</p>-->
+                            <!--</div>-->
+                            <!--<div class="col col-sm-4">-->
+                                <!--<p class="bold-text">Match %</p>-->
+                                <!--<p>job.match &lt;!&ndash;{{job.match}}}&ndash;&gt;</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                <!--&lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; end viewOneOrg modal &ndash;&gt;-->
+
+
+
+
+
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>-->
+<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>-->
