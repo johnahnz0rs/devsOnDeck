@@ -13,32 +13,31 @@ import { HomeSplashComponent } from './home/home-splash/home-splash.component';
 import { HomeJobsComponent } from './home/home-jobs/home-jobs.component';
 import { HomeDevsComponent } from './home/home-devs/home-devs.component';
 import { HomeLoginComponent } from './home/home-login/home-login.component';
-import { LoginService } from './services/login.service';
 import { HomeRegisterDevComponent } from './home/home-register-dev/home-register-dev.component';
 import { HomeRegisterOrgComponent } from './home/home-register-org/home-register-org.component';
 
 
 import { DevDashboardComponent } from './devs/dev-dashboard/dev-dashboard.component';
-import { DevService } from './services/dev.service';
 import { DevShowJobsComponent } from './devs/dev-show-jobs/dev-show-jobs.component';
 import { DevShowDevsComponent } from './devs/dev-show-devs/dev-show-devs.component';
 import { DevShowOrgsComponent } from './devs/dev-show-orgs/dev-show-orgs.component';
-import { DevShowProfileComponent } from './devs/dev-show-profile/dev-show-profile.component';
+import { DevProfileComponent } from './devs/dev-profile/dev-profile.component';
 
 
 import { OrgDashboardComponent } from './orgs/org-dashboard/org-dashboard.component';
-import { OrgService } from './services/org.service';
 import { OrgShowDevsComponent } from './orgs/org-show-devs/org-show-devs.component';
 import { OrgShowOrgsComponent } from './orgs/org-show-orgs/org-show-orgs.component';
 import { OrgShowJobsComponent } from './orgs/org-show-jobs/org-show-jobs.component';
 import { OrgProfileComponent } from './orgs/org-profile/org-profile.component';
+import { OrgAddJobComponent } from './orgs/org-add-job/org-add-job.component';
 
 
+import { LoginService } from './services/login.service';
 import { JobService } from './services/job.service';
+import { UserService } from './services/user.service';
 
 
 import { TestCompComponent } from './test/test-comp/test-comp.component';
-import { OrgAddJobComponent } from './orgs/org-add-job/org-add-job.component';
 
 
 
@@ -59,7 +58,7 @@ import { OrgAddJobComponent } from './orgs/org-add-job/org-add-job.component';
     HomeSplashComponent,
     DevShowJobsComponent,
     DevShowOrgsComponent,
-    DevShowProfileComponent,
+    DevProfileComponent,
     DevShowDevsComponent,
     OrgShowDevsComponent,
     OrgShowOrgsComponent,
@@ -70,7 +69,7 @@ import { OrgAddJobComponent } from './orgs/org-add-job/org-add-job.component';
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, HttpClientModule
   ],
-  providers: [AppService, LoginService, DevService, OrgService, JobService],
+  providers: [AppService, LoginService, UserService, JobService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

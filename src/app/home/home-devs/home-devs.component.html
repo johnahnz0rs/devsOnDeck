@@ -1,35 +1,55 @@
-<p>
-  devs works!
-</p>
-
-<button class="btn btn-lg btn-warning" (click)="printAllDevs()">print current this.allDevs</button>
-
-
-<div *ngIf="allDevs">
-    <div *ngFor="let dev of allDevs" class="each-dev row" type="button" data-toggle="modal" data-target="#modal-each-dev">
-        <div class="col-sm-3">Name:<br>{{dev.fname}} {{dev.lname}}</div>
-        <div class="col-sm-3">Location:<br>{{dev.city}}, {{dev.state}}</div>
-        <div class="col-sm-3">Email:<br>{{dev.email}}</div>
-        <div class="col-sm-3">Skills:<br><span *ngFor="let i of dev.skills">{{i}}, </span></div>
+<div class="text-center row">
+    <div class="col-sm-3"></div>
+    <div *ngIf="allDevs" class="col-sm-6">
+        <h3 class="devs-header">Available Developers</h3>
+        <div *ngFor="let dev of allDevs" class="each-dev row" type="button" data-toggle="modal" data-target="#modal-each-dev" (click)="selectDev(dev)">
+            <div class="col-sm-4"><p class="bold-text">Name:</p>{{dev.fname}} {{dev.lname}}</div>
+            <div class="col-sm-4"><p class="bold-text">Location:</p><span>{{dev.city}}, {{dev.state}}</span></div>
+            <div class="col-sm-4"><p class="bold-text">Skills:</p><span *ngFor="let i of dev.devSkills">{{i}}, </span></div>
+        </div>
     </div>
+    <div class="col-sm-3"></div>
 </div>
 
 
+
+
+
+
+
+
 <!-- #modal-each-dev -->
-<div class="modal fade" id="modal-each-dev" tabindex="-1" role="dialog" aria-labelledby="modal-job-label" aria-hidden="true">
+<div *ngIf="selectedDev" class="modal fade" id="modal-each-dev" tabindex="-1" role="dialog" aria-labelledby="modal-job-label" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h3 class="modal-title" id="modal-job-label">this is a dev</h3>
+                <h3 class="modal-title" id="modal-job-label">Details for <span class="underline">{{selectedDev.fname}} {{selectedDev.lname}}</span></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
-            <div class="modal-body">
-                <p>this is the body</p>
-                <p>Register to see more!</p>
+            <div class="modal-body text-center">
+
+                <h3>Register to see more details</h3>
+                <h4>& to apply for this position!</h4>
+
+                <div class="register-ad row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <ul class="text-left">
+                            <li>Developer Bio</li>
+                            <li>Job Suitability</li>
+                            <li>Contact Information</li>
+                            <li>& more!</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+
+                <button class="btn btn-lg btn-primary left-button" (click)="register('dev')">Register as a<br>Developer</button>
+                <button class="btn btn-lg btn-primary" (click)="register('org')">Register as an<br>Employer</button>
             </div>
 
             <div class="modal-footer">

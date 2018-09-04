@@ -1,15 +1,15 @@
 <!-- template -->
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: cornflowerblue">
     <!-- left side of navbar -->
-    <a class="navbar-brand" href="#" (click)="clickComp('splash')">devJobs</a>
+    <a class="navbar-brand" (click)="clickComp('splash')">devJobs</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#" (click)="clickComp('jobs')">Find Jobs</a>
+                <a class="nav-link" (click)="clickComp('jobs')">Find Jobs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" (click)="clickComp('devs')">Find Developers</a>
+                <a class="nav-link" (click)="clickComp('devs')">Find Developers</a>
             </li>
         </ul>
     </div>
@@ -19,7 +19,10 @@
     <div class="d-flex flex-row order-2 order-lg-3 ml-auto">
         <ul class="navbar-nav flex-row">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#modal-login">Login</a>
+                <a class="nav-link" (click)="displayThisComp = 'register-dev'">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#modal-login">Log In</a>
             </li>
         </ul>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,80 +35,13 @@
 <!-- end navbar -->
 <!-- end navbar -->
 
-
-
-
-<!-- buttons that toggle display of the Add Org to DB, and Add Job to DB forms -->
-<!--<div>-->
-    <!--<button class="btn btn-sm btn-outline-danger" (click)="toggleAddOrgForm()">Toggle Add Org Form</button>-->
-    <!--<button class="btn btn-sm btn-outline-danger" (click)="toggleAddJobForm()">Toggle Add Job Form</button>-->
-<!--</div>-->
-
-<div *ngIf="showAddOrgForm" style="border: 1px solid black; margin: 100px auto;">
-    <form id="add-org-form" #addOrgForm="ngForm">
-        <div class="form-group">
-            <label>Org Name: </label><input class="form-control" id="org-name" name="org-name" type="text" [(ngModel)]="createOrg.orgName">
-        </div>
-        <div class="form-group">
-            <label>First Name: </label><input class="form-control" id="fname" name="fname" type="text" [(ngModel)]="createOrg.fname">
-        </div>
-        <div class="form-group">
-            <label>Last Name: </label><input class="form-control" id="lname" name="lname" type="text" [(ngModel)]="createOrg.lname">
-        </div>
-        <div class="form-group">
-            <label>Email: </label><input class="form-control" id="email" name="email" type="email" [(ngModel)]="createOrg.email">
-        </div>
-        <div class="form-group">
-            <label>Password: </label><input class="form-control" id="pw" name="pw" type="text" [(ngModel)]="createOrg.pw">
-        </div>
-        <div class="form-group">
-            <label>Street Address: </label><input class="form-control" id="address" name="address" type="text" [(ngModel)]="createOrg.address">
-        </div>
-        <div class="form-group">
-            <label>City: </label><input class="form-control" id="city" name="city" type="text" [(ngModel)]="createOrg.city">
-        </div>
-        <div class="form-group">
-            <label>State: </label>
-            <select class="form-control" id="state" name="state" required [(ngModel)]="createOrg.state">
-                <option *ngFor="let state of states">
-                    {{ state }}
-                </option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Zip: </label><input class="form-control" id="zip" name="zip" type="text" [(ngModel)]="createOrg.zip">
-        </div>
-    </form>
-
-    <button class="btn btn-lg btn-success" (click)="submitCreateOrg()">Create This Org</button>
-</div>
-<!-- end addOrgForm -->
-
-<div *ngIf="showAddJobForm" style="border: 1px solid black; margin: 100px auto;">
-    <form id="add-job-form" #addJobForm="ngForm">
-        <div class="form-group">
-            <label>Position: </label><input class="form-control" id="position" name="position" type="text" [(ngModel)]="createJob.position">
-        </div>
-        <div class="form-group">
-            <label>Description: </label><input class="form-control" id="description" name="description" type="text" [(ngModel)]="createJob.description">
-        </div>
-    </form>
-
-    <button class="btn btn-lg btn-success" (click)="submitCreateJob()">Create This Job</button>
-</div>
-<!-- end addJobForm -->
-
-
-
-<!-- buttons that toggle display of the register-dev and register-org modals -->
 <div>
-    <button class="btn btn-sm btn-outline-warning" type="button" data-toggle="modal" data-target="#modal-register-dev" (click)="modalButtonClicked()">Register Dev </button>
-    <button class="btn btn-sm btn-outline-warning" type="button" data-toggle="modal" data-target="#modal-register-org" (click)="modalButtonClicked()">Register Org</button>
+    <app-home-splash *ngIf="displayThisComp === 'splash'"></app-home-splash>
+    <app-home-jobs *ngIf="displayThisComp ==='jobs'"></app-home-jobs>
+    <app-home-devs *ngIf="displayThisComp ==='devs'"></app-home-devs>
+    <app-home-register-dev *ngIf="displayThisComp === 'register-dev'"></app-home-register-dev>
+    <app-home-register-org *ngIf="displayThisComp === 'register-org'"></app-home-register-org>
 </div>
-
-<app-home-splash *ngIf="displayThisComp === 'splash'"></app-home-splash>
-<app-home-jobs *ngIf="displayThisComp ==='jobs'"></app-home-jobs>
-<app-home-devs *ngIf="displayThisComp ==='devs'"></app-home-devs>
 <!-- end template -->
 
 

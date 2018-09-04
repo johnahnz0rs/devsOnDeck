@@ -5,6 +5,9 @@
     max-width: 800px;
 }
 
-.modal-open {
-    overflow: hidden;
+.navbar-brand:hover {
+    cursor: pointer;
+}
+.nav-item:hover {
+    cursor: pointer;
 }

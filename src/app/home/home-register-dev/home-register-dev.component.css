@@ -19,14 +19,8 @@
     padding: 10px;
     float: none;
 }
-#common-header {
-    margin: 0 auto;
-    text-align: center;
-    font-size: xx-large;
-}
+
 #org-instead {
-    margin: 0 auto;
-    text-align: center;
     margin-bottom: 40px;
     font-size: medium;
 }
@@ -44,6 +38,7 @@
 .bold-text {
     font-weight: bold;
 }
+
 .validation {
     color: red;
 }
@@ -84,15 +79,6 @@ img {
     margin: 0 auto;
 }
 
-
-
-#bio-label {
-    font-size: xx-large;
-}
-#bio {
-    width: 100%;
-    height: 80%;
-}
 
 .thanks {
     text-align: center;

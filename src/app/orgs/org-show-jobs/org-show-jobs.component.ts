@@ -16,7 +16,7 @@ export class OrgShowJobsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.jobService.readAllJobs().subscribe(response => { this.allJobs = response; });
+    this.jobService.getAllJobs().subscribe(response => { this.allJobs = response; });
     // this.jobService.
   }
 

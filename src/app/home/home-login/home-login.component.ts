@@ -21,16 +21,9 @@ export class HomeLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  printLoginServiceUser() {
-    console.log('');
-    this.loginService.getUser()
-      .subscribe(response => { console.log('*** you asked me to print loginService.getUser() ***', response); });
-    // console.log('*** this.loginService.user =', this.loginService.user, '***');
-  }
-
   login() {
     const data = {email: this.user.email, pw: this.user.pw};
-    console.log('*** home-login-comp is running tryLogin() ***', data);
+    console.log('*** home-login-comp is running login(data) ***', data);
     this.loginService.login(data)
       .subscribe(user => {
         if (user.accountType) {

@@ -15,27 +15,28 @@ export class DevService {
   constructor(private http: HttpClient) { }
 
   createNewDev(dev): Observable<any> {
-    console.log('*** CREATE devService.createNewDev(dev) ***', dev);
+    console.log('*** devService is creating one dev(dev) ***', dev);
     // return this.http.post<any>('/api/home-devs', dev);
     return this.http.post<any>(`${this.testAPI}`, dev);
   }
 
   readAllDevs(): Observable<any> {
-    console.log('*** devService is running readAllDevs() ***');
-    this.allDevs = this.http.get<any>('/api/home-devs');
-    console.log('*** devService received these home-devs ***', this.allDevs);
-    return this.http.get<any>('/api/home-devs');
-    // return this.http.get<any>(`${this.testAPI}`);
+    console.log('*** devService is reading all devs ***');
+    this.http.get<any>('/api/devs').subscribe(devs => {
+      console.log(devs);
+      this.allDevs = devs;
+    });
+    return this.http.get<any>('/api/devs');
   }
 
   readOneDev(id): Observable<any> {
     console.log('*** READ devService.getOneDev(id) ***', id);
-    // return this.http.get<any>(`/api/home-devs/${id}`);
+    // return this.http.get<any>(`/api/devs/${id}`);
     return this.http.get<any>(`${this.testAPI}/${id}`);
   }
 
   updateOneDev(id, data): Observable<any> {
-    // return this.http.put<any>(`/api/home-devs/${id}`, data);
+    // return this.http.put<any>(`/api/devs/${id}`, data);
     return this.http.put<any>(`${this.testAPI}/${id}`, data);
   }
 

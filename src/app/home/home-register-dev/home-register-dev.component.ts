@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { Dev } from '../../dev';
-import { AppService } from '../../services/app.service';
+import { HomeDashboardComponent } from '../home-dashboard/home-dashboard.component';
 
 @Component({
   selector: 'app-home-register-dev',
@@ -10,11 +7,8 @@ import { AppService } from '../../services/app.service';
   styleUrls: ['../../bootstrap.css', './home-register-dev.component.css']
 })
 export class HomeRegisterDevComponent implements OnInit {
-    newDev: Dev;
 
-    showP1: boolean;
-    showP2: boolean;
-    showP3: boolean;
+    newUser;
 
     states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
 
@@ -22,21 +16,17 @@ export class HomeRegisterDevComponent implements OnInit {
 
     frameworks = ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
 
-  constructor(private router: Router, private appService: AppService) { }
+  constructor(
+    private homeDash: HomeDashboardComponent
+    ) { }
 
-  ngOnInit() {
-      this.newDev = new Dev();
+  ngOnInit() {}
 
-      this.newDev.languages = [];
-      this.newDev.frameworks = [];
-      this.newDev.skills = [];
-
-      this.showP1 = true;
-      this.showP2 = false;
-      this.showP3 = false;
+  registerAsOrg() {
+    this.homeDash.displayThisComp = 'register-org';
   }
 
-  // registerDev() {
+  registerDev() {
   //     console.log('***** starting registerDev() *****');
   //
   //     // first push both languages and frameworks into one array called skills
@@ -81,30 +71,13 @@ export class HomeRegisterDevComponent implements OnInit {
   //                 this.router.navigateByUrl('/');
   //             }
   //         });
-  // }
-  //
-  previous() {
-    // go to previous page in registration
-      if (this.showP2) {
-          this.showP2 = false;
-          this.showP1 = true;
-      } else if (this.showP3) {
-          this.showP3 = false;
-          this.showP2 = true;
-      }
   }
 
-  next() {
-    // go to next page in registration
-      if (this.showP1) {
-          this.showP1 = false;
-          this.showP2 = true;
-      } else if (this.showP2) {
-          this.showP2 = false;
-          this.showP3 = true;
-      }
-  }
-  //
+
+
+
+
+
   // addLanguage(language) {
   //   // add language if new, remove if already in list
   //     if (this.newDev.languages.includes(language)) {

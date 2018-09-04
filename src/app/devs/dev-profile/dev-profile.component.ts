@@ -3,10 +3,10 @@ import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-dev-show-profile',
-  templateUrl: './dev-show-profile.component.html',
-  styleUrls: ['../../../../node_modules/bootstrap/dist/css/bootstrap.css', './dev-show-profile.component.css']
+  templateUrl: './dev-profile.component.html',
+  styleUrls: ['../../../../node_modules/bootstrap/dist/css/bootstrap.css', './dev-profile.component.css']
 })
-export class DevShowProfileComponent implements OnInit {
+export class DevProfileComponent implements OnInit {
 
   myInfo;
 
@@ -23,7 +23,7 @@ export class DevShowProfileComponent implements OnInit {
   }
 
   printUserMyInfo() {
-    console.log('*** dev-show-profile-comp is printing myInfo ***', this.myInfo);
+    console.log('*** dev-profile-comp is printing myInfo ***', this.myInfo);
   }
 
 }

@@ -1,7 +1,30 @@
 
+.devs-header {
+    margin: 20px auto;
+}
+
 .each-dev {
     border-radius: 9px;
     border: 1px solid cornflowerblue;
     padding: 10px;
     margin: 10px;
+    text-align: left;
+}
+
+h4 {
+    margin-bottom: 20px;
+}
+.register-ad {
+    margin-bottom: 50px;
+}
+
+.left-button {
+    margin-right: 40px;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+.underline {
+    text-decoration: underline;
 }

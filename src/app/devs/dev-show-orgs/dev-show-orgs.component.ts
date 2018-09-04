@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrgService } from '../../services/org.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-dev-show-orgs',
@@ -11,11 +11,11 @@ export class DevShowOrgsComponent implements OnInit {
   allOrgs;
 
   constructor(
-    private orgService: OrgService
+    private orgService: UserService
   ) { }
 
   ngOnInit() {
-    this.orgService.readAllOrgs().subscribe(response => { this.allOrgs = response; });
+    this.orgService.getAllOrgs().subscribe(response => { this.allOrgs = response; });
   }
 
   keys(obj) {

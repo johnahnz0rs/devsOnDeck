@@ -6,14 +6,16 @@ const router = require('express').Router();
 
 module.exports = router
   .post('/login', controller.login)
-  .post('/devs', controller.createOneDev)
   .post('/jobs', controller.createOneJob)
-  .post('/orgs', controller.createOneOrg)
-  .get('/devs/:id', controller.getOneDev)
-  .get('/jobs/:id', controller.getOneJob)
-  .get('/jobsbyorg/:id', controller.getJobsByOrg)
-  .get('/orgs/:id', controller.getOneOrg)
-  .get('/devs', controller.getAllDevs)
+  .post('/users', controller.createOneUser)
   .get('/jobs', controller.getAllJobs)
+  .get('/devs', controller.getAllDevs)
   .get('/orgs', controller.getAllOrgs)
+  .get('/jobsbyorg/:id', controller.getJobsByOrg)
+  .get('/jobs/:id', controller.getOneJob)
+  .get('/users/:id', controller.getOneUser)
+  .put('/jobs/:id', controller.updateOneJob)
+  .put('/users/:id', controller.updateOneUser)
+  .delete('/jobs/:id', controller.deleteOneJob)
+  .delete('/users/:id', controller.deleteOneUser)
 ;

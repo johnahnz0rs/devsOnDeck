@@ -19,7 +19,7 @@ export class JobService {
   // certified
   createNewJob(job) {
     console.log('*** jobService is running createNewJob(job) ***', job);
-    this.http.post<any>('/api/home-jobs', job)
+    this.http.post<any>('/api/jobs', job)
       .subscribe(response => { console.log('*** API.createNewJob() response ***', response); });
     // return this.http.post<any>(`${this.testAPI}`, job);
   }
@@ -30,17 +30,10 @@ export class JobService {
   }
 
   // certified
-  readAllJobs(): Observable<any> {
+  getAllJobs(): Observable<any> {
     console.log('*** jobService is running getAllJobs() ***');
-    this.http.get<any>('/api/home-jobs').subscribe(jobs => { this.allJobs = jobs; });
-    return this.http.get<any>('/api/home-jobs');
-    // this.allJobs = this.http.get<any>(`${this.testAPI}`);
-  }
-
-  readOneJob(id): Observable<any> {
-    console.log('*** jobService is running readOneJob(id) ***', id);
-    return this.http.get<any>(`/api/jobs/${id}`);
-    // return this.http.get<any>(`${this.testAPI}/${id}`);
+    // this.http.get<any>('/api/jobs').subscribe(jobs => { this.allJobs = jobs; });
+    return this.http.get<any>('/api/jobs');
   }
 
   updateOneJob(id, data): Observable<any> {
