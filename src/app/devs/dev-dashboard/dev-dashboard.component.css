@@ -1,344 +1,353 @@
 
-/* left-col: showMyInfo (default) */
-#div-showMyInfo {
-    border: 1px solid black;
-    border-radius: 9px;
-    margin: 10px;
-    margin-left: 20px;
-}
-#div-myInfo-header {
-    padding: 10px;
-}
-#btn-toggle-editForm {
+body {
+    margin: 0;
     width: 100%;
 }
-#btn-toggle-editForm:hover {
-    background-color: white;
-    color: dodgerblue;
-    border-color: dodgerblue;
-}
-#btn-toggle-cancelEdit {
-    float: right;
-}
 
-#div-myInfoDetail {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 9px;
-}
-.div-myInfo {
-    margin-bottom: 10px;
-}
-#bio {
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 10px;
-    /*margin-right: 5px;*/
-}
-#div-col-show-my-skills {
-    /*background-color: white;*/
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 9px;
-    /*margin-right: 5px;*/
-}
-.display-each-skill-figure {
-    margin: 3px;
-    min-height: 30px;
-    /*border: none;*/
-    /*background-color: #9C9F84; */ /* this is sage */
+
+
+
+
+
+/*#div-showMyInfo {*/
     /*border: 1px solid black;*/
     /*border-radius: 9px;*/
-}
-.display-each-skill-figure:hover {
-    cursor: default;
+    /*margin: 10px;*/
+    /*margin-left: 20px;*/
+/*}*/
+/*#div-myInfo-header {*/
+    /*padding: 10px;*/
+/*}*/
+/*#btn-toggle-editForm {*/
+    /*width: 100%;*/
+/*}*/
+/*#btn-toggle-editForm:hover {*/
+    /*background-color: white;*/
+    /*color: dodgerblue;*/
+    /*border-color: dodgerblue;*/
+/*}*/
+/*#btn-toggle-cancelEdit {*/
+    /*float: right;*/
+/*}*/
+
+/*#div-myInfoDetail {*/
+    /*margin: 10px;*/
+    /*padding: 10px;*/
+    /*border: 1px solid black;*/
+    /*border-radius: 9px;*/
+/*}*/
+/*.div-myInfo {*/
+    /*margin-bottom: 10px;*/
+/*}*/
+/*#bio {*/
+    /*border: 1px solid black;*/
+    /*border-radius: 10px;*/
+    /*padding: 10px;*/
+    /*!*margin-right: 5px;*!*/
+/*}*/
+/*#div-col-show-my-skills {*/
+    /*!*background-color: white;*!*/
+    /*padding: 5px;*/
+    /*border: 1px solid black;*/
+    /*border-radius: 9px;*/
+    /*!*margin-right: 5px;*!*/
+/*}*/
+/*.display-each-skill-figure {*/
+    /*margin: 3px;*/
+    /*min-height: 30px;*/
+    /*!*border: none;*!*/
+    /*!*background-color: #9C9F84; *! !* this is sage *!*/
+    /*!*border: 1px solid black;*!*/
+    /*!*border-radius: 9px;*!*/
+/*}*/
+/*.display-each-skill-figure:hover {*/
+    /*cursor: default;*/
+    /*!*border: 1px solid cornflowerblue;*!*/
+    /*!*border-radius: 9px;*!*/
+/*}*/
+/*.each-skill-img {*/
+    /*height: 30px;*/
+    /*width: auto;*/
+/*}*/
+/*.div-col-my-skills { !* a div for list of skills *!*/
+    /*border: 1px solid black;*/
+    /*border-radius: 10px;*/
+    /*!*margin-right: 5px;*!*/
+/*}*/
+/*!* end left-col: showMyInfo (default) *!*/
+
+
+
+
+/*!* left-col: showEditForm (option 2) *!*/
+
+/*#div-editForm {*/
+    /*border: 1px solid black;*/
+    /*border-radius: 9px;*/
+    /*margin: 10px;*/
+    /*margin-left: 20px;*/
+    /*padding: 10px;*/
+    /*background-color: rgba(100,149,237,0.4);*/
+/*}*/
+/*#div-editForm-header {*/
+    /*padding: 5px;*/
+/*}*/
+/*#button-x {*/
+    /*float: right;*/
+/*}*/
+/*#div-the-editForm { }*/
+
+/*#display-my-skills-on-edit-form {*/
+    /*background-color: white;*/
+    /*border: none;*/
+    /*padding: 5px;*/
+    /*margin: 5px;*/
+    /*!*border-radius: 9px;*!*/
+/*}*/
+/*#edit-language {*/
+    /*background-color: white;*/
+    /*border: none;*/
+    /*padding: 5px;*/
+    /*!*border-radius: 9px;*!*/
+/*}*/
+/*#edit-framework {*/
+    /*background-color: white;*/
+    /*border: none;*/
+    /*padding: 5px;*/
+    /*!*border-radius: 9px;*!*/
+/*}*/
+/*.edit-each-skill-figure {*/
+    /*margin: 5px;*/
+    /*min-height: 30px;*/
+    /*!*border: none;*!*/
+    /*!*background-color: #9C9F84; *! !* this is sage *!*/
+    /*!*border: 1px solid black;*!*/
+    /*!*border-radius: 9px;*!*/
+/*}*/
+/*.edit-each-skill-figure:hover {*/
+    /*cursor: alias;*/
+    /*background-color: cornflowerblue;*/
+    /*border-radius: 9px;*/
+    /*color: white;*/
+/*}*/
+/*.edit-fig-caption:hover {*/
+    /*!*color: white;*!*/
+/*}*/
+/*#btn-cancelEdit {*/
+    /*float: right;*/
+    /*margin: 10px;*/
+/*}*/
+/*#btn-submitUpdates {*/
+    /*float: right;*/
+    /*margin: 10px;*/
+/*}*/
+/*!* end left-col: showEditForm (option 2) *!*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*!* right-col: showAllJobs (default) *!*/
+/*#div-showAllJobs {*/
+    /*border: 1px solid black;*/
+    /*border-radius: 9px;*/
+    /*margin: 10px;*/
+/*}*/
+/*#div-showJobs-header {*/
+    /*padding: 10px;*/
+/*}*/
+/*.showJobs-header {*/
+    /*!*display: inline-block;*!*/
+    /*!*margin-right: 5px;*!*/
+/*}*/
+/*.btn-toggle-jobs-orgs {*/
+    /*float: right;*/
+    /*border: 1px solid #9C9F84; !*sage*!*/
+    /*border-radius: 9px;*/
+    /*!*background-color: white;*!*/
+    /*color: #9C9F84; !*sage*!*/
+/*}*/
+/*.btn-toggle-jobs-orgs:hover {*/
+    /*background-color: #9C9F84; !*sage*!*/
+    /*!*color: #DEAAA4;*! !*rose*!*/
+    /*color: gold;*/
+/*}*/
+/*.div-job {*/
+    /*padding: 10px;*/
+    /*margin: 10px;*/
     /*border: 1px solid cornflowerblue;*/
     /*border-radius: 9px;*/
-}
-.each-skill-img {
-    height: 30px;
-    width: auto;
-}
-.div-col-my-skills { /* a div for list of skills */
-    border: 1px solid black;
-    border-radius: 10px;
-    margin-right: 5px;
-}
-/* end left-col: showMyInfo (default) */
+/*}*/
+/*.div-job:hover {*/
+    /*cursor: zoom-in;*/
+    /*background-color: dodgerblue;*/
+    /*color: white;*/
+/*}*/
+/*!* end right-col: showAllJobs (default) *!*/
 
 
 
 
-/* left-col: showEditForm (option 2) */
-
-#div-editForm {
-    border: 1px solid black;
-    border-radius: 9px;
-    margin: 10px;
-    margin-left: 20px;
-    padding: 10px;
-    background-color: rgba(100,149,237,0.4);
-}
-#div-editForm-header {
-    padding: 5px;
-}
-#button-x {
-    float: right;
-}
-#div-the-editForm { }
-
-#display-my-skills-on-edit-form {
-    background-color: white;
-    border: none;
-    padding: 5px;
-    margin: 5px;
-    /*border-radius: 9px;*/
-}
-#edit-language {
-    background-color: white;
-    border: none;
-    padding: 5px;
-    /*border-radius: 9px;*/
-}
-#edit-framework {
-    background-color: white;
-    border: none;
-    padding: 5px;
-    /*border-radius: 9px;*/
-}
-.edit-each-skill-figure {
-    margin: 5px;
-    min-height: 30px;
-    /*border: none;*/
-    /*background-color: #9C9F84; */ /* this is sage */
+/*!* right-col: showAllOrgs (option 2) *!*/
+/*#div-showAllOrgs {*/
     /*border: 1px solid black;*/
     /*border-radius: 9px;*/
-}
-.edit-each-skill-figure:hover {
-    cursor: alias;
-    background-color: cornflowerblue;
-    border-radius: 9px;
-    color: white;
-}
-.edit-fig-caption:hover {
-    /*color: white;*/
-}
-#btn-cancelEdit {
-    float: right;
-    margin: 10px;
-}
-#btn-submitUpdates {
-    float: right;
-    margin: 10px;
-}
-/* end left-col: showEditForm (option 2) */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* right-col: showAllJobs (default) */
-#div-showAllJobs {
-    border: 1px solid black;
-    border-radius: 9px;
-    margin: 10px;
-}
-#div-showJobs-header {
-    padding: 10px;
-}
-.showJobs-header {
-    /*display: inline-block;*/
-    margin-right: 5px;
-}
-.btn-toggle-jobs-orgs {
-    float: right;
-    border: 1px solid #9C9F84; /*sage*/
-    border-radius: 9px;
-    /*background-color: white;*/
-    color: #9C9F84; /*sage*/
-}
-.btn-toggle-jobs-orgs:hover {
-    background-color: #9C9F84; /*sage*/
-    /*color: #DEAAA4;*/ /*rose*/
-    color: gold;
-}
-.div-job {
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid cornflowerblue;
-    border-radius: 9px;
-}
-.div-job:hover {
-    cursor: zoom-in;
-    background-color: dodgerblue;
-    color: white;
-}
-/* end right-col: showAllJobs (default) */
-
-
-
-
-/* right-col: showAllOrgs (option 2) */
-#div-showAllOrgs {
-    border: 1px solid black;
-    border-radius: 9px;
-    margin: 10px;
-}
-#div-showOrgs-header {
-    padding: 10px;
-}
-.showOrgs-header {
-    /*display: inline-block;*/
-    margin-right: 5px;
-}
-.div-org {
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid cornflowerblue;
-    border-radius: 9px;
-}
-.div-org:hover {
-    cursor: zoom-in;
-    background-color: dodgerblue;
-    color: white;
-}
-/* end right-col: showAllOrgs (option 2) */
-
-
-
-
-/* viewOneJob modal */
-.btn-close-modal {
-    float: right;
-    color: #DEAAA4; /*rose*/
-    background-color: white;
-    border: 1px solid #DEAAA4; /*rose*/
-}
-.btn-close-modal:hover {
-    color: white;
-    background-color: #DEAAA4; /*rose*/
-    border: 1px solid #DEAAA4; /*rose*/
-}
-.modal-dialog {
-    /*width: 95%;*/
-    /*height: 95%;*/
+    /*margin: 10px;*/
+/*}*/
+/*#div-showOrgs-header {*/
     /*padding: 10px;*/
-    /*margin: 0;*/
-}
-.modal-title {
-    display: inline-block;
-}
-.modal-content {
-    height: auto;
-    width: auto;
-    min-height: 95%;
-    min-width: 99%;
-}
-.modal-body {
-    width: 100%;
-    height: 100%;
-}
-#modal-job-details {
-    /* this div is the left-col in viewOneJob modal*/
-}
-#modal-send-msg-to-job {
-    /* this div contains the form to msg a job */
-    /*!*margin: 5px;*!*/
-    border: 1px solid cornflowerblue;
-    border-radius: 9px;
-    /*margin-right: 5px;*/
-}
-#job-msg-subject {
-    /*width: 600px;*/
-    width: 100%;
-}
-#job-msg-message {
-    width: 100%;
-}
-/* end viewOneJob modal */
-
-
-/* viewOneOrg modal */
-#modal-org-details {
-    /* this div is the left-col in viewOneOrg modal, incl. #modal-send-msg-to-org below */
-}
-#modal-send-msg-to-org {
-    margin: 5px;
-}
-#modal-list-of-orgs-jobs {
-    /* this div contains a list of each of the org's home-jobs */
-}
-.modal-org-each-job {
-    border-radius: 9px;
-    border: 1px solid black;
-    margin: 5px;
-}
-#send-msg-to-org-form {
-    margin: 5px;
-}
-#org-msg-subject {
-    width: 100%;
-}
-#org-msg-message {
-    width: 100%;
-}
-/* end viewOneOrg modal */
+/*}*/
+/*.showOrgs-header {*/
+    /*!*display: inline-block;*!*/
+    /*!*margin-right: 5px;*!*/
+/*}*/
+/*.div-org {*/
+    /*padding: 10px;*/
+    /*margin: 10px;*/
+    /*border: 1px solid cornflowerblue;*/
+    /*border-radius: 9px;*/
+/*}*/
+/*.div-org:hover {*/
+    /*cursor: zoom-in;*/
+    /*background-color: dodgerblue;*/
+    /*color: white;*/
+/*}*/
+/*!* end right-col: showAllOrgs (option 2) *!*/
 
 
 
 
-/* misc style */
-.bold-text {
-    font-weight: bold;
-}
-.underline {
-    text-decoration: underline;
-}
-.center-text {
-    text-align: center;
-}
-.medium-text {
-    font-size: medium;
-}
-.small-text {
-    font-size: small;
-}
-.red-text {
-    color: red;
-}
-.cornflower-text {
-    color: cornflowerblue;
-}
-.rose-text {
-    color: #DEAAA4;
-}
-.position-count {
-    width: 100%;
-    text-align: center;
-}
-.job-match {
-    width: 100%;
-    text-align: center;
-}
-.figure-caption {
-    /* color: #DEAAA4;*/ /*rose*/
-}
-.table-borderless > tbody > tr > td,
-.table-borderless > tbody > tr > th,
-.table-borderless > tfoot > tr > td,
-.table-borderless > tfoot > tr > th,
-.table-borderless > thead > tr > td,
-.table-borderless > thead > tr > th {
-    border: none;
-}
-/* end misc style */
+/*!* viewOneJob modal *!*/
+/*.btn-close-modal {*/
+    /*float: right;*/
+    /*color: #DEAAA4; !*rose*!*/
+    /*background-color: white;*/
+    /*border: 1px solid #DEAAA4; !*rose*!*/
+/*}*/
+/*.btn-close-modal:hover {*/
+    /*color: white;*/
+    /*background-color: #DEAAA4; !*rose*!*/
+    /*border: 1px solid #DEAAA4; !*rose*!*/
+/*}*/
+/*.modal-dialog {*/
+    /*!*width: 95%;*!*/
+    /*!*height: 95%;*!*/
+    /*!*padding: 10px;*!*/
+    /*!*margin: 0;*!*/
+/*}*/
+/*.modal-title {*/
+    /*display: inline-block;*/
+/*}*/
+/*.modal-content {*/
+    /*height: auto;*/
+    /*width: auto;*/
+    /*min-height: 95%;*/
+    /*min-width: 99%;*/
+/*}*/
+/*.modal-body {*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+/*}*/
+/*#modal-job-details {*/
+    /*!* this div is the left-col in viewOneJob modal*!*/
+/*}*/
+/*#modal-send-msg-to-job {*/
+    /*!* this div contains the form to msg a job *!*/
+    /*!*!*margin: 5px;*!*!*/
+    /*border: 1px solid cornflowerblue;*/
+    /*border-radius: 9px;*/
+    /*!*margin-right: 5px;*!*/
+/*}*/
+/*#job-msg-subject {*/
+    /*!*width: 600px;*!*/
+    /*width: 100%;*/
+/*}*/
+/*#job-msg-message {*/
+    /*width: 100%;*/
+/*}*/
+/*!* end viewOneJob modal *!*/
+
+
+/*!* viewOneOrg modal *!*/
+/*#modal-org-details {*/
+    /*!* this div is the left-col in viewOneOrg modal, incl. #modal-send-msg-to-org below *!*/
+/*}*/
+/*#modal-send-msg-to-org {*/
+    /*margin: 5px;*/
+/*}*/
+/*#modal-list-of-orgs-jobs {*/
+    /*!* this div contains a list of each of the org's home-jobs *!*/
+/*}*/
+/*.modal-org-each-job {*/
+    /*border-radius: 9px;*/
+    /*border: 1px solid black;*/
+    /*margin: 5px;*/
+/*}*/
+/*#send-msg-to-org-form {*/
+    /*margin: 5px;*/
+/*}*/
+/*#org-msg-subject {*/
+    /*width: 100%;*/
+/*}*/
+/*#org-msg-message {*/
+    /*width: 100%;*/
+/*}*/
+/*!* end viewOneOrg modal *!*/
+
+
+
+
+/*!* misc style *!*/
+/*.bold-text {*/
+    /*font-weight: bold;*/
+/*}*/
+/*.underline {*/
+    /*text-decoration: underline;*/
+/*}*/
+/*.center-text {*/
+    /*text-align: center;*/
+/*}*/
+/*.medium-text {*/
+    /*font-size: medium;*/
+/*}*/
+/*.small-text {*/
+    /*font-size: small;*/
+/*}*/
+/*.red-text {*/
+    /*color: red;*/
+/*}*/
+/*.cornflower-text {*/
+    /*color: cornflowerblue;*/
+/*}*/
+/*.rose-text {*/
+    /*color: #DEAAA4;*/
+/*}*/
+/*.position-count {*/
+    /*width: 100%;*/
+    /*text-align: center;*/
+/*}*/
+/*.job-match {*/
+    /*width: 100%;*/
+    /*text-align: center;*/
+/*}*/
+/*.figure-caption {*/
+    /*!* color: #DEAAA4;*! !*rose*!*/
+/*}*/
+/*.table-borderless > tbody > tr > td,*/
+/*.table-borderless > tbody > tr > th,*/
+/*.table-borderless > tfoot > tr > td,*/
+/*.table-borderless > tfoot > tr > th,*/
+/*.table-borderless > thead > tr > td,*/
+/*.table-borderless > thead > tr > th {*/
+    /*border: none;*/
+/*}*/
+/*!* end misc style *!*/

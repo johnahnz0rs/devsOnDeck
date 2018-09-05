@@ -1,13 +1,17 @@
 
-.container-fluid {
-    margin-top: 40px;
-    max-height: 600px;
-    max-width: 800px;
+.navbar {
+    clear: both;
 }
-
 .navbar-brand:hover {
     cursor: pointer;
 }
 .nav-item:hover {
     cursor: pointer;
+}
+#link-sign-up {
+    color: cornflowerblue;
+}
+#link-sign-up:hover {
+    cursor: pointer;
+    /*color: cornflowerblue;*/
 }

@@ -1,0 +1,46 @@
+<form #quickSignup="ngForm">
+    <!--<p>this is a form</p>-->
+
+
+    <!-- fname -->
+    <div class="form-group">
+        <input class="form-control" type="text" name="fname" id="fname" [(ngModel)]="quickSignUp.fname" required placeholder="First Name">
+    </div>
+
+    <!-- lname -->
+    <div class="form-group">
+        <input class="form-control" type="text" name="lname" id="lname" [(ngModel)]="quickSignUp.lname" required placeholder="Last Name">
+    </div>
+
+    <!-- email -->
+    <div class="form-group">
+        <input class="form-control" type="email" name="email" id="email" [(ngModel)]="quickSignUp.email" required placeholder="Email">
+    </div>
+
+    <!-- pw -->
+    <div class="form-group">
+        <input class="form-control" type="password" name="pw" id="password" [(ngModel)]="quickSignUp.pw" required placeholder="Password">
+    </div>
+
+    <!-- accountType -->
+    <div class="form-group row align-middle">
+        <div class="col-sm-5">
+            <span class="bold-text">I'm a(n):</span>
+        </div>
+        <div class="col-sm-7">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="accountType" id="dev" value="dev" [(ngModel)]="quickSignUp.accountType" required>
+                <label class="form-check-label" for="dev">Developer</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="accountType" id="org" value="org" [(ngModel)]="quickSignUp.accountType" required>
+                <label class="form-check-label" for="org">Employer</label>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<button *ngIf="quickSignup.valid && quickSignUp.accountType === 'dev'" class="btn btn-lg btn-success float-right" role="button" data-dismiss="modal" data-toggle="modal" data-target="#modal-dev-details">Register</button>
+<button *ngIf="quickSignup.valid && quickSignUp.accountType === 'org'" class="btn btn-lg btn-success float-right" role="button" data-dismiss="modal" data-toggle="modal" data-target="#modal-org-details">Register</button>
+<button *ngIf="!quickSignup.valid" class="btn btn-lg btn-outline-success float-right disabled" disabled="disabled" role="button">Register</button>

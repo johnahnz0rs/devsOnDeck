@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DevService } from '../../services/dev.service';
-import { HomeDashboardComponent } from "../home-dashboard/home-dashboard.component";
+import { HomeDashboardComponent } from '../home-dashboard/home-dashboard.component';
 
 
 @Component({

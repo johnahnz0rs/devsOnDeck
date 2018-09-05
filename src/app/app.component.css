@@ -1,16 +1,8 @@
 * {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    width: 100%;
+    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
 }
-
-/*.container-fluid {*/
-    /*margin: 20px auto;*/
-/*}*/
-
-.btn-outline-primary {
-    color: cornflowerblue;
-}
-
-#register-link {
-    font-size: large;
-    color: cornflowerblue;
+body {
+    margin: 0;
+    width: 50%;
 }

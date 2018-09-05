@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Org } from '../../org';
-import { Dev } from '../../dev';
 import { Job } from '../../job';
 import { AppService } from '../../services/app.service';
 import { HttpClient } from '@angular/common/http';
@@ -12,7 +10,6 @@ import { JobService } from '../../services/job.service';
   selector: 'app-org-dashboard',
   templateUrl: './org-dashboard.component.html',
   styleUrls: ['../../../../node_modules/bootstrap/dist/css/bootstrap.css', './org-dashboard.component.css']
-  //  '../../bootstrap.css'
 })
 export class OrgDashboardComponent implements OnInit {
 
@@ -20,9 +17,8 @@ export class OrgDashboardComponent implements OnInit {
   myJobs;
   showThisComp = 'devs';
 
-  languages = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML'];
+  technologies = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML', 'MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
 
-  frameworks = ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
 
   constructor(
     private appService: AppService,

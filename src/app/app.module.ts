@@ -13,8 +13,7 @@ import { HomeSplashComponent } from './home/home-splash/home-splash.component';
 import { HomeJobsComponent } from './home/home-jobs/home-jobs.component';
 import { HomeDevsComponent } from './home/home-devs/home-devs.component';
 import { HomeLoginComponent } from './home/home-login/home-login.component';
-import { HomeRegisterDevComponent } from './home/home-register-dev/home-register-dev.component';
-import { HomeRegisterOrgComponent } from './home/home-register-org/home-register-org.component';
+import { HomeSignupComponent } from './home/home-signup/home-signup.component';
 
 
 import { DevDashboardComponent } from './devs/dev-dashboard/dev-dashboard.component';
@@ -38,33 +37,38 @@ import { UserService } from './services/user.service';
 
 
 import { TestCompComponent } from './test/test-comp/test-comp.component';
-
-
-
+import { HomeRegisterDevComponent } from './home/home-register-dev/home-register-dev.component';
+import { HomeRegisterOrgComponent } from './home/home-register-org/home-register-org.component';
+import { HomeDevDetailsComponent } from './home/home-dev-details/home-dev-details.component';
+import { HomeOrgDetailsComponent } from './home/home-org-details/home-org-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeDashboardComponent,
-    HomeLoginComponent,
-    HomeRegisterOrgComponent,
-    OrgDashboardComponent,
-    HomeRegisterDevComponent,
-    DevDashboardComponent,
-    TestCompComponent,
+    HomeSplashComponent,
     HomeJobsComponent,
     HomeDevsComponent,
-    HomeSplashComponent,
+    HomeLoginComponent,
+    HomeSignupComponent,
+    HomeDevDetailsComponent,
+    HomeOrgDetailsComponent,
+    DevDashboardComponent,
     DevShowJobsComponent,
+    DevShowDevsComponent,
     DevShowOrgsComponent,
     DevProfileComponent,
-    DevShowDevsComponent,
+    OrgDashboardComponent,
+    OrgShowJobsComponent,
     OrgShowDevsComponent,
     OrgShowOrgsComponent,
-    OrgShowJobsComponent,
     OrgProfileComponent,
-    OrgAddJobComponent
+    OrgAddJobComponent,
+    TestCompComponent,
+    HomeRegisterDevComponent,
+    HomeRegisterOrgComponent,
+
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, HttpClientModule

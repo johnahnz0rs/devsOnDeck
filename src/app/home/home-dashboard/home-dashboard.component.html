@@ -1,121 +1,168 @@
-<!-- template -->
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: cornflowerblue">
-    <!-- left side of navbar -->
-    <a class="navbar-brand" (click)="clickComp('splash')">devJobs</a>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" (click)="clickComp('jobs')">Find Jobs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" (click)="clickComp('devs')">Find Developers</a>
-            </li>
-        </ul>
-    </div>
-    <!-- end left side of navbar -->
-
-    <!-- right side of navbar -->
-    <div class="d-flex flex-row order-2 order-lg-3 ml-auto">
-        <ul class="navbar-nav flex-row">
-            <li class="nav-item">
-                <a class="nav-link" (click)="displayThisComp = 'register-dev'">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#modal-login">Log In</a>
-            </li>
-        </ul>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-    <!-- end right side of navbar -->
-</nav>
-<!-- end navbar -->
-<!-- end navbar -->
-<!-- end navbar -->
-
 <div>
-    <app-home-splash *ngIf="displayThisComp === 'splash'"></app-home-splash>
-    <app-home-jobs *ngIf="displayThisComp ==='jobs'"></app-home-jobs>
-    <app-home-devs *ngIf="displayThisComp ==='devs'"></app-home-devs>
-    <app-home-register-dev *ngIf="displayThisComp === 'register-dev'"></app-home-register-dev>
-    <app-home-register-org *ngIf="displayThisComp === 'register-org'"></app-home-register-org>
-</div>
-<!-- end template -->
+    <!-- template -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: cornflowerblue">
+        <!-- left side of navbar -->
+        <a class="navbar-brand" (click)="clickComp('splash')">devJobs</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" (click)="clickComp('jobs')">Find Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="clickComp('devs')">Find Developers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" type="button" data-toggle="modal" data-target="#modal-signup">Sign Up</a>
+                </li>
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" (click)="clickComp('test')">testComp</a>-->
+                <!--</li>-->
+            </ul>
+            <form class="form-inline my-2 my-lg-0" #quickLogin="ngForm">
+                <input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Email" name="email" required [(ngModel)]="login.email">
+                <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password" name="pw" required [(ngModel)]="login.pw">
+                <div class="navbar-nav flex-row">
+                    <div class="nav-item">
+                        <a *ngIf="quickLogin.valid" class="nav-link" type="button" (click)="logMeIn()">Login</a>
+                        <a *ngIf="!quickLogin.valid" class="nav-link" type="button" data-toggle="modal" data-target="#modal-login">Login</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <!-- right side of navbar -->
+        <div class="d-flex flex-row order-2 order-lg-3 ml-auto">
+
+            <!--<ul class="navbar-nav flex-row">-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" (click)="clickComp('register-dev')">Sign Up</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item">-->
+                    <!--<a class="nav-link" data-toggle="modal" data-target="#modal-login">Log In</a>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <!-- end right side of navbar -->
+    </nav>
+    <!-- end navbar -->
+    <!-- end navbar -->
+    <!-- end navbar -->
+
+        <!--<button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-login">modal-login</button>-->
+
+
+
+    <div>
+        <app-home-splash *ngIf="displayThisComp === 'splash'"></app-home-splash>
+        <app-home-jobs *ngIf="displayThisComp ==='jobs'"></app-home-jobs>
+        <app-home-devs *ngIf="displayThisComp ==='devs'"></app-home-devs>
+        <app-home-register-dev *ngIf="displayThisComp === 'register-dev'"></app-home-register-dev>
+        <app-home-register-org *ngIf="displayThisComp === 'register-org'"></app-home-register-org>
+        <app-test-comp *ngIf="displayThisComp === 'test'"></app-test-comp>
+    </div>
+    <!-- end template -->
 
 
 
 
-<!--modals -->
-<!--modals -->
-<!--modals -->
+    <!--modals -->
+    <!--modals -->
+    <!--modals -->
 
-<!-- #modal-login -->
-<div class="modal fade" role="dialog" tabindex="-1" id="modal-login" aria-labelledby="modal-login-label" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modal-login-label">Log In</h3>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <app-home-login></app-home-login>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
-                <a data-toggle="modal" data-target="#modal-register" id="register-link">Register with devJobs</a>
+
+    <!-- #modal-signup -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-signup" aria-labelledby="modal-signup-label" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modal-signup-label">Sign Up</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <app-home-signup></app-home-signup>
+                </div>
+                <div class="modal-footer">
+                    <a data-dismiss="modal" data-toggle="modal" data-target="#modal-login" id="link-login">Login Instead</a>
+                    <button type="button" class="btn btn-secondary btn-outline-dark float-right" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- end #modal-login-->
+    <!-- end #modal-signup -->
 
 
-<!-- #modal-register-dev -->
-<div class="modal fade" id="modal-register-dev" tabindex="-1" role="dialog" aria-labelledby="modal-register-dev-label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
 
-            <div class="modal-header">
-                <!--<h3 class="modal-title" id="modal-job-label">Position: {{selectedJob.position}}</h3>-->
-                <h3 class="modal-title" id="modal-register-dev-label">Register</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+    <!-- #modal-dev-details -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-dev-details" aria-labelledby="modal-dev-details-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modal-dev-details-label">Tell Us About Yourself</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <app-home-dev-details></app-home-dev-details>
+                </div>
+                <div class="modal-footer">
+                    <!--<a data-dismiss="modal" data-toggle="modal" data-target="#modal-signup" id="link-sign-up">Sign Up</a>-->
+                    <button type="button" class="btn btn-secondary btn-outline-danger" data-dismiss="modal">Close</button>
 
-            <div class="modal-body">
-                <app-home-register-dev></app-home-register-dev>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
-                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- end #modal-register-dev -->
+    <!-- end #modal-dev-details-->
 
 
-<!-- #modal-register-org -->
-<div class="modal fade" role="dialog" id="modal-register-org" tabindex="-1" aria-labelledby="modal-register-org-label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modal-register-org-label">Register Your Organization</h3>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <app-home-register-org></app-home-register-org>
-            </div>
-            <div class="modal-footer">
-                <!--<button type="button" class="btn btn-lg btn-success" (click)="registerOrg()"></button>-->
-                <!--<a data-toggle="modal" data-target="#modal-register">Register with devJobs</a>-->
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+    <!-- #modal-org-details -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-org-details" aria-labelledby="modal-org-details-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modal-org-details-label">Tell Us About Yourself</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <app-home-org-details></app-home-org-details>
+                </div>
+                <div class="modal-footer">
+                    <!--<a data-dismiss="modal" data-toggle="modal" data-target="#modal-signup" id="link-sign-up">Sign Up</a>-->
+                    <button type="button" class="btn btn-secondary btn-outline-danger" data-dismiss="modal">Close</button>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- end #modal-register-org-->
+    <!-- end #modal-dev-details-->
 
+
+
+
+    <!-- #modal-login -->
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-login" aria-labelledby="modal-login-label" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modal-login-label">Log In</h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <app-home-login></app-home-login>
+                </div>
+                <div class="modal-footer">
+                    <a data-dismiss="modal" data-toggle="modal" data-target="#modal-signup" id="link-sign-up">Sign Up</a>
+                    <button type="button" class="btn btn-secondary btn-outline-danger" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end #modal-login-->
+
+</div>

@@ -1,93 +1,74 @@
-.container-fluid {
+
+.div-my-header {
+    margin: 20px auto 10px auto;
+    display: block;
+}
+.my-header {
+    margin: 10px auto;
+    display: block;
+}
+.page-title {
+    margin: 30px 0;
+}
+#skills-page-title {
+    margin-left: 5%;
+}
+.cornflowerblue-border {
+    border: 1px solid cornflowerblue;
+    border-radius: 9px;
+}
+.each-language {
+    /* each of the icons displayed for language | framework */
+    width: 30px;
+    height: auto;
+}
+.skills-border {
+    border-radius: 9px;
+    border: 1px solid cornflowerblue;
+    min-height: 100px;
+    width: 90%;
+    margin: 20px auto;
     padding: 10px;
 }
-
-/* header */
-#header-welcome {
-    text-align: center;
-    margin-bottom: 40px;
+#bio {
+    width: 100%;
 }
-#intro {
-    font-size: large;
+.submit-button {
+    margin: 20px 0 20px 10px;
 }
-/* end header */
-
-
-/* signup form*/
-#div-signup-form {
-    margin: 0 auto;
-    padding: 10px;
-    float: none;
+.carousel-indicators {
+    bottom: -20px;
 }
-
-#org-instead {
-    margin-bottom: 40px;
-    font-size: medium;
+.carousel-indicators li {
+    background-color: darkgray;
 }
-#header-pick-top-5 {
-    text-align: center;
+.carousel-indicators .active {
+    background-color: cornflowerblue;
 }
-
-
-
-
-
-
-
-/* misc */
+.carousel-control-prev .active {
+    background-color: cornflowerblue;
+}
+.carousel-control-next .active {
+    background-color: cornflowerblue;
+}
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%6495ed' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%6495ed' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+body, .carousel,.item,.active{
+    height:100%;
+}
+.carousel-inner{
+    height:100%;
+}
+.underline {
+    text-decoration: underline;
+}
 .bold-text {
     font-weight: bold;
 }
-
 .validation {
     color: red;
-}
-
-.icon-array {
-    border: 1px solid black;
-    background-color: gray;
-    height: 300px;
-    overflow-y: scroll;
-}
-
-img {
-    /*height: 80px;*/
-    margin-top: 15px;
-    height: 50px;
-    width: 50px;
-    margin-right: auto;
-    margin-left: auto;
-}
-.figure-img:hover {
-    cursor: pointer;
-}
-
-.figure-caption {
-    color: white;
-}
-
-
-.my-5-languages {
-    height: 60px;
-    vertical-align: center;
-}
-.each-of-my-languages {
-    height: 40px;
-    width: 40px;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 0 auto;
-}
-
-
-.thanks {
-    text-align: center;
-    color: green;
-    font-size: x-large;
-    margin-top: 10px;
-}
-
-
-.next-button {
-    margin-left: 10px;
 }

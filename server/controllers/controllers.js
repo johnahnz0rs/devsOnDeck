@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
-// const bcrypt = require('bcrypt-as-promised');
 const bcrypt = require("bcrypt");
-const Dev = mongoose.model("Dev");
-const Org = mongoose.model("Org");
 const Job = mongoose.model("Job");
 const User = mongoose.model("User");
 

@@ -1,23 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeDashboardComponent } from '../home-dashboard/home-dashboard.component';
+import { UserService } from '../../services/user.service';
+import { User } from '../../user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-register-dev',
   templateUrl: './home-register-dev.component.html',
-  styleUrls: ['../../bootstrap.css', './home-register-dev.component.css']
+  styleUrls: ['../../../../node_modules/bootstrap/dist/css/bootstrap.css', './home-register-dev.component.css']
 })
 export class HomeRegisterDevComponent implements OnInit {
 
-    newUser;
+    newUser: User = new User();
 
     states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
 
-    languages = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML'];
+    technologies = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML', 'MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
 
-    frameworks = ['MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
+    frameworks = [];
 
   constructor(
-    private homeDash: HomeDashboardComponent
+    private homeDash: HomeDashboardComponent,
+    private userService: UserService,
+    private router: Router
     ) { }
 
   ngOnInit() {}
@@ -26,79 +31,38 @@ export class HomeRegisterDevComponent implements OnInit {
     this.homeDash.displayThisComp = 'register-org';
   }
 
-  registerDev() {
-  //     console.log('***** starting registerDev() *****');
-  //
-  //     // first push both languages and frameworks into one array called skills
-  //     if (this.newDev.languages) {
-  //       for (let language of this.newDev.languages) {
-  //         console.log('***** this is the a language being pushed to newDev.skills *****', language);
-  //         this.newDev.skills.push(language);
-  //       }
-  //     }
-  //     if (this.newDev.frameworks) {
-  //         for (let framework of this.newDev.frameworks) {
-  //             console.log('***** this is the a language being pushed to newDev.skills *****', framework);
-  //             this.newDev.skills.push(framework);
-  //         }
-  //     }
-  //
-  //     // then format the request data
-  //     const dev = {
-  //         accountType: 'dev',
-  //         fname: this.newDev.fname,
-  //         lname: this.newDev.lname,
-  //         email: this.newDev.email,
-  //         address: this.newDev.address,
-  //         city: this.newDev.city,
-  //         state: this.newDev.state,
-  //         zip: this.newDev.zip,
-  //         pw: this.newDev.pw,
-  //         skills: this.newDev.skills,
-  //         languages: this.newDev.languages,
-  //         frameworks: this.newDev.frameworks,
-  //         bio: this.newDev.bio
-  //     };
-  //
-  //     // now send the request to backend, like a boss
-  //     // if created without error, then send browser to home-login page
-  //     console.log('***** registerDev(dev) ******', dev);
-  //     this.appService.createOneDev(dev)
-  //         .subscribe((error) => {
-  //             if (error) {
-  //                 console.log('***** error in createOneDev() *****', error);
-  //             } else {
-  //                 this.router.navigateByUrl('/');
-  //             }
-  //         });
+  cancelRegister() {
+    this.homeDash.displayThisComp = 'splash';
+  }
+
+  addRemoveTechnology(tech) {
+    if (!this.newUser.hasOwnProperty('devSkills')) {
+      this.newUser.devSkills = [tech];
+      this.technologies.splice(this.technologies.indexOf(tech), 1);
+    } else {
+      if (this.newUser.devSkills.includes(tech)) {
+        this.newUser.devSkills.splice(this.newUser.devSkills.indexOf(tech), 1);
+        this.technologies.push(tech);
+      } else {
+        this.newUser.devSkills.push(tech);
+        this.technologies.splice(this.technologies.indexOf(tech), 1);
+      }
+    }
   }
 
 
+  registerDev() {
+    this.newUser.accountType = 'dev';
+    if (!this.newUser.devSkills) {
+      this.newUser.devSkills = [];
+    }
 
-
-
-
-  // addLanguage(language) {
-  //   // add language if new, remove if already in list
-  //     if (this.newDev.languages.includes(language)) {
-  //       console.log('*** removing language ***', language);
-  //         this.newDev.languages.splice(this.newDev.languages.indexOf(language), 1);
-  //     } else {
-  //       console.log('*** adding language ***', language);
-  //         this.newDev.languages.push(language);
-  //         // console.log(this.newDev.languages);
-  //     }
-  // }
-  //
-  // addFramework(framework) {
-  //   // add framework if new, remove if already in list
-  //     if (this.newDev.frameworks.includes(framework)) {
-  //       console.log('*** removing framework ***', framework);
-  //         this.newDev.frameworks.splice(this.newDev.frameworks.indexOf(framework), 1);
-  //     } else {
-  //       console.log('*** adding framework ***', framework);
-  //         this.newDev.frameworks.push(framework);
-  //     }
-  // }
+    delete this.newUser['cpw'];
+    console.log('*** home-register-dev-comp is submitting createUser(user) request ***', this.newUser);
+    this.userService.createOneUser(this.newUser).subscribe( result => {
+      console.log('*** home-register-dev-comp received this response from userService.createOneUser() ***', result);
+      this.router.navigateByUrl('/');
+    });
+  }
 
 }

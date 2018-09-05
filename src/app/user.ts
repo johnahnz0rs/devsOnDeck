@@ -10,6 +10,7 @@ export class User {
     email: string;
     pw: string;
     cpw: string;
+    //
     address: string;
     city: string;
     state: string;
@@ -18,8 +19,6 @@ export class User {
     // dev props;
     devBio: string;
     devSkills: Array<string>;
-    devLanguages: Array<string>;
-    devFrameworks: Array<string>;
     // resume: any;
     // avatar: any;
 

@@ -9,16 +9,14 @@ const userSchema = new mongoose.Schema({
     lname: {type: String, required: true, trim: true},
     email: {type: String, required: true, trim: true},
     pw: {type: String, required: true, trim: true},
-    address: {type: String, required: true, trim: true},
-    city: {type: String, required: true, trim: true},
-    state: {type: String, required: true, trim: true},
-    zip: {type: String, required: true, trim: true},
+    address: {type: String, trim: true},
+    city: {type: String, trim: true},
+    state: {type: String, trim: true},
+    zip: {type: String, trim: true},
 
     // dev properties
     devBio: {type: String, trim: true},
     devSkills: {type: Array},
-    devLanguages: {type: Array},
-    devFrameworks: {type: Array},
 
     // org properties
     orgName: {type: String, trim: true},
