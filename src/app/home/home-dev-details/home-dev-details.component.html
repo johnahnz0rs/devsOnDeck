@@ -1,11 +1,8 @@
 <p>
-  home-dev-details works!
+    home-dev-details works!
 </p>
 
-
-<p>
-    home-details works!
-</p>
+<button class="btn btn-sm btn-outline-primary" (click)="printQuickSignUp()">Print quickSignUp</button>
 
 
 <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="false">
@@ -14,93 +11,19 @@
 
         <!-- carousel slide 1 -->
         <div class="carousel-item active">
-            <form #quickSignup="ngForm">
-                <div class="form-group">
 
-                </div>
-
-
-
+            <form #devDetails="ngForm">
                 <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-8 form-group">
-                        <h3 class="page-title">Contact Info</h3>
+                    <div class="col-sm-1"></div>
+                    <div class="form-group col-sm-10">
 
-                        <!-- fname && lname -->
-                        <div class="form-group row">
-                            <div class="col col-sm-6">
-                                <label for="fname">
-                                    <span class="bold-text">First Name:</span>
-                                    <span *ngIf="!fname.valid" class="validation"> *Required</span>
-                                </label>
-                                <input class="form-control" id="fname" name="fname" type="text" required [(ngModel)]="newUser.fname" #fname="ngModel">
-
-                            </div>
-                            <div class="col col-sm-6">
-                                <label for="lname">
-                                    <span class="bold-text">Last Name:</span>
-                                    <span *ngIf="!lname.valid" class="validation"> *Required</span>
-                                </label>
-                                <input class="form-control" id="lname" name="lname" type="text" required [(ngModel)]="newUser.lname" #lname="ngModel">
-                            </div>
-                        </div>
-                        <!-- email -->
-                        <div class="form-group row">
-                            <div class="col col-sm-12">
-                                <label for="email">
-                                    <span class="bold-text">Email:</span>
-                                    <span *ngIf="!email.valid" class="validation"> *Required</span>
-                                </label>
-                                <input class="form-control" type="text" id="email" name="email" required [(ngModel)]="newUser.email" #email="ngModel">
-                            </div>
-                        </div>
-                        <!-- pw && cpw -->
-                        <div class="form-group row">
-                            <div class="col col-sm-6">
-                                <label for="pw">
-                                    <span class="bold-text">Password:</span>
-                                    <span *ngIf="!pw.valid" class="validation"> *Required (min. 8 char.)</span>
-                                </label>
-                                <input class="form-control" type="password" id="pw" name="pw" required minlength="8" [(ngModel)]="newUser.pw" #pw="ngModel">
-                            </div>
-                            <div class="col col-sm-6">
-                                <label for="cpw">
-                                    <span class="bold-text">Confirm Password:</span>
-                                    <span *ngIf="!newUser.pw || newUser.pw != newUser.cpw" class="validation"> *Passwords must match</span>
-                                </label>
-                                <input class="form-control" type="password" id="cpw" name="cpw" required [(ngModel)]="newUser.cpw" #cpw="ngModel">
-                            </div>
-                        </div>
-
-
-                        <button *ngIf="addDevForm.valid" class="btn btn-lg btn-primary float-right submit-button" (click)="registerDev()">Register</button>
-                        <button *ngIf="!addDevForm.valid" class="btn btn-lg btn-primary float-right submit-button disabled" disabled="disabled">Register</button>
-                        <button class="btn btn-lg btn-outline-danger float-right submit-button" (click)="cancelRegister()">Cancel</button>
-                    </div>
-
-                    <div class="col-sm-2"></div>
-                </div>
-            </form>
-        </div>
-        <!-- end carousel slide 1 -->
-
-
-
-
-        <!-- carousel slide 2 -->
-        <div class="carousel-item">
-            <form #addDevForm="ngForm">
-                <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="form-group col-sm-8">
-
-                        <h3 class="page-title" id="skills-page-title">Choose Your Skills</h3>
+                        <h3 class="page-title" id="skills-page-title">Show Me What You Got!</h3>
 
                         <div class="row skills-border text-center">
                             <h4 class="underline section-header col-sm-12">Selected</h4>
-                            <div *ngIf="newUser.devSkills" class="col-sm-12">
-                                <figure *ngFor="let skill of newUser.devSkills" class="figure text-center col-sm-2" (click)="addRemoveTechnology(skill)">
-                                    <img class="figure-img each-language" src="assets/img/{{skill}}.png">
+                            <div *ngIf="quickSignUp.devSkills" class="col-sm-12">
+                                <figure *ngFor="let skill of quickSignUp.devSkills" class="figure text-center col-sm-2" (click)="addRemoveTechnology(skill)">
+                                    <img class="figure-img each-skill" src="assets/img/{{skill}}.png">
                                     <figcaption *ngIf="skill === 'Csharp'" class="figure-caption">C#</figcaption>
                                     <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
                                 </figure>
@@ -113,7 +36,7 @@
 
                             <div *ngIf="technologies" class="row">
                                 <figure *ngFor="let tech of technologies" class="figure text-center col-sm-2" (click)="addRemoveTechnology(tech)">
-                                    <img class="figure-img each-language" src="assets/img/{{tech}}.png">
+                                    <img class="figure-img each-skill" src="assets/img/{{tech}}.png">
                                     <figcaption *ngIf="tech === 'Csharp'" class="figure-caption">C#</figcaption>
                                     <figcaption *ngIf="tech != 'Csharp'" class="figure-caption">{{tech}}</figcaption>
                                 </figure>
@@ -122,9 +45,33 @@
                         </div>
 
 
-                        <button *ngIf="addDevForm.valid" class="btn btn-lg btn-primary float-right submit-button" (click)="registerDev()">Register</button>
-                        <button *ngIf="!addDevForm.valid" class="btn btn-lg btn-primary float-right submit-button disabled" disabled="disabled">Register</button>
-                        <button class="btn btn-lg btn-outline-danger float-right submit-button" (click)="cancelRegister()">Cancel</button>
+                        <button *ngIf="devDetails.valid" class="btn btn-lg btn-primary float-right submit-button" (click)="registerForReal()">Register</button>
+                        <button *ngIf="!devDetails.valid" class="btn btn-lg btn-primary float-right submit-button disabled" disabled="disabled">Register</button>
+                        <!--<button class="btn btn-lg btn-outline-danger float-right submit-button" (click)="cancelRegister()">Cancel</button>-->
+
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+            </form>
+
+        </div>
+        <!-- end carousel slide 1 -->
+
+
+
+
+        <!-- carousel slide 2 -->
+        <div class="carousel-item">
+            <form #addDevForm="ngForm">
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="form-group col-sm-8">
+                        <p>lol slide 2</p>
+
+
+                        <!--<button *ngIf="addDevForm.valid" class="btn btn-lg btn-primary float-right submit-button" (click)="registerDev()">Register</button>-->
+                        <!--<button *ngIf="!addDevForm.valid" class="btn btn-lg btn-primary float-right submit-button disabled" disabled="disabled">Register</button>-->
+                        <!--<button class="btn btn-lg btn-outline-danger float-right submit-button" (click)="cancelRegister()">Cancel</button>-->
 
                     </div>
                     <div class="col-sm-2"></div>
@@ -144,61 +91,62 @@
                 <div class="row">
                     <div class="col-sm-2"></div>
                     <div class="form-group col-sm-8">
-                        <h3 class="page-title">Basic Info</h3>
+                        <p>slide 3</p>
+                        <!--<h3 class="page-title">Basic Info</h3>-->
 
-                        <!-- bio -->
-                        <div class="form-group row">
-                            <div class="col-sm-12">
-                                <label for="bio">
-                                    <span class="bold-text">Bio:</span>
-                                </label>
-                                <textarea id="bio" class="form-control" rows="5" name="bio" [(ngModel)]="newUser.devBio" #bio="ngModel" placeholder="Tell us more about yourself here... Favorite languages? Favorite projects? Dream Vacation? Etc.."></textarea>
-                            </div>
-                        </div>
+                        <!--&lt;!&ndash; bio &ndash;&gt;-->
+                        <!--<div class="form-group row">-->
+                            <!--<div class="col-sm-12">-->
+                                <!--<label for="bio">-->
+                                    <!--<span class="bold-text">Bio:</span>-->
+                                <!--</label>-->
+                                <!--<textarea id="bio" class="form-control" rows="5" name="bio" [(ngModel)]="newUser.bio" #bio="ngModel" placeholder="Tell us more about yourself here... Favorite languages? Favorite projects? Dream Vacation? Etc.."></textarea>-->
+                            <!--</div>-->
+                        <!--</div>-->
 
-                        <!-- address -->
-                        <div class="form-group row">
-                            <div class="col col-sm-12">
-                                <label for="address">
-                                    <span class="bold-text">Address:</span>
-                                    <span *ngIf="!address.valid" class="validation"> *Required</span>
-                                </label>
-                                <input class="form-control" type="text" id="address" name="address" required [(ngModel)]="newUser.address" #address="ngModel">
-                            </div>
-                        </div>
+                        <!--&lt;!&ndash; address &ndash;&gt;-->
+                        <!--<div class="form-group row">-->
+                            <!--<div class="col col-sm-12">-->
+                                <!--<label for="address">-->
+                                    <!--<span class="bold-text">Address:</span>-->
+                                    <!--<span *ngIf="!address.valid" class="validation"> *Required</span>-->
+                                <!--</label>-->
+                                <!--<input class="form-control" type="text" id="address" name="address" required [(ngModel)]="newUser.address" #address="ngModel">-->
+                            <!--</div>-->
+                        <!--</div>-->
 
-                        <!-- city && state && zip -->
-                        <div class="form-group row">
-                            <div class="col col-sm-5">
-                                <label for="city">
-                                    <span class="bold-text">City:</span>
-                                    <span *ngIf="!city.valid" class="validation"> *Required</span>
-                                </label>
-                                <input class="form-control" type="text" id="city" name="city" required [(ngModel)]="newUser.city" #city="ngModel">
-                            </div>
-                            <div class="col col-sm-3">
-                                <label for="State">
-                                    <span class="bold-text">State:</span>
-                                    <span *ngIf="!state.valid" class="validation"> *Required</span>
-                                </label>
-                                <select class="form-control" id="state" name="state" required [(ngModel)]="newUser.state" #state="ngModel">
-                                    <option *ngFor="let state of states">
-                                        {{ state }}
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col col-sm-4">
-                                <label for="zip">
-                                    <span class="bold-text">Zip Code:</span>
-                                    <span *ngIf="!zip.valid" class="validation"> *Required</span>
-                                </label>
-                                <input class="form-control" type="text" id="zip" name="zip" required [(ngModel)]="newUser.zip" #zip="ngModel">
-                            </div>
-                        </div>
+                        <!--&lt;!&ndash; city && state && zip &ndash;&gt;-->
+                        <!--<div class="form-group row">-->
+                            <!--<div class="col col-sm-5">-->
+                                <!--<label for="city">-->
+                                    <!--<span class="bold-text">City:</span>-->
+                                    <!--<span *ngIf="!city.valid" class="validation"> *Required</span>-->
+                                <!--</label>-->
+                                <!--<input class="form-control" type="text" id="city" name="city" required [(ngModel)]="newUser.city" #city="ngModel">-->
+                            <!--</div>-->
+                            <!--<div class="col col-sm-3">-->
+                                <!--<label for="State">-->
+                                    <!--<span class="bold-text">State:</span>-->
+                                    <!--<span *ngIf="!state.valid" class="validation"> *Required</span>-->
+                                <!--</label>-->
+                                <!--<select class="form-control" id="state" name="state" required [(ngModel)]="newUser.state" #state="ngModel">-->
+                                    <!--<option *ngFor="let state of states">-->
+                                        <!--{{ state }}-->
+                                    <!--</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                            <!--<div class="col col-sm-4">-->
+                                <!--<label for="zip">-->
+                                    <!--<span class="bold-text">Zip Code:</span>-->
+                                    <!--<span *ngIf="!zip.valid" class="validation"> *Required</span>-->
+                                <!--</label>-->
+                                <!--<input class="form-control" type="text" id="zip" name="zip" required [(ngModel)]="newUser.zip" #zip="ngModel">-->
+                            <!--</div>-->
+                        <!--</div>-->
 
-                        <button *ngIf="addDevForm.valid" class="btn btn-lg btn-primary float-right submit-button" (click)="registerDev()">Register</button>
-                        <button *ngIf="!addDevForm.valid" class="btn btn-lg btn-primary float-right submit-button disabled" disabled="disabled">Register</button>
-                        <button class="btn btn-lg btn-outline-danger float-right submit-button" (click)="cancelRegister()">Cancel</button>
+                        <!--<button *ngIf="addDevForm.valid" class="btn btn-lg btn-primary float-right submit-button" (click)="registerDev()">Register</button>-->
+                        <!--<button *ngIf="!addDevForm.valid" class="btn btn-lg btn-primary float-right submit-button disabled" disabled="disabled">Register</button>-->
+                        <!--<button class="btn btn-lg btn-outline-danger float-right submit-button" (click)="cancelRegister()">Cancel</button>-->
 
                     </div>
                     <div class="col-sm-2"></div>

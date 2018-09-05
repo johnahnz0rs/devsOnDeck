@@ -3,24 +3,23 @@ const { Schema } = mongoose;
 
 const userSchema = new mongoose.Schema({
 
-    // common properties
-    accountType: {type: String, required: true, trim: true},
-    fname: {type: String, required: true, trim: true},
-    lname: {type: String, required: true, trim: true},
-    email: {type: String, required: true, trim: true},
-    pw: {type: String, required: true, trim: true},
-    address: {type: String, trim: true},
-    city: {type: String, trim: true},
-    state: {type: String, trim: true},
-    zip: {type: String, trim: true},
+  // common properties
+  accountType: {type: String, required: true, trim: true},
+  fname: {type: String, required: true, trim: true},
+  lname: {type: String, required: true, trim: true},
+  email: {type: String, required: true, trim: true},
+  pw: {type: String, required: true, trim: true},
+  address: {type: String, trim: true},
+  city: {type: String, trim: true},
+  state: {type: String, trim: true},
+  zip: {type: String, trim: true},
+  bio: {type: String, trim: true},
 
-    // dev properties
-    devBio: {type: String, trim: true},
-    devSkills: {type: Array},
+  // dev properties
+  devSkills: {type: Array},
 
-    // org properties
-    orgName: {type: String, trim: true},
-    orgJobs: {type: Array}
+  // org properties
+  orgName: {type: String, trim: true},
 
 }, {timestamps: true});
 

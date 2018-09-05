@@ -1,0 +1,14 @@
+
+.skills-border {
+    border-radius: 9px;
+    border: 1px solid cornflowerblue;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.each-skill {
+    width: 30px;
+    height: auto;
+}

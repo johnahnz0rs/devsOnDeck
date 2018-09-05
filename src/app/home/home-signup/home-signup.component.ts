@@ -22,6 +22,12 @@ export class HomeSignupComponent implements OnInit {
 
   ngOnInit() { }
 
+  shareQuickSignUp() {
+    if (this.quickSignUp.accountType) {
+      this.loginService.thisIsQuickSignUp(this.quickSignUp);
+    }
+  }
+
   signUpForReal() {
     console.log('*** about to send this request: createOneUser(user) ***', this.quickSignUp);
     this.userService.createOneUser(this.quickSignUp)

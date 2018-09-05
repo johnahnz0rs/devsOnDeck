@@ -2,7 +2,6 @@ import { Job } from './job';
 
 export class User {
     _id: string;
-
     // common props:
     accountType: string;
     fname: string;
@@ -15,14 +14,9 @@ export class User {
     city: string;
     state: string;
     zip: string;
-
+    bio: string;
     // dev props;
-    devBio: string;
     devSkills: Array<string>;
-    // resume: any;
-    // avatar: any;
-
     // org props;
     orgName: string;
-    orgJobs: Array<Job>;
 }

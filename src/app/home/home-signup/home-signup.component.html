@@ -41,6 +41,6 @@
 </form>
 
 
-<button *ngIf="quickSignup.valid && quickSignUp.accountType === 'dev'" class="btn btn-lg btn-success float-right" role="button" data-dismiss="modal" data-toggle="modal" data-target="#modal-dev-details">Register</button>
-<button *ngIf="quickSignup.valid && quickSignUp.accountType === 'org'" class="btn btn-lg btn-success float-right" role="button" data-dismiss="modal" data-toggle="modal" data-target="#modal-org-details">Register</button>
+<button *ngIf="quickSignup.valid && quickSignUp.accountType === 'dev'" class="btn btn-lg btn-success float-right" role="button" data-dismiss="modal" data-toggle="modal" data-target="#modal-dev-details" (click)="shareQuickSignUp()">Register</button>
+<button *ngIf="quickSignup.valid && quickSignUp.accountType === 'org'" class="btn btn-lg btn-success float-right" role="button" data-dismiss="modal" data-toggle="modal" data-target="#modal-org-details" (click)="shareQuickSignUp()">Register</button>
 <button *ngIf="!quickSignup.valid" class="btn btn-lg btn-outline-success float-right disabled" disabled="disabled" role="button">Register</button>

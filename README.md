@@ -10,12 +10,30 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[] 8/30/18 -
-[] what can i modularize?
-[]  -- component: dev-showMyInfo + modal-editMyInfo
-[]  -- component: dev-showAllJobs + modal-showOneJob
-[]  -- component: dev-showAllDevs + modal-showOneDev
-[]  -- component: org-showMyJobs + modal-showOneJob + modal-showOneOrg
+[] 9/4/18 - (count: 17)
+[] build home-dash > home-signup > home-dev-details -- make the background stop scrolling when a long modal is open -- i stopped short of actually making a post.createOneUser call.
+[] build home-dashboard > home-show-jobs
+[] build home-dash > home-show-devs
+[] build dev-dash
+[] build dev-dash > dev-show-jobs
+[] build dev-dash > dev-show-devs
+[] build dev-dash > dev-show-orgs
+[] build dev-dash > dev-profile
+[] build org-dash 
+[] build org-dash > org-my-jobs
+[] build org-dash > org-show-devs
+[] build org-dash > org-show-orgs
+[] build org-dash > org-show-jobs
+[] build org-dash > org-add-job
+[] build org-dash > org-profile
+[x]
+[x]
+[x] 8/30/18 -
+[x] what can i modularize?
+[x]  -- component: dev-showMyInfo + modal-editMyInfo
+[x]  -- component: dev-showAllJobs + modal-showOneJob
+[x]  -- component: dev-showAllDevs + modal-showOneDev
+[x]  -- component: org-showMyJobs + modal-showOneJob + modal-showOneOrg
 [x]
 [] how do i use html form method/action:
 []  -- method = only get (default) or post - create a new route
