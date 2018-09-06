@@ -1,4 +1,14 @@
 
+
+.modal-body {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.modal-open {
+    overflow: hidden !important;
+}
+
 .navbar {
     clear: both;
 }

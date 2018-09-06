@@ -15,7 +15,9 @@ CURRENTLY WORKING ON:
 [x]
 [x]
 [x] 9/4/18 - (count: 17)
-[] build home-dash > home-signup > home-dev-details -- make the background stop scrolling when a long modal is open -- i stopped short of actually making a post.createOneUser call.
+[] build home-dash > home-signup > home-dev-details -- 
+[x] -- -make the background stop scrolling when a long modal is open (i just ignored the background scrolling and added a modal-scroll)
+[] -- -i stopped short of actually making a post.createOneUser call.
 [] build home-dashboard > home-show-jobs
 [] build home-dash > home-show-devs
 [] build dev-dash
