@@ -13,6 +13,7 @@ import { LoginService } from '../../services/login.service';
 export class DevDashboardComponent implements OnInit {
 
   myInfo;
+  user: User;
   showThisComp = 'jobs';
 
 
@@ -32,7 +33,7 @@ export class DevDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loginService.getUser().subscribe(response => { this.myInfo = response; });
+    this.loginService.user.subscribe(response => this.user = response);
   }
 
   clickThisComp(comp) {

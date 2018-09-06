@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { JobService } from '../../services/job.service';
+import { User } from "../../user";
 
 @Component({
   selector: 'app-org-dashboard',
@@ -13,7 +14,7 @@ import { JobService } from '../../services/job.service';
 })
 export class OrgDashboardComponent implements OnInit {
 
-  myInfo;
+  user: User;
   myJobs;
   showThisComp = 'devs';
 
@@ -27,11 +28,7 @@ export class OrgDashboardComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
-    this.loginService.getUser()
-      .subscribe(response => {
-        this.myInfo = response;
-        this.getMyJobs(response._id);
-      });
+    this.loginService.user.subscribe(response => { this.user = response; });
   }
 
   getMyJobs(id) {

@@ -6,7 +6,7 @@ const User = mongoose.model("User");
 module.exports = {
 
   login: function(request, response) {
-    console.log('*** controller is running testLogin(login) ***', request.body);
+    console.log('*** controller is running login(login) ***', request.body);
     User.findOne({email: request.body.email}, function(error, user) {
       if (error) {
         console.log('*** ERR controller.testLogin 1 ***', error);
@@ -70,18 +70,18 @@ module.exports = {
         console.log('*** error in bcrypt ***', error);
       } else if (hash) {
         newUser.pw = hash;
+        User.create(newUser, function(error, res) {
+          if (error) {
+            console.log('*** error in User.create() ***', error);
+            response.json(error);
+          } else if (res) {
+            console.log('*** User.create() received this ***', res);
+            response.json(res);
+          }
+        });
       }
     });
 
-    User.create(newUser, function(error, res) {
-      if (error) {
-        console.log('*** error in User.create() ***', error);
-        response.json(error);
-      } else if (res) {
-        console.log('*** User.create() received this ***', res);
-        response.json(res);
-      }
-    })
   },
 
 

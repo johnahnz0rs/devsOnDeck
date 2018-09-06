@@ -1,5 +1,6 @@
 <div>
     <!-- template -->
+
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: cornflowerblue">
         <!-- left side of navbar -->
         <a class="navbar-brand" (click)="clickComp('splash')">devJobs</a>
@@ -19,13 +20,13 @@
                     <!--<a class="nav-link" (click)="clickComp('test')">testComp</a>-->
                 <!--</li>-->
             </ul>
-            <form class="form-inline my-2 my-lg-0" #quickLogin="ngForm">
-                <input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Email" name="email" required [(ngModel)]="login.email">
-                <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password" name="pw" required [(ngModel)]="login.pw">
+            <form class="form-inline my-2 my-lg-0" #navLogin="ngForm">
+                <input class="form-control mr-sm-2" type="email" placeholder="Email" aria-label="Email" name="email" required [(ngModel)]="quickLogin.email">
+                <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="Password" name="pw" required [(ngModel)]="quickLogin.pw">
                 <div class="navbar-nav flex-row">
                     <div class="nav-item">
-                        <a *ngIf="quickLogin.valid" class="nav-link" type="button" (click)="logMeIn()">Login</a>
-                        <a *ngIf="!quickLogin.valid" class="nav-link" type="button" data-toggle="modal" data-target="#modal-login">Login</a>
+                        <a *ngIf="navLogin.valid" class="nav-link" type="button" (click)="logMeIn(quickLogin)">Login</a>
+                        <a *ngIf="!navLogin.valid" class="nav-link" type="button" data-toggle="modal" data-target="#modal-login">Login</a>
                     </div>
                 </div>
             </form>
@@ -88,7 +89,7 @@
                 </div>
                 <div class="modal-footer">
                     <a data-dismiss="modal" data-toggle="modal" data-target="#modal-login" id="link-login">Login Instead</a>
-                    <button type="button" class="btn btn-secondary btn-outline-dark float-right" data-dismiss="modal">Close</button>
+                    <!--<button type="button" class="btn btn-secondary btn-outline-dark float-right" data-dismiss="modal">Close</button>-->
                 </div>
             </div>
         </div>
@@ -111,7 +112,7 @@
                 <div class="modal-footer">
                     <!--<a data-dismiss="modal" data-toggle="modal" data-target="#modal-signup" id="link-sign-up">Sign Up</a>-->
                     <!--<button type="button" class="btn btn-secondary btn-outline-danger" data-dismiss="modal">Close</button>-->
-                    <button class="btn btn-sm btn-primary" role="button">Skip This and Register</button>
+                    <button class="btn btn-sm btn-primary" role="button" (click)="registerMe()">Skip This and Register</button>
 
                 </div>
             </div>
@@ -154,12 +155,20 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <app-home-login></app-home-login>
+                    <form id="login-form" #loginForm="ngForm">
+                        <!--<p>{{ loginForm.value | json }}</p>-->
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="login-email" required placeholder="Email" [(ngModel)]="login.email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="login-password" required placeholder="Password" [(ngModel)]="login.pw" name="pw">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <a data-dismiss="modal" data-toggle="modal" data-target="#modal-signup" id="link-sign-up">Sign Up</a>
-                    <button type="button" class="btn btn-secondary btn-outline-danger" data-dismiss="modal">Close</button>
-
+                    <!--<button type="button" class="btn btn-secondary btn-outline-danger" data-dismiss="modal">Close</button>-->
+                    <button type="button" class="btn btn-lg btn-success float-right" (click)="logMeIn(login)">Go!</button>
                 </div>
             </div>
         </div>

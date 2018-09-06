@@ -15,23 +15,6 @@ export class HomeSplashComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-    this.loginService.getUser()
-      .subscribe(user => {
-        if (user) {
-          if (user.accountType === 'dev') {
-            console.log('*** splash! its a dev! ***', user);
-            this.router.navigateByUrl('/dev');
-          } else if (user.accountType === 'org') {
-            console.log('*** splash! its an org! ***', user);
-            this.router.navigateByUrl('/org');
-          } else {
-            console.log('*** splash, this is user? ***', user);
-          }
-        } else {
-          console.log('*** jabroni splash ***');
-        }
-      });
-  }
+  ngOnInit() {}
 
 }

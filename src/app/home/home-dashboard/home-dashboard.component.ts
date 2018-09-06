@@ -14,43 +14,38 @@ import { User } from '../../user';
 export class HomeDashboardComponent implements OnInit {
 
   public displayThisComp = 'splash';
-  // private allJobs;
-  // private allDevs;
+  user: User;
   login: Login = new Login();
-  registration: User = new User();
+  quickLogin: Login = new Login();
+  quickSignUp: User;
 
   constructor(
-    // private userService: UserService,
-    // private jobService: JobService,
     private loginService: LoginService,
+    private userService: UserService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.loginService.getUser()
-      .subscribe(user => {
-        if (user) {
-          if (user.accountType === 'dev') {
-            console.log('*** its a dev! ***');
-            this.router.navigateByUrl('/dev');
-          } else if (user.accountType === 'org') {
-            console.log('*** its an org! ***');
-            this.router.navigateByUrl('/org');
-          } else {
-            console.log('*** lol this is user ***', user);
-          }
+    this.loginService.user
+      .subscribe(response => {
+        this.user = response;
+        if (this.user.accountType === 'dev') {
+          this.router.navigateByUrl('/dev');
+        } else if (this.user.accountType === 'org') {
+          this.router.navigateByUrl('/org');
         } else {
-          console.log('*** jabroni ***');
+          console.log('*** homeDash jabroni ***', response);
         }
       });
+    this.loginService.quickSignUp.subscribe(response => { this.quickSignUp = response; });
   }
 
   clickComp(comp) {
     this.displayThisComp = comp;
   }
 
-  logMeIn() {
-    this.loginService.login(this.login)
+  logMeIn(login) {
+    this.loginService.logMeIn(login)
       .subscribe(response => {
         this.loginService.user = response;
         if (response.accountType) {
@@ -65,7 +60,23 @@ export class HomeDashboardComponent implements OnInit {
       });
   }
 
-  signup() {
-    // code
+  registerMe() {
+    const user = {email: this.quickSignUp.email, pw: this.quickSignUp.pw};
+    console.log('*** homeDash is ready to register this user ***', this.quickSignUp);
+    this.userService.createOneUser(this.quickSignUp)
+      .subscribe(() => {
+        this.loginService.logMeIn(user)
+          .subscribe(response => {
+            this.loginService.thisIsUser(response);
+            if (response.accountType === 'dev') {
+              this.router.navigateByUrl('/dev');
+            } else if (response.accountType === 'org') {
+              this.router.navigateByUrl('/org');
+            } else {
+              console.log('*** maaannnnnnnnnn ***', response);
+            }
+          });
+      });
   }
+
 }

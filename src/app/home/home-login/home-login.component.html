@@ -3,22 +3,3 @@
 </div>
 
 
-<form id="login-form" #loginForm="ngForm">
-    <p>{{ loginForm.value | json }}</p>
-    <div class="form-group">
-        <input type="email" class="form-control" id="login-email"
-               required
-               placeholder="Email"
-               [(ngModel)]="user.email" name="email">
-
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" id="login-password"
-               required
-               placeholder="Password"
-               [(ngModel)]="user.pw" name="pw">
-    </div>
-
-</form>
-
-<button type="button" class="btn btn-lg btn-success float-right" (click)="login()">Go!</button>

@@ -3,3 +3,9 @@
 .bold-text {
     font-weight: bold;
 }
+#choose {
+    margin-bottom: 20px;
+}
+#choose-dev-org {
+    text-align: right;
+}

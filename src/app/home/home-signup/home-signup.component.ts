@@ -20,12 +20,10 @@ export class HomeSignupComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   shareQuickSignUp() {
-    if (this.quickSignUp.accountType) {
-      this.loginService.thisIsQuickSignUp(this.quickSignUp);
-    }
+    this.loginService.thisIsQuickSignUp(this.quickSignUp);
   }
 
   signUpForReal() {

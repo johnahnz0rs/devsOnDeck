@@ -4,11 +4,9 @@
     max-height: calc(100vh - 200px);
     overflow-y: auto;
 }
-
 .modal-open {
     overflow: hidden !important;
 }
-
 .navbar {
     clear: both;
 }
@@ -23,5 +21,10 @@
 }
 #link-sign-up:hover {
     cursor: pointer;
-    /*color: cornflowerblue;*/
+}
+#link-login {
+    color: cornflowerblue;
+}
+#link-login:hover {
+    cursor: pointer;
 }

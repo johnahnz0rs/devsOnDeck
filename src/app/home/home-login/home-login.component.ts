@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from '../../login';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-home-login',
@@ -10,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class HomeLoginComponent implements OnInit {
 
-  user = {email: '', pw: ''};
+  _login = new BehaviorSubject(new Login());
+  login = this._login.asObservable();
   error: any;
 
   constructor(
@@ -21,24 +23,24 @@ export class HomeLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    const data = {email: this.user.email, pw: this.user.pw};
-    console.log('*** home-login-comp is running login(data) ***', data);
-    this.loginService.login(data)
-      .subscribe(user => {
-        if (user.accountType) {
-          this.loginService.user = user;
-          if (user.accountType === 'dev') {
-            // console.log('*** lol its a dev! ***', user);
-            this.router.navigateByUrl('/dev');
-          } else {
-            // console.log('*** lol its an org! ***', user);
-            this.router.navigateByUrl('/org');
-          }
-        } else {
-          console.log('***', user, '***');
-        }
-      });
+  logMeIn() {
+    // const data = {email: this._login.email, pw: this._login.pw};
+    // console.log('*** home-login-comp is running login(data) ***', data);
+    // this.loginService.login(data)
+    //   .subscribe(user => {
+    //     if (user.accountType) {
+    //       this.loginService.user = user;
+    //       if (user.accountType === 'dev') {
+    //         // console.log('*** lol its a dev! ***', user);
+    //         this.router.navigateByUrl('/dev');
+    //       } else {
+    //         // console.log('*** lol its an org! ***', user);
+    //         this.router.navigateByUrl('/org');
+    //       }
+    //     } else {
+    //       console.log('***', user, '***');
+    //     }
+    //   });
   }
 
 }
