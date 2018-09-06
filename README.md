@@ -10,7 +10,11 @@ Languages/Frameworks/Libraries: MEAN, MongoDB, Express.js, Angular, Node.js, HTM
 johnahnz0rs' to-do list:
 
 CURRENTLY WORKING ON:
-[] 9/4/18 - (count: 17)
+[] 9/5/18 - 
+[x] took a break from devJobs to complete two of the weekly challenges from codewars.com; gonna take a smoke break now then get back to completing this gorram components.
+[x]
+[x]
+[x] 9/4/18 - (count: 17)
 [] build home-dash > home-signup > home-dev-details -- make the background stop scrolling when a long modal is open -- i stopped short of actually making a post.createOneUser call.
 [] build home-dashboard > home-show-jobs
 [] build home-dash > home-show-devs
