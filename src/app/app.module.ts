@@ -31,7 +31,6 @@ import { OrgProfileComponent } from './orgs/org-profile/org-profile.component';
 import { OrgAddJobComponent } from './orgs/org-add-job/org-add-job.component';
 
 
-import { LoginService } from './services/login.service';
 import { JobService } from './services/job.service';
 import { UserService } from './services/user.service';
 
@@ -73,7 +72,7 @@ import { HomeOrgDetailsComponent } from './home/home-org-details/home-org-detail
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, HttpClientModule
   ],
-  providers: [AppService, LoginService, UserService, JobService],
+  providers: [AppService, UserService, JobService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

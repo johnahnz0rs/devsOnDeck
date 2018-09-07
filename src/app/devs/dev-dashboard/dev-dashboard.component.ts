@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
 import { User } from '../../user';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
+import { UserService } from "../../services/user.service";
 
 
 @Component({
@@ -12,15 +12,10 @@ import { LoginService } from '../../services/login.service';
 })
 export class DevDashboardComponent implements OnInit {
 
-  myInfo;
   user: User;
   showThisComp = 'jobs';
 
-
-
-
   updateDev: User = new User();
-
 
   states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
 
@@ -28,12 +23,12 @@ export class DevDashboardComponent implements OnInit {
 
   constructor(
     private appService: AppService,
-    private loginService: LoginService,
+    private userService: UserService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.loginService.user.subscribe(response => this.user = response);
+    this.userService.user.subscribe(response => { this.user = response; });
   }
 
   clickThisComp(comp) {
@@ -59,7 +54,7 @@ export class DevDashboardComponent implements OnInit {
   }
 
   printUser() {
-    this.loginService.getUser().subscribe(lol => { console.log('*** lol this is user from devDash ***', lol); });
+    console.log('*** devDash printing logged in user ***', this.user);
   }
 
 }

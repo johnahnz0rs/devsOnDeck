@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../user';
 import { UserService } from '../../services/user.service';
-import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,14 +15,13 @@ export class HomeSignupComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private loginService: LoginService,
     private router: Router
   ) { }
 
   ngOnInit() {}
 
   shareQuickSignUp() {
-    this.loginService.thisIsQuickSignUp(this.quickSignUp);
+    this.userService.setQuickSignUp(this.quickSignUp);
   }
 
   signUpForReal() {
@@ -31,7 +29,7 @@ export class HomeSignupComponent implements OnInit {
     this.userService.createOneUser(this.quickSignUp)
       .subscribe(response => {
         if (response.accountType) {
-          this.loginService.user = response;
+          this.userService.user = response;
           if (response.accountType === 'dev') {
             this.router.navigateByUrl('/dev');
           } else if (response.accountType === 'org') {

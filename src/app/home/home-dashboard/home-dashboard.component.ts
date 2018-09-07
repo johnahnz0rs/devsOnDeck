@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from '../../services/job.service';
 import { UserService } from '../../services/user.service';
+import { DevService } from '../../services/dev.service';
 import { Login } from '../../login';
-import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { User } from '../../user';
 
@@ -20,24 +20,25 @@ export class HomeDashboardComponent implements OnInit {
   quickSignUp: User;
 
   constructor(
-    private loginService: LoginService,
     private userService: UserService,
+    private devService: DevService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.loginService.user
+    this.userService.getAllDevs();
+    this.userService.getAllOrgs();
+    this.userService.getAllJobs();
+    this.userService.user
       .subscribe(response => {
         this.user = response;
-        if (this.user.accountType === 'dev') {
-          this.router.navigateByUrl('/dev');
-        } else if (this.user.accountType === 'org') {
-          this.router.navigateByUrl('/org');
+        if (response.accountType) {
+          console.log('*** lol this is user type ***', response.accountType);
         } else {
-          console.log('*** homeDash jabroni ***', response);
+          console.log('*** lol not logged in ***', response);
         }
       });
-    this.loginService.quickSignUp.subscribe(response => { this.quickSignUp = response; });
+    this.userService.quickSignUp.subscribe(response => { this.quickSignUp = response; });
   }
 
   clickComp(comp) {
@@ -45,29 +46,26 @@ export class HomeDashboardComponent implements OnInit {
   }
 
   logMeIn(login) {
-    this.loginService.logMeIn(login)
+    this.userService.logMeIn(login)
       .subscribe(response => {
-        this.loginService.user = response;
-        if (response.accountType) {
-          if (response.accountType === 'dev') {
-            this.router.navigateByUrl('/dev');
-          } else {
-            this.router.navigateByUrl('/org');
-          }
+        if (response.accountType === 'dev') {
+          this.router.navigateByUrl('/dev');
+        } else if (response.accountType === 'org') {
+          this.router.navigateByUrl('/org');
         } else {
-          console.log('*** response from testLogin() ***', response);
+          console.log('*** response from logMeIn() ***', response);
         }
       });
   }
 
   registerMe() {
-    const user = {email: this.quickSignUp.email, pw: this.quickSignUp.pw};
     console.log('*** homeDash is ready to register this user ***', this.quickSignUp);
+    const user = {email: this.quickSignUp.email, pw: this.quickSignUp.pw};
     this.userService.createOneUser(this.quickSignUp)
       .subscribe(() => {
-        this.loginService.logMeIn(user)
+        this.userService.logMeIn(user)
           .subscribe(response => {
-            this.loginService.thisIsUser(response);
+            this.userService.thisIsUser(response);
             if (response.accountType === 'dev') {
               this.router.navigateByUrl('/dev');
             } else if (response.accountType === 'org') {
@@ -77,6 +75,13 @@ export class HomeDashboardComponent implements OnInit {
             }
           });
       });
+  }
+
+  printUser() {
+    console.log('*** homeDash printing user ***', this.user);
+  }
+  printQuickSignUp() {
+    console.log('*** homeDash printing quickSignUp ***', this.quickSignUp);
   }
 
 }

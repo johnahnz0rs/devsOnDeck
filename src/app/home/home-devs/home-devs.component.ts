@@ -19,7 +19,7 @@ export class HomeDevsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.devService.readAllDevs().subscribe(allDevs => { this.allDevs = allDevs; });
+    this.devService.allDevs.subscribe(allDevs => { this.allDevs = allDevs; });
   }
 
   keys(object) {

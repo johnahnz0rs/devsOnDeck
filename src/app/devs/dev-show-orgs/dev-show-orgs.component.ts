@@ -11,11 +11,11 @@ export class DevShowOrgsComponent implements OnInit {
   allOrgs;
 
   constructor(
-    private orgService: UserService
+    private userService: UserService
   ) { }
 
   ngOnInit() {
-    this.orgService.getAllOrgs().subscribe(response => { this.allOrgs = response; });
+    this.userService.allOrgs.subscribe(response => { this.allOrgs = response; });
   }
 
   keys(obj) {

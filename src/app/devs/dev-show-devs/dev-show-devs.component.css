@@ -1,4 +1,15 @@
 
+
+body {
+    margin: 0;
+    width: 100%;
+}
+p {
+    width: 100%;
+}
+#lol {
+    width: 100%;
+}
 .each-dev {
     border-radius: 9px;
     border: 1px solid cornflowerblue;

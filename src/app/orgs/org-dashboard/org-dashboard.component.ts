@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from '../../job';
-import { AppService } from '../../services/app.service';
-import { HttpClient } from '@angular/common/http';
+import { User } from '../../user';
 import { Router } from '@angular/router';
-import { LoginService } from '../../services/login.service';
 import { JobService } from '../../services/job.service';
-import { User } from "../../user";
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-org-dashboard',
@@ -15,27 +13,21 @@ import { User } from "../../user";
 export class OrgDashboardComponent implements OnInit {
 
   user: User;
-  myJobs;
+  myJobs: Array<Job>;
   showThisComp = 'devs';
 
   technologies = ['HTML 5', 'CSS 3', 'JavaScript', 'Python', 'SQL', 'Java', 'Csharp', 'PHP', 'XML', 'MongoDB', 'Express.js', 'Angular', 'Node.js', 'React', 'Vue.js', 'jQuery', 'Backbone', 'Bootstrap', 'Materialize', 'Django', 'Flask', 'Bottle', 'CherryPy', 'Meteor', 'Pyramid', 'MySQL', 'PostgreSQL'];
 
 
   constructor(
-    private appService: AppService,
-    private loginService: LoginService,
+    private userService: UserService,
     private jobService: JobService,
-    private router: Router) {}
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.loginService.user.subscribe(response => { this.user = response; });
-  }
-
-  getMyJobs(id) {
-    this.jobService.getMyJobs(id)
-      .subscribe(response => {
-        this.myJobs = response;
-      });
+    this.userService.user.subscribe(response => { this.user = response; });
+    this.jobService.getMyJobs(this.user._id).subscribe(response => { this.myJobs = response; });
   }
 
   clickThisComp(comp) {
@@ -43,8 +35,8 @@ export class OrgDashboardComponent implements OnInit {
   }
 
   logout() {
-    console.log('*** lol u clicked logout ***');
-    console.log('johnahnz0rs is 1337');
+    this.userService.logout();
+    this.router.navigateByUrl('/');
   }
 
   nothingClick() {

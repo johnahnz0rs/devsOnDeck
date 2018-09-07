@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { LoginService } from '../../services/login.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../user';
 
 @Component({
   selector: 'app-org-profile',
@@ -9,14 +9,14 @@ import { LoginService } from '../../services/login.service';
 })
 export class OrgProfileComponent implements OnInit {
 
-  myInfo;
+  user: User;
 
   constructor(
-    private loginService: LoginService
+    private userService: UserService
   ) { }
 
   ngOnInit() {
-    this.loginService.getUser().subscribe(response => { this.myInfo = response; });
+    this.userService.user.subscribe(response => { this.user = response; });
   }
 
   keys(obj) {
@@ -24,7 +24,7 @@ export class OrgProfileComponent implements OnInit {
   }
 
   printMyInfo() {
-    console.log('*** profile-comp is printing myInfo ***', this.myInfo);
+    console.log('*** org-profile-comp is printing myInfo ***', this.user);
   }
 
 }

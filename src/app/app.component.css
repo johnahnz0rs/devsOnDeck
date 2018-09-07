@@ -4,10 +4,8 @@
 }
 body {
     margin: 0;
-    width: 50%;
+    width: 100%;
 }
-
-
 .modal-open {
     overflow: hidden !important;
 }

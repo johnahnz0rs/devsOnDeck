@@ -54,7 +54,10 @@
     <!-- end navbar -->
     <!-- end navbar -->
 
+
+    <button class="btn btn-sm btn-outline-primary" (click)="printUser()">print current user value</button>
         <!--<button class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#modal-login">modal-login</button>-->
+    <button class="btn btn-sm btn-outline-primary" (click)="printQuickSignUp()">print quickSignUp value</button>
 
 
 
@@ -85,11 +88,46 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <app-home-signup></app-home-signup>
+                    <form #quickSignup="ngForm">
+                        <!-- fname -->
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="fname" id="fname" [(ngModel)]="quickSignUp.fname" required placeholder="First Name">
+                        </div>
+                        <!-- lname -->
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="lname" id="lname" [(ngModel)]="quickSignUp.lname" required placeholder="Last Name">
+                        </div>
+                        <!-- email -->
+                        <div class="form-group">
+                            <input class="form-control" type="email" name="email" id="email" [(ngModel)]="quickSignUp.email" required placeholder="Email">
+                        </div>
+                        <!-- pw -->
+                        <div class="form-group">
+                            <input class="form-control" type="password" name="pw" id="password" [(ngModel)]="quickSignUp.pw" required placeholder="Password">
+                        </div>
+                        <!-- accountType -->
+                        <div class="form-group row align-middle" id="choose">
+                            <div class="col-sm-5" id="choose-dev-org">
+                                <span class="bold-text">I'm a(n):</span>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="accountType" id="dev" value="dev" [(ngModel)]="quickSignUp.accountType" required>
+                                    <label class="form-check-label" for="dev">Developer</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="accountType" id="org" value="org" [(ngModel)]="quickSignUp.accountType" required>
+                                    <label class="form-check-label" for="org">Employer</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <a data-dismiss="modal" data-toggle="modal" data-target="#modal-login" id="link-login">Login Instead</a>
-                    <!--<button type="button" class="btn btn-secondary btn-outline-dark float-right" data-dismiss="modal">Close</button>-->
+                    <button *ngIf="quickSignup.valid && quickSignUp.accountType === 'dev'" class="btn btn-lg btn-success float-right" role="button" data-dismiss="modal" data-toggle="modal" data-target="#modal-dev-details">Register</button>
+                    <button *ngIf="quickSignup.valid && quickSignUp.accountType === 'org'" class="btn btn-lg btn-success float-right" role="button" data-dismiss="modal" data-toggle="modal" data-target="#modal-org-details">Register</button>
+                    <button *ngIf="!quickSignup.valid" class="btn btn-lg btn-outline-success float-right disabled" disabled="disabled" role="button">Register</button>
                 </div>
             </div>
         </div>
@@ -166,7 +204,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a data-dismiss="modal" data-toggle="modal" data-target="#modal-signup" id="link-sign-up">Sign Up</a>
+                    <a data-dismiss="modal" data-toggle="modal" data-target="#modal-signup" id="link-sign-up">Sign Up Now</a>
                     <!--<button type="button" class="btn btn-secondary btn-outline-danger" data-dismiss="modal">Close</button>-->
                     <button type="button" class="btn btn-lg btn-success float-right" (click)="logMeIn(login)">Go!</button>
                 </div>

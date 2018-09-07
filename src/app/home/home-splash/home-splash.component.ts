@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +10,6 @@ import { Router } from '@angular/router';
 export class HomeSplashComponent implements OnInit {
 
   constructor(
-    private loginService: LoginService,
     private router: Router
   ) { }
 

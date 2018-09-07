@@ -1,7 +1,64 @@
+body {
+    margin: 0;
+    width: 100%;
+}
+p {
+    width: 100%;
+}
+.container-fluid {
+    margin: 0;
+    width: 100%;
+}
+#lol {
+    width: 100%;
+}
 
+#dev-show-jobs {
+    padding: 10px;
+    width: 100%;
+    margin: 50px auto;
+    /*min-width: 1000px;*/
+}
+#all-jobs {
+    /*min-width: 500px;*/
+    width: 100%;
+}
 .each-job {
     border-radius: 9px;
     border: 1px solid cornflowerblue;
-    margin: 10px;
+    margin: 0 10px 20px 10px;
     padding: 10px;
+    width: 100%;
+}
+.figure {
+    margin: 5px;
+}
+.each-skill {
+    width: 23px;
+    height: auto;
+}
+
+#dev-show-job-details {
+    /*border: 1px solid cornflowerblue;*/
+    /*border-radius: 9px;*/
+    min-height: 100px;
+    /*min-width: 300px;*/
+    width: 100%;
+    /*margin-left: 50px;*/
+    padding: 15px;
+}
+#single-job-detail {
+    border: 1px solid black;
+}
+#apply-button {
+    margin-bottom: 20px;
+}
+
+
+
+.bold-text {
+    font-weight: bold;
+}
+.underline-text {
+    text-decoration: underline;
 }

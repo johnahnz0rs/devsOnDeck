@@ -15,7 +15,7 @@ export class OrgShowDevsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.devService.readAllDevs().subscribe(response => { this.allDevs = response; });
+    this.devService.allDevs.subscribe(response => { this.allDevs = response; });
   }
 
   keys(obj) {

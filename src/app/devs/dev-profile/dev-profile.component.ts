@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../services/login.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../user';
 
 @Component({
   selector: 'app-dev-show-profile',
@@ -8,14 +9,14 @@ import { LoginService } from '../../services/login.service';
 })
 export class DevProfileComponent implements OnInit {
 
-  myInfo;
+  user: User;
 
   constructor(
-    private loginService: LoginService
+    private userService: UserService
   ) { }
 
   ngOnInit() {
-    this.loginService.getUser().subscribe(response => { this.myInfo = response; });
+    this.userService.user.subscribe(response => { this.user = response; });
   }
 
   keys(obj) {
@@ -23,7 +24,7 @@ export class DevProfileComponent implements OnInit {
   }
 
   printUserMyInfo() {
-    console.log('*** dev-profile-comp is printing myInfo ***', this.myInfo);
+    console.log('*** dev-profile-comp is printing myInfo ***', this.user);
   }
 
 }

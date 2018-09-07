@@ -1,60 +1,149 @@
-<p>
+
+
+<p class="float-left">
   show-jobs works!
 </p>
 
 
-<button class="btn btn-sm btn-warning" (click)="printAllJobs()">Print All Jobs</button>
+<button class="btn btn-sm btn-warning float-right" (click)="printAllJobs()">Print All Jobs</button>
 
-
-
-
-<div *ngIf="allJobs">
-
-    <div *ngFor="let job of allJobs" class="each-job row" type="button" data-toggle="modal" data-target="#modal-each-job" (click)="selectThisJob(job)">
-        <div class="col-sm-3">Position:<br>{{job.position}}</div>
-        <div class="col-sm-3">Location:<br>{{job.location}}</div>
-        <div class="col-sm-3">Description:<br>{{job.description}}</div>
-        <div class="col-sm-3">Skills:<br><span *ngFor="let i of job.skills">{{i}}, </span></div>
-    </div>
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- #modal-each-job -->
-<div *ngIf="selectedJob" class="modal fade" id="modal-each-job" tabindex="-1" role="dialog" aria-labelledby="modal-job-label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h3 class="modal-title" id="modal-job-label">{{selectedJob.position}}</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+<div class="container-fluid row" id="lol">
+    <!-- left-col: display all jobs -->
+    <div *ngIf="allJobs" class="col-sm-8 float-left" id="all-jobs">
+        <!--<div *ngFor="let job of allJobs" class="each-job row" type="button" data-toggle="modal" data-target="#modal-each-job" (click)="selectThisJob(job)">-->
+        <div *ngFor="let job of allJobs" class="each-job row" type="button" (click)="selectThisJob(job)">
+            <div class="col-sm-6 align-middle">
+                <h3 class="bold-text">{{job.position}}</h3>
+                <h5 class="location">({{job.city}}, {{job.state}})</h5>
             </div>
-
-            <div class="modal-body">
-                <p>this is the jeob</p>
-                <div class="row">
-                    <div class="col-sm-3">Position:<br>{{selectedJob.position}}</div>
-                    <div class="col-sm-3">Location:<br>{{selectedJob.location}}</div>
-                    <div class="col-sm-3">Org:<br>{{selectedJob.orgName}}</div>
-                    <div class="col-sm-3">Required Skills:<br><span *ngFor="let i of selectedJob.skills">{{i}}, </span></div>
+            <div class="col-sm-6">
+                <h5 class="text-center bold-text underline-text">Skills Match</h5>
+                <div class="text-center">
+                    <p>You are <span class="bold-text">{{job.match}} %</span></p>
+                    <p>compatible with this position!</p>
                 </div>
             </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
-                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
-            </div>
-
         </div>
     </div>
+
+
+
+
+    <!-- right-col: if a job is selected, display that job's details -->
+    <div *ngIf="selectedJob" class="col-sm-4 text-center float-right" id="dev-show-job-details">
+        <div class="row">
+          <button class="float-right btn btn-sm btn-outline-danger" (click)="unselectJob()">&times;</button>
+        </div>
+        <div class="row">
+            <h1 class="text-center col-sm-12 bold-text underline-text">Position Details</h1>
+            <button class="btn btn-lg btn-outline-primary col-sm-12" id="apply-button" role="button" type="button" data-toggle="modal" data-target="#modal-apply-for-job" (click)="startNewEmail()">Apply for this position!</button>
+        </div>
+
+        <div class="row text-left" id="single-job-detail">
+            <h3 class="bold-text col-sm-12">{{selectedJob.position}}</h3>
+            <p> @ {{selectedJob.orgName}} ({{selectedJob.city}}, {{selectedJob.state}})</p>
+        </div>
+        <div class="row">
+            <p><span class="bold-text">Contact Person:</span> {{selectedJob.contactFName}} {{selectedJob.contactLName}}
+                <br>({{selectedJob.email}})
+            </p>
+            <p><span class="bold-text">Description:</span> {{selectedJob.description}}</p>
+            <p class="bold-text underline-text">Required Skills:</p>
+
+            <div class="show-required-skills text-center">
+                <figure *ngFor="let skill of selectedJob.requiredSkills">
+                    <img class="figure-img each-skill" src="assets/img/{{skill}}.png">
+                    <figcaption *ngIf="skill === 'Csharp'" class="figure-caption">C#</figcaption>
+                    <figcaption *ngIf="skill != 'Csharp'" class="figure-caption">{{skill}}</figcaption>
+                </figure>
+            </div>
+        </div>
+
+    </div>
 </div>
-<!-- end #modal-each-job -->
+
+
+
+
+
+
+    <!-- #modal-apply-for-job -->
+    <div *ngIf="selectedJob" class="modal fade" id="modal-apply-for-job" tabindex="-1" role="dialog" aria-labelledby="modal-apply-for-job-label" aria-hidden="true">
+    <!--<div *ngIf="3 === 4" class="modal fade" id="modal-apply-for-job" tabindex="-1" role="dialog" aria-labelledby="modal-apply-for-job-label" aria-hidden="true">-->
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modal-apply-for-job-label">{{selectedJob.position}}</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p>this is the jeob</p>
+                    <div class="row">
+                        <form #sendEmail="ngForm">
+                            <div class="form-control">
+                                <label for="sendTo" class="bold-text">To:</label>
+                                <input type="text" name="to" id="sendTo" readonly value="{{selectedJob.email}}">
+                            </div>
+                            <div class="form-control">
+                                <label for="subject" class="bold-text">Subject:</label>
+                                <input type="text" name="subject" id="subject" value="{{selectedJob.position}}" placeholder="{{selectedJob.position}}" [(ngModel)]="email.subject">
+                            </div>
+                            <div clas="form-control">
+                                <label for="body" class="bold-text">Message:</label>
+                                <textarea rows="4" name="body" id="body" [(ngModel)]="email.body">Hello, {{selectedJob.contactFName}}.
+                                    My name is {{user.fname}}, and I am interested in this position. Please check out my skillz and give to me the jeob plzkthx. #johnahnz0rsisl33t
+                                </textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger btn-close-modal" data-dismiss="modal">Cancel</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    <a type="button" class="btn btn-primary" href="mailto:{{email.to}}?subject={{email.subject}}&body={{email.body}}" target="_blank">Send Email</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end #modal-apply-for-job -->
+
+
+
+    <!-- #modal-each-job -->
+    <div *ngIf="selectedJob" class="modal fade" id="modal-each-job" tabindex="-1" role="dialog" aria-labelledby="modal-job-label" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modal-job-label">{{selectedJob.position}}</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p>this is the jeob</p>
+                    <div class="row">
+                        <div class="col-sm-3">Position:<br>{{selectedJob.position}}</div>
+                        <div class="col-sm-3">Location:<br>{{selectedJob.city}}, {{selectedJob.state}}</div>
+                        <div class="col-sm-3">Org:<br>{{selectedJob.orgName}}</div>
+                        <div class="col-sm-3">Required Skills:<br><span *ngFor="let i of selectedJob.requiredSkills">{{i}}, </span></div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-close-modal" data-dismiss="modal">Close</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end #modal-each-job -->
+
