@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DevService } from '../../services/dev.service';
 import { HomeDashboardComponent } from '../home-dashboard/home-dashboard.component';
+import { UserService } from '../../services/user.service';
+import { User } from '../../user';
 
 
 @Component({
@@ -10,16 +11,17 @@ import { HomeDashboardComponent } from '../home-dashboard/home-dashboard.compone
 })
 export class HomeDevsComponent implements OnInit {
 
-  allDevs;
-  selectedDev;
+  allDevs: Array<User>;
+  selectedDev: User;
 
   constructor(
-    private devService: DevService,
+    private userService: UserService,
     private homeDash: HomeDashboardComponent
   ) { }
 
   ngOnInit() {
-    this.devService.allDevs.subscribe(allDevs => { this.allDevs = allDevs; });
+    this.userService.getAllDevs();
+    this.userService.allDevs.subscribe(allDevs => { this.allDevs = allDevs; });
   }
 
   keys(object) {

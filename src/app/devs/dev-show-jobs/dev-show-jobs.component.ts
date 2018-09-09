@@ -23,10 +23,12 @@ export class DevShowJobsComponent implements OnInit {
 
   ngOnInit() {
     this.userService.user.subscribe(response => { this.user = response; });
+    this.jobService.getAllJobs();
     this.jobService.allJobs.subscribe(response => {
       this.allJobs = response;
       this.matchAllJobs();
     });
+
   }
 
   keys(obj) {

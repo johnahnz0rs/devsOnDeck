@@ -8,19 +8,23 @@
 <button class="btn btn-sm btn-warning float-right" (click)="printAllJobs()">Print All Jobs</button>
 
 <div class="container-fluid row" id="lol">
+
     <!-- left-col: display all jobs -->
-    <div *ngIf="allJobs" class="col-sm-8 float-left" id="all-jobs">
+    <div class="col-sm-8 float-left" id="all-jobs">
         <!--<div *ngFor="let job of allJobs" class="each-job row" type="button" data-toggle="modal" data-target="#modal-each-job" (click)="selectThisJob(job)">-->
-        <div *ngFor="let job of allJobs" class="each-job row" type="button" (click)="selectThisJob(job)">
-            <div class="col-sm-6 align-middle">
-                <h3 class="bold-text">{{job.position}}</h3>
-                <h5 class="location">({{job.city}}, {{job.state}})</h5>
-            </div>
-            <div class="col-sm-6">
-                <h5 class="text-center bold-text underline-text">Skills Match</h5>
-                <div class="text-center">
-                    <p>You are <span class="bold-text">{{job.match}} %</span></p>
-                    <p>compatible with this position!</p>
+        <p>lol</p>
+        <div *ngIf="allJobs">
+            <div *ngFor="let job of allJobs" class="each-job row" type="button" (click)="selectThisJob(job)">
+                <div class="col-sm-6 align-middle">
+                    <h3 class="bold-text">{{job.position}}</h3>
+                    <h5 class="location">({{job.city}}, {{job.state}})</h5>
+                </div>
+                <div class="col-sm-6">
+                    <h5 class="text-center bold-text underline-text">Skills Match</h5>
+                    <div class="text-center">
+                        <p>You are <span class="bold-text">{{job.match}} %</span></p>
+                        <p>compatible with this position!</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -30,16 +34,16 @@
 
 
     <!-- right-col: if a job is selected, display that job's details -->
-    <div *ngIf="selectedJob" class="col-sm-4 text-center float-right" id="dev-show-job-details">
+    <div class="col-sm-4 text-center float-right" id="dev-show-job-details">
         <div class="row">
           <button class="float-right btn btn-sm btn-outline-danger" (click)="unselectJob()">&times;</button>
         </div>
         <div class="row">
             <h1 class="text-center col-sm-12 bold-text underline-text">Position Details</h1>
-            <button class="btn btn-lg btn-outline-primary col-sm-12" id="apply-button" role="button" type="button" data-toggle="modal" data-target="#modal-apply-for-job" (click)="startNewEmail()">Apply for this position!</button>
+            <button *ngIf="selectedJob" class="btn btn-lg btn-outline-primary col-sm-12" id="apply-button" role="button" type="button" data-toggle="modal" data-target="#modal-apply-for-job" (click)="startNewEmail()">Apply for this position!</button>
         </div>
 
-        <div class="row text-left" id="single-job-detail">
+        <div *ngIf="selectedJob" class="row text-left" id="single-job-detail">
             <h3 class="bold-text col-sm-12">{{selectedJob.position}}</h3>
             <p> @ {{selectedJob.orgName}} ({{selectedJob.city}}, {{selectedJob.state}})</p>
         </div>

@@ -14,6 +14,7 @@ import { User } from '../../user';
 export class HomeDashboardComponent implements OnInit {
 
   public displayThisComp = 'splash';
+  allDevs
   user: User;
   login: Login = new Login();
   quickLogin: Login = new Login();
@@ -26,19 +27,11 @@ export class HomeDashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getAllDevs();
-    this.userService.getAllOrgs();
-    this.userService.getAllJobs();
-    this.userService.user
-      .subscribe(response => {
-        this.user = response;
-        if (response.accountType) {
-          console.log('*** lol this is user type ***', response.accountType);
-        } else {
-          console.log('*** lol not logged in ***', response);
-        }
-      });
+    this.userService.user.subscribe(response => { this.user = response; });
     this.userService.quickSignUp.subscribe(response => { this.quickSignUp = response; });
+    // this.userService.getAllDevs();
+    // this.userService.getAllOrgs();
+    // this.userService.getAllJobs();
   }
 
   clickComp(comp) {

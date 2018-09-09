@@ -19,6 +19,7 @@ export class HomeJobsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.jobService.getAllJobs();
     this.jobService.allJobs.subscribe(allJobs => { this.allJobs = allJobs; });
   }
 
